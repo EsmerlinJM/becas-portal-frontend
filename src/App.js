@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from "react-redux";
+import { HelmetProvider } from "react-helmet-async";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { Suspense } from "react";
+
+import store from "./@beca/redux";
+import becaRoutes from "./@beca";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <HelmetProvider>
+      <Provider store={store}>
+        <Router>
+          <Switch>
+            <Suspense fallback={<div> Loading....</div>}>
+              {becaRoutes.map((route) => (
+                <Route exact={route.exact} path={route.path} key={route.path}>
+                  <route.component />
+                </Route>
+              ))}
+            </Suspense>
+          </Switch>
+        </Router>
+      </Provider>
+    </HelmetProvider>
   );
 }
 
