@@ -4,14 +4,20 @@ import { BsStar } from "react-icons/bs";
 import { useHistory } from "react-router";
 export default function OfertaResult({ item }) {
   const history = useHistory();
+  const color = localStorage.getItem("color");
   const {
     id,
     image_url,
-    schedule: { modality },
-    oferta: { academic_offer_name, campus_country, institution_name },
+    oferta: {
+      schedule: { modality },
+      academic_offer_name,
+      campus_country,
+      institution_name,
+    },
   } = item;
+
   return (
-    <BorderTop borderColor="red-600">
+    <BorderTop borderColor={color ? color : "red-500"}>
       <div className="max-w-sm  overflow-hidden bg-white rounded flex flex-col justify-between h-full">
         <div className="w-full flex justify-between border-b-2 border-gray-100 h-28 ">
           <div className="w-48 flex items-center">
@@ -24,7 +30,7 @@ export default function OfertaResult({ item }) {
             />
           </div>
           <div className="w-52 flex items-center justify-center">
-            <Label bgColor="red-600" title="Internacional" />
+            <Label bgColor={color ? color : "red-500"} title="Internacional" />
           </div>
         </div>
         <div className="px-5 py-2">

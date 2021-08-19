@@ -2,13 +2,14 @@ import React from "react";
 import { FaFacebookSquare, FaShapes } from "react-icons/fa";
 import { IoLogoYoutube } from "react-icons/io";
 import { ImInstagram } from "react-icons/im";
+import BECA from "../../../../../../img/groupp.png";
 
 export default function Footer() {
   return (
     <div className="fadeIn">
       <div className="footer w-full azulbg flex items-center p-7">
         <div className="logos flex justify-center w-full max-w-xl">
-          <img className="w-96 mr-10" src={""} alt="" />
+          <img className="w-96 mr-10" src={BECA} alt="" />
         </div>
         <div className="info flex border-l-2 border-gray-400">
           <div className="ayuda text-white text-xs w-full px-5">

@@ -11,11 +11,11 @@ import { useHistory } from "react-router";
 
 const columns = [
   "id",
-  "Insitucion",
+  "Insitución",
   "Carrera",
   "Sede",
   "Nivel",
-  "Area",
+  "Área",
   "Idioma",
   "Modalidad",
 ];
@@ -24,16 +24,14 @@ export default function OfertList(id) {
   const [table, setTable] = useState(false);
   const history = useHistory();
 
-  const [
-    { screens, items, active, status, statusBySearch, countResult },
-    actions,
-  ] = useAction(id);
+  const [{ screens, items, active, status, loading, countResult }, actions] =
+    useAction(id);
 
   const options = {
     filter: true,
     filterType: "dropdown",
     responsive: "vertical",
-    tableBodyHeight: "800px",
+    tableBodyHeight: "650px",
     selectableRows: false,
     onRowClick: (rowData) => {
       history.push("/query-result/detail/" + rowData[0]);
@@ -45,8 +43,8 @@ export default function OfertList(id) {
     items.map((itm) => {
       const {
         id,
-        schedule: { modality },
         oferta: {
+          schedule: { modality },
           academic_offer_name,
           development_area_name,
           education_level_name,
@@ -68,16 +66,16 @@ export default function OfertList(id) {
       ];
     });
 
-  if (status === "loading" || statusBySearch === "loading")
+  if (status === "loading" || loading)
     return (
       <div className="flex justify-center items-center h-1/2">
-        <Loading type="Puff" color="gray" width={350} height={100} />
+        <Loading type="MutatingDots" color="red" size={90} />
       </div>
     );
   if (
     (status !== "loading" &&
       status === "completed" &&
-      statusBySearch === "completed" &&
+      !loading &&
       !items.length) ||
     !id
   ) {
@@ -87,6 +85,7 @@ export default function OfertList(id) {
       </div>
     );
   }
+
   return (
     <div>
       <div className="flex justify-between mt-5 mb-3 mx-1">

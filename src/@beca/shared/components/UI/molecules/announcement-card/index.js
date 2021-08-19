@@ -1,4 +1,3 @@
-import React from "react";
 import Label from "../../atoms/label";
 import { diffTwoTimes } from "../../../../utils/diff-two-times";
 import { BiCalendar } from "react-icons/bi";
@@ -10,9 +9,13 @@ import { setRecent } from "../../../../../redux/slices/announcement/_actions";
 export default function AnnouncementCard({ item = {} }) {
   const history = useHistory();
   const dispatch = useDispatch();
+
   const redirect = (payload) => {
     dispatch(setRecent(payload));
-    history.push(`query-result?id=${id}`);
+    localStorage.setItem("color", payload.type.color);
+    console.log(payload.status.toLowerCase().trim());
+    const path = payload.status.toLowerCase().trim().includes("cerrada");
+    history.push(!path ? `/query-result?id=${id}` : `/all-applied/${id}`);
   };
 
   const {
@@ -25,7 +28,7 @@ export default function AnnouncementCard({ item = {} }) {
   } = item;
 
   return (
-    <>
+    <div className="flex flex-col justify-between h-full">
       <div className="relative flex justify-center w-full">
         <div className=" absolute text-center w-40" style={{ top: -13 }}>
           <Label bgColor={color} title={typeName} />
@@ -77,6 +80,6 @@ export default function AnnouncementCard({ item = {} }) {
           </span>
         </div>
       </div>
-    </>
+    </div>
   );
 }

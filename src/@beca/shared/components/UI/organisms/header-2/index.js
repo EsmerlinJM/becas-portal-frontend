@@ -17,7 +17,10 @@ export default function Header2() {
           <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer">
             BLOG
           </span>
-          <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer">
+          <span
+            onClick={() => history.push("/cuetion-frequency")}
+            className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
+          >
             PREGUNTAS FRECUENTES
           </span>
         </div>

@@ -10,10 +10,11 @@ export default function OfferDetail({ item }) {
       academic_offer_type,
       campus_province,
       education_level_name,
+      schedule,
     },
     institucion: { name, contacto_telefono, direccion, web },
-    schedule: { modality },
   } = item;
+  console.log(item);
   return (
     <div>
       <div className="oferta bg-white m-auto grid grid-cols-3 xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
@@ -91,7 +92,7 @@ export default function OfferDetail({ item }) {
               </tr>
               <tr className="border-b border-gray-100">
                 <th className="text-gray-400 font-semibold">Modalidad</th>
-                <td>{modality}</td>
+                <td>{schedule?.modality}</td>
               </tr>
               <tr>
                 <th className="text-gray-400 font-semibold">Sedes</th>

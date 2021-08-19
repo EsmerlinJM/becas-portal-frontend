@@ -1,7 +1,7 @@
 import customAxios from "../utils/customAxios";
 
 export const announcementAll = async () => {
-  const { data: res } = await customAxios.get(`/convocatorias/getAll`);
+  const { data: res } = await customAxios.get(`/convocatorias/portal`);
   return res.data;
 };
 

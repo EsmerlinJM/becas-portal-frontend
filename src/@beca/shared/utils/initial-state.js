@@ -20,3 +20,10 @@ export const initialState = {
   //   status: null,
   // },
 };
+
+export const offerResult = {
+  modality: {},
+  oferta: {
+    schedule: {},
+  },
+};

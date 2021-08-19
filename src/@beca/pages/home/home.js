@@ -8,13 +8,13 @@ import { Helmet } from "react-helmet-async";
 
 export default function Home() {
   return (
-    <div>
+    <div className="fadeIn">
       <Helmet>
         <title> Beca tu futuro | Crece tu talento, crece el pais </title>
       </Helmet>
       <AlertTop />
       <HomeInit />
-      <div className="p-16 w-screen bg-blue-100 shadow-md">
+      <div className="p-16 w-screen bg-blue-100 shadow-md ">
         <h4 className="p-2 border-b border-blue-300 text-xl font-bold azul">
           ÚLTIMAS CONVOCATORIAS
         </h4>

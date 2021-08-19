@@ -8,7 +8,7 @@ import Footer from "../UI/organisms/footer";
 
 export default function LayoutResult({ children }) {
   return (
-    <div>
+    <div className="fadeIn">
       <AlertTop />
       <Header2 />
       <Navigation />

@@ -68,7 +68,7 @@ export default function useAction(qp, search) {
     const filtered = data.filter((item) => {
       if (Object.keys(qp).length <= 1) return true;
       let val = false;
-      const { oferta, institucion, schedule } = item;
+      const { oferta, institucion } = item;
 
       for (const name in qp) {
         if (name === "level") {
@@ -138,7 +138,7 @@ export default function useAction(qp, search) {
           const arr = qp[name].split("_");
           if (arr.length && arr[0].length) {
             const item = arr.find((qr) => {
-              return removeAccents(schedule["modality"]).includes(qr);
+              return removeAccents(oferta.schedule["modality"]).includes(qr);
             });
 
             if (item) val = true;

@@ -19,10 +19,13 @@ export default function HomeInit() {
             onClick={() => history.push("/")}
           />
           <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
-            <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800">
+            <span className="cursor-pointer  m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800">
               BLOG
             </span>
-            <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800">
+            <span
+              onClick={() => history.push("/cuetion-frequency")}
+              className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800"
+            >
               PREGUNTAS FRECUENTES
             </span>
           </div>

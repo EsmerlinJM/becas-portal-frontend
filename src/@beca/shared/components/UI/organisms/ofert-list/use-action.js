@@ -14,6 +14,7 @@ export default function useAction(id) {
   const [items, setItems] = useState([]);
   const [screens, setScreens] = useState([]);
   const [active, setActive] = useState(1);
+  const [loading, setLoading] = useState(false);
 
   const onSelectScreen = (screen) => {
     setActive(screen);
@@ -21,12 +22,15 @@ export default function useAction(id) {
     setItems(() => oferts.slice(curr - screenNum, curr));
   };
   useEffect(() => {
+    setLoading(true);
     const fn = async () => dispatch(await getAllOffer(id));
     id && !data.length && fn();
+    setLoading(false);
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
+    setLoading(true);
     const numScreen = oferts.length / screenNum;
     const num = Math.ceil(numScreen <= 0 ? 1 : numScreen);
     const scrns = [];
@@ -38,6 +42,7 @@ export default function useAction(id) {
     setItems(oferts.slice(0, screenNum));
     setActive(1);
     setScreens(scrns);
+    setLoading(false);
     //eslint-disable-next-line
   }, [oferts, status]);
 
@@ -47,7 +52,7 @@ export default function useAction(id) {
       active,
       items,
       status: allStatus,
-      statusBySearch: status,
+      loading,
       countResult: oferts.length,
     },
     { onSelectScreen },

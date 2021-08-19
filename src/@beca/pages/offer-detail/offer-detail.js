@@ -11,10 +11,7 @@ export default function OfferDetail() {
   return (
     <>
       <Helmet>
-        <title>
-          {data.oferta ? data.oferta.academic_offer_name : "Aplica"} | Beca tu
-          futuro{" "}
-        </title>
+        <title>{"Aplica"} | Beca tu futuro </title>
       </Helmet>
       <Header2Natigation>
         <div className="bg-gray-50">
@@ -24,7 +21,7 @@ export default function OfferDetail() {
             </div>
             {status === "loading" ? (
               <div className="flex justify-center items-center h-1/2">
-                <Loading type="Puff" color="gray" width={350} height={100} />
+                <Loading type="MutatingDots" color="red" />
               </div>
             ) : (
               <OfferDetaill item={data} />
