@@ -14,8 +14,8 @@ export default function AnnouncementList() {
     <div className="flex justify-between">
       <GoChevronLeft
         size={40}
-        className="self-center "
-        onClick={() => actions.onMove(true)}
+        className="self-center cursor-pointer"
+        onClick={() => actions.onMove(-1)}
       />
       <CardColumns>
         {data.map((item) => {
@@ -28,8 +28,8 @@ export default function AnnouncementList() {
       </CardColumns>
       <GoChevronRight
         size={40}
-        className="self-center "
-        onClick={() => actions.onMove(false)}
+        className="self-center cursor-pointer"
+        onClick={() => actions.onMove(1)}
       />
     </div>
   );

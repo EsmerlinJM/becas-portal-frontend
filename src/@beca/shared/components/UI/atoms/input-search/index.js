@@ -25,7 +25,6 @@ export default function InputSearchResult() {
   const onClear = () => {
     const params = JSON.stringify(qp).replace("?", "");
     const params2 = JSON.parse(params);
-    console.log(params);
     const newParams = params2["id"]
       ? {
           id: params2.id,
@@ -42,12 +41,12 @@ export default function InputSearchResult() {
     <div className="flex items-center">
       <button
         onClick={onClear}
-        className="bg-yellow-500 hover:bg-yellow-400 text-white  py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded"
+        className="outline-none  bg-red-500 hover:bg-yellow-400 text-white  py-2 px-4 border-b-4 border-yellow-700 hover:border-yellow-500 rounded-full mr-2"
       >
         Limpiar
       </button>
       <input
-        className="outline-none text-gray-600  text-xs font-bold focus:border-blue-100 border rounded-r-3xl w-full p-3.5 pl-6 focus:placeholder-blue-100 placeholder-blue-800"
+        className="outline-none text-gray-600  text-xs font-bold focus:border-blue-100 border rounded-3xl w-full p-3.5 pl-6 focus:placeholder-blue-100 placeholder-blue-800"
         name="user"
         type="text"
         required

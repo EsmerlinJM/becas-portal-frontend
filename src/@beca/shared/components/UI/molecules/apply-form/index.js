@@ -9,7 +9,7 @@ export default function ApplyForm() {
         </p>
       </div>
       <div className="flex-col mt-8">
-        <form className="flex flex-col mb-6">
+        <div className="flex flex-col mb-6">
           <input
             className="rounded-3xl bg-blue-50 p-2.5 border border-blue-600 bg-bl font-thin text-sm focus:outline-none border border-gray-300 px-6 py-3 mb-3"
             name="name"
@@ -36,7 +36,7 @@ export default function ApplyForm() {
             type="submit"
             value="ENVIAR"
           />
-        </form>
+        </div>
       </div>
     </div>
   );

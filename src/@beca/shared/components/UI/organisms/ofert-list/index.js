@@ -7,8 +7,10 @@ import MUIDataTable from "mui-datatables";
 import { useState } from "react";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { AiOutlineInsertRowAbove } from "react-icons/ai";
+import { useHistory } from "react-router";
 
 const columns = [
+  "id",
   "Insitucion",
   "Carrera",
   "Sede",
@@ -17,27 +19,32 @@ const columns = [
   "Idioma",
   "Modalidad",
 ];
-const options = {
-  filter: true,
-  filterType: "dropdown",
-  responsive: "vertical",
-  tableBodyHeight: "800px",
-  selectableRows: false,
-  // tableBodyMaxHeight
-};
 
 export default function OfertList(id) {
   const [table, setTable] = useState(false);
+  const history = useHistory();
 
   const [
     { screens, items, active, status, statusBySearch, countResult },
     actions,
   ] = useAction(id);
 
+  const options = {
+    filter: true,
+    filterType: "dropdown",
+    responsive: "vertical",
+    tableBodyHeight: "800px",
+    selectableRows: false,
+    onRowClick: (rowData) => {
+      history.push("/query-result/detail/" + rowData[0]);
+    },
+  };
+
   const data =
     table &&
     items.map((itm) => {
       const {
+        id,
         schedule: { modality },
         oferta: {
           academic_offer_name,
@@ -50,6 +57,7 @@ export default function OfertList(id) {
       } = itm;
 
       return [
+        id,
         institution_name,
         development_area_name,
         campus_province,

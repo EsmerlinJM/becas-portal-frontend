@@ -20,10 +20,6 @@ export const getOneOfert = createAsyncThunk(
   async (id) => await oneOfert(id)
 );
 
-// export const getByAll = createAsyncThunk(
-//   "ofert/getOne",
-//   async (id) => await oneOfert(id)
-// );
 export const getAllOfferByAll = createAsyncThunk(
   "ofert/getAll",
   async (value) => await searchByAll(value)
