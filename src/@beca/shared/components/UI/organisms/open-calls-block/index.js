@@ -6,7 +6,7 @@ import { FaSign } from "react-icons/fa";
 
 export default function OpenCallsBlock() {
   return (
-    <div className="truncate flex items-center  bg-white m-2 text-gray-500 divide-x-2 invisible xs:invisible sm:invisible md:visible lg:visible">
+    <div className="truncate rounded flex items-center border-2 bg-white m-2 text-gray-500 divide-x-2 invisible xs:invisible sm:invisible md:visible lg:visible">
       <div className="flex">
         <div>
           <img

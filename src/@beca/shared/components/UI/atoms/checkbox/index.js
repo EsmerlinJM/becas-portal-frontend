@@ -1,10 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 export default function Checkbox({
   text = "Send me your newsletter!",
   id,
   onToggle,
   name,
+  checked = false,
 }) {
   const [selected, setSelected] = useState(false);
 
@@ -18,6 +19,10 @@ export default function Checkbox({
     onToggle(payload);
     setSelected(val);
   };
+
+  useEffect(() => {
+    setSelected(checked);
+  }, [checked]);
 
   return (
     <label className="md:w-2/3 block text-gray-500 font-bold text-xs">

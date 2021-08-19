@@ -4,7 +4,6 @@ export default function CardColumns({ children }) {
   return (
     <div
       className={`
-      fadeIn
       gap-6
       grid
       grid-cols-1

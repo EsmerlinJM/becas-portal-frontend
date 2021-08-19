@@ -13,3 +13,8 @@ export const announcementGetOne = createAsyncThunk(
   "announcement/getOne",
   async (id) => await announcementOne(id)
 );
+
+export const setRecent = createAsyncThunk(
+  "announcement/recent",
+  (payload) => payload
+);

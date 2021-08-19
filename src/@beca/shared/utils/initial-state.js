@@ -15,4 +15,8 @@ export const initialState = {
     data: {},
     status: null,
   },
+  // recent: {
+  //   data: {},
+  //   status: null,
+  // },
 };

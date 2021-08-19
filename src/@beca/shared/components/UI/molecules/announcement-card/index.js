@@ -3,20 +3,32 @@ import Label from "../../atoms/label";
 import { diffTwoTimes } from "../../../../utils/diff-two-times";
 import { BiCalendar } from "react-icons/bi";
 import { FaRegClock } from "react-icons/fa";
+import { useHistory } from "react-router";
+import { useDispatch } from "react-redux";
+import { setRecent } from "../../../../../redux/slices/announcement/_actions";
 
-export default function AnnouncementCard({ bgColor = "red-600", item = {} }) {
+export default function AnnouncementCard({ item = {} }) {
+  const history = useHistory();
+  const dispatch = useDispatch();
+  const redirect = (payload) => {
+    dispatch(setRecent(payload));
+    history.push(`query-result?id=${id}`);
+  };
+
   const {
+    id,
     name,
     end_date,
     image_url,
     status,
-    audience: { name: audienceName },
+    type: { color, name: typeName },
   } = item;
+
   return (
     <>
       <div className="relative flex justify-center w-full">
         <div className=" absolute text-center w-40" style={{ top: -13 }}>
-          <Label bgColor={bgColor} title={audienceName} />
+          <Label bgColor={color} title={typeName} />
         </div>
       </div>
 
@@ -52,7 +64,10 @@ export default function AnnouncementCard({ bgColor = "red-600", item = {} }) {
             </div>
           </span>
         </div>
-        <div className="pt-4 text-center cursor-pointer ">
+        <div
+          className="pt-4 text-center cursor-pointer "
+          onClick={() => redirect(item)}
+        >
           <span
             className={` w-full inline-block 
           hover:bg-blue-50 hover:text-blue-900  transition duration-300 

@@ -1,12 +1,23 @@
 import Buscar_CTA from "../../../../../../img/Buscar-CTA.svg";
 import Component2242x from "../../../../../../img/Component22–4@2x.png";
 import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
+import { useHistory } from "react-router";
+import { useState } from "react";
+
 export default function HomeInit() {
+  const [query, setQuery] = useState(null);
+
+  const history = useHistory();
   return (
     <div className="home flex">
       <div className="left w-screen">
         <div className="header1 bg-white flex items-center">
-          <img className="w-40 ml-10" src={Logo} alt="hola" />
+          <img
+            className="w-40 ml-10"
+            src={Logo}
+            alt="hola"
+            onClick={() => history.push("/")}
+          />
           <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
             <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800">
               BLOG
@@ -24,13 +35,21 @@ export default function HomeInit() {
           <p className="font-semibold mb-5">
             Busca la carrera que te ayudará a desarrollar un mejor futuro.
           </p>
-          <form className="flex items-center">
+          <div className="flex items-center">
             <input
               className="outline-none border rounded-3xl w-96 p-3.5 pl-6 focus:placeholder-blue-100 placeholder-blue-800 text-xs font-bold"
               name="user"
               type="text"
               required
               placeholder="¿Qué quieres estudiar?"
+              value={query}
+              onKeyPress={({ key }) =>
+                key === "Enter" &&
+                query &&
+                query.length > 5 &&
+                history.push(`/query-result?all=${query}`)
+              }
+              onChange={({ target }) => setQuery(() => target.value)}
               maxLength={50}
             />
             <p className="text-xs select-none font-thin text-gray-400 -ml-36">
@@ -43,8 +62,13 @@ export default function HomeInit() {
               type="image"
               alt="hola"
               placeholder="Consultar"
+              onClick={() =>
+                query &&
+                query.length > 5 &&
+                history.push(`/query-result?all=${query}`)
+              }
             />
-          </form>
+          </div>
         </div>
       </div>
       <div className="right azulbg w-3/5 border border-blue-400">

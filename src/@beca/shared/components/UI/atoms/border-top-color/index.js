@@ -3,7 +3,8 @@ import React from "react";
 export default function BoderTopColor({ children, borderColor }) {
   return (
     <div
-      className={`border-t-4 border-${borderColor} hover:shadow-xl shadow transition duration-300 ease-in-out rounded  bg-white	`}
+      className={` border-t-4 border-${borderColor} hover:shadow-xl shadow transition duration-300 ease-in-out rounded  bg-white fadeIn`}
+      style={{ borderColor: borderColor }}
     >
       {children}
     </div>
