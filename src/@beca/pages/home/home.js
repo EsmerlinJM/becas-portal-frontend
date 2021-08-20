@@ -14,7 +14,7 @@ export default function Home() {
       </Helmet>
       <AlertTop />
       <HomeInit />
-      <div className="p-16 w-screen bg-blue-100 shadow-md ">
+      <div className="p-10 w-screen bg-blue-100 shadow-md ">
         <h4 className="p-2 border-b border-blue-300 text-xl font-bold azul">
           ÚLTIMAS CONVOCATORIAS
         </h4>

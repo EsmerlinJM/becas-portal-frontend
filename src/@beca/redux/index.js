@@ -6,6 +6,7 @@ import province from "./slices/province/_reducers";
 import announcement from "./slices/announcement/_reducers";
 import institution from "./slices/institution/_reducers";
 import applied from "./slices/all-applied/_reducers";
+import user from "./slices/user/_reducers";
 
 export default configureStore({
   reducer: {
@@ -15,5 +16,6 @@ export default configureStore({
     institution,
     announcement,
     applied,
+    user,
   },
 });

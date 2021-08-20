@@ -15,10 +15,10 @@ export const initialState = {
     data: {},
     status: null,
   },
-  // recent: {
-  //   data: {},
-  //   status: null,
-  // },
+  message: {
+    data: {},
+    status: null,
+  },
 };
 
 export const offerResult = {

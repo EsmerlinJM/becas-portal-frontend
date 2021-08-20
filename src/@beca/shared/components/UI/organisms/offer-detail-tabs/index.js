@@ -4,6 +4,7 @@ import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 
 export default function OfferDetailTab({ item }) {
+  console.log(item);
   return (
     <div className="bg-white rounded shadow">
       <Tabs>

@@ -1,8 +1,14 @@
 import Label from "../../atoms/label";
 import BorderTop from "../../atoms/border-top-color";
-import { BsStar } from "react-icons/bs";
+import { AiFillStar } from "react-icons/ai";
+// import { BsStar } from "react-icons/bs";
+
 import { useHistory } from "react-router";
+// import { useEffect, useState } from "react";
+
 export default function OfertaResult({ item }) {
+  // const [ofert, setOffer] = useState({});
+
   const history = useHistory();
   const color = localStorage.getItem("color");
   const {
@@ -15,6 +21,14 @@ export default function OfertaResult({ item }) {
       institution_name,
     },
   } = item;
+
+  // const onAddStar = (article)=>{
+
+  // }
+
+  // useEffect(() => {
+  //   setOffer(item);
+  // }, [item]);
 
   return (
     <BorderTop borderColor={color ? color : "red-500"}>
@@ -54,7 +68,7 @@ export default function OfertaResult({ item }) {
           >
             <span className="text-sm"> TÈCNICO</span>
             <span>
-              <BsStar size={20} />
+              <AiFillStar size={25} className="text-border-2" />
             </span>
           </span>
         </div>

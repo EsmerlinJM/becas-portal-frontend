@@ -1,12 +1,16 @@
 import { Provider } from "react-redux";
 import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Suspense } from "react";
+import { Suspense, useEffect } from "react";
 
 import store from "./@beca/redux";
 import becaRoutes from "./@beca";
 
 function App() {
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, []);
+
   return (
     <HelmetProvider>
       <Provider store={store}>

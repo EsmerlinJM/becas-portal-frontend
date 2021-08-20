@@ -53,11 +53,11 @@ export default function InputSearchResult() {
     <div className="flex items-center">
       <button
         onClick={onClear}
-        className="outline-none  flex bg-red-500 hover:bg-red-700 text-white  py-2 px-4 border-b-4 border-yellow-700 hover:border-red-500 rounded-full mr-2"
+        className="outline-none  flex bg-blue-100 hover:bg-blue-500 hover:text-white text-blue-500  py-2 px-4 border-b-4 border-blue-500 hover:border-blue-300 rounded-full mr-2"
       >
         <AiOutlineClear
-          className="mr-1 text-white self-center"
-          color="#ffff"
+          className="mr-1 text-blue-500 hover:text-white self-center"
+          // color="#81DCF2"
           size={20}
         />
         Limpiar

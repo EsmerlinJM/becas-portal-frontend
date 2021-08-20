@@ -14,10 +14,10 @@ export default function AnnouncementList() {
     <div className="flex justify-between">
       <GoChevronLeft
         size={40}
-        className="self-center cursor-pointer"
+        className="self-center cursor-pointer "
         onClick={() => actions.onMove(-1)}
       />
-      <CardColumns>
+      <CardColumns className="p-6">
         {data.map((item) => {
           return (
             <BoderTopColor borderColor={item.type.color} key={item.id}>

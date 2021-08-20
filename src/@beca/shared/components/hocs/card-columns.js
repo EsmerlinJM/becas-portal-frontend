@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function CardColumns({ children }) {
+export default function CardColumns({ children, className = "" }) {
   return (
     <div
       className={`
@@ -13,6 +13,8 @@ export default function CardColumns({ children }) {
       lg:grid-cols-4 
       xl:grid-cols-4 
       2xl:grid-cols-6
+      
+      ${className}
     `}
     >
       {children}

@@ -128,16 +128,16 @@ export default function OfertList(id) {
         {!table && (
           <div className="flex  justify-end mt-10 ">
             <p className=" self-center mr-4">
-              Pagina {active.toLocaleString()} de {screens.length}{" "}
+              Página {active.toLocaleString()} de {screens.length}{" "}
             </p>
             <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300 ease-in-out mr-4"
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out mr-2"
               onClick={() => active !== 1 && actions.onSelectScreen(active - 1)}
             >
               Atras{" "}
             </button>
             <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-l transition duration-300 ease-in-out"
+              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
               onClick={() =>
                 !(screens.length <= active) &&
                 actions.onSelectScreen(active + 1)

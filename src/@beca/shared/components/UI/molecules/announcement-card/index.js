@@ -35,7 +35,7 @@ export default function AnnouncementCard({ item = {} }) {
         </div>
       </div>
 
-      <div className="max-w-sm  overflow-hidden">
+      <div className="overflow-hidden">
         <div>
           <img
             className="w-full"
@@ -44,9 +44,10 @@ export default function AnnouncementCard({ item = {} }) {
             alt="Sunset in the mountains"
           />
         </div>
-        <div className="px-6 py-2 ">
+
+        <div className="px-6 py-2">
           <div
-            className="font-bold  mb-2 text-center  mb-10"
+            className="font-bold mb-2 text-center mb-10"
             style={{
               color: "#002F6C",
               fontSize: "15px",

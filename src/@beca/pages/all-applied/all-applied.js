@@ -4,7 +4,7 @@ import Header2Natigation from "../../shared/components/hocs/header2-natigation";
 import useAction from "./use-action";
 import Loading from "react-loader-spinner";
 import MUIDataTable from "mui-datatables";
-
+import OpenCallsBlock from "../../shared/components/UI/organisms/open-calls-block";
 const options = {
   filter: true,
   filterType: "dropdown",
@@ -41,6 +41,9 @@ export default function AllApplied() {
       <Helmet>
         <title>Becados | Beca tu vida </title>
       </Helmet>
+      <div className="container mx-auto">
+        <OpenCallsBlock />
+      </div>
       {status === "loading" && (
         <div className="flex justify-center  mt-20  h-screen">
           <Loading type="MutatingDots" color="red" />
@@ -49,61 +52,6 @@ export default function AllApplied() {
       {status !== "loading" && (
         <div className=" container mx-auto p-4 fadeIn">
           <div className="bg-white m-auto flex flex-col">
-            {/* <div className="input grid grid-cols-6 text-xs my-3 flex items-center">
-              <div className="nombre">
-                <h5 className="mb-2 font-semibold">Nombre</h5>
-                <input
-                  className="border rounded outline-none py-2"
-                  type="text"
-                  name
-                  id
-                />
-              </div>
-              <div className="apellido">
-                <h5 className="mb-2 font-semibold">Apellido</h5>
-                <input
-                  className="border rounded outline-none py-2"
-                  type="text"
-                  name
-                  id
-                />
-              </div>
-              <div className="institucion">
-                <h5 className="mb-2 font-semibold">Institución</h5>
-                <input
-                  className="border rounded outline-none py-2"
-                  type="text"
-                  name
-                  id
-                />
-              </div>
-              <div className="programa">
-                <h5 className="mb-2 font-semibold">Programa de estudio</h5>
-                <input
-                  className="border rounded outline-none py-2"
-                  type="text"
-                  name
-                  id
-                />
-              </div>
-              <div className="nivel">
-                <h5 className="mb-2 font-semibold">Nivel</h5>
-                <input
-                  className="border rounded outline-none py-2"
-                  type="text"
-                  name
-                  id
-                />
-              </div>
-              <div className="buscar">
-                <input
-                  className="w-10 mt-6"
-                  type="image"
-                  src="img/Component 28 – 5.svg"
-                  alt=""
-                />
-              </div>
-            </div> */}
             <div className="tabla">
               <MUIDataTable
                 title={"Becados"}

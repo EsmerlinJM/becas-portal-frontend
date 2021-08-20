@@ -9,6 +9,8 @@ export default function useAction(id) {
     const fn = async () => {
       dispatch(await getAllApplied(id));
     };
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
     id && fn();
     //eslint-disable-next-line
   }, []);

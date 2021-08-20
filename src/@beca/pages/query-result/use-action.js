@@ -6,9 +6,6 @@ export default function useAction() {
   const params = new URLSearchParams(search);
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
-    return () => {
-      localStorage.removeItem("color");
-    };
   }, []);
   return [{ params }];
 }
