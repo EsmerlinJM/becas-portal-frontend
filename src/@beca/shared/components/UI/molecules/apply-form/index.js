@@ -27,7 +27,7 @@ export default function ApplyForm() {
 
   return (
     <div className="p-3">
-      <Toaster position="top-right" reverseOrder={false} />
+      <Toaster position="bottom-left" reverseOrder={false} />
       <div className="m-6  flex flex-col justify-center">
         <h2 className="text-blue-900 font-bold text-lg">Ayudanos a mejorar</h2>
         <p className="text-sm">

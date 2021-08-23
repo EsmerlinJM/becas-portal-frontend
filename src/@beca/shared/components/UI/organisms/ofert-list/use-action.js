@@ -1,6 +1,9 @@
 import { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getAllOffer } from "../../../../../redux/slices/ofert/_actions";
+import {
+  getAllOffer,
+  searchByOffer,
+} from "../../../../../redux/slices/ofert/_actions";
 
 const screenNum = 12;
 
@@ -10,7 +13,6 @@ export default function useAction(id) {
     (state) => state.offers.searchBy
   );
   const { data, status: allStatus } = useSelector((state) => state.offers.all);
-
   const [items, setItems] = useState([]);
   const [screens, setScreens] = useState([]);
   const [active, setActive] = useState(1);
@@ -21,10 +23,26 @@ export default function useAction(id) {
     const curr = screen * screenNum;
     setItems(() => oferts.slice(curr - screenNum, curr));
   };
+
+  const onSetFavorite = (id) => {
+    let favorites = JSON.parse(localStorage.getItem("favorite_offers") || "{}");
+    if (favorites[id]) {
+      delete favorites[id];
+    } else {
+      favorites = {
+        ...favorites,
+        [id]: id,
+      };
+    }
+
+    localStorage.setItem("favorite_offers", JSON.stringify(favorites));
+    dispatch(searchByOffer(oferts));
+  };
+
   useEffect(() => {
     setLoading(true);
     const fn = async () => dispatch(await getAllOffer(id));
-    id && !data.length && fn();
+    id.id && !data.length && fn();
     setLoading(false);
     //eslint-disable-next-line
   }, []);
@@ -53,8 +71,9 @@ export default function useAction(id) {
       items,
       status: allStatus,
       loading,
+      oferts,
       countResult: oferts.length,
     },
-    { onSelectScreen },
+    { onSelectScreen, onSetFavorite },
   ];
 }

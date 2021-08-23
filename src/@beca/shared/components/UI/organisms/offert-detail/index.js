@@ -14,7 +14,6 @@ export default function OfferDetail({ item }) {
     },
     institucion: { name, contacto_telefono, direccion, web },
   } = item;
-  console.log(item);
   return (
     <div>
       <div className="oferta bg-white m-auto grid grid-cols-3 xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
@@ -28,7 +27,7 @@ export default function OfferDetail({ item }) {
               <p className="text-gray-400 font-semibold">{institution_name}</p>
             </div>
           </div>
-          <div className="sobreCarrera text-xs pb-6">
+          <div className="sobreCarrera text-sm pb-6">
             <h5 className="font-semibold pb-2">Sobre la carrera</h5>
             <p className="text-justify">{detalles}</p>
           </div>
@@ -54,7 +53,7 @@ export default function OfferDetail({ item }) {
           <h5 className="font-semibold text-xs mb-3 pl-2">
             Detalles de esta carrera
           </h5>
-          <table className="text-left text-xs leading-7">
+          <table className="text-left text-sm leading-7">
             <tbody>
               <tr className="border-b border-gray-100">
                 <th className="text-gray-400 font-semibold">Área</th>
@@ -101,22 +100,22 @@ export default function OfferDetail({ item }) {
             </tbody>
           </table>
         </div>
-        <div className="acercaDe px-14 py-14 flex flex-col">
+        <div className="acercaDe px-14 py-14 flex flex-col text-sm">
           <h5 className="font-semibold text-xs mb-4">Acerca de {name}</h5>
-          <p className="text-xs text-justify mb-5">
+          <p className="text-sm text-justify mb-5">
             Somos una comunidad universitaria plural e innovadora, que forma
             ciudadanos y profesionales éticos, emprendedores y competitivos a
             nivel internacional.
           </p>
-          <div className="telefono text-xs mb-3">
+          <div className="telefono  mb-3">
             <h6 className="text-gray-400 font-semibold">Teléfono</h6>
             <p>{contacto_telefono}</p>
           </div>
-          <div className="direccion text-xs mb-3">
+          <div className="direccion  mb-3">
             <h6 className="text-gray-400 font-semibold">Dirección</h6>
             <p>{direccion}</p>
           </div>
-          <div className="paginaWeb text-xs mb-3">
+          <div className="paginaWeb  mb-3">
             <h6 className="text-gray-400 font-semibold">Web</h6>
             <span className="text-blue-600 underline">{web}</span>
           </div>

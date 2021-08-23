@@ -5,10 +5,7 @@ export const isValidEmail = (email) =>
   );
 
 export const handleEmailValidation = (email, errors) => {
-  console.log("ValidateEmail was called with", email);
-
   const isValid = isValidEmail(email);
-
   const validityChanged =
     (errors.email && isValid) || (!errors.email && !isValid);
   if (validityChanged) {

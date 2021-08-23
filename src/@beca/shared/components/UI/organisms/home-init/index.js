@@ -1,13 +1,21 @@
 import Buscar_CTA from "../../../../../../img/Buscar-CTA.svg";
-import Component2242x from "../../../../../../img/Component22–4@2x.png";
+import home3834 from "../../../../../../img/Group 3834@2x.png";
 import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
 import { useHistory } from "react-router";
 import { useState } from "react";
-
+import { toast } from "react-hot-toast";
 export default function HomeInit() {
   const [query, setQuery] = useState(null);
-
   const history = useHistory();
+
+  const onSearch = () => {
+    if (query && query.length > 5) {
+      history.push(`/query-result?all=${query}`);
+      return;
+    }
+    query.length <= 5 && toast.error("Mínimo 6 caracteres");
+  };
+
   return (
     <div className="home flex">
       <div className="left w-screen">
@@ -15,7 +23,7 @@ export default function HomeInit() {
           <img
             className="w-40 ml-10"
             src={Logo}
-            alt="hola"
+            alt=""
             onClick={() => history.push("/")}
           />
           <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
@@ -45,13 +53,8 @@ export default function HomeInit() {
               type="text"
               required
               placeholder="¿Qué quieres estudiar?"
-              value={query}
-              onKeyPress={({ key }) =>
-                key === "Enter" &&
-                query &&
-                query.length > 5 &&
-                history.push(`/query-result?all=${query}`)
-              }
+              defaultValue={query}
+              onKeyPress={({ key }) => key === "Enter" && onSearch()}
               onChange={({ target }) => setQuery(() => target.value)}
               maxLength={50}
             />
@@ -65,11 +68,7 @@ export default function HomeInit() {
               type="image"
               alt="hola"
               placeholder="Consultar"
-              onClick={() =>
-                query &&
-                query.length > 5 &&
-                history.push(`/query-result?all=${query}`)
-              }
+              onClick={onSearch}
             />
           </div>
         </div>
@@ -88,7 +87,7 @@ export default function HomeInit() {
         <div className="w-full">
           <img
             className="-ml-24 -mb-1 pr-20 w-full"
-            src={Component2242x}
+            src={home3834}
             alt="hola"
           />
         </div>

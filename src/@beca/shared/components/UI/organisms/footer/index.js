@@ -1,8 +1,10 @@
 import React from "react";
-import { FaFacebookSquare, FaShapes } from "react-icons/fa";
-import { IoLogoYoutube } from "react-icons/io";
-import { ImInstagram } from "react-icons/im";
 import BECA from "../../../../../../img/groupp.png";
+import FB from "../../../../../../img/facebook(1).svg";
+import YTB from "../../../../../../img/youtube-brands.svg";
+import SP from "../../../../../../img/Shape.svg";
+import IG from "../../../../../../img/instagram(3).svg";
+import OGTIC from "../../../../../../img/Group 3826@2x.png";
 
 export default function Footer() {
   return (
@@ -48,33 +50,24 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer2 w-screen m-5 pl-20 flex justify-between">
+      <div className="footer2 w- m-5 flex  ml-24  mr-16 justify-between border-box">
         <div className="ogtic flex items-center azul text-xs font-semibold">
           <p>©2021 Todos los derechos reservados. Desarrollado por </p>
-          <img
-            className="w-16 mx-2 mt-0.5"
-            src="img/Group 3826@2x.png"
-            alt=""
-          />
+          <img className="w-16 mx-2 mt-0.5" src={OGTIC} alt="" />
         </div>
-        <div className="flex items-center pr-32">
+        <div className="flex items-center   justify-center ">
           <p className="azul text-sm font-semibold">SÍGUENOS</p>
           <span className="ml-3 flex-shrink-0" href="#">
-            {/* <img src="img/facebook(1).svg" alt="" />
-             */}
-            <FaFacebookSquare className="text-blue-500" size={20} />
+            <img src={FB} alt="" />
           </span>
           <span className="ml-3 flex-shrink-0" href="#">
-            {/* <img src="img/youtube-brands.svg" alt="" /> */}
-            <IoLogoYoutube className="text-red-500" size={20} />
+            <img src={YTB} alt="" />
           </span>
           <span className="ml-3 flex-shrink-0" href="#">
-            {/* <img src="img/Shape.svg" alt="" /> */}
-            <FaShapes />
+            <img src={SP} alt="" />
           </span>
           <span className="ml-3 flex-shrink-0" href="#">
-            {/* <img src="img/instagram(3).svg" alt="" /> */}
-            <ImInstagram color="#8a3ab9" size={20} />
+            <img src={IG} alt="" />
           </span>
         </div>
       </div>

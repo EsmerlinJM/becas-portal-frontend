@@ -5,6 +5,7 @@ import useAction from "./use-action";
 import Loading from "react-loader-spinner";
 import MUIDataTable from "mui-datatables";
 import OpenCallsBlock from "../../shared/components/UI/organisms/open-calls-block";
+
 const options = {
   filter: true,
   filterType: "dropdown",
@@ -23,6 +24,11 @@ const columns = [
   "Cobertura",
 ];
 
+const objNav = {
+  name: "Becados ",
+  parents: [{ name: "Inicio", path: "/" }],
+};
+
 export default function AllApplied() {
   const { id } = useParams();
   const [{ data, status }] = useAction(id);
@@ -37,12 +43,12 @@ export default function AllApplied() {
   ]);
 
   return (
-    <Header2Natigation>
+    <Header2Natigation objNav={objNav}>
       <Helmet>
         <title>Becados | Beca tu vida </title>
       </Helmet>
-      <div className="container mx-auto">
-        <OpenCallsBlock />
+      <div className="container mx-auto my-4">
+        <OpenCallsBlock id={parseInt(id)} />
       </div>
       {status === "loading" && (
         <div className="flex justify-center  mt-20  h-screen">
@@ -50,7 +56,7 @@ export default function AllApplied() {
         </div>
       )}
       {status !== "loading" && (
-        <div className=" container mx-auto p-4 fadeIn">
+        <div className=" container mx-auto p-3 fadeIn">
           <div className="bg-white m-auto flex flex-col">
             <div className="tabla">
               <MUIDataTable

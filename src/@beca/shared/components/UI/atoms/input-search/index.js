@@ -57,7 +57,6 @@ export default function InputSearchResult() {
       >
         <AiOutlineClear
           className="mr-1 text-blue-500 hover:text-white self-center"
-          // color="#81DCF2"
           size={20}
         />
         Limpiar
@@ -69,7 +68,7 @@ export default function InputSearchResult() {
         required
         placeholder="¿Qué quieres estudiar?"
         maxLength="50"
-        value={query}
+        defaultValue={query}
         onKeyPress={({ key }) => key === "Enter" && onSearch()}
         onChange={({ target }) => setQuery(target.value)}
       />

@@ -24,8 +24,10 @@ export default function OfertList(id) {
   const [table, setTable] = useState(false);
   const history = useHistory();
 
-  const [{ screens, items, active, status, loading, countResult }, actions] =
-    useAction(id);
+  const [
+    { screens, items, active, status, loading, countResult, oferts },
+    actions,
+  ] = useAction(id);
 
   const options = {
     filter: true,
@@ -40,7 +42,7 @@ export default function OfertList(id) {
 
   const data =
     table &&
-    items.map((itm) => {
+    oferts.map((itm) => {
       const {
         id,
         oferta: {
@@ -72,11 +74,12 @@ export default function OfertList(id) {
         <Loading type="MutatingDots" color="red" size={90} />
       </div>
     );
+
   if (
     (status !== "loading" &&
       status === "completed" &&
       !loading &&
-      !items.length) ||
+      !countResult) ||
     !id
   ) {
     return (
@@ -121,7 +124,11 @@ export default function OfertList(id) {
         ) : (
           <CardColumns>
             {items.map((item, i) => (
-              <OfertCard item={item} key={i + 1} />
+              <OfertCard
+                item={item}
+                key={i + 1}
+                onSetFavorite={actions.onSetFavorite}
+              />
             ))}
           </CardColumns>
         )}
@@ -131,13 +138,13 @@ export default function OfertList(id) {
               Página {active.toLocaleString()} de {screens.length}{" "}
             </p>
             <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out mr-2"
+              className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out mr-2"
               onClick={() => active !== 1 && actions.onSelectScreen(active - 1)}
             >
               Atras{" "}
             </button>
             <button
-              className="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
+              className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
               onClick={() =>
                 !(screens.length <= active) &&
                 actions.onSelectScreen(active + 1)

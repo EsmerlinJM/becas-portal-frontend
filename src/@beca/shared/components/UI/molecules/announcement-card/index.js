@@ -2,6 +2,7 @@ import Label from "../../atoms/label";
 import { diffTwoTimes } from "../../../../utils/diff-two-times";
 import { BiCalendar } from "react-icons/bi";
 import { FaRegClock } from "react-icons/fa";
+import { MdPublish } from "react-icons/md";
 import { useHistory } from "react-router";
 import { useDispatch } from "react-redux";
 import { setRecent } from "../../../../../redux/slices/announcement/_actions";
@@ -13,9 +14,11 @@ export default function AnnouncementCard({ item = {} }) {
   const redirect = (payload) => {
     dispatch(setRecent(payload));
     localStorage.setItem("color", payload.type.color);
-    console.log(payload.status.toLowerCase().trim());
-    const path = payload.status.toLowerCase().trim().includes("cerrada");
-    history.push(!path ? `/query-result?id=${id}` : `/all-applied/${id}`);
+    history.push(
+      !Boolean(payload.publicada)
+        ? `/query-result?id=${id}`
+        : `/all-applied/${id}`
+    );
   };
 
   const {
@@ -24,18 +27,21 @@ export default function AnnouncementCard({ item = {} }) {
     end_date,
     image_url,
     status,
+    publicada,
     type: { color, name: typeName },
   } = item;
+  const isClose = status.toLowerCase().trim().includes("cerrada");
+  const isPublished = Boolean(publicada);
 
   return (
     <div className="flex flex-col justify-between h-full">
-      <div className="relative flex justify-center w-full">
-        <div className=" absolute text-center w-40" style={{ top: -13 }}>
+      <div className="relative flex justify-center">
+        <div className="absolute text-center w-40" style={{ top: -13 }}>
           <Label bgColor={color} title={typeName} />
         </div>
       </div>
 
-      <div className="overflow-hidden">
+      <div className="overflow-hidden h-full">
         <div>
           <img
             className="w-full"
@@ -45,7 +51,7 @@ export default function AnnouncementCard({ item = {} }) {
           />
         </div>
 
-        <div className="px-6 py-2">
+        <div className="px-6 py-2 h-36 xs:h-36 sm:h-48 md:h-56 lg:h-40">
           <div
             className="font-bold mb-2 text-center mb-10"
             style={{
@@ -58,16 +64,32 @@ export default function AnnouncementCard({ item = {} }) {
           <span style={{ fontSize: "13px" }}>
             <div className="flex flex-wrap mb-2">
               <BiCalendar size={17} className="text-gray-600" />
-              <p className="mr-2 ml-1">Cierre de convocatoria: </p>
+              <p className="mr-2 ml-1">
+                {isClose ? "Convocatoria cerrada:" : "Cierre de convocatoria:"}
+              </p>
               <p className="text-gray-700"> {end_date}</p>
             </div>
+
             <div className="flex flex-wrap">
-              <FaRegClock size={15} className="text-gray-600" />
-              <p className="mr-2 ml-1">Tiempo restante: </p>
-              <p style={{ color: "#FF941F" }}> {diffTwoTimes(end_date)} </p>
+              {!isClose && (
+                <>
+                  <FaRegClock size={15} className="text-gray-600" />
+                  <p className="mr-2 ml-1">Tiempo restante: </p>
+                  <p style={{ color: "#FF941F" }}> {diffTwoTimes(end_date)} </p>
+                </>
+              )}
+
+              {isPublished && (
+                <>
+                  <MdPublish size={20} className="text-gray-600" />
+                  <p className="mr-2 ml-1">Becados publicados </p>
+                  <p className="invisible"> invisible </p>
+                </>
+              )}
             </div>
           </span>
         </div>
+
         <div
           className="pt-4 text-center cursor-pointer "
           onClick={() => redirect(item)}

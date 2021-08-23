@@ -1,16 +1,13 @@
 import Label from "../../atoms/label";
 import BorderTop from "../../atoms/border-top-color";
 import { AiFillStar } from "react-icons/ai";
-// import { BsStar } from "react-icons/bs";
-
+import { RiStarSLine } from "react-icons/ri";
 import { useHistory } from "react-router";
-// import { useEffect, useState } from "react";
 
-export default function OfertaResult({ item }) {
-  // const [ofert, setOffer] = useState({});
-
+export default function OfertaResult({ item, onSetFavorite }) {
   const history = useHistory();
   const color = localStorage.getItem("color");
+  const favorites = JSON.parse(localStorage.getItem("favorite_offers") || "{}");
   const {
     id,
     image_url,
@@ -21,14 +18,6 @@ export default function OfertaResult({ item }) {
       institution_name,
     },
   } = item;
-
-  // const onAddStar = (article)=>{
-
-  // }
-
-  // useEffect(() => {
-  //   setOffer(item);
-  // }, [item]);
 
   return (
     <BorderTop borderColor={color ? color : "red-500"}>
@@ -57,18 +46,29 @@ export default function OfertaResult({ item }) {
           </div>
         </div>
 
-        <div
-          className="pt-4 text-center cursor-pointer  "
-          onClick={() => history.push(`/query-result/detail/${id}`)}
-        >
+        <div className="pt-4 text-center cursor-pointer  ">
           <span
             className={` w-full inline-block 
           hover:bg-blue-50 hover:text-blue-900  transition duration-300 
           ease-in-out px-3 py-2 text-sm font-semibold text-gray-700 mr-2 border-t-2  flex justify-between px-4`}
           >
-            <span className="text-sm"> TÈCNICO</span>
+            <span
+              onClick={() => history.push(`/query-result/detail/${id}`)}
+              className="text-sm"
+            >
+              {" "}
+              TÈCNICO
+            </span>
             <span>
-              <AiFillStar size={25} className="text-border-2" />
+              {favorites[id] ? (
+                <AiFillStar
+                  size={25}
+                  className={favorites[id] ? "text-yellow-300" : "text-black"}
+                  onClick={() => onSetFavorite(id)}
+                />
+              ) : (
+                <RiStarSLine size={25} onClick={() => onSetFavorite(id)} />
+              )}
             </span>
           </span>
         </div>
