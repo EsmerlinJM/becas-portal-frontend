@@ -1,7 +1,7 @@
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { createMessage } from "../../../../../redux/slices/user/_actions";
-import { handleEmailValidation } from "../../../../utils/validate-email";
+import { isValidEmail } from "../../../../utils/validate-email";
 import { Toaster, toast } from "react-hot-toast";
 
 export default function ApplyForm() {
@@ -73,7 +73,7 @@ export default function ApplyForm() {
               {...register("email", {
                 required: true,
                 minLength: 6,
-                validate: (email) => handleEmailValidation(email, errors),
+                validate: (email) => isValidEmail(email),
               })}
             />
 

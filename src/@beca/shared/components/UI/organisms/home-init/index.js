@@ -79,7 +79,10 @@ export default function HomeInit() {
             <span className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white">
               INICIAR SESIÓN
             </span>
-            <button className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100">
+            <button
+              onClick={() => history.push("/register")}
+              className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100"
+            >
               REGÍSTRATE AHORA
             </button>
           </div>

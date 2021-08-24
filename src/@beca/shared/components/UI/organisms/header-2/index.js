@@ -30,7 +30,10 @@ export default function Header2() {
           <span className="font-bold m-3 transition delay-100 hover:text-blue-800 hover:border-blue-800 blancobg text-gray-400 cursor-pointer ">
             INICIAR SESIÓN
           </span>
-          <button className="font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-3xl m-3 bg-blue-700">
+          <button
+            onClick={() => history.push("/register")}
+            className="font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-3xl m-3 bg-blue-700"
+          >
             REGÍSTRATE AHORA
           </button>
         </div>
