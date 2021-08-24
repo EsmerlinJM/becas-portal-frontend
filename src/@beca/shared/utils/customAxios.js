@@ -1,8 +1,7 @@
 import axios from "axios";
-import { BECA_API } from "../../../config_";
 
 const customAxios = axios.create({
-  baseURL: BECA_API,
+  baseURL: process.env.REACT_APP_BECA_API,
 });
 
 export default customAxios;
