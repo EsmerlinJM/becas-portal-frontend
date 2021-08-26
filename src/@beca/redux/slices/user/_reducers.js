@@ -1,5 +1,12 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { createMessage, getOneUser, logoutUser } from "./_actions";
+import {
+  createMessage,
+  getOneUser,
+  logoutUser,
+  addFavorite,
+  addFavorites,
+  deleteFavorite,
+} from "./_actions";
 import { reducerGenerator } from "../../../shared/utils/reducer-generator";
 import { initialState } from "../../../shared/utils/initial-state";
 
@@ -16,15 +23,34 @@ const user = createSlice({
   initialState,
   extraReducers: {
     ...reducers,
-    // [logoutUser.fulfilled]: (state, { payload }) => {
-    //   return {
-    //     ...state,
-    //     one: {
-    //       data: payload,
-    //       status: "completed",
-    //     },
-    //   };
-    // },
+    [addFavorites]: (state, { payload }) => ({
+      ...state,
+      favorites: {
+        data: payload,
+        status: "completed",
+      },
+    }),
+    [deleteFavorite.fulfilled]: (state, { payload }) => {
+      const filtered = state.favorites.data.filter(
+        (it) => it.id !== payload.id
+      );
+      return {
+        ...state,
+        favorites: {
+          data: filtered,
+          status: "completed",
+        },
+      };
+    },
+    [addFavorite.fulfilled]: (state, { payload }) => {
+      return {
+        ...state,
+        favorites: {
+          data: [payload, ...state.favorites.data],
+          status: "completed",
+        },
+      };
+    },
   },
 });
 

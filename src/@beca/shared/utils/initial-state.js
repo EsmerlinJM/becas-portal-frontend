@@ -23,6 +23,10 @@ export const initialState = {
     data: {},
     status: null,
   },
+  favorites: {
+    data: [],
+    status: null,
+  },
 };
 
 export const offerResult = {

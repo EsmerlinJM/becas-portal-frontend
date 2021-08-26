@@ -24,10 +24,8 @@ export default function OfertList(id) {
   const [table, setTable] = useState(false);
   const history = useHistory();
 
-  const [
-    { screens, items, active, status, loading, countResult, oferts },
-    actions,
-  ] = useAction(id);
+  const [{ stateR, status, countResult, oferts, statusFav, color }, actions] =
+    useAction(id);
 
   const options = {
     filter: true,
@@ -68,7 +66,7 @@ export default function OfertList(id) {
       ];
     });
 
-  if (status === "loading" || loading)
+  if (status === "loading" || stateR.loading)
     return (
       <div className="flex justify-center items-center h-1/2">
         <Loading type="MutatingDots" color="red" size={90} />
@@ -78,7 +76,7 @@ export default function OfertList(id) {
   if (
     (status !== "loading" &&
       status === "completed" &&
-      !loading &&
+      !stateR.loading &&
       !countResult) ||
     !id
   ) {
@@ -110,7 +108,10 @@ export default function OfertList(id) {
           />
         </div>
       </div>
-      <div className="flex justify-between flex-col h-full">
+      <div
+        className="flex justify-between flex-col h-full"
+        disabled={statusFav === "loading"}
+      >
         {table ? (
           <div className="fadeIn">
             <MUIDataTable
@@ -123,11 +124,13 @@ export default function OfertList(id) {
           </div>
         ) : (
           <CardColumns>
-            {items.map((item, i) => (
+            {stateR.items.map((item, i) => (
               <OfertCard
                 item={item}
                 key={i + 1}
-                onSetFavorite={actions.onSetFavorite}
+                color={color}
+                saveFavorite={actions.saveFavorite}
+                isFavorite={stateR.objFavs[item.id]}
               />
             ))}
           </CardColumns>
@@ -135,19 +138,21 @@ export default function OfertList(id) {
         {!table && (
           <div className="flex  justify-end mt-10 ">
             <p className=" self-center mr-4">
-              Página {active.toLocaleString()} de {screens.length}{" "}
+              Página {stateR.active.toLocaleString()} de {stateR.screens.length}{" "}
             </p>
             <button
               className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out mr-2"
-              onClick={() => active !== 1 && actions.onSelectScreen(active - 1)}
+              onClick={() =>
+                stateR.active !== 1 && actions.onSelectScreen(stateR.active - 1)
+              }
             >
               Atras{" "}
             </button>
             <button
               className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
               onClick={() =>
-                !(screens.length <= active) &&
-                actions.onSelectScreen(active + 1)
+                !(stateR.screens.length <= stateR.active) &&
+                actions.onSelectScreen(stateR.active + 1)
               }
             >
               Seguiente{" "}

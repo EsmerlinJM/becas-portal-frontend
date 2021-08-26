@@ -1,54 +1,96 @@
-import { useEffect, useState } from "react";
+import { useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { getAuth } from "../../../../utils/auth";
+import { initialState, reducer } from "./use-reducer";
+import { getAllOffer } from "../../../../../redux/slices/ofert/_actions";
 import {
-  getAllOffer,
-  searchByOffer,
-} from "../../../../../redux/slices/ofert/_actions";
-
+  addFavorite,
+  addFavorites,
+  deleteFavorite,
+} from "../../../../../redux/slices/user/_actions";
 const screenNum = 12;
 
 export default function useAction(id) {
+  const [stateR, dispatchR] = useReducer(reducer, initialState);
+  const {
+    user: {
+      favorites: { data: favorites, status: statusFav },
+    },
+    offers: {
+      all: { data, status },
+      searchBy: { data: oferts, status: searchStatus },
+    },
+  } = useSelector((state) => state);
+
+  const { token } = getAuth();
   const dispatch = useDispatch();
-  const { data: oferts, status } = useSelector(
-    (state) => state.offers.searchBy
-  );
-  const { data, status: allStatus } = useSelector((state) => state.offers.all);
-  const [items, setItems] = useState([]);
-  const [screens, setScreens] = useState([]);
-  const [active, setActive] = useState(1);
-  const [loading, setLoading] = useState(false);
 
-  const onSelectScreen = (screen) => {
-    setActive(screen);
-    const curr = screen * screenNum;
-    setItems(() => oferts.slice(curr - screenNum, curr));
-  };
+  function onSelectScreen(active) {
+    const curr = active * screenNum;
+    dispatchR({
+      type: "SET_SCREEN",
+      payload: {
+        active,
+        items: oferts.slice(curr - screenNum, curr),
+      },
+    });
+  }
 
-  const onSetFavorite = (id) => {
-    let favorites = JSON.parse(localStorage.getItem("favorite_offers") || "{}");
-    if (favorites[id]) {
-      delete favorites[id];
+  async function addFavoriteUser(offerId) {
+    const finded = stateR.objFavs[offerId];
+    if (finded) return dispatch(await deleteFavorite(finded.id));
+    dispatch(await addFavorite(offerId));
+  }
+
+  function addFavoriteNoUser(id) {
+    let favorites = JSON.parse(localStorage.getItem("favorite_offers") || "[]");
+    let objtFavs = stateR.objFavs;
+
+    if (objtFavs[id]) {
+      delete objtFavs[id];
     } else {
-      favorites = {
-        ...favorites,
-        [id]: id,
+      objtFavs = {
+        ...objtFavs,
+        [id]: { convocatoria_detail: data.find((it) => it.id === id) },
       };
     }
 
     localStorage.setItem("favorite_offers", JSON.stringify(favorites));
-    dispatch(searchByOffer(oferts));
-  };
+    dispatch(addFavorites(Object.values(objtFavs)));
+  }
+
+  async function saveFavorite(offerId) {
+    token ? await addFavoriteUser(offerId) : addFavoriteNoUser(offerId);
+  }
 
   useEffect(() => {
-    setLoading(true);
+    dispatchR({
+      type: "SET_LOADING",
+      payload: {
+        loading: true,
+      },
+    });
+
     const fn = async () => dispatch(await getAllOffer(id));
     id.id && !data.length && fn();
-    setLoading(false);
+
+    dispatchR({
+      type: "SET_LOADING",
+      payload: {
+        loading: false,
+      },
+    });
     //eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    setLoading(true);
+    dispatchR({
+      type: "SET_LOADING",
+      payload: {
+        loading: true,
+      },
+    });
+
     const numScreen = oferts.length / screenNum;
     const num = Math.ceil(numScreen <= 0 ? 1 : numScreen);
     const scrns = [];
@@ -57,23 +99,39 @@ export default function useAction(id) {
       scrns.push(i + 1);
     }
 
-    setItems(oferts.slice(0, screenNum));
-    setActive(1);
-    setScreens(scrns);
-    setLoading(false);
+    dispatchR({
+      type: "INIT",
+      payload: {
+        items: oferts.slice(0, screenNum),
+        active: 1,
+        screens: scrns,
+        loading: false,
+      },
+    });
     //eslint-disable-next-line
-  }, [oferts, status]);
+  }, [oferts, searchStatus]);
+
+  useEffect(() => {
+    dispatchR({
+      type: "SET_OBJ_FAVS",
+      payload: {
+        favorites,
+      },
+    });
+    //eslint-disable-next-line
+  }, [favorites.length, statusFav]);
+
+  const color = localStorage.getItem("color");
 
   return [
     {
-      screens,
-      active,
-      items,
-      status: allStatus,
-      loading,
+      stateR,
+      status,
       oferts,
       countResult: oferts.length,
+      statusFav,
+      color,
     },
-    { onSelectScreen, onSetFavorite },
+    { onSelectScreen, saveFavorite },
   ];
 }
