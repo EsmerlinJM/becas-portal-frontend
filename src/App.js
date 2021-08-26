@@ -1,12 +1,8 @@
 import { Provider } from "react-redux";
 import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Suspense, useEffect } from "react";
-import { Toaster } from "react-hot-toast";
+import { useEffect } from "react";
 import store from "./@beca/redux";
-import becaRoutes from "./@beca";
-
-import Loading from "react-loader-spinner";
+import BecaRouuter from "./@beca/bin/router";
 
 function App() {
   useEffect(() => {
@@ -16,24 +12,7 @@ function App() {
   return (
     <HelmetProvider>
       <Provider store={store}>
-        <Router>
-          <Switch>
-            <Suspense
-              fallback={
-                <div className="h-screen w-screen flex justify-center items-center">
-                  <Loading type="MutatingDots" color="red" />
-                </div>
-              }
-            >
-              <Toaster position="top-right" reverseOrder={false} />
-              {becaRoutes.map((route) => (
-                <Route exact={route.exact} path={route.path} key={route.path}>
-                  <route.component />
-                </Route>
-              ))}
-            </Suspense>
-          </Switch>
-        </Router>
+        <BecaRouuter />
       </Provider>
     </HelmetProvider>
   );

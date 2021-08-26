@@ -1,16 +1,18 @@
 import BECA from "../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
 import GROUP from "../../../img/Group 3834@2x.png";
-import useAction from "./use-action";
+import Beca from "../../../img/AF Logo Beca tu Futuro RGB-07.png";
+import Modal from "../../shared/components/UI/molecules/modal-template";
 
 import { useHistory } from "react-router";
 import { isValidEmail } from "../../shared/utils/validate-email";
-import Modal from "../../shared/components/UI/molecules/modal-template";
-import Beca from "../../../img/AF Logo Beca tu Futuro RGB-07.png";
 import { Helmet } from "react-helmet-async";
 
+import useAction from "./use-action";
+
 export default function Register() {
-  const history = useHistory();
   const [{ errors, loading, modal }, actions] = useAction();
+
+  const history = useHistory();
   const password = actions.watch("password");
 
   return (
@@ -63,7 +65,7 @@ export default function Register() {
                 </span>
               </div>
             </div>
-            <div className="login flex flex-col items-center justify-center mt-10 lg:mt-15 xl:mt-20 md:mt-15   p-3">
+            <div className="login flex flex-col items-center justify-center mt-10 lg:mt-15 xl:mt-20 md:mt-15 p-3">
               <div className="">
                 <h4 className="font-bold text-xl mb-2">Registrar cuenta</h4>
                 <p className="w-80 font-light text-sm mb-6">
@@ -194,7 +196,10 @@ export default function Register() {
                 </button>
                 <div className="flex text-sm">
                   <p className="px-1">¿Ya tienes una cuenta?</p>
-                  <span className="hover:border-blue-500 transition delay-75 border-b border-transparent text-blue-500 cursor-pointer">
+                  <span
+                    onClick={() => history.push("/login")}
+                    className="hover:border-blue-500 transition delay-75 border-b border-transparent text-blue-500 cursor-pointer"
+                  >
                     INICIA SESIÓN
                   </span>
                 </div>

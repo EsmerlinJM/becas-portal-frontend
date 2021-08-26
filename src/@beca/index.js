@@ -4,6 +4,7 @@ import offerDetail from "./pages/offer-detail";
 import cuestionFrequency from "./pages/frequency-cuestion";
 import allApplied from "./pages/all-applied";
 import register from "./pages/register";
+import login from "./pages/login";
 
 const routes = [
   ...homeRoutes,
@@ -12,6 +13,7 @@ const routes = [
   ...cuestionFrequency,
   ...allApplied,
   ...register,
+  ...login,
 ];
 
 export default routes;

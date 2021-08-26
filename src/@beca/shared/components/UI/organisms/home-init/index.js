@@ -1,12 +1,21 @@
 import Buscar_CTA from "../../../../../../img/Buscar-CTA.svg";
 import home3834 from "../../../../../../img/Group 3834@2x.png";
 import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
+
 import { useHistory } from "react-router";
 import { useState } from "react";
 import { toast } from "react-hot-toast";
+import { useDispatch, useSelector } from "react-redux";
+import { logoutUser } from "../../../../../redux/slices/user/_actions";
+import { getAuth } from "../../../../utils/auth";
+import UserOptions from "../../molecules/user-options";
+
 export default function HomeInit() {
+  const { data: user, status } = useSelector((state) => state.user.one);
   const [query, setQuery] = useState(null);
+
   const history = useHistory();
+  const dispatch = useDispatch();
 
   const onSearch = () => {
     if (query && query.length > 5) {
@@ -16,6 +25,10 @@ export default function HomeInit() {
     query.length <= 5 && toast.error("Mínimo 6 caracteres");
   };
 
+  const closeSesion = async () =>
+    dispatch(await logoutUser(getAuth().token, history));
+
+  console.log(user, "jojoo");
   return (
     <div className="home flex">
       <div className="left w-screen">
@@ -75,16 +88,40 @@ export default function HomeInit() {
       </div>
       <div className="right azulbg w-3/5 border border-blue-400">
         <div className="header1 flex items-center justify-center">
-          <div className="m-7 text-xs text-white ">
-            <span className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white">
-              INICIAR SESIÓN
-            </span>
-            <button
-              onClick={() => history.push("/register")}
-              className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100"
-            >
-              REGÍSTRATE AHORA
-            </button>
+          <div
+            className="m-5 text-xs text-white "
+            // onClick={closeSesion}
+          >
+            {user.id && status === "completed" ? (
+              <>
+                {/* <span className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white cursor-pointer">
+                  {user.name}
+                </span>
+                <button
+                  onClick={closeSesion}
+                  className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100"
+                >
+                  Cerrar sesión
+                </button> */}
+
+                <UserOptions user={user} />
+              </>
+            ) : (
+              <>
+                <span
+                  onClick={() => history.push("/login")}
+                  className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white cursor-pointer"
+                >
+                  INICIAR SESIÓN
+                </span>
+                <button
+                  onClick={() => history.push("/register")}
+                  className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100"
+                >
+                  REGÍSTRATE AHORA
+                </button>
+              </>
+            )}
           </div>
         </div>
         <div className="w-full">

@@ -27,7 +27,10 @@ export default function Header2() {
       </div>
       <div className="header1 flex items-center justify-center">
         <div className=" text-xs text-white ">
-          <span className="font-bold m-3 transition delay-100 hover:text-blue-800 hover:border-blue-800 blancobg text-gray-400 cursor-pointer ">
+          <span
+            onClick={() => history.push("/login")}
+            className="font-bold m-3 transition delay-100 hover:text-blue-800 hover:border-blue-800 blancobg text-gray-400 cursor-pointer "
+          >
             INICIAR SESIÓN
           </span>
           <button
