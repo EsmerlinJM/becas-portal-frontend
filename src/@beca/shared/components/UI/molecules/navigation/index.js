@@ -2,7 +2,7 @@ import { useHistory } from "react-router";
 
 const obj = {
   name: "Resultados",
-  path: "/query-result?id=3",
+  path: "/query-result?all=a",
   parents: [{ name: "Inicio", path: "/" }],
 };
 
@@ -22,12 +22,11 @@ export default function Navigation({ ob = obj }) {
     <div
       className={`bg-gray-50 w-full flex ${
         pathname === "/query-result" ? "justify-end" : " justify-center"
-      } p-4 shadow-md border-b-2 text-gray-400`}
+      } p-4 shadow border-b-2 text-gray-400 h-12`}
     >
-      <div className="w-3/4 flex justify-between mr-6">
+      <div className="w-3/4 flex justify-between items-center mr-6">
         <p className="text-md ">{ob.name}</p>
-
-        <span className="flex items-center">
+        <span className="flex">
           {ob.parents.map((rou) => (
             <p
               key={rou.path}

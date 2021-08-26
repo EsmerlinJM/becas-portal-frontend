@@ -1,5 +1,5 @@
 import AnnouncementList from "../../shared/components/UI/organisms/announcement-list";
-import AlertTop from "../../shared/components/UI/molecules/alert-top";
+// import AlertTop from "../../shared/components/UI/molecules/alert-top";
 import HomeInit from "../../shared/components/UI/organisms/home-init";
 import ApplyForm from "../../shared/components/UI/molecules/apply-form";
 import Footer from "../../shared/components/UI/organisms/footer";
@@ -12,7 +12,7 @@ export default function Home() {
       <Helmet>
         <title> Beca tu futuro | Crece tu talento, crece el pais </title>
       </Helmet>
-      <AlertTop />
+      {/* <AlertTop /> */}
       <HomeInit />
       <div className="p-10 w-screen bg-blue-100 shadow-md ">
         <h4 className="p-2 border-b border-blue-300 text-xl font-bold azul">

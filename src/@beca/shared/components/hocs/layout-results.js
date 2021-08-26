@@ -1,16 +1,25 @@
 import React from "react";
 import Header2 from "../UI/organisms/header-2";
+import HeaderUser from "../UI/organisms/header-user";
 import Navigation from "../UI/molecules/navigation";
 import SidebarFilter from "../UI/organisms/sidebar-filter";
-import AlertTop from "../UI/molecules/alert-top";
+// import AlertTop from "../UI/molecules/alert-top";
 import InputSearch from "../UI/atoms/input-search";
 import Footer from "../UI/organisms/footer";
+import { useSelector } from "react-redux";
 
 export default function LayoutResult({ children }) {
+  const { data, status } = useSelector((state) => state.user.one);
+
   return (
     <div className="fadeIn">
-      <AlertTop />
-      <Header2 />
+      {/* <AlertTop /> */}
+      {status === "completed" && Object.keys(data).length ? (
+        <HeaderUser />
+      ) : (
+        <Header2 />
+      )}
+      {/* <Header2 /> */}
       <Navigation />
       <div className="flex">
         <div
