@@ -5,6 +5,7 @@ import cuestionFrequency from "./pages/frequency-cuestion";
 import allApplied from "./pages/all-applied";
 import register from "./pages/register";
 import login from "./pages/login";
+import favorites from "./pages/favorite";
 
 const routes = [
   ...homeRoutes,
@@ -14,6 +15,7 @@ const routes = [
   ...allApplied,
   ...register,
   ...login,
+  ...favorites,
 ];
 
 export default routes;

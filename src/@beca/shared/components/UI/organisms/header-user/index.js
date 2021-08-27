@@ -37,7 +37,7 @@ export default function HeaderUser({ isHome = false }) {
             </div>
           </div>
           <div className="self-center">
-            <UserOptions user={{}} />
+            <UserOptions user={{}} history={history} />
           </div>
         </div>
       </div>

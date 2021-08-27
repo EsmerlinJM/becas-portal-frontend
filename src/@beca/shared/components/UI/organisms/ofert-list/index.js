@@ -20,12 +20,14 @@ const columns = [
   "Modalidad",
 ];
 
-export default function OfertList(id) {
+export default function OfertList({ justFavorites }) {
   const [table, setTable] = useState(false);
   const history = useHistory();
 
-  const [{ stateR, status, countResult, oferts, statusFav, color }, actions] =
-    useAction(id);
+  const [
+    { stateR, status, countResult, oferts, statusFav, favorites },
+    actions,
+  ] = useAction(justFavorites);
 
   const options = {
     filter: true,
@@ -40,7 +42,10 @@ export default function OfertList(id) {
 
   const data =
     table &&
-    oferts.map((itm) => {
+    (justFavorites
+      ? favorites.map((it) => it.convocatoria_detail)
+      : oferts
+    ).map((itm) => {
       const {
         id,
         oferta: {
@@ -74,11 +79,10 @@ export default function OfertList(id) {
     );
 
   if (
-    (status !== "loading" &&
-      status === "completed" &&
-      !stateR.loading &&
-      !countResult) ||
-    !id
+    status !== "loading" &&
+    status === "completed" &&
+    !stateR.loading &&
+    !countResult
   ) {
     return (
       <div className="text-center text-xl mt-20">
@@ -128,14 +132,14 @@ export default function OfertList(id) {
               <OfertCard
                 item={item}
                 key={i + 1}
-                color={color}
                 saveFavorite={actions.saveFavorite}
                 isFavorite={stateR.objFavs[item.id]}
+                justFavorites={justFavorites}
               />
             ))}
           </CardColumns>
         )}
-        {!table && (
+        {!table && stateR.screens.length > 1 && (
           <div className="flex  justify-end mt-10 ">
             <p className=" self-center mr-4">
               Página {stateR.active.toLocaleString()} de {stateR.screens.length}{" "}

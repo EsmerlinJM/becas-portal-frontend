@@ -24,7 +24,7 @@ export default function OfferDetailTab({ item }) {
         </TabPanel>
         <TabPanel>
           <div className="fadeIn">
-            <OfferRequirement />
+            <OfferRequirement requirement={item.requisitos} />
           </div>
         </TabPanel>
       </Tabs>

@@ -4,7 +4,8 @@ import OfertList from "../../shared/components/UI/organisms/ofert-list";
 import useAction from "./use-action";
 
 export default function QueryResult() {
-  const [{ params }] = useAction();
+  // const [{ params }] =
+  useAction();
 
   return (
     <>
@@ -12,7 +13,7 @@ export default function QueryResult() {
         <title>Resultados | Beca tu futuro </title>
       </Helmet>
       <LayoutResult>
-        <OfertList id={params.get("id")} />
+        <OfertList justFavorites={false} />
       </LayoutResult>
     </>
   );

@@ -2,7 +2,7 @@ import { useEffect, useReducer } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { getAuth } from "../../../../utils/auth";
 import { initialState, reducer } from "./use-reducer";
-import { getAllOffer } from "../../../../../redux/slices/ofert/_actions";
+
 import {
   addFavorite,
   addFavorites,
@@ -10,7 +10,7 @@ import {
 } from "../../../../../redux/slices/user/_actions";
 const screenNum = 12;
 
-export default function useAction(id) {
+export default function useAction(justFavorites) {
   const [stateR, dispatchR] = useReducer(reducer, initialState);
   const {
     user: {
@@ -31,7 +31,10 @@ export default function useAction(id) {
       type: "SET_SCREEN",
       payload: {
         active,
-        items: oferts.slice(curr - screenNum, curr),
+        items: (justFavorites
+          ? favorites.map((it) => it.convocatoria_detail)
+          : oferts
+        ).slice(curr - screenNum, curr),
       },
     });
   }
@@ -62,7 +65,6 @@ export default function useAction(id) {
   async function saveFavorite(offerId) {
     token ? await addFavoriteUser(offerId) : addFavoriteNoUser(offerId);
   }
-
   useEffect(() => {
     dispatchR({
       type: "SET_LOADING",
@@ -71,27 +73,8 @@ export default function useAction(id) {
       },
     });
 
-    const fn = async () => dispatch(await getAllOffer(id));
-    id.id && !data.length && fn();
-
-    dispatchR({
-      type: "SET_LOADING",
-      payload: {
-        loading: false,
-      },
-    });
-    //eslint-disable-next-line
-  }, []);
-
-  useEffect(() => {
-    dispatchR({
-      type: "SET_LOADING",
-      payload: {
-        loading: true,
-      },
-    });
-
-    const numScreen = oferts.length / screenNum;
+    const fvs = justFavorites && favorites.map((it) => it.convocatoria_detail);
+    const numScreen = (justFavorites ? favorites : oferts).length / screenNum;
     const num = Math.ceil(numScreen <= 0 ? 1 : numScreen);
     const scrns = [];
 
@@ -102,14 +85,14 @@ export default function useAction(id) {
     dispatchR({
       type: "INIT",
       payload: {
-        items: oferts.slice(0, screenNum),
+        items: (justFavorites ? fvs : oferts).slice(0, screenNum),
         active: 1,
         screens: scrns,
         loading: false,
       },
     });
     //eslint-disable-next-line
-  }, [oferts, searchStatus]);
+  }, [oferts, searchStatus, statusFav]);
 
   useEffect(() => {
     dispatchR({
@@ -121,16 +104,16 @@ export default function useAction(id) {
     //eslint-disable-next-line
   }, [favorites.length, statusFav]);
 
-  const color = localStorage.getItem("color");
-
   return [
     {
       stateR,
       status,
-      oferts,
-      countResult: oferts.length,
+      oferts: justFavorites
+        ? favorites.map((it) => it.convocatoria_detail)
+        : oferts,
+      countResult: (justFavorites ? favorites : oferts).length,
+      favorites,
       statusFav,
-      color,
     },
     { onSelectScreen, saveFavorite },
   ];

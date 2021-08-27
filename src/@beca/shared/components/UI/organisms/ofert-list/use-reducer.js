@@ -7,11 +7,11 @@ export const initialState = {
 };
 
 export function reducer(state, action) {
-  const { items, active, screen, loading, favorites } = action.payload;
+  const { items, active, screens, loading, favorites } = action.payload;
 
   switch (action.type) {
     case "INIT":
-      return { ...state, items, active, screen, loading };
+      return { ...state, items, active, screens, loading };
     case "SET_SCREEN":
       return {
         ...state,

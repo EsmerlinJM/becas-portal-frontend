@@ -14,6 +14,7 @@ export default function OfferDetail({ item }) {
     },
     institucion: { name, contacto_telefono, direccion, web },
   } = item;
+
   return (
     <div>
       <div className="oferta bg-white m-auto grid grid-cols-3 xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">

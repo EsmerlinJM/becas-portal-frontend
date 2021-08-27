@@ -1,9 +1,12 @@
-export default function UserOptions({ user }) {
+export default function UserOptions({ user, history }) {
   return (
     <>
       <div className="login-header  flex justify-end items-center space-x-5">
         <div>
-          <span className="relative inline-block cursor-pointer">
+          <span
+            className="relative inline-block cursor-pointer"
+            onClick={() => history.push("/favorites")}
+          >
             <svg
               className="w-5 h-6 text-gray-700 fill-current"
               xmlns="http://www.w3.org/2000/svg"

@@ -2,7 +2,7 @@ import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { createMessage } from "../../../../../redux/slices/user/_actions";
 import { isValidEmail } from "../../../../utils/validate-email";
-import { Toaster, toast } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 export default function ApplyForm() {
   const dispatch = useDispatch();
@@ -27,7 +27,6 @@ export default function ApplyForm() {
 
   return (
     <div className="p-3">
-      <Toaster position="bottom-left" reverseOrder={false} />
       <div className="m-6  flex flex-col justify-center">
         <h2 className="text-blue-900 font-bold text-lg">Ayudanos a mejorar</h2>
         <p className="text-sm">

@@ -30,7 +30,7 @@ export default function Auth({ children }) {
     }
 
     if (status === "completed") {
-      console.log(addFavorites);
+      console.log(Object.keys(data).length);
       if (Object.keys(data).length)
         return dispatch(addFavorites(data.favoritos || []));
 

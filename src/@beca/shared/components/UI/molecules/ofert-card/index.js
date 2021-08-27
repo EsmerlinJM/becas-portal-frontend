@@ -4,16 +4,18 @@ import BorderTop from "../../atoms/border-top-color";
 import { AiFillStar } from "react-icons/ai";
 import { RiStarSLine } from "react-icons/ri";
 import { useHistory } from "react-router";
+import ButtonApply from "../../atoms/button-apply";
 
 export default function OfertaResult({
   item,
   saveFavorite,
   isFavorite = false,
-  color = "red-500",
+  justFavorites = false,
 }) {
   const history = useHistory();
   const {
     id,
+    color,
     image_url,
     oferta: {
       schedule: { modality },
@@ -22,8 +24,9 @@ export default function OfertaResult({
       institution_name,
     },
   } = item;
+
   return (
-    <BorderTop borderColor={color}>
+    <BorderTop borderColor={color || "red-500"}>
       <div className="max-w-sm  overflow-hidden bg-white rounded flex flex-col justify-between h-full">
         <div className="w-full flex justify-between border-b-2 border-gray-100 h-28 ">
           <div className="w-48 flex items-center">
@@ -75,6 +78,12 @@ export default function OfertaResult({
             </span>
           </span>
         </div>
+        {justFavorites && (
+          <div className="flex justify-center w-full py-2 border-t-2 cursor-pointer ">
+            {" "}
+            <ButtonApply />
+          </div>
+        )}
       </div>
     </BorderTop>
   );
