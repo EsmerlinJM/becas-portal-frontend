@@ -1,5 +1,5 @@
-import Checkbox from "../../atoms/checkbox";
-import { removeAccents } from "../../../../utils/remove-accents";
+import Checkbox from '../../atoms/checkbox'
+import { removeAccents } from '../../../../utils/remove-accents'
 
 export default function BlockFilter({
   arrCheckBox,
@@ -12,8 +12,8 @@ export default function BlockFilter({
       ...acc,
       [curr]: curr,
     }),
-    {}
-  );
+    {},
+  )
 
   return (
     <div>
@@ -32,5 +32,5 @@ export default function BlockFilter({
         ))}
       </div>
     </div>
-  );
+  )
 }

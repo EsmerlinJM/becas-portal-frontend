@@ -1,9 +1,9 @@
-import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
-import UserOptions from "../../molecules/user-options";
-import InputSearchHome from "../../atoms/input-search-home";
-import { useHistory } from "react-router";
+import { useHistory } from 'react-router'
+import Logo from '../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png'
+import UserOptions from '../../molecules/user-options'
+import InputSearchHome from '../../atoms/input-search-home'
 export default function HeaderUser({ isHome = false }) {
-  const history = useHistory();
+  const history = useHistory()
 
   return (
     <div className="relative">
@@ -14,14 +14,14 @@ export default function HeaderUser({ isHome = false }) {
               src={Logo}
               className="w-40 mr-2 cursor-pointer"
               alt=""
-              onClick={() => history.push("/")}
+              onClick={() => history.push('/')}
             />
             <div className="flex self-center mt-2 text-xs text-gray-400 font-bold">
               <span className="cursor-pointer  m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800">
                 BLOG
               </span>
               <span
-                onClick={() => history.push("/cuetion-frequency")}
+                onClick={() => history.push('/cuetion-frequency')}
                 className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800"
               >
                 PREGUNTAS FRECUENTES
@@ -30,7 +30,7 @@ export default function HeaderUser({ isHome = false }) {
             <div className="self-center ml-4">
               <InputSearchHome
                 isHeader
-                heightInput={"h-9"}
+                heightInput="h-9"
                 widthImg="w-9"
                 placeholder="Que ofertas buscas?"
               />
@@ -49,6 +49,6 @@ export default function HeaderUser({ isHome = false }) {
         </>
       )}
     </div>
-  );
+  )
 }
 //

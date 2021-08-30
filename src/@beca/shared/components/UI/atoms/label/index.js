@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function Label({ bgColor, title }) {
   return (
@@ -8,5 +8,5 @@ export default function Label({ bgColor, title }) {
     >
       <span className="">{title}</span>
     </div>
-  );
+  )
 }

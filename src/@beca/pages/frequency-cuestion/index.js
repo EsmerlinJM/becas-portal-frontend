@@ -1,12 +1,12 @@
-import { lazy } from "react";
-const CPN = lazy(() => import("./frequency-cuestion"));
+import { lazy } from 'react'
+const CPN = lazy(() => import('./frequency-cuestion'))
 
 const routes = [
   {
     component: CPN,
     exact: true,
-    path: "/cuetion-frequency",
+    path: '/cuetion-frequency',
   },
-];
+]
 
-export default routes;
+export default routes

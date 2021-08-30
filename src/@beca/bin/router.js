@@ -1,10 +1,10 @@
-import becaRoutes from "../index";
-import Loading from "react-loader-spinner";
-import Auth from "../shared/components/hocs/auth";
+import Loading from 'react-loader-spinner'
 
-import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import { Suspense } from "react";
-import { Toaster } from "react-hot-toast";
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { Suspense } from 'react'
+import { Toaster } from 'react-hot-toast'
+import Auth from '../shared/components/hocs/auth'
+import becaRoutes from '../index'
 
 export default function BecaRouter() {
   return (
@@ -28,5 +28,5 @@ export default function BecaRouter() {
         </Auth>
       </Switch>
     </Router>
-  );
+  )
 }

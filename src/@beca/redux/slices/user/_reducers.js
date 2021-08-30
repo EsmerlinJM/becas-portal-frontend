@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 import {
   createMessage,
   getOneUser,
@@ -6,20 +6,20 @@ import {
   addFavorite,
   addFavorites,
   deleteFavorite,
-} from "./_actions";
-import { reducerGenerator } from "../../../shared/utils/reducer-generator";
-import { initialState } from "../../../shared/utils/initial-state";
+} from './_actions'
+import { reducerGenerator } from '../../../shared/utils/reducer-generator'
+import { initialState } from '../../../shared/utils/initial-state'
 
 const actions = [
-  { action: createMessage, key: "message" },
-  { action: getOneUser, key: "one" },
-  { action: logoutUser, key: "one" },
-];
+  { action: createMessage, key: 'message' },
+  { action: getOneUser, key: 'one' },
+  { action: logoutUser, key: 'one' },
+]
 
-const reducers = reducerGenerator(actions);
+const reducers = reducerGenerator(actions)
 
 const user = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   extraReducers: {
     ...reducers,
@@ -27,31 +27,27 @@ const user = createSlice({
       ...state,
       favorites: {
         data: payload,
-        status: "completed",
+        status: 'completed',
       },
     }),
     [deleteFavorite.fulfilled]: (state, { payload }) => {
-      const filtered = state.favorites.data.filter(
-        (it) => it.id !== payload.id
-      );
+      const filtered = state.favorites.data.filter((it) => it.id !== payload.id)
       return {
         ...state,
         favorites: {
           data: filtered,
-          status: "completed",
+          status: 'completed',
         },
-      };
+      }
     },
-    [addFavorite.fulfilled]: (state, { payload }) => {
-      return {
-        ...state,
-        favorites: {
-          data: [payload, ...state.favorites.data],
-          status: "completed",
-        },
-      };
-    },
+    [addFavorite.fulfilled]: (state, { payload }) => ({
+      ...state,
+      favorites: {
+        data: [payload, ...state.favorites.data],
+        status: 'completed',
+      },
+    }),
   },
-});
+})
 
-export default user.reducer;
+export default user.reducer

@@ -1,29 +1,29 @@
-import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
-import { createMessage } from "../../../../../redux/slices/user/_actions";
-import { isValidEmail } from "../../../../utils/validate-email";
-import { Toaster, toast } from "react-hot-toast";
+import { useForm } from 'react-hook-form'
+import { useDispatch } from 'react-redux'
+import { Toaster, toast } from 'react-hot-toast'
+import { createMessage } from '../../../../../redux/slices/user/_actions'
+import { isValidEmail } from '../../../../utils/validate-email'
 
 export default function ApplyForm() {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
   const {
     register,
     handleSubmit,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm()
 
   const action = handleSubmit((data) => {
     toast.promise(dispatch(createMessage(data)), {
-      loading: "Enviando...",
+      loading: 'Enviando...',
       success: <b>Enviado correctamente!</b>,
       error: <b>Upss, algo salio mal.</b>,
-    });
+    })
 
-    setValue("name", "");
-    setValue("email", "");
-    setValue("message", "");
-  });
+    setValue('name', '')
+    setValue('email', '')
+    setValue('message', '')
+  })
 
   return (
     <div className="p-3">
@@ -40,21 +40,21 @@ export default function ApplyForm() {
           <div className="mb-3 flex flex-col">
             <input
               className={`rounded-3xl bg-blue-50 p border ${
-                errors.name ? "border-red-600" : "border-blue-600"
+                errors.name ? 'border-red-600' : 'border-blue-600'
               } bg-bl font-thin text-sm focus:outline-none border border-gray-300 px-6 py-3`}
               type="text"
               placeholder="Nombre Completo"
-              {...register("name", {
+              {...register('name', {
                 required: true,
                 minLength: 6,
               })}
             />
-            {errors.name?.type === "required" && (
+            {errors.name?.type === 'required' && (
               <span className="text-red-500 text-xs mt-1 ">
                 Este campo es obligatorio
               </span>
             )}
-            {errors.name?.type === "minLength" && (
+            {errors.name?.type === 'minLength' && (
               <span className="text-red-500 text-xs  mt-1">
                 minimo 6 caracteres
               </span>
@@ -63,31 +63,31 @@ export default function ApplyForm() {
           <div className="mb-3 flex flex-col">
             <input
               className={`rounded-3xl bg-blue-50 p-2.5 border ${
-                errors.email ? "border-red-600" : "border-blue-600 "
+                errors.email ? 'border-red-600' : 'border-blue-600 '
               }  font-thin text-sm focus:outline-none border border-gray-300 px-6 py-3`}
               name="email"
               type="email"
               required
               minLength={6}
               placeholder="Correo Electrónico"
-              {...register("email", {
+              {...register('email', {
                 required: true,
                 minLength: 6,
                 validate: (email) => isValidEmail(email),
               })}
             />
 
-            {errors.email?.type === "required" && (
+            {errors.email?.type === 'required' && (
               <span className="text-red-500 text-xs mt-1 ">
                 Este campo es obligatorio
               </span>
             )}
-            {errors.email?.type === "minLength" && (
+            {errors.email?.type === 'minLength' && (
               <span className="text-red-500 text-xs  mt-1">
                 minimo 6 caracteres
               </span>
             )}
-            {errors.email?.type === "validate" && (
+            {errors.email?.type === 'validate' && (
               <span className="text-red-500 text-xs mt-1">
                 email incorrecto
               </span>
@@ -97,20 +97,20 @@ export default function ApplyForm() {
           <div className="mb-3 flex flex-col">
             <textarea
               className={`rounded-2xl bg-blue-50 border ${
-                errors.message ? "border-red-600" : "border-blue-600 "
+                errors.message ? 'border-red-600' : 'border-blue-600 '
               } font-thin text-sm focus:outline-none border border-gray-300 px-6 py-3 h-32 max-h-32`}
               required
               minLength={10}
               placeholder="Escribe tu comentario..."
-              {...register("message", { required: true, minLength: 10 })}
+              {...register('message', { required: true, minLength: 10 })}
             />
 
-            {errors.message?.type === "required" && (
+            {errors.message?.type === 'required' && (
               <span className="text-red-500 text-xs mt-1 ">
                 Este campo es obligatorio
               </span>
             )}
-            {errors.message?.type === "minLength" && (
+            {errors.message?.type === 'minLength' && (
               <span className="text-red-500 text-xs  mt-1">
                 minimo 10 caracteres
               </span>
@@ -125,5 +125,5 @@ export default function ApplyForm() {
         </div>
       </div>
     </div>
-  );
+  )
 }

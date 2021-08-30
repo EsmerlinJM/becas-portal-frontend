@@ -1,9 +1,9 @@
-import { useState } from "react";
-import IconRemove from "../../../../../../img/remove.svg";
+import { useState } from 'react'
+import IconRemove from '../../../../../../img/remove.svg'
 export default function Modal({
   isOpen = false,
   onClose,
-  width = "w-1/3",
+  width = 'w-1/3',
   header = (
     <>
       <p className="text-md font-semibold">Modal Title</p>
@@ -16,11 +16,11 @@ export default function Modal({
   ),
   footer = <> </>,
 }) {
-  const [animated, setAnimated] = useState("fadeIn");
+  const [animated, setAnimated] = useState('fadeIn')
   const handleClose = () => {
-    setAnimated("animated fadeOut");
-    setTimeout(() => onClose(false), 700);
-  };
+    setAnimated('animated fadeOut')
+    setTimeout(() => onClose(false), 700)
+  }
 
   return (
     <>
@@ -34,7 +34,7 @@ export default function Modal({
                 <div
                   onClick={handleClose}
                   className="absolute cursor-pointer z-50"
-                  style={{ top: "-11px", right: "-12px" }}
+                  style={{ top: '-11px', right: '-12px' }}
                 >
                   <img src={IconRemove} alt="" width="40px" />
                 </div>
@@ -64,5 +64,5 @@ export default function Modal({
         </>
       ) : null}
     </>
-  );
+  )
 }

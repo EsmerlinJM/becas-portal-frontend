@@ -1,13 +1,13 @@
-import { lazy } from "react";
+import { lazy } from 'react'
 
-const Home = lazy(() => import("./home"));
+const Home = lazy(() => import('./home'))
 
 const routes = [
   {
-    path: "/",
+    path: '/',
     exact: true,
     component: Home,
   },
-];
+]
 
-export default routes;
+export default routes

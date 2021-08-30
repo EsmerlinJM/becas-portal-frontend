@@ -1,12 +1,12 @@
-import { Helmet } from "react-helmet-async";
-import Header2Natigation from "../../shared/components/hocs/header2-natigation";
-import Plus from "../../../img/plus-solid@2x.png";
+import { Helmet } from 'react-helmet-async'
+import Header2Natigation from '../../shared/components/hocs/header2-natigation'
+import Plus from '../../../img/plus-solid@2x.png'
 
 const objNav = {
-  name: "Preguntas frecuentes",
-  path: "/cuetion-frequency",
-  parents: [{ name: "Inicio", path: "/" }],
-};
+  name: 'Preguntas frecuentes',
+  path: '/cuetion-frequency',
+  parents: [{ name: 'Inicio', path: '/' }],
+}
 
 export default function FrequencyCuestion() {
   return (
@@ -50,5 +50,5 @@ export default function FrequencyCuestion() {
         </div>
       </div>
     </Header2Natigation>
-  );
+  )
 }
