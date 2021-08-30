@@ -1,7 +1,7 @@
-import OfferDetail from "../offert-detail";
-import OfferRequirement from "../offer-requirement";
-import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
-import "react-tabs/style/react-tabs.css";
+import { Tab, Tabs, TabList, TabPanel } from 'react-tabs'
+import OfferDetail from '../offert-detail'
+import OfferRequirement from '../offer-requirement'
+import 'react-tabs/style/react-tabs.css'
 
 export default function OfferDetailTab({ item }) {
   return (
@@ -29,7 +29,7 @@ export default function OfferDetailTab({ item }) {
         </TabPanel>
       </Tabs>
     </div>
-  );
+  )
 }
 
 // const Page = () => {

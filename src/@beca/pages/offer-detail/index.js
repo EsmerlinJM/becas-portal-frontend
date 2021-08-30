@@ -1,11 +1,11 @@
-import { lazy } from "react";
+import { lazy } from 'react'
 
-const OfferDetail = lazy(() => import("./offer-detail"));
+const OfferDetail = lazy(() => import('./offer-detail'))
 
 const routes = [
   {
     component: OfferDetail,
-    path: "/query-result/detail/:id",
+    path: '/query-result/detail/:id',
   },
-];
-export default routes;
+]
+export default routes

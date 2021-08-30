@@ -1,12 +1,12 @@
-import { lazy } from "react";
-const Cmp = lazy(() => import("./query-result"));
+import { lazy } from 'react'
+const Cmp = lazy(() => import('./query-result'))
 
 const routes = [
   {
-    path: "/query-result",
+    path: '/query-result',
     exact: true,
     component: Cmp,
   },
-];
+]
 
-export default routes;
+export default routes

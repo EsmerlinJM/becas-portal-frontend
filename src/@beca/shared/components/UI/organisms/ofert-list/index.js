@@ -1,42 +1,42 @@
-import OfertCard from "../../molecules/ofert-card";
-import CardColumns from "../../../hocs/card-columns";
-import useAction from "./use-action";
-import Loading from "react-loader-spinner";
-import MUIDataTable from "mui-datatables";
+import Loading from 'react-loader-spinner'
+import MUIDataTable from 'mui-datatables'
 
-import { useState } from "react";
-import { BsFillGrid3X3GapFill } from "react-icons/bs";
-import { AiOutlineInsertRowAbove } from "react-icons/ai";
-import { useHistory } from "react-router";
+import { useState } from 'react'
+import { BsFillGrid3X3GapFill } from 'react-icons/bs'
+import { AiOutlineInsertRowAbove } from 'react-icons/ai'
+import { useHistory } from 'react-router'
+import useAction from './use-action'
+import CardColumns from '../../../hocs/card-columns'
+import OfertCard from '../../molecules/ofert-card'
 
 const columns = [
-  "id",
-  "Insitución",
-  "Carrera",
-  "Sede",
-  "Nivel",
-  "Área",
-  "Idioma",
-  "Modalidad",
-];
+  'id',
+  'Insitución',
+  'Carrera',
+  'Sede',
+  'Nivel',
+  'Área',
+  'Idioma',
+  'Modalidad',
+]
 
 export default function OfertList(id) {
-  const [table, setTable] = useState(false);
-  const history = useHistory();
+  const [table, setTable] = useState(false)
+  const history = useHistory()
 
   const [{ stateR, status, countResult, oferts, statusFav, color }, actions] =
-    useAction(id);
+    useAction(id)
 
   const options = {
     filter: true,
-    filterType: "dropdown",
-    responsive: "vertical",
-    tableBodyHeight: "650px",
+    filterType: 'dropdown',
+    responsive: 'vertical',
+    tableBodyHeight: '650px',
     selectableRows: false,
     onRowClick: (rowData) => {
-      history.push("/query-result/detail/" + rowData[0]);
+      history.push(`/query-result/detail/${rowData[0]}`)
     },
-  };
+  }
 
   const data =
     table &&
@@ -52,7 +52,7 @@ export default function OfertList(id) {
           institution_name,
           language,
         },
-      } = itm;
+      } = itm
 
       return [
         id,
@@ -63,19 +63,19 @@ export default function OfertList(id) {
         academic_offer_name,
         language,
         modality,
-      ];
-    });
+      ]
+    })
 
-  if (status === "loading" || stateR.loading)
+  if (status === 'loading' || stateR.loading)
     return (
       <div className="flex justify-center items-center h-1/2">
         <Loading type="MutatingDots" color="red" size={90} />
       </div>
-    );
+    )
 
   if (
-    (status !== "loading" &&
-      status === "completed" &&
+    (status !== 'loading' &&
+      status === 'completed' &&
       !stateR.loading &&
       !countResult) ||
     !id
@@ -84,7 +84,7 @@ export default function OfertList(id) {
       <div className="text-center text-xl mt-20">
         <h3>No hay resultados!</h3>
       </div>
-    );
+    )
   }
 
   return (
@@ -94,14 +94,14 @@ export default function OfertList(id) {
         <div className="flex">
           <BsFillGrid3X3GapFill
             className={`${
-              table ? "text-gray-500" : "azul "
+              table ? 'text-gray-500' : 'azul '
             } self-center cursor-pointer `}
             size={20}
             onClick={() => setTable(false)}
           />
           <AiOutlineInsertRowAbove
             className={`${
-              !table ? "text-gray-500" : "azul "
+              !table ? 'text-gray-500' : 'azul '
             }  ml-2  self-center cursor-pointer `}
             size={25}
             onClick={() => setTable(true)}
@@ -110,12 +110,12 @@ export default function OfertList(id) {
       </div>
       <div
         className="flex justify-between flex-col h-full"
-        disabled={statusFav === "loading"}
+        disabled={statusFav === 'loading'}
       >
         {table ? (
           <div className="fadeIn">
             <MUIDataTable
-              title={"Ofertas"}
+              title="Ofertas"
               className="shadow-sm"
               data={data}
               columns={columns}
@@ -138,7 +138,7 @@ export default function OfertList(id) {
         {!table && (
           <div className="flex  justify-end mt-10 ">
             <p className=" self-center mr-4">
-              Página {stateR.active.toLocaleString()} de {stateR.screens.length}{" "}
+              Página {stateR.active.toLocaleString()} de {stateR.screens.length}{' '}
             </p>
             <button
               className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out mr-2"
@@ -146,7 +146,7 @@ export default function OfertList(id) {
                 stateR.active !== 1 && actions.onSelectScreen(stateR.active - 1)
               }
             >
-              Atras{" "}
+              Atras{' '}
             </button>
             <button
               className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
@@ -155,11 +155,11 @@ export default function OfertList(id) {
                 actions.onSelectScreen(stateR.active + 1)
               }
             >
-              Seguiente{" "}
+              Seguiente{' '}
             </button>
           </div>
         )}
       </div>
     </div>
-  );
+  )
 }

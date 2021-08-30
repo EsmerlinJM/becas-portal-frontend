@@ -27,11 +27,11 @@ export const initialState = {
     data: [],
     status: null,
   },
-};
+}
 
 export const offerResult = {
   modality: {},
   oferta: {
     schedule: {},
   },
-};
+}

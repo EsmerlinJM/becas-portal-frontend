@@ -1,17 +1,16 @@
-import Label from "../../atoms/label";
-import BorderTop from "../../atoms/border-top-color";
-
-import { AiFillStar } from "react-icons/ai";
-import { RiStarSLine } from "react-icons/ri";
-import { useHistory } from "react-router";
+import { AiFillStar } from 'react-icons/ai'
+import { RiStarSLine } from 'react-icons/ri'
+import { useHistory } from 'react-router'
+import BorderTop from '../../atoms/border-top-color'
+import Label from '../../atoms/label'
 
 export default function OfertaResult({
   item,
   saveFavorite,
   isFavorite = false,
-  color = "red-500",
+  color = 'red-500',
 }) {
-  const history = useHistory();
+  const history = useHistory()
   const {
     id,
     image_url,
@@ -21,7 +20,7 @@ export default function OfertaResult({
       campus_country,
       institution_name,
     },
-  } = item;
+  } = item
   return (
     <BorderTop borderColor={color}>
       <div className="max-w-sm  overflow-hidden bg-white rounded flex flex-col justify-between h-full">
@@ -30,7 +29,7 @@ export default function OfertaResult({
             <img
               className="w-full p-2"
               src={image_url}
-              style={{ height: "90px" }}
+              style={{ height: '90px' }}
               width="100%"
               alt="Sunset in the mountains"
             />
@@ -59,7 +58,7 @@ export default function OfertaResult({
               onClick={() => history.push(`/query-result/detail/${id}`)}
               className="text-sm"
             >
-              {" "}
+              {' '}
               TÈCNICO
             </span>
             <span>
@@ -77,5 +76,5 @@ export default function OfertaResult({
         </div>
       </div>
     </BorderTop>
-  );
+  )
 }

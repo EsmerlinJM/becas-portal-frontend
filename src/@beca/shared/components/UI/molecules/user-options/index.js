@@ -51,7 +51,7 @@ export default function UserOptions({ user }) {
           <ul className="fadeIn dropdown-menu group-hover:block hidden absolute text-xs text-black pt-1">
             <li>
               <span className="flex  bg-white hover:bg-gray-200 py-3 px-5 block whitespace-no-wrap cursor-pointer border-b border-blue-100">
-                {" "}
+                {' '}
                 <img className="w-5 mr-3" src="img/Forma 2@2x.png" alt="" />
                 Mi perfil
               </span>
@@ -82,5 +82,5 @@ export default function UserOptions({ user }) {
         </div>
       </div>
     </>
-  );
+  )
 }

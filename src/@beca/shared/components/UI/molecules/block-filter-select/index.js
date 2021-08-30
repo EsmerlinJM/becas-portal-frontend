@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 // import Select from "react-select";
 
 export default function BlockFilterSelect({
@@ -16,5 +16,5 @@ export default function BlockFilterSelect({
         </div>
       </div>
     </div>
-  );
+  )
 }

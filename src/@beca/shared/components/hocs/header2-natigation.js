@@ -1,19 +1,19 @@
-import Header2 from "../UI/organisms/header-2";
-import Navigation from "../UI/molecules/navigation";
-import Footer from "../UI/organisms/footer";
-import HeaderUser from "../UI/organisms/header-user";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux'
+import Header2 from '../UI/organisms/header-2'
+import Navigation from '../UI/molecules/navigation'
+import Footer from '../UI/organisms/footer'
+import HeaderUser from '../UI/organisms/header-user'
 
 export default function Header2Natigation({
   children,
-  name = "Resultados",
+  name = 'Resultados',
   objNav,
 }) {
-  const { data, status } = useSelector((state) => state.user.one);
+  const { data, status } = useSelector((state) => state.user.one)
 
   return (
     <div className="fadeIn">
-      {status === "completed" && Object.keys(data).length ? (
+      {status === 'completed' && Object.keys(data).length ? (
         <HeaderUser />
       ) : (
         <Header2 />
@@ -24,5 +24,5 @@ export default function Header2Natigation({
       <div>{children}</div>
       <Footer />
     </div>
-  );
+  )
 }
