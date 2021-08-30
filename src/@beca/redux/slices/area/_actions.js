@@ -1,7 +1,7 @@
-import { allArea } from "../../../shared/services/area";
-import { createAsyncThunk } from "@reduxjs/toolkit";
+import { createAsyncThunk } from '@reduxjs/toolkit'
+import { allArea } from '../../../shared/services/area'
 
 export const getAllArea = createAsyncThunk(
-  "area/getAll",
-  async () => await allArea()
-);
+  'area/getAll',
+  async () => await allArea(),
+)

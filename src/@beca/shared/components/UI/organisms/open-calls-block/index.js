@@ -1,52 +1,51 @@
-import { FaRegCalendarAlt } from "react-icons/fa";
-import { BsFolderFill, BsFillBarChartFill } from "react-icons/bs";
-import { SiMathworks } from "react-icons/si";
-import { FaSign } from "react-icons/fa";
-import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { FaRegCalendarAlt, FaSign } from 'react-icons/fa'
+import { BsFolderFill, BsFillBarChartFill } from 'react-icons/bs'
+import { SiMathworks } from 'react-icons/si'
+import { useDispatch, useSelector } from 'react-redux'
+import { useEffect } from 'react'
+import Loader from 'react-loader-spinner'
 import {
   announcementGetAll,
   setRecent,
-} from "../../../../../redux/slices/announcement/_actions";
-import Loader from "react-loader-spinner";
+} from '../../../../../redux/slices/announcement/_actions'
 
 export default function OpenCallsBlock({ id }) {
   const {
     all: { data, status },
     recent: { data: recent, status: statusRecent },
-  } = useSelector((state) => state.announcement);
-  const dispatch = useDispatch();
+  } = useSelector((state) => state.announcement)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     const fn = async () => {
-      dispatch(await announcementGetAll());
-    };
-    !data.length && fn();
-    //eslint-disable-next-line
+      dispatch(await announcementGetAll())
+    }
+    !data.length && fn()
+    // eslint-disable-next-line
   }, []);
   // console.log(id);
   useEffect(() => {
     if (id) {
-      const item = data.find((item) => item.id === id);
-      item && dispatch(setRecent(item));
+      const item = data.find((item) => item.id === id)
+      item && dispatch(setRecent(item))
     }
-    //eslint-disable-next-line
+    // eslint-disable-next-line
   }, [id, status]);
 
-  if (status === "loading" || statusRecent === "loading")
+  if (status === 'loading' || statusRecent === 'loading')
     return (
       <div className="flex justify-center">
-        {" "}
+        {' '}
         <Loader type="MutatingDots" color="red" />
       </div>
-    );
+    )
 
-  if (!Object.keys(recent).length || !id) return <></>;
+  if (!Object.keys(recent).length || !id) return <></>
   return (
     <div className="fadeIn shadow rounded flex flex-wrap items-center border-2 bg-white m-2 text-gray-500 divide-x-2 invisible xs:invisible sm:invisible md:visible lg:visible">
       <div className="flex">
         <div>
-          <img height={"100%"} width={160} src={recent.image_url} alt="" />
+          <img height="100%" width={160} src={recent.image_url} alt="" />
         </div>
         <div className="mx-4 self-center">
           <p className="text-base font-bold	text-blue-900">
@@ -95,5 +94,5 @@ export default function OpenCallsBlock({ id }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

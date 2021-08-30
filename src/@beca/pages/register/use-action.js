@@ -1,11 +1,11 @@
-import { useForm } from "react-hook-form";
-import { createUser } from "../../shared/services/user";
-import { toast } from "react-hot-toast";
-import { useState } from "react";
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-hot-toast'
+import { useState } from 'react'
+import { createUser } from '../../shared/services/user'
 
 export default function useAction() {
-  const [loading, setLoading] = useState(false);
-  const [modal, setModal] = useState(false);
+  const [loading, setLoading] = useState(false)
+  const [modal, setModal] = useState(false)
 
   const {
     handleSubmit,
@@ -13,49 +13,49 @@ export default function useAction() {
     watch,
     setValue,
     formState: { errors },
-  } = useForm();
+  } = useForm()
 
   const action = handleSubmit(async (data) => {
-    setLoading(true);
-    let isSuccess = false;
+    setLoading(true)
+    let isSuccess = false
 
     await toast.promise(createUser(data), {
-      loading: "Registrando usuario...",
+      loading: 'Registrando usuario...',
       success: () => {
-        isSuccess = true;
-        return <b>Usuario registrado exitosamente!</b>;
+        isSuccess = true
+        return <b>Usuario registrado exitosamente!</b>
       },
       error: (error) => {
-        setLoading(false);
+        setLoading(false)
         const {
           data: {
             errors: { email },
           },
-        } = error.response;
+        } = error.response
         return (
           <b>
             {email.length
               ? email.map((em) => <p> {em} </p>)
-              : "Este email ya existe!"}
+              : 'Este email ya existe!'}
           </b>
-        );
+        )
       },
-    });
+    })
 
     isSuccess &&
       setTimeout(() => {
-        setLoading(false);
-        setModal(true);
-        setValue("name", "");
-        setValue("last_name", "");
-        setValue("email", "");
-        setValue("password", "");
-        setValue("password_confirmation", "");
-      }, 500);
-  });
+        setLoading(false)
+        setModal(true)
+        setValue('name', '')
+        setValue('last_name', '')
+        setValue('email', '')
+        setValue('password', '')
+        setValue('password_confirmation', '')
+      }, 500)
+  })
 
   return [
     { errors, loading, modal },
     { register, action, watch, setModal },
-  ];
+  ]
 }

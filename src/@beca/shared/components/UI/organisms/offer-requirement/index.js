@@ -70,5 +70,5 @@ export default function OfferRequirement() {
         </div>
       </div>
     </div>
-  );
+  )
 }
