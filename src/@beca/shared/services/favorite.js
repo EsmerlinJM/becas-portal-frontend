@@ -27,10 +27,9 @@ export const deleteFavorite = async (favorite_id) => {
       }),
       body: form,
     });
-
-    console.log(favorite_id, "id");
     return { id: favorite_id };
   } catch (error) {
     console.log(error.response);
+    throw Error("Upp, error!");
   }
 };

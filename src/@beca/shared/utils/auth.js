@@ -9,14 +9,12 @@ export const setAuth = (user, history) => {
 };
 
 export const logOut = (history) => {
-  localStorage.removeItem("dx");
   localStorage.removeItem("token");
   history.push("/");
 };
 
 export const getAuth = () => {
-  const id = parseInt(localStorage.getItem("dx"));
   const token = localStorage.getItem("token");
 
-  return { token, id };
+  return { token };
 };

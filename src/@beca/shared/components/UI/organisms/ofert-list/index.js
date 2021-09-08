@@ -3,6 +3,7 @@ import CardColumns from "../../../hocs/card-columns";
 import useAction from "./use-action";
 import Loading from "react-loader-spinner";
 import MUIDataTable from "mui-datatables";
+import Pagination from "../../molecules/pagination";
 
 import { useState } from "react";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
@@ -140,27 +141,12 @@ export default function OfertList({ justFavorites }) {
           </CardColumns>
         )}
         {!table && stateR.screens.length > 1 && (
-          <div className="flex  justify-end mt-10 ">
-            <p className=" self-center mr-4">
-              Página {stateR.active.toLocaleString()} de {stateR.screens.length}{" "}
-            </p>
-            <button
-              className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out mr-2"
-              onClick={() =>
-                stateR.active !== 1 && actions.onSelectScreen(stateR.active - 1)
-              }
-            >
-              Atras{" "}
-            </button>
-            <button
-              className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
-              onClick={() =>
-                !(stateR.screens.length <= stateR.active) &&
-                actions.onSelectScreen(stateR.active + 1)
-              }
-            >
-              Seguiente{" "}
-            </button>
+          <div className=" mt-10 ">
+            <Pagination
+              active={stateR.active}
+              screens={stateR.screens.length}
+              onSelectScreen={actions.onSelectScreen}
+            />
           </div>
         )}
       </div>

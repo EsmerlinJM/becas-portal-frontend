@@ -7,6 +7,9 @@ import announcement from "./slices/announcement/_reducers";
 import institution from "./slices/institution/_reducers";
 import applied from "./slices/all-applied/_reducers";
 import user from "./slices/user/_reducers";
+import myRequest from "./slices/my-requests/_reducers";
+import municipality from "./slices/municipality/_reducers";
+import country from "./slices/country/_reducers";
 
 export default configureStore({
   reducer: {
@@ -17,5 +20,8 @@ export default configureStore({
     announcement,
     applied,
     user,
+    myRequest,
+    municipality,
+    country,
   },
 });

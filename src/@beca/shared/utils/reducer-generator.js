@@ -1,3 +1,4 @@
+import { initialState } from "./initial-state";
 export const reducerGenerator = (arrActions) => {
   return arrActions.reduce(
     (acc, curr) => ({
@@ -45,7 +46,7 @@ const fulfilled =
 const loading = (curr) => (state, _) => ({
   ...state,
   [curr.key]: {
-    ...state[curr.key],
+    data: initialState[curr.key].data,
     status: "loading",
   },
 });
@@ -53,7 +54,7 @@ const loading = (curr) => (state, _) => ({
 const rejected = (curr) => (state, _) => ({
   ...state,
   [curr.key]: {
-    ...state[curr.key],
+    data: initialState[curr.key].data,
     status: "error",
   },
 });

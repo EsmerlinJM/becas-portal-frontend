@@ -1,7 +1,7 @@
 export default function OfferRequirement({ requirement }) {
   return (
     <div className="bg-white">
-      <div dangerouslySetInnerHTML={{ __html: requirement }} />
+      <div className="p-4" dangerouslySetInnerHTML={{ __html: requirement }} />
       {/* <div className="requisitos text-xs bg-white  m-auto flex flex-col p-10">
         <div className="aplicacion flex flex-col mb-3">
           <h5 className="azul font-bold mb-3">Requisitos de la aplicación</h5>

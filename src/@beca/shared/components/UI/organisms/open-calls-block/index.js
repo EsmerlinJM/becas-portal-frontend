@@ -1,6 +1,5 @@
 import { FaRegCalendarAlt } from "react-icons/fa";
 import { BsFolderFill, BsFillBarChartFill } from "react-icons/bs";
-import { SiMathworks } from "react-icons/si";
 import { FaSign } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
@@ -24,7 +23,7 @@ export default function OpenCallsBlock({ id }) {
     !data.length && fn();
     //eslint-disable-next-line
   }, []);
-  // console.log(id);
+
   useEffect(() => {
     if (id) {
       const item = data.find((item) => item.id === id);
@@ -43,7 +42,7 @@ export default function OpenCallsBlock({ id }) {
 
   if (!Object.keys(recent).length || !id) return <></>;
   return (
-    <div className="fadeIn shadow rounded flex flex-wrap items-center border-2 bg-white m-2 text-gray-500 divide-x-2 invisible xs:invisible sm:invisible md:visible lg:visible">
+    <div className="fadeIn  rounded flex flex-wrap items-center border bg-white m-2 text-gray-500 divide-x-2 invisible xs:invisible sm:invisible md:visible lg:visible">
       <div className="flex">
         <div>
           <img height={"100%"} width={160} src={recent.image_url} alt="" />
@@ -53,7 +52,7 @@ export default function OpenCallsBlock({ id }) {
             Becas Nacionales {new Date().getFullYear()}
           </p>
           <div>
-            <button className="outline-none bg-green-300 hover:bg-green-400 text-white font-bold py-2 px-4 rounded-full mt-2">
+            <button className="outline-none rounded-3xl w-11/12 px-10 py-2 mt-2 text-white azulbg font-semibold text-sm">
               {recent.status}
             </button>
           </div>
@@ -84,14 +83,6 @@ export default function OpenCallsBlock({ id }) {
             <BsFillBarChartFill />
             <p className="ml-3">{recent.audience?.name}</p>
           </span>
-          <span className="flex items-center">
-            <SiMathworks />
-            <p className="ml-3">100% mat. Alojamiento</p>
-          </span>
-          {/* <span className="flex items-center">
-            <RiCommunityFill />
-            <p className="ml-3">123</p>
-          </span> */}
         </div>
       </div>
     </div>

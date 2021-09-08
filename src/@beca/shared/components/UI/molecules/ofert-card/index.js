@@ -81,7 +81,7 @@ export default function OfertaResult({
         {justFavorites && (
           <div className="flex justify-center w-full py-2 border-t-2 cursor-pointer ">
             {" "}
-            <ButtonApply />
+            <ButtonApply offerId={id} />
           </div>
         )}
       </div>

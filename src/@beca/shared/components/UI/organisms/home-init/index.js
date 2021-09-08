@@ -2,26 +2,19 @@ import home3834 from "../../../../../../img/Group 3834@2x.png";
 import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
 
 import { useHistory } from "react-router";
-import { useDispatch, useSelector } from "react-redux";
-import { logoutUser } from "../../../../../redux/slices/user/_actions";
-import { getAuth } from "../../../../utils/auth";
-import UserOptions from "../../molecules/user-options";
+import { useSelector } from "react-redux";
 import HeaderUser from "../header-user";
 import InputSearchHome from "../../atoms/input-search-home";
 
 export default function HomeInit() {
   const { data: user, status } = useSelector((state) => state.user.one);
   const history = useHistory();
-  const dispatch = useDispatch();
-
-  const closeSesion = async () =>
-    dispatch(await logoutUser(getAuth().token, history));
 
   return (
     <>
-      {status === "completed" && Object.keys(user).length && (
-        <HeaderUser isHome />
-      )}
+      {status === "completed" && Object.keys(user || {}).length ? (
+        <HeaderUser user={user} isHome />
+      ) : null}
       <div className="home flex">
         <div className="left w-screen">
           <div className="header1 bg-white flex items-center">

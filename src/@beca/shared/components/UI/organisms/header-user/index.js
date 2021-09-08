@@ -2,7 +2,7 @@ import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
 import UserOptions from "../../molecules/user-options";
 import InputSearchHome from "../../atoms/input-search-home";
 import { useHistory } from "react-router";
-export default function HeaderUser({ isHome = false }) {
+export default function HeaderUser({ user, isHome = false }) {
   const history = useHistory();
 
   return (
@@ -37,7 +37,7 @@ export default function HeaderUser({ isHome = false }) {
             </div>
           </div>
           <div className="self-center">
-            <UserOptions user={{}} history={history} />
+            <UserOptions user={user} history={history} />
           </div>
         </div>
       </div>

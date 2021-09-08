@@ -6,6 +6,7 @@ import {
   addFavorite,
   addFavorites,
   deleteFavorite,
+  updateUser,
 } from "./_actions";
 import { reducerGenerator } from "../../../shared/utils/reducer-generator";
 import { initialState } from "../../../shared/utils/initial-state";
@@ -14,6 +15,7 @@ const actions = [
   { action: createMessage, key: "message" },
   { action: getOneUser, key: "one" },
   { action: logoutUser, key: "one" },
+  { action: updateUser, key: "one" },
 ];
 
 const reducers = reducerGenerator(actions);

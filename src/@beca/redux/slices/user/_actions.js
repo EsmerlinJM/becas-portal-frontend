@@ -4,7 +4,11 @@ import {
   deleteFavorite as removeFav,
 } from "../../../shared/services/favorite";
 import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
-import { getProfile, logOut } from "../../../shared/services/user";
+import {
+  getProfile,
+  logOut,
+  updateProfile,
+} from "../../../shared/services/user";
 
 export const createMessage = createAsyncThunk(
   "user/message",
@@ -16,9 +20,13 @@ export const getOneUser = createAsyncThunk(
   async (token) => await getProfile(token)
 );
 
+export const updateUser = createAsyncThunk(
+  "user/one",
+  async (payload) => await updateProfile(payload)
+);
 export const logoutUser = createAsyncThunk(
   "user/logout",
-  async (token, history) => await logOut(token, history)
+  async (history) => await logOut(history)
 );
 
 export const addFavorite = createAsyncThunk(

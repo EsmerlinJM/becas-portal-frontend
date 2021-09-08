@@ -1,7 +1,7 @@
 import { useState } from "react";
 import IconRemove from "../../../../../../img/remove.svg";
 export default function Modal({
-  isOpen = false,
+  isOpen,
   onClose,
   width = "w-1/3",
   header = (
@@ -17,9 +17,13 @@ export default function Modal({
   footer = <> </>,
 }) {
   const [animated, setAnimated] = useState("fadeIn");
+
   const handleClose = () => {
     setAnimated("animated fadeOut");
-    setTimeout(() => onClose(false), 700);
+    setTimeout(() => {
+      onClose(false);
+      setAnimated("fadeIn");
+    }, 500);
   };
 
   return (
@@ -42,10 +46,7 @@ export default function Modal({
               <div className="border-0 rounded shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
                 <div className="flex items-start justify-between px-4 py-3 border-b border-solid border-blueGray-200 rounded-t">
                   {header}
-                  <button
-                    className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none"
-                    // onClick={() => setShowModal(false)}
-                  >
+                  <button className="p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none">
                     <span className="bg-transparent text-black opacity-5 h-6 w-6 text-2xl block outline-none focus:outline-none">
                       ×
                     </span>

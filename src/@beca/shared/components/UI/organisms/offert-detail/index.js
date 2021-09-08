@@ -1,5 +1,8 @@
+import ButtonApply from "../../atoms/button-apply";
+
 export default function OfferDetail({ item }) {
   const {
+    id,
     oferta: {
       detalles,
       institution_name,
@@ -11,9 +14,19 @@ export default function OfferDetail({ item }) {
       campus_province,
       education_level_name,
       schedule,
+      academic_offer_pensum_url,
     },
     institucion: { name, contacto_telefono, direccion, web },
   } = item;
+
+  const redirect = () => {
+    if (web) window.location.href = web;
+  };
+
+  const redirectpdf = () => {
+    if (academic_offer_pensum_url)
+      window.location.href = academic_offer_pensum_url;
+  };
 
   return (
     <div>
@@ -33,21 +46,12 @@ export default function OfferDetail({ item }) {
             <p className="text-justify">{detalles}</p>
           </div>
           <div className="verPensum flex items-center">
-            <span className=" rounded-3xl py-3 px-5 bg-red-600 text-white font-semibold text-xs">
+            <span
+              onClick={redirectpdf}
+              className=" rounded-3xl py-3 px-5 bg-red-600 text-white font-semibold text-xs"
+            >
               VER PENSUM
             </span>
-            {/* <input
-              className="w-6 ml-4"
-              type="image"
-              src="img/Mark - favorito@2x.png"
-              alt="a"
-            />
-            <input
-              className="w-6 mx-1"
-              type="image"
-              src="img/Share link@2x.png"
-              alt=""
-            /> */}
           </div>
         </div>
         <div className="border-l border-r border-dashed detalles flex flex-col pl-14 px-7 py-14">
@@ -118,29 +122,16 @@ export default function OfferDetail({ item }) {
           </div>
           <div className="paginaWeb  mb-3">
             <h6 className="text-gray-400 font-semibold">Web</h6>
-            <span className="text-blue-600 underline">{web}</span>
-          </div>
-          {/* <div className="redesSociales text-xs mb-4">
-            <h6 className="text-gray-400 font-semibold mb-2">Redes Sociales</h6>
-            <div className="enlaces flex space-x-3">
-              <span className="w-7">
-                <img src="img/Facebook@2x.png" alt="" />
-              </span>
-              <span className="w-7">
-                <img src="img/Instagram@2x.png" alt="" />
-              </span>
-              <span className="w-7">
-                <img src="img/twitter@2x.png" alt="" />
-              </span>
-              <span className="w-7">
-                <img src="img/youtube@2x.png" alt="" />
-              </span>
-            </div>
-          </div> */}
-          <div className="aplicar flex justify-center pt-4">
-            <span className="rounded-3xl px-10 py-2 text-white azulbg font-semibold text-sm">
-              APLICAR
+            <span
+              className="text-blue-600 underline cursor-pointer"
+              onClick={redirect}
+            >
+              {web}
             </span>
+          </div>
+
+          <div className="aplicar flex justify-center pt-4">
+            <ButtonApply offerId={id} />
           </div>
         </div>
       </div>

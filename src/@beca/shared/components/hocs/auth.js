@@ -12,25 +12,22 @@ export default function Auth({ children }) {
   const history = useHistory();
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.user.one);
-
   useEffect(() => {
     const fn = async (tk) => dispatch(await getOneUser(tk));
     const { token } = getAuth();
     if (location.pathname === "/login" || location.pathname === "/register") {
       token && history.push("/");
     }
-    !Object.keys(data || {}).length && token && fn(token);
+    !Object.keys(data).length && token && fn(token);
   }, [history, location.pathname, data, dispatch]);
 
   useEffect(() => {
     if (status === "error") {
-      localStorage.removeItem("dx");
       localStorage.removeItem("token");
       history.push("/login");
     }
 
     if (status === "completed") {
-      console.log(Object.keys(data).length);
       if (Object.keys(data).length)
         return dispatch(addFavorites(data.favoritos || []));
 

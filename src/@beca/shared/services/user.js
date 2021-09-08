@@ -1,5 +1,5 @@
 import customAxios from "../utils/customAxios";
-import { logOut as logoutUser } from "../utils/auth";
+import { getAuth, logOut as logoutUser } from "../utils/auth";
 
 export const createUser = async (payload) => {
   const { data } = await customAxios.post("/profile/register", { ...payload });
@@ -23,23 +23,39 @@ export const getProfile = async (token) => {
       }),
     }
   );
-  const { data } = await res.json();
+  const { data, status } = await res.json();
+  if (status) throw Error("Iniciar sesion correctamente");
   return data;
 };
 
-export const logOut = async (token, history) => {
-  console.log(token);
+export const logOut = async (history) => {
   try {
+    const { token } = getAuth();
     await fetch(`${process.env.REACT_APP_API_URL}/profile/logout`, {
       method: "post",
       headers: new Headers({
         Authorization: `Bearer ${token}`,
       }),
     });
-
-    logoutUser(history);
+    history && logoutUser(history);
     return {};
   } catch (error) {
     return {};
   }
+};
+
+export const updateProfile = async (oayload) => {
+  const { token } = getAuth();
+  if (!token) return;
+  const body = new FormData();
+  Object.entries(oayload).map((item) => body.append(item[0], item[1]));
+  const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/update`, {
+    method: "post",
+    headers: new Headers({
+      Authorization: `Bearer ${token}`,
+    }),
+    body,
+  });
+  const { data } = await res.json();
+  return data;
 };

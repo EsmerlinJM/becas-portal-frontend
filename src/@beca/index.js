@@ -6,6 +6,7 @@ import allApplied from "./pages/all-applied";
 import register from "./pages/register";
 import login from "./pages/login";
 import favorites from "./pages/favorite";
+import myRequests from "./pages/request";
 
 const routes = [
   ...homeRoutes,
@@ -16,6 +17,7 @@ const routes = [
   ...register,
   ...login,
   ...favorites,
+  ...myRequests,
 ];
 
 export default routes;
