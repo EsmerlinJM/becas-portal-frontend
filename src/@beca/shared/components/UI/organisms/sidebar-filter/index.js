@@ -3,9 +3,11 @@ import BlockSelect from "../../molecules/block-filter-select";
 import ProvinceSelect from "../../atoms/province-select";
 import AreaSelect from "../../atoms/area-select";
 import InstitutionSelect from "../../atoms/institution-select";
+import CountrySelect from "../../atoms/country-select";
 
 import { FiSliders } from "react-icons/fi";
 import { useLocation } from "react-router";
+import { removeAccents } from "../../../../utils/remove-accents";
 
 import qs from "querystring";
 import useAction from "./use-action";
@@ -62,10 +64,24 @@ export default function Sidebar() {
       </div>
 
       <div className="my-7">
-        <BlockSelect titleBlock="Ubicación">
-          <ProvinceSelect onSelect={onSelect} id={qp.province} />
+        <BlockSelect titleBlock="País">
+          <CountrySelect onSelect={onSelect} id={qp.country} />
         </BlockSelect>
       </div>
+
+      {qp.country &&
+        (removeAccents(qp.country.toLowerCase()).includes(
+          "republica dominicana"
+        ) ||
+          removeAccents(qp.country.toLowerCase()).includes(
+            "dominican republic"
+          )) && (
+          <div className="my-7">
+            <BlockSelect titleBlock="Provincia">
+              <ProvinceSelect onSelect={onSelect} id={qp.province} />
+            </BlockSelect>
+          </div>
+        )}
 
       <div className="my-7">
         <BlockCheck

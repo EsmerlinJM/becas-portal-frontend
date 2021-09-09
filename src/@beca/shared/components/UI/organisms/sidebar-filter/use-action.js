@@ -14,7 +14,7 @@ export default function useAction(qp, search) {
 
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.offers.all);
-
+  console.log(data);
   const onSelect = (type, { name, id }) => {
     name = removeAccents(name);
     const qr = qp[type];
@@ -22,7 +22,10 @@ export default function useAction(qp, search) {
     const filterA = arrQr.filter((r) => !r.includes(name));
 
     const valArea =
-      type === "province" || type === "area" || type === "institution";
+      type === "province" ||
+      type === "area" ||
+      type === "institution" ||
+      type === "country";
 
     const newQuery = {
       ...qp,
@@ -116,6 +119,17 @@ export default function useAction(qp, search) {
               return removeAccents(oferta["language"]).includes(qr);
             });
 
+            if (item) val = true;
+            else return false;
+          } else {
+            val = true;
+          }
+        }
+
+        if (name === "country") {
+          const qr = qp[name];
+          if (qr && qr.length) {
+            const item = removeAccents(oferta["campus_country"]).includes(qr);
             if (item) val = true;
             else return false;
           } else {

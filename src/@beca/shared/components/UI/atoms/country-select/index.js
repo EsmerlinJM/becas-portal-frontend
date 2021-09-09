@@ -36,7 +36,7 @@ export default function CountrySelect({ onSelect, id }) {
       placeholder="Seleccionar país"
       getOptionValue={(item) => item}
       getOptionLabel={(item) => item.name}
-      onChange={(item) => onSelect("province", item)}
+      onChange={(item) => onSelect("country", item)}
     />
   );
 }
