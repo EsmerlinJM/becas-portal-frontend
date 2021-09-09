@@ -10,8 +10,9 @@ import TemplateTab from "../../../shared/components/UI/molecules/tab";
 import RequestEvaluation from "../../../shared/components/UI/molecules/request-evaluation";
 import RequestResult from "../../../shared/components/UI/molecules/request-result";
 import FormPersonalData from "../../../shared/components/UI/organisms/form-personal-data";
-import FormEducation from "../../../shared/components/UI/organisms/form-education";
-import WorkExperience from "../../../shared/components/UI/organisms/form-work-experience";
+import FormEducationList from "../../../shared/components/UI/organisms/form-education-list";
+import WorkExperienceList from "../../../shared/components/UI/organisms/form-work-experience-list";
+import FormFieldAnswer from "../../../shared/components/UI/organisms/form-field-answer";
 
 const objNav = {
   name: "Solicitud",
@@ -25,25 +26,27 @@ const objNav = {
 export default function RequestDetail() {
   const { id } = useParams();
   const [{ data, status, user }] = useAction(id);
+
   const exist = statuColors[data.status];
-  const result = "Resultados";
-  const headers = [
+  const headerTabs = [
+    "Resultados",
     "Datos personales",
     "Formación académica",
     "Experiencia laboral",
     "Datos socioeconómicos",
   ];
-  const tabs = exist ? [result, ...headers] : headers;
   const arrTabs = [
     <RequestResult status={data.status} />,
     <FormPersonalData user={user} />,
-    <FormEducation />,
-    <WorkExperience />,
-    <h3>Datos socioeconómicos</h3>,
+    <FormEducationList forms={user.formacion_academica || []} />,
+    <WorkExperienceList forms={user.experiencia_laboral || []} />,
+    <FormFieldAnswer forms={data.formulario_answers || []} />,
   ];
-  !exist && arrTabs.splice(0, 1);
 
-  console.log(user);
+  !exist && arrTabs.splice(0, 1);
+  !exist && headerTabs.splice(0, 1);
+  !(data.formulario_answers || []).length &&
+    headerTabs.splice(headerTabs.length - 1, 1);
 
   return (
     <>
@@ -57,7 +60,7 @@ export default function RequestDetail() {
               <CardRequest item={data} onClick={(item) => console.log(item)} />
               <div className="mt-10 flex justify-between grid grid-cols-12 gap-4 ">
                 <div className="col-span-10">
-                  <TemplateTab headersTab={tabs}>{arrTabs}</TemplateTab>
+                  <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
                 </div>
                 <div className="col-span-2 shadow">
                   <RequestEvaluation evaluations={data?.evaluacion} />
@@ -66,7 +69,6 @@ export default function RequestDetail() {
             </div>
           ) : (
             <div className="flex justify-center w-full">
-              {" "}
               <Loading type="MutatingDots" color="red" />{" "}
             </div>
           )}

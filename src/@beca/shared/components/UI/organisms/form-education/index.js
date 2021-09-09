@@ -1,5 +1,5 @@
-import { GoPlus } from "react-icons/go";
-export default function FormEducation({ education }) {
+import { formatDate } from "../../../../utils/format-date";
+export default function FormEducation({ item }) {
   return (
     <>
       <div className="py-3 m-auto grid grid-cols-1 gap-y-4">
@@ -10,7 +10,7 @@ export default function FormEducation({ education }) {
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="text"
               name="carrera"
-              id
+              defaultValue={item.carrera}
               maxLength={11}
               minLength={11}
               placeholder="Ej. Ingeniería Civil"
@@ -22,7 +22,7 @@ export default function FormEducation({ education }) {
               className="text-xs border w-full rounded px-3 py-2 outline-none "
               type="text"
               name="institucion"
-              id
+              defaultValue={item.institucion}
               placeholder="Ej. Universidad APEC"
             />
           </div>
@@ -30,6 +30,7 @@ export default function FormEducation({ education }) {
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">Fecha de ingreso</p>
               <input
+                defaultValue={formatDate(item.fecha_entrada)}
                 className="text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none "
                 type="date"
                 name="fechaingreso"
@@ -42,7 +43,7 @@ export default function FormEducation({ education }) {
                 className="text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none "
                 type="date"
                 name="fechasalida"
-                id
+                defaultValue={formatDate(item.fecha_entrada)}
               />
               <label
                 className="flex items-center text-xs text-gray-600"
@@ -67,7 +68,7 @@ export default function FormEducation({ education }) {
               max={4}
               min={2}
               name="indice"
-              id
+              defaultValue={item.indice}
               placeholder="2.00 - 4.00"
             />
           </div>
@@ -92,26 +93,28 @@ export default function FormEducation({ education }) {
               className="flex items-center text-xs text-gray-400"
               htmlFor="yes"
             >
-              <input className="mr-1.5" type="radio" name="becado" id="yes" />
+              <input
+                checked={item.isBecado && true}
+                className="mr-1.5"
+                type="radio"
+                name="becado"
+                id="yes"
+              />
               Sí
             </label>
             <label
               className="flex items-center text-xs text-gray-400 "
               htmlFor="no"
             >
-              <input className="mr-1.5" type="radio" name="becado" id="no" />
+              <input
+                checked={!item.isBecado && true}
+                className="mr-1.5"
+                type="radio"
+                name="becado"
+                id="no"
+              />
               No
             </label>
-          </div>
-
-          <div className="md:col-span-2 mt-7 flex md:justify-end justify-center space-x-3">
-            <button className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800">
-              Guardar
-            </button>
-            <button className="uppercase text-xs px-3 py-2 rounded-3xl bg-blue-900 text-white hover:bg-blue-800">
-              {/* <img className="w-4" src="img/PngItem_679828.png" alt /> */}
-              <GoPlus />
-            </button>
           </div>
         </span>
       </div>

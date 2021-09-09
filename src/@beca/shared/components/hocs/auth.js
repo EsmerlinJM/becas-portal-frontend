@@ -24,7 +24,7 @@ export default function Auth({ children }) {
   useEffect(() => {
     if (status === "error") {
       localStorage.removeItem("token");
-      history.push("/login");
+      history.push("/");
     }
 
     if (status === "completed") {

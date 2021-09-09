@@ -1,5 +1,6 @@
-import { GoPlus } from "react-icons/go";
-export default function WorkExperience({ exprience }) {
+import { formatDate } from "../../../../utils/format-date";
+
+export default function WorkExperience({ item }) {
   return (
     <>
       <div className=" py-3 m-auto grid grid-cols-1 gap-y-4">
@@ -10,9 +11,7 @@ export default function WorkExperience({ exprience }) {
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="text"
               name="carrera"
-              id
-              maxLength={11}
-              minLength={11}
+              defaultValue={item.empresa}
               placeholder="Ej. Banco Popular"
             />
           </div>
@@ -22,7 +21,7 @@ export default function WorkExperience({ exprience }) {
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="text"
               name="institucion"
-              id
+              defaultValue={item.telefono}
               placeholder="809-000-0000"
             />
           </div>
@@ -33,7 +32,7 @@ export default function WorkExperience({ exprience }) {
                 className="text-xs border w-full rounded px-3 py-2 outline-none"
                 type="text"
                 name="institucion"
-                id
+                defaultValue={item.posicion}
                 placeholder="Ej. Desarrollador Web"
               />
             </div>
@@ -48,6 +47,7 @@ export default function WorkExperience({ exprience }) {
                   type="radio"
                   name="contrato"
                   id="fijo"
+                  checked={item.tipo_contrato === "Indefinido"}
                 />
                 Fijo / Indefinido
               </label>
@@ -81,19 +81,19 @@ export default function WorkExperience({ exprience }) {
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">Fecha de ingreso</p>
               <input
+                defaultValue={formatDate(item.fecha_entrada)}
                 className="text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none"
                 type="date"
                 name="fechaingreso"
-                id
               />
             </div>
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">Fecha de salida</p>
               <input
+                defaultValue={formatDate(item.fecha_salida)}
                 className="text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none"
                 type="date"
                 name="fechasalida"
-                id
               />
               <label
                 className="flex items-center text-xs text-gray-600 mt-1"
@@ -104,6 +104,7 @@ export default function WorkExperience({ exprience }) {
                   type="checkbox"
                   name="actual"
                   id="actual"
+                  checked={!item.fecha_salida}
                 />
                 Actualmente estoy laborando aquí
               </label>
@@ -114,22 +115,10 @@ export default function WorkExperience({ exprience }) {
             <input
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="file"
-              max={4}
-              min={2}
               accept="application/pdf"
               name="indice"
-              id
-              placeholder="2.00 - 4.00"
+              placeholder="Documentación"
             />
-          </div>
-          <div className="md:col-span-2 mt-7 flex md:justify-end justify-center space-x-3">
-            <button className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800">
-              Guardar
-            </button>
-            <button className="uppercase text-xs px-3 py-2 rounded-3xl bg-blue-900 text-white hover:bg-blue-800">
-              {/* <img className="w-4" src="img/PngItem_679828.png" alt /> */}
-              <GoPlus />
-            </button>
           </div>
         </span>
       </div>
