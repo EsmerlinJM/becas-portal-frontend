@@ -10,10 +10,26 @@ export default function FiledAnswer({
   onChange,
 }) {
   const items = data && data.split(",");
+  const arrAnswer =
+    type === "checkbox" && canditate_answer && canditate_answer.split(",");
+  const objAnswer =
+    arrAnswer &&
+    arrAnswer.reduce((acc, curr) => ({ ...acc, [curr]: curr }), {});
 
   const onSetValue = (target) => {
     const { value } = target;
-    onChange({ name: "canditate_answer", value });
+    let val = value;
+
+    if (type === "checkbox" && arrAnswer) {
+      if (arrAnswer.includes(val)) {
+        const it = arrAnswer.filter((it) => it !== val);
+        val = it.join(",");
+      } else {
+        val = [...(arrAnswer || []), val].join(",");
+      }
+    }
+
+    onChange({ name: "canditate_answer", value: val });
   };
 
   if (type === "select") {
@@ -43,7 +59,7 @@ export default function FiledAnswer({
               <input
                 className="mr-1.5"
                 type="checkbox"
-                checked={it === canditate_answer}
+                checked={objAnswer && objAnswer[it]}
                 onChange={() => onSetValue({ name, value: it })}
               />
               {it}

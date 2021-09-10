@@ -40,37 +40,63 @@ export default function useAction(id) {
   };
 
   const answer = () => {
-    let val = true;
-    const payload = [];
-    const items = state.formsInstitution;
+    try {
+      dispatch2({
+        type: "SET_LOADING",
+        payload: true,
+      });
 
-    for (const item of items) {
-      if (item.formulario_detail_required && !item.canditate_answer) {
-        val = false;
-        return toast.error(
-          <b>El campo {item.formulario_detail_name} es obligatorio</b>
-        );
+      let val = true;
+      const payload = [];
+      const items = state.formsInstitution;
+
+      for (const item of items) {
+        if (item.formulario_detail_required && !item.canditate_answer) {
+          val = false;
+          return toast.error(
+            <b>El campo {item.formulario_detail_name} es obligatorio</b>
+          );
+        }
+        payload.push({
+          aplication_form_id: item.id,
+          respuesta: item.canditate_answer,
+        });
       }
-      payload.push({
-        aplication_form_id: item.id,
-        respuesta: item.canditate_answer,
+
+      val &&
+        toast.promise(answerMultiple(payload), {
+          loading: <b>Guardando...</b>,
+          success: () => {
+            dispatch2({
+              type: "SET_LOADING",
+              payload: false,
+            });
+            return <b>Guardado correctamente!</b>;
+          },
+          error: (error) => {
+            dispatch2({
+              type: "SET_LOADING",
+              payload: false,
+            });
+            console.log(error.message, error.response, error, "errors");
+            return <b>Ups, a ocurrido un error, intentar mas tarde!</b>;
+          },
+        });
+    } catch (error) {
+      dispatch2({
+        type: "SET_LOADING",
+        payload: false,
       });
     }
-
-    console.log(payload);
-    val &&
-      toast.promise(answerMultiple(payload), {
-        loading: <b>Guardando...</b>,
-        success: <b>Guardado correctamente!</b>,
-        error: (error) => {
-          console.log(error.message, error.response, error, "errors");
-          return <b>Ups, a ocurrido un error, intentar mas tarde!</b>;
-        },
-      });
   };
 
   const save = async (key) => {
     if (key === "formsInstitution") return answer();
+
+    dispatch2({
+      type: "SET_LOADING",
+      payload: true,
+    });
     let i = 0;
     const objVal = {
       formsEducation: { val: arrValidateField, action: createEducation },
@@ -96,6 +122,10 @@ export default function useAction(id) {
 
     await dispatch(await obj["action"](items));
     toast.success("Guardado correctamente!");
+    dispatch2({
+      type: "SET_LOADING",
+      payload: false,
+    });
   };
 
   useEffect(() => {

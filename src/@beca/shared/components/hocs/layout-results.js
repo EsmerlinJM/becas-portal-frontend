@@ -7,14 +7,15 @@ import SidebarFilter from "../UI/organisms/sidebar-filter";
 import InputSearch from "../UI/atoms/input-search";
 import Footer from "../UI/organisms/footer";
 import { useSelector } from "react-redux";
+import { getAuth } from "../../utils/auth";
 
 export default function LayoutResult({ children }) {
   const { data, status } = useSelector((state) => state.user.one);
-
+  const { token } = getAuth();
   return (
     <div className="fadeIn">
       {/* <AlertTop /> */}
-      {status === "completed" && Object.keys(data).length ? (
+      {token && status === "completed" && Object.keys(data).length ? (
         <HeaderUser user={data} />
       ) : (
         <Header2 />

@@ -76,12 +76,12 @@ export const answerMultiple = async (payload) => {
         headers: new Headers({
           Authorization: `Bearer ${token}`,
           Accept: "application/json",
+          "Content-Type": "application/json",
         }),
         body,
       }
     );
     const json = await res.json();
-    console.log(json, "res");
     return json.data;
   } catch (error) {
     console.log(error.message, error.response, error, "errors");

@@ -13,6 +13,7 @@ import FormPersonalData from "../../../shared/components/UI/organisms/form-perso
 import FormEducationList from "../../../shared/components/UI/organisms/form-education-list";
 import WorkExperienceList from "../../../shared/components/UI/organisms/form-work-experience-list";
 import FormFieldAnswer from "../../../shared/components/UI/organisms/form-field-answer";
+import { removeAccents } from "../../../shared/utils/remove-accents";
 
 const objNav = {
   name: "Solicitud",
@@ -27,22 +28,25 @@ export default function RequestDetail() {
   const { id } = useParams();
   const [{ state, status }, actions] = useAction(id);
 
-  const exist = statuColors[state.request.status];
+  const exist = statuColors[removeAccents(state.request.status || "")];
   const headerTabs = [
     "Resultados",
     "Datos personales",
     "Formación académica",
     "Experiencia laboral",
+    "Formulario",
     "Datos socioeconómicos",
   ];
+
   const arrTabs = [
-    <RequestResult status={state.request.status} />,
-    <FormPersonalData user={state.user} />,
+    <RequestResult status={state.request.status} key={1} />,
+    <FormPersonalData user={state.user} key={2} />,
     <FormEducationList
       forms={state.formsEducation}
       onChange={actions.dispatch2}
       save={() => actions.save("formsEducation")}
       onDelete={actions.onDelete}
+      loading={state.loading}
       onPlus={() =>
         actions.dispatch2({
           type: "ON_SET_FORM",
@@ -50,8 +54,10 @@ export default function RequestDetail() {
           key: "formsEducation",
         })
       }
+      key={3}
     />,
     <WorkExperienceList
+      key={4}
       forms={state.formsWorkExperience}
       onChange={actions.dispatch2}
       onDelete={actions.onDelete}
@@ -68,11 +74,19 @@ export default function RequestDetail() {
       onChange={actions.dispatch2}
       forms={state.formsInstitution}
       save={actions.save}
+      key={5}
     />,
+    <p> "Datos socioeconómicos",</p>,
   ];
-  !exist && arrTabs.splice(0, 1);
-  !exist && headerTabs.splice(0, 1);
-  !state.formsInstitution.length && headerTabs.splice(headerTabs.length - 1, 1);
+
+  state.request.status && !exist && arrTabs.splice(0, 1);
+  state.request.status && !exist && headerTabs.splice(0, 1);
+  state.request.status &&
+    !state.formsInstitution.length &&
+    headerTabs.splice(headerTabs.length - 2, 1);
+  state.request.status &&
+    !state.formsInstitution.length &&
+    arrTabs.splice(headerTabs.length - 2, 1);
 
   return (
     <>
@@ -89,11 +103,7 @@ export default function RequestDetail() {
               />
               <div className="mt-10 flex justify-between grid grid-cols-12 gap-4 ">
                 <div className="col-span-10">
-                  <TemplateTab headersTab={headerTabs}>
-                    {arrTabs.map((tabItem, i) => (
-                      <div key={i}> {tabItem}</div>
-                    ))}
-                  </TemplateTab>
+                  <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
                 </div>
                 <div className="col-span-2 shadow">
                   <RequestEvaluation

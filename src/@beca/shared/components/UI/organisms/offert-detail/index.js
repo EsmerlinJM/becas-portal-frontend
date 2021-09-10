@@ -23,11 +23,6 @@ export default function OfferDetail({ item, message }) {
     if (web) window.location.href = web;
   };
 
-  const redirectpdf = () => {
-    if (academic_offer_pensum_url)
-      window.location.href = academic_offer_pensum_url;
-  };
-
   return (
     <div>
       <div className="oferta bg-white m-auto grid grid-cols-3 xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
@@ -46,12 +41,14 @@ export default function OfferDetail({ item, message }) {
             <p className="text-justify">{detalles}</p>
           </div>
           <div className="verPensum flex items-center">
-            <span
-              onClick={redirectpdf}
+            <a
+              href={academic_offer_pensum_url}
+              rel="noreferrer"
+              target="_blank"
               className=" rounded-3xl py-3 px-5 bg-red-600 text-white font-semibold text-xs"
             >
               VER PENSUM
-            </span>
+            </a>
           </div>
         </div>
         <div className="border-l border-r border-dashed detalles flex flex-col pl-14 px-7 py-14">
@@ -122,12 +119,15 @@ export default function OfferDetail({ item, message }) {
           </div>
           <div className="paginaWeb  mb-3">
             <h6 className="text-gray-400 font-semibold">Web</h6>
-            <span
+            <a
               className="text-blue-600 underline cursor-pointer"
+              href={web}
+              target="_blank"
+              rel="noreferrer"
               onClick={redirect}
             >
               {web}
-            </span>
+            </a>
           </div>
 
           <div className="aplicar flex justify-center pt-4">

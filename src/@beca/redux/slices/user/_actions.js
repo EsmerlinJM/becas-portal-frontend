@@ -27,10 +27,10 @@ export const updateUser = createAsyncThunk(
   "user/updateUser",
   async (payload) => await updateProfile(payload)
 );
-export const logoutUser = createAsyncThunk(
-  "user/logout",
-  async (history) => await logOut(history)
-);
+export const logoutUser = createAsyncThunk("user/logout", async (history) => {
+  await logOut(history);
+  return {};
+});
 
 export const addFavorite = createAsyncThunk(
   "user/addFavorite",

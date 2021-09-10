@@ -38,7 +38,7 @@ const user = createSlice({
         one: {
           data: {
             ...state.one.data,
-            formulario_answers: payload,
+            formacion_academica: payload,
           },
           status: "completed",
         },

@@ -31,7 +31,7 @@ export const getProfile = async (token) => {
 export const logOut = async (history) => {
   try {
     const { token } = getAuth();
-    if (!token) return {};
+    if (!token) return;
     await fetch(`${process.env.REACT_APP_API_URL}/profile/logout`, {
       method: "post",
       headers: new Headers({
@@ -39,10 +39,8 @@ export const logOut = async (history) => {
       }),
     });
     history && logoutUser(history);
-    return {};
   } catch (error) {
     history && logoutUser(history);
-    return {};
   }
 };
 
@@ -61,7 +59,6 @@ export const updateProfile = async (oayload) => {
       body,
     });
     const data = await res.json();
-    console.log(data, "dd");
     return data.data;
   } catch (error) {
     console.log(error, error.response);

@@ -16,6 +16,7 @@ export default function FormEducationList({
   onChange,
   save,
   onDelete,
+  loading,
 }) {
   const setValue = (payload, index) => {
     const { name, value } = payload;
@@ -57,9 +58,10 @@ export default function FormEducationList({
         {forms.length && (
           <button
             onClick={save}
+            disabled={loading}
             className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
           >
-            Guardar
+            {loading ? "Guardando..." : "Guardar"}
           </button>
         )}
         <button

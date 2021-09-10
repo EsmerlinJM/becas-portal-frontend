@@ -5,14 +5,18 @@ import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
 import HeaderUser from "../header-user";
 import InputSearchHome from "../../atoms/input-search-home";
+import { getAuth } from "../../../../utils/auth";
 
 export default function HomeInit() {
   const { data: user, status } = useSelector((state) => state.user.one);
   const history = useHistory();
-
+  const { token } = getAuth();
   return (
     <>
-      {status === "completed" && Object.keys(user || {}).length && user.id ? (
+      {token &&
+      status === "completed" &&
+      Object.keys(user || {}).length &&
+      user.id ? (
         <HeaderUser user={user} isHome />
       ) : null}
       <div className="home flex">

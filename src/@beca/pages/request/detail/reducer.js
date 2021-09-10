@@ -4,6 +4,7 @@ export const initialState = {
   formsInstitution: [],
   formsEducation: [],
   formsWorkExperience: [],
+  loading: false,
 };
 
 export default function reducer(state, action) {
@@ -22,6 +23,11 @@ export default function reducer(state, action) {
       return {
         ...state,
         [action.key]: [...state[action.key], action.payload],
+      };
+    case "SET_LOADING":
+      return {
+        ...state,
+        loading: action.payload,
       };
     default:
       return { ...state };

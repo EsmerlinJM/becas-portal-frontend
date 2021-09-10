@@ -1,15 +1,7 @@
 import { formatDate } from "../../../../utils/format-date";
 
 export default function FormEducation({ item, onChange }) {
-  const converterFile = async (files) => {
-    // var file = files[0];
-    // var r = new FileReader();
-    // r.onload = function () {
-    //   const rr = r.result;
-    //   console.log(r);
-    // onChange({ name: "certificado", value: "" });
-    // };
-  };
+  console.log(item);
   return (
     <>
       <div className="py-3 m-auto grid grid-cols-1 gap-y-4">
@@ -88,22 +80,30 @@ export default function FormEducation({ item, onChange }) {
             />
           </div>
           <div>
-            <p className="mb-1.5 font-semibold">Certificación de estudios</p>
+            <p className="mb-1.5 font-semibold">
+              Certificación de estudios (.PDF o imagen)
+            </p>
             <input
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="file"
               name="certificado"
-              onChange={
-                ({ target }) =>
-                  target.files.length && converterFile(target.files)
-                // onChange({
-                //   name: "certificado",
-                //   value: target.files[0],
-                // })
+              onChange={({ target }) =>
+                onChange({ name: "certificado", value: target.files[0] })
               }
-              // accept="application/pdf"
+              accept="image/*,.pdf"
               placeholder="Certificado"
             />
+            {item.certificacion_url && (
+              <a
+                className="hover:border-blue-500 transition delay-75 border-b border-transparent text-blue-500 cursor-pointer"
+                rel="noreferrer"
+                href={item.certificacion_url}
+                target="_blank"
+              >
+                {" "}
+                Ver certificación de estudios{" "}
+              </a>
+            )}
           </div>
           <div>
             <p className="mb-1.5 font-semibold">Becado</p>
