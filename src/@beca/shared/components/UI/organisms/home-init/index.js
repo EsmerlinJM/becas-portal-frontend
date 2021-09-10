@@ -12,7 +12,7 @@ export default function HomeInit() {
 
   return (
     <>
-      {status === "completed" && Object.keys(user || {}).length ? (
+      {status === "completed" && Object.keys(user || {}).length && user.id ? (
         <HeaderUser user={user} isHome />
       ) : null}
       <div className="home flex">

@@ -7,7 +7,7 @@ import { FiUser } from "react-icons/fi";
 import { SiGooglescholar } from "react-icons/si";
 import { RiNewspaperLine } from "react-icons/ri";
 import { AiOutlineLogout } from "react-icons/ai";
-import { GrConfigure } from "react-icons/gr";
+// import { GrConfigure } from "react-icons/gr";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { IoNotificationsSharp } from "react-icons/io5";
 
@@ -35,13 +35,6 @@ export default function UserOptions({ user, history }) {
       name: "Mis solicitudes",
       href: () => history.push("/my-requests"),
       icon: RiNewspaperLine,
-    },
-    {
-      id: 4,
-
-      name: "Configuracion",
-      href: () => history.push("/"),
-      icon: GrConfigure,
     },
     {
       id: 5,

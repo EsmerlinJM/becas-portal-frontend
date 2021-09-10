@@ -1,5 +1,5 @@
 export function formatDate(date) {
-  if (!date) return;
+  if (!date) return "";
   let d = new Date(date),
     month = "" + (d.getMonth() + 1),
     day = "" + d.getDate(),

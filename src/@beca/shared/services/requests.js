@@ -64,3 +64,27 @@ export const getRequest = async (aplication_id) => {
     console.log(error, error.response, error.message);
   }
 };
+
+export const answerMultiple = async (payload) => {
+  try {
+    const { token } = getAuth();
+    const body = JSON.stringify(payload);
+    const res = await fetch(
+      `${process.env.REACT_APP_API_URL}/solicitudes/forms/answerMultiple`,
+      {
+        method: "post",
+        headers: new Headers({
+          Authorization: `Bearer ${token}`,
+          Accept: "application/json",
+        }),
+        body,
+      }
+    );
+    const json = await res.json();
+    console.log(json, "res");
+    return json.data;
+  } catch (error) {
+    console.log(error.message, error.response, error, "errors");
+    throw error;
+  }
+};

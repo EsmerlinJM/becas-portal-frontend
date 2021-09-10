@@ -14,7 +14,7 @@ export default function Header2Natigation({
   return (
     <div className="fadeIn flex justify-between flex-col  bg-gray-50 h-screen">
       <div>
-        {status === "completed" && Object.keys(data).length ? (
+        {status === "completed" && Object.keys(data).length && data.id ? (
           <HeaderUser user={data} />
         ) : (
           <Header2 />

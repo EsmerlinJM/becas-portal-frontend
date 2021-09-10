@@ -25,9 +25,9 @@ const objNav = {
 
 export default function RequestDetail() {
   const { id } = useParams();
-  const [{ data, status, user }] = useAction(id);
+  const [{ state, status }, actions] = useAction(id);
 
-  const exist = statuColors[data.status];
+  const exist = statuColors[state.request.status];
   const headerTabs = [
     "Resultados",
     "Datos personales",
@@ -36,17 +36,43 @@ export default function RequestDetail() {
     "Datos socioeconómicos",
   ];
   const arrTabs = [
-    <RequestResult status={data.status} />,
-    <FormPersonalData user={user} />,
-    <FormEducationList forms={user.formacion_academica || []} />,
-    <WorkExperienceList forms={user.experiencia_laboral || []} />,
-    <FormFieldAnswer forms={data.formulario_answers || []} />,
+    <RequestResult status={state.request.status} />,
+    <FormPersonalData user={state.user} />,
+    <FormEducationList
+      forms={state.formsEducation}
+      onChange={actions.dispatch2}
+      save={() => actions.save("formsEducation")}
+      onDelete={actions.onDelete}
+      onPlus={() =>
+        actions.dispatch2({
+          type: "ON_SET_FORM",
+          payload: {},
+          key: "formsEducation",
+        })
+      }
+    />,
+    <WorkExperienceList
+      forms={state.formsWorkExperience}
+      onChange={actions.dispatch2}
+      onDelete={actions.onDelete}
+      save={() => actions.save("formsWorkExperience")}
+      onPlus={() =>
+        actions.dispatch2({
+          type: "ON_SET_FORM",
+          payload: {},
+          key: "formsWorkExperience",
+        })
+      }
+    />,
+    <FormFieldAnswer
+      onChange={actions.dispatch2}
+      forms={state.formsInstitution}
+      save={actions.save}
+    />,
   ];
-
   !exist && arrTabs.splice(0, 1);
   !exist && headerTabs.splice(0, 1);
-  !(data.formulario_answers || []).length &&
-    headerTabs.splice(headerTabs.length - 1, 1);
+  !state.formsInstitution.length && headerTabs.splice(headerTabs.length - 1, 1);
 
   return (
     <>
@@ -57,13 +83,22 @@ export default function RequestDetail() {
         <Header2Natigation objNav={objNav}>
           {status === "completed" ? (
             <div className="container mx-auto my-4">
-              <CardRequest item={data} onClick={(item) => console.log(item)} />
+              <CardRequest
+                item={state.request}
+                onClick={(item) => console.log(item)}
+              />
               <div className="mt-10 flex justify-between grid grid-cols-12 gap-4 ">
                 <div className="col-span-10">
-                  <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
+                  <TemplateTab headersTab={headerTabs}>
+                    {arrTabs.map((tabItem, i) => (
+                      <div key={i}> {tabItem}</div>
+                    ))}
+                  </TemplateTab>
                 </div>
                 <div className="col-span-2 shadow">
-                  <RequestEvaluation evaluations={data?.evaluacion} />
+                  <RequestEvaluation
+                    evaluations={state.request?.evaluacion || []}
+                  />
                 </div>
               </div>
             </div>

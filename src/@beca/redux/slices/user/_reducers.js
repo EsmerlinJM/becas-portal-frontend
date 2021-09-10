@@ -7,8 +7,14 @@ import {
   addFavorites,
   deleteFavorite,
   updateUser,
+  createEducation,
+  clearUser,
 } from "./_actions";
-import { reducerGenerator } from "../../../shared/utils/reducer-generator";
+import {
+  reducerGenerator,
+  rejected,
+  fulfilled,
+} from "../../../shared/utils/reducer-generator";
 import { initialState } from "../../../shared/utils/initial-state";
 
 const actions = [
@@ -17,7 +23,6 @@ const actions = [
   { action: logoutUser, key: "one" },
   { action: updateUser, key: "one" },
 ];
-
 const reducers = reducerGenerator(actions);
 
 const user = createSlice({
@@ -25,13 +30,21 @@ const user = createSlice({
   initialState,
   extraReducers: {
     ...reducers,
-    [addFavorites]: (state, { payload }) => ({
-      ...state,
-      favorites: {
-        data: payload,
-        status: "completed",
-      },
-    }),
+    [clearUser]: () => initialState,
+    [createEducation.rejected]: rejected({ key: "one" }),
+    [createEducation.fulfilled]: (state, { payload }) => {
+      return {
+        ...state,
+        one: {
+          data: {
+            ...state.one.data,
+            formulario_answers: payload,
+          },
+          status: "completed",
+        },
+      };
+    },
+    [addFavorites]: fulfilled({ key: "favorites" }),
     [deleteFavorite.fulfilled]: (state, { payload }) => {
       const filtered = state.favorites.data.filter(
         (it) => it.id !== payload.id

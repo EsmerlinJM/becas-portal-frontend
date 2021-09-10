@@ -31,6 +31,7 @@ export const getProfile = async (token) => {
 export const logOut = async (history) => {
   try {
     const { token } = getAuth();
+    if (!token) return {};
     await fetch(`${process.env.REACT_APP_API_URL}/profile/logout`, {
       method: "post",
       headers: new Headers({
@@ -40,22 +41,35 @@ export const logOut = async (history) => {
     history && logoutUser(history);
     return {};
   } catch (error) {
+    history && logoutUser(history);
     return {};
   }
 };
 
 export const updateProfile = async (oayload) => {
-  const { token } = getAuth();
-  if (!token) return;
-  const body = new FormData();
-  Object.entries(oayload).map((item) => body.append(item[0], item[1]));
-  const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/update`, {
-    method: "post",
-    headers: new Headers({
-      Authorization: `Bearer ${token}`,
-    }),
-    body,
-  });
-  const { data } = await res.json();
-  return data;
+  try {
+    const { token } = getAuth();
+    if (!token) return;
+    console.log(oayload, "service");
+    const body = new FormData();
+    Object.entries(oayload).map((item) => body.append(item[0], item[1]));
+    const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/update`, {
+      method: "post",
+      headers: new Headers({
+        Authorization: `Bearer ${token}`,
+      }),
+      body,
+    });
+    const data = await res.json();
+    console.log(data, "dd");
+    return data.data;
+  } catch (error) {
+    console.log(error, error.response);
+  }
+};
+
+export const resetPass = async (email) => {
+  // /email/forgotPassword?email=ivan.firestone@fmt.com.do
+  const res = await customAxios.get(`/email/forgotPassword?email=${email}`);
+  return res;
 };

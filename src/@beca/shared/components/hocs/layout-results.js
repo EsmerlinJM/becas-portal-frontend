@@ -15,7 +15,7 @@ export default function LayoutResult({ children }) {
     <div className="fadeIn">
       {/* <AlertTop /> */}
       {status === "completed" && Object.keys(data).length ? (
-        <HeaderUser />
+        <HeaderUser user={data} />
       ) : (
         <Header2 />
       )}

@@ -21,6 +21,6 @@ export const getOneOfert = createAsyncThunk(
 );
 
 export const getAllOfferByAll = createAsyncThunk(
-  "ofert/getAll",
+  "ofert/searchByAll",
   async (value) => await searchByAll(value)
 );

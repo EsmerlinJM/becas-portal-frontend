@@ -1,41 +1,64 @@
 import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory, useLocation } from "react-router";
-import { getOneUser } from "../../../redux/slices/user/_actions";
+import {
+  clearUser,
+  getOneUser,
+  logoutUser,
+} from "../../../redux/slices/user/_actions";
 import { addFavorites } from "../../../redux/slices/user/_actions";
 import { getAuth } from "../../utils/auth";
 
 import Loading from "react-loader-spinner";
 
+const validatePathsNotLogger = [
+  "/login",
+  "/register",
+  "/reset-pass",
+  "/reset-pass/token-invalid",
+  "/reset-pass/token-valid",
+];
+
+const validataPatshLogger = [
+  "/my-requests",
+  "my-requests/detail/",
+  "/profile",
+  "/becas",
+];
+
 export default function Auth({ children }) {
   const location = useLocation();
   const history = useHistory();
   const dispatch = useDispatch();
+  const { token } = getAuth();
   const { data, status } = useSelector((state) => state.user.one);
+  const logout = async () => dispatch(await logoutUser(history));
+
   useEffect(() => {
     const fn = async (tk) => dispatch(await getOneUser(tk));
-    const { token } = getAuth();
-    if (location.pathname === "/login" || location.pathname === "/register") {
-      token && history.push("/");
-    }
     !Object.keys(data).length && token && fn(token);
-  }, [history, location.pathname, data, dispatch]);
-
-  useEffect(() => {
-    if (status === "error") {
-      localStorage.removeItem("token");
-      history.push("/");
-    }
 
     if (status === "completed") {
-      if (Object.keys(data).length)
+      if (Object.keys(data).length) {
+        console.log("con razon");
         return dispatch(addFavorites(data.favoritos || []));
-
+      }
       const fvs = JSON.parse(localStorage.getItem("favorite_offers") || "[]");
       dispatch(addFavorites(fvs));
     }
+
+    if (status === "error") {
+      logout();
+    }
     //eslint-disable-next-line
-  }, [status, history]);
+  }, [dispatch, token, status]);
+
+  if (token && validatePathsNotLogger.includes(location.pathname))
+    history.push("/");
+  if (!token && validataPatshLogger.includes(location.pathname)) {
+    dispatch(clearUser());
+    history.push("/");
+  }
 
   if (status === "loading")
     return (
@@ -43,6 +66,5 @@ export default function Auth({ children }) {
         <Loading type="MutatingDots" color="red" />
       </div>
     );
-
   return children;
 }

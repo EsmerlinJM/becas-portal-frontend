@@ -108,7 +108,10 @@ export default function Login() {
                 >
                   CREAR CUENTA
                 </span>
-                <span className="hover:border-blue-500 transition delay-75 border-b border-transparent text-blue-500 cursor-pointer">
+                <span
+                  onClick={() => history.push("/reset-pass")}
+                  className="hover:border-blue-500 transition delay-75 border-b border-transparent text-blue-500 cursor-pointer"
+                >
                   ¿Olvidaste tu contraseña?
                 </span>
               </div>

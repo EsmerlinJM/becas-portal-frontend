@@ -33,7 +33,7 @@ const save = (state, { payload: { payload, id } }) => {
   };
 };
 
-const fulfilled =
+export const fulfilled =
   (curr) =>
   (state, { payload: data }) => ({
     ...state,
@@ -43,7 +43,7 @@ const fulfilled =
     },
   });
 
-const loading = (curr) => (state, _) => ({
+export const loading = (curr) => (state, _) => ({
   ...state,
   [curr.key]: {
     data: initialState[curr.key].data,
@@ -51,7 +51,7 @@ const loading = (curr) => (state, _) => ({
   },
 });
 
-const rejected = (curr) => (state, _) => ({
+export const rejected = (curr) => (state, _) => ({
   ...state,
   [curr.key]: {
     data: initialState[curr.key].data,

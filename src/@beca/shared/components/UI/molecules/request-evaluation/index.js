@@ -1,6 +1,6 @@
 export default function RequestEvaluation({ evaluations }) {
   let total = evaluations.reduce(
-    (acc, curr) => acc + curr.evaluation.top_score || 0,
+    (acc, curr) => acc + curr.evaluation?.top_score || 0,
     0
   );
   const coverage = (total / evaluations.length).toFixed(0);

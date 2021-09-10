@@ -2,7 +2,7 @@ import OfferDetail from "../offert-detail";
 import OfferRequirement from "../offer-requirement";
 import TabComponent from "../../molecules/tab";
 
-export default function OfferDetailTab({ item }) {
+export default function OfferDetailTab({ item, message }) {
   return (
     <div className="mx-2">
       <>
@@ -13,6 +13,7 @@ export default function OfferDetailTab({ item }) {
                 ? { oferta: {}, institucion: {}, schedule: {} }
                 : item
             }
+            message={message}
           />
           <OfferRequirement requirement={item.requisitos} />
         </TabComponent>

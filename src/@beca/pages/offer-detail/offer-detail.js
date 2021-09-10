@@ -16,7 +16,7 @@ const objNav = {
 };
 
 export default function OfferDetail() {
-  const [{ data, status }] = useAction();
+  const [{ data, status, message }] = useAction();
   return (
     <>
       <Helmet>
@@ -33,7 +33,7 @@ export default function OfferDetail() {
                 <Loading type="MutatingDots" color="red" />
               </div>
             ) : (
-              <OfferDetaill item={data} />
+              <OfferDetaill item={data} message={message.message} />
             )}
           </div>
         </div>

@@ -4,7 +4,7 @@ export default function TabComponent({ headersTab, children }) {
   return (
     <TAB.Group>
       <TAB.List>
-        {headersTab.map((header, i) => (
+        {headersTab.map((header) => (
           <TAB
             className={({ selected }) =>
               `outline-none text-sm  rounded px-4  py-2  font-semibold  ${
@@ -13,7 +13,7 @@ export default function TabComponent({ headersTab, children }) {
                   : "bg-transparent  text-gray-900"
               }`
             }
-            key={i}
+            key={header}
           >
             {header}
           </TAB>

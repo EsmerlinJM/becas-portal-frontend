@@ -7,6 +7,7 @@ import register from "./pages/register";
 import login from "./pages/login";
 import favorites from "./pages/favorite";
 import myRequests from "./pages/request";
+import resetPass from "./pages/reset-pass/";
 
 const routes = [
   ...homeRoutes,
@@ -18,6 +19,7 @@ const routes = [
   ...login,
   ...favorites,
   ...myRequests,
+  ...resetPass,
 ];
 
 export default routes;

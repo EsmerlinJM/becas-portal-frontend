@@ -1,6 +1,7 @@
 import { formatDate } from "../../../../utils/format-date";
 
-export default function WorkExperience({ item }) {
+export default function WorkExperience({ item, onChange }) {
+  console.log(item);
   return (
     <>
       <div className=" py-3 m-auto grid grid-cols-1 gap-y-4">
@@ -8,10 +9,10 @@ export default function WorkExperience({ item }) {
           <div>
             <p className="mb-1.5 font-semibold">Nombre de la Empresa</p>
             <input
+              onChange={({ target }) => onChange(target)}
               className="text-xs border w-full rounded px-3 py-2 outline-none"
-              type="text"
-              name="carrera"
-              defaultValue={item.empresa}
+              name="empresa"
+              value={item.empresa}
               placeholder="Ej. Banco Popular"
             />
           </div>
@@ -20,8 +21,9 @@ export default function WorkExperience({ item }) {
             <input
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="text"
-              name="institucion"
-              defaultValue={item.telefono}
+              name="telefono"
+              value={item.telefono}
+              onChange={({ target }) => onChange(target)}
               placeholder="809-000-0000"
             />
           </div>
@@ -31,8 +33,9 @@ export default function WorkExperience({ item }) {
               <input
                 className="text-xs border w-full rounded px-3 py-2 outline-none"
                 type="text"
-                name="institucion"
-                defaultValue={item.posicion}
+                name="posicion"
+                value={item.posicion}
+                onChange={({ target }) => onChange(target)}
                 placeholder="Ej. Desarrollador Web"
               />
             </div>
@@ -45,9 +48,13 @@ export default function WorkExperience({ item }) {
                 <input
                   className="mr-1.5"
                   type="radio"
-                  name="contrato"
-                  id="fijo"
-                  checked={item.tipo_contrato === "Indefinido"}
+                  onChange={() =>
+                    onChange({ name: "tipo_contrato", value: "Indefinido" })
+                  }
+                  checked={
+                    item.tipo_contrato === "Indefinido" ||
+                    item.tipo_contrato === "Fijo"
+                  }
                 />
                 Fijo / Indefinido
               </label>
@@ -58,8 +65,10 @@ export default function WorkExperience({ item }) {
                 <input
                   className="mr-1.5"
                   type="radio"
-                  name="contrato"
-                  id="temp"
+                  onChange={() =>
+                    onChange({ name: "tipo_contrato", value: "Temporal" })
+                  }
+                  checked={item.tipo_contrato === "Temporal"}
                 />
                 Temporal
               </label>
@@ -70,8 +79,10 @@ export default function WorkExperience({ item }) {
                 <input
                   className="mr-1.5"
                   type="radio"
-                  name="contrato"
-                  id="pasante"
+                  onChange={() =>
+                    onChange({ name: "tipo_contrato", value: "Pasantia" })
+                  }
+                  checked={item.tipo_contrato === "Pasantia"}
                 />
                 Pasantía
               </label>
@@ -81,19 +92,21 @@ export default function WorkExperience({ item }) {
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">Fecha de ingreso</p>
               <input
-                defaultValue={formatDate(item.fecha_entrada)}
+                name="fecha_entrada"
+                value={formatDate(item.fecha_entrada)}
+                onChange={({ target }) => onChange(target)}
                 className="text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none"
                 type="date"
-                name="fechaingreso"
               />
             </div>
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">Fecha de salida</p>
               <input
-                defaultValue={formatDate(item.fecha_salida)}
+                name="fecha_salida"
+                value={formatDate(item.fecha_salida)}
+                onChange={({ target }) => onChange(target)}
                 className="text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none"
                 type="date"
-                name="fechasalida"
               />
               <label
                 className="flex items-center text-xs text-gray-600 mt-1"
@@ -102,21 +115,25 @@ export default function WorkExperience({ item }) {
                 <input
                   className="mr-1.5 mt-0.5"
                   type="checkbox"
-                  name="actual"
-                  id="actual"
+                  value=""
+                  name="fecha_salida"
                   checked={!item.fecha_salida}
+                  onChange={({ target }) => onChange(target)}
                 />
                 Actualmente estoy laborando aquí
               </label>
             </div>
           </div>
           <div>
-            <p className="mb-1.5 font-semibold">Documentación</p>
+            <p className="mb-1.5 font-semibold">Documento</p>
             <input
+              name="documento"
+              onChange={({ target }) =>
+                onChange({ name: target.name, value: target.files })
+              }
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="file"
               accept="application/pdf"
-              name="indice"
               placeholder="Documentación"
             />
           </div>

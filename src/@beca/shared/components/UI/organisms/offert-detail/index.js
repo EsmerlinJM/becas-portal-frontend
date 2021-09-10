@@ -1,6 +1,6 @@
 import ButtonApply from "../../atoms/button-apply";
 
-export default function OfferDetail({ item }) {
+export default function OfferDetail({ item, message }) {
   const {
     id,
     oferta: {
@@ -18,7 +18,7 @@ export default function OfferDetail({ item }) {
     },
     institucion: { name, contacto_telefono, direccion, web },
   } = item;
-
+  console.log(message);
   const redirect = () => {
     if (web) window.location.href = web;
   };
@@ -131,7 +131,11 @@ export default function OfferDetail({ item }) {
           </div>
 
           <div className="aplicar flex justify-center pt-4">
-            <ButtonApply offerId={id} />
+            {message ? (
+              <p className="font-bold">{message}</p>
+            ) : (
+              <ButtonApply offerId={id} />
+            )}
           </div>
         </div>
       </div>

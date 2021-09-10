@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import {
   announcementGetAll,
   setRecent,
+  setAnnouncementMessage,
 } from "../../../../../redux/slices/announcement/_actions";
 import Loader from "react-loader-spinner";
 
@@ -26,9 +27,18 @@ export default function OpenCallsBlock({ id }) {
 
   useEffect(() => {
     if (id) {
-      const item = data.find((item) => item.id === id);
-      item && dispatch(setRecent(item));
+      const item = data.find((item) => +item.id === +id);
+
+      if (item) {
+        dispatch(setRecent(item));
+        item.status?.toLowerCase() === "cerrada"
+          ? dispatch(
+              setAnnouncementMessage({ message: "Convocatoria cerrada" })
+            )
+          : dispatch(setAnnouncementMessage({}));
+      }
     }
+
     //eslint-disable-next-line
   }, [id, status]);
 

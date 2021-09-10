@@ -6,6 +6,7 @@ import { getOneOfert } from "../../redux/slices/ofert/_actions";
 export default function useAction() {
   const { id } = useParams();
   const { data, status } = useSelector((state) => state.offers.one);
+  const { data: message } = useSelector((state) => state.announcement.message);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -15,5 +16,5 @@ export default function useAction() {
     id && fn();
   }, [id, dispatch]);
 
-  return [{ data, status }];
+  return [{ data, status, message }];
 }

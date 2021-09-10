@@ -1,24 +1,50 @@
 import { useForm } from "react-hook-form";
+import { formatDate } from "../../../../utils/format-date";
+import { useDispatch } from "react-redux";
+import { updateUser } from "../../../../../redux/slices/user/_actions";
+
 import ProvinceSelect from "../../atoms/province-select";
 import MunicipalitySelect from "../../atoms/municipality-by-province-select";
 import CountrySelect from "../../atoms/country-select";
-import { formatDate } from "../../../../utils/format-date";
+
+import toast from "react-hot-toast";
 
 export default function FormPersonalData({ user, onClick }) {
+  const dispatch = useDispatch();
+
   const {
     handleSubmit,
     register,
     setValue,
     watch,
-    // formState: { errors },
-  } = useForm();
-  const action = handleSubmit((data) => {
-    console.log(data, "jiji");
-    // onClick(data);
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      country_id: user.country.id,
+      contact_phone: user.contact_phone,
+      document_id: user.document_id,
+      last_name: user.last_name,
+      name: user.name,
+      municipality_id: user.municipality?.id,
+      province_id: user.province?.id,
+      address: user.address,
+    },
   });
+
+  const action = handleSubmit(async (data) => {
+    console.log(data, "com");
+    if (!data.country_id) return toast.error("Seleccionar país");
+    if (!data["province_id"]) data["province_id"] = 1;
+    if (!data["municipality_id"]) data["municipality_id"] = 1;
+
+    dispatch(await updateUser(data));
+    // onClick && onClick(data);
+  });
+
   const provinceId = watch("province_id");
   const municipalityId = watch("municipality_id");
   const countryId = watch("country_id");
+  const gender = watch("genero");
 
   return (
     <>
@@ -30,9 +56,10 @@ export default function FormPersonalData({ user, onClick }) {
             </p>
             <input
               {...register("document_id", { required: true })}
-              className="text-xs border w-full rounded px-3 py-3 outline-none mb-3"
+              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+                errors.document_id ? "border-red-500" : ""
+              }`}
               type="text"
-              name="cedula"
               defaultValue={user.document_id}
               maxLength={11}
               minLength={11}
@@ -42,35 +69,33 @@ export default function FormPersonalData({ user, onClick }) {
           <div>
             <p className="mb-1.5 font-semibold">Telefono</p>
             <input
-              defaultValue={user.contact_phone}
               {...register("contact_phone")}
-              className="text-xs border w-full rounded px-3 py-3 outline-none mb-3"
+              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3`}
               type="text"
               name="passport"
-              id
               placeholder="8099973338"
             />
           </div>
           <div>
             <p className="mb-1.5 font-semibold">Nombres</p>
             <input
-              defaultValue={user.name}
+              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+                errors.name ? "border-red-500" : ""
+              }`}
               {...register("name", { required: true })}
-              className="text-xs border w-full rounded px-3 py-3 outline-none mb-3"
               type="text"
-              name="nombre"
               placeholder="Isbel Cristina"
             />
           </div>
           <div>
             <p className="mb-1.5 font-semibold">Apellidos</p>
             <input
-              defaultValue={user.last_name}
-              {...register("last_name", { required: true })}
-              className="text-xs border w-full rounded px-3 py-3 outline-none mb-3"
               type="text"
-              name="apellido"
               placeholder="Bautista Durán"
+              {...register("last_name", { required: true })}
+              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+                errors.last_name ? "border-red-500" : ""
+              }`}
             />
           </div>
           <div>
@@ -78,34 +103,56 @@ export default function FormPersonalData({ user, onClick }) {
             <input
               defaultValue={formatDate(user.born_date)}
               {...register("born_date", { required: true })}
-              className="text-xs text-gray-400 border w-full rounded px-3 py-3 outline-none mb-3"
+              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+                errors.born_date ? "border-red-500" : ""
+              }`}
               type="date"
             />
           </div>
-          {/* <div>
-            <p className="mb-1.5 font-semibold">Nacionalidad</p>
-            <input
-              defaultValue={user.nacionalidad}
-              className="text-xs border w-full rounded px-3 py-3 outline-none mb-3"
-              type="text"
-              name="nacionalidad"
-              placeholder="República Dominicana"
-            />
-          </div> */}
-
+          <div>
+            <p className="mb-1.5 font-semibold">Género</p>
+            <label
+              className="flex items-center text-xs text-gray-400"
+              htmlFor="fem"
+            >
+              <input
+                {...register("genero", { required: true })}
+                className="mr-1.5"
+                type="radio"
+                value="femenino"
+                checked={gender === "femenino" || user.genero === "femenino"}
+              />
+              Femenino
+            </label>
+            <label
+              className="flex items-center text-xs text-gray-400 mb-3"
+              htmlFor="masc"
+            >
+              <input
+                {...register("genero", { required: true })}
+                className="mr-1.5"
+                type="radio"
+                value="masculino"
+                checked={gender === "masculino" || user.genero === "masculino"}
+              />
+              Masculino
+            </label>
+          </div>
           <div className="self-center">
             <label className="mb-1.5 font-semibold">País</label>
 
             <CountrySelect
-              id={countryId || user.country.id}
+              id={countryId || user.country?.id}
               onSelect={(_, item) => setValue("country_id", item.id)}
             />
           </div>
           <div>
             <p className="mb-1.5 font-semibold">Dirección</p>
             <input
-              defaultValue={user.address}
-              className="text-xs border w-full rounded px-3 py-3 outline-none mb-3"
+              {...register("address")}
+              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+                errors.address ? "border-red-500" : ""
+              }`}
               type="text"
               name="address"
               placeholder="Dirección"
@@ -132,37 +179,6 @@ export default function FormPersonalData({ user, onClick }) {
             </>
           )}
 
-          {/* <div>
-            <p className="mb-1.5 font-semibold">Género</p>
-            <label
-              className="flex items-center text-xs text-gray-400"
-              htmlFor="fem"
-            >
-              <input
-                defaultValue={user.genero}
-                {...register("genero", { required: true })}
-                className="mr-1.5"
-                type="radio"
-                name="gender"
-                id="fem"
-              />
-              Femenino
-            </label>
-            <label
-              className="flex items-center text-xs text-gray-400 mb-3"
-              htmlFor="masc"
-            >
-              <input
-                defaultValue={user.born_date}
-                {...register("genero", { required: true })}
-                className="mr-1.5"
-                type="radio"
-                name="gender"
-                id="masc"
-              />
-              Masculino
-            </label>
-          </div> */}
           {/* <div>
             <p className="mb-1.5 font-semibold">Estado Civil</p>
             <label
