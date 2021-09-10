@@ -4,7 +4,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { getOneRequest } from "../../../redux/slices/my-requests/_actions";
 import { arrValidateField } from "../../../shared/components/UI/organisms/form-education-list";
 import { arrValidateField as validateField } from "../../../shared/components/UI/organisms/form-work-experience-list";
-import { createEducation } from "../../../redux/slices/user/_actions";
+import {
+  saveEducation,
+  saveWorkExperience,
+} from "../../../redux/slices/user/_actions";
 import reducer, { initialState } from "./reducer";
 import { deleteEducation } from "../../../shared/services/education";
 import { deleteWorkExperience } from "../../../shared/services/work-exprience";
@@ -99,8 +102,8 @@ export default function useAction(id) {
     });
     let i = 0;
     const objVal = {
-      formsEducation: { val: arrValidateField, action: createEducation },
-      formsWorkExperience: { val: validateField, action: () => {} },
+      formsEducation: { val: arrValidateField, action: saveEducation },
+      formsWorkExperience: { val: validateField, action: saveWorkExperience },
     };
 
     const obj = objVal[key];

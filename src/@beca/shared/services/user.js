@@ -48,7 +48,6 @@ export const updateProfile = async (oayload) => {
   try {
     const { token } = getAuth();
     if (!token) return;
-    console.log(oayload, "service");
     const body = new FormData();
     Object.entries(oayload).map((item) => body.append(item[0], item[1]));
     const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/update`, {

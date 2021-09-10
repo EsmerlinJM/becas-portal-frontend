@@ -1,9 +1,8 @@
 import FiledAnswer from "../../atoms/field-answer";
 export default function FormFieldAnswer({ forms, onChange, save }) {
-  console.log(forms);
   return (
     <div className="grid grid-cols-2  p-5">
-      {forms &&
+      {forms && forms.length ? (
         forms.map((item, i) => (
           <FiledAnswer
             key={i}
@@ -23,14 +22,19 @@ export default function FormFieldAnswer({ forms, onChange, save }) {
             name={item.formulario_detail_name}
             data={item.formulario_detail_data}
           />
-        ))}
+        ))
+      ) : (
+        <p>No hay pregunstas hasta ahora.</p>
+      )}
       <div className="md:col-span-2 mt-7 flex md:justify-end justify-center">
-        <button
-          onClick={() => save("formsInstitution")}
-          className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
-        >
-          Guardar
-        </button>
+        {forms && forms.length && (
+          <button
+            onClick={() => save("formsInstitution")}
+            className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
+          >
+            Guardar
+          </button>
+        )}
       </div>
     </div>
   );

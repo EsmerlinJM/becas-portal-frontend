@@ -40,7 +40,6 @@ export default function Auth({ children }) {
 
     if (status === "completed") {
       if (Object.keys(data).length) {
-        console.log("con razon");
         return dispatch(addFavorites(data.favoritos || []));
       }
       const fvs = JSON.parse(localStorage.getItem("favorite_offers") || "[]");

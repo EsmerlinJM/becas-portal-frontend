@@ -1,7 +1,6 @@
 import { formatDate } from "../../../../utils/format-date";
 
 export default function FormEducation({ item, onChange }) {
-  console.log(item);
   return (
     <>
       <div className="py-3 m-auto grid grid-cols-1 gap-y-4">

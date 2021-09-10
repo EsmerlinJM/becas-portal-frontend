@@ -1,7 +1,6 @@
 import { formatDate } from "../../../../utils/format-date";
 
 export default function WorkExperience({ item, onChange }) {
-  console.log(item);
   return (
     <>
       <div className=" py-3 m-auto grid grid-cols-1 gap-y-4">
@@ -129,13 +128,24 @@ export default function WorkExperience({ item, onChange }) {
             <input
               name="documento"
               onChange={({ target }) =>
-                onChange({ name: target.name, value: target.files })
+                onChange({ name: target.name, value: target.files[0] })
               }
               className="text-xs border w-full rounded px-3 py-2 outline-none"
               type="file"
-              accept="application/pdf"
+              accept="image/*,.pdf"
               placeholder="Documentación"
             />
+            {item.documento_url && (
+              <a
+                className="hover:border-blue-500 transition delay-75 border-b border-transparent text-blue-500 cursor-pointer"
+                rel="noreferrer"
+                href={item.documento_url}
+                target="_blank"
+              >
+                {" "}
+                Ver documento{" "}
+              </a>
+            )}
           </div>
         </span>
       </div>

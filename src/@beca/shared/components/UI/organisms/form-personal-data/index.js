@@ -32,7 +32,6 @@ export default function FormPersonalData({ user, onClick }) {
   });
 
   const action = handleSubmit(async (data) => {
-    console.log(data, "com");
     if (!data.country_id) return toast.error("Seleccionar país");
     if (!data["province_id"]) data["province_id"] = 1;
     if (!data["municipality_id"]) data["municipality_id"] = 1;

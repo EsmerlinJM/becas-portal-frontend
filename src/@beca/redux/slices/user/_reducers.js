@@ -7,8 +7,9 @@ import {
   addFavorites,
   deleteFavorite,
   updateUser,
-  createEducation,
   clearUser,
+  saveEducation,
+  saveWorkExperience,
 } from "./_actions";
 import {
   reducerGenerator,
@@ -31,14 +32,38 @@ const user = createSlice({
   extraReducers: {
     ...reducers,
     [clearUser]: () => initialState,
-    [createEducation.rejected]: rejected({ key: "one" }),
-    [createEducation.fulfilled]: (state, { payload }) => {
+    [saveEducation.rejected]: rejected({ key: "one" }),
+    [saveEducation.fulfilled]: (state, { payload }) => {
       return {
         ...state,
         one: {
           data: {
             ...state.one.data,
             formacion_academica: payload,
+          },
+          status: "completed",
+        },
+      };
+    },
+    // [createEducation.fulfilled]: (state, { payload }) => {
+    //   return {
+    //     ...state,
+    //     one: {
+    //       data: {
+    //         ...state.one.data,
+    //         formacion_academica: payload,
+    //       },
+    //       status: "completed",
+    //     },
+    //   };
+    // },
+    [saveWorkExperience.fulfilled]: (state, { payload }) => {
+      return {
+        ...state,
+        one: {
+          data: {
+            ...state.one.data,
+            experiencia_laboral: payload,
           },
           status: "completed",
         },
@@ -57,6 +82,7 @@ const user = createSlice({
         },
       };
     },
+
     [addFavorite.fulfilled]: (state, { payload }) => {
       return {
         ...state,

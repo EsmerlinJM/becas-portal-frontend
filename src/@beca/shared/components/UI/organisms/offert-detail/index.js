@@ -18,7 +18,6 @@ export default function OfferDetail({ item, message }) {
     },
     institucion: { name, contacto_telefono, direccion, web },
   } = item;
-  console.log(message);
   const redirect = () => {
     if (web) window.location.href = web;
   };

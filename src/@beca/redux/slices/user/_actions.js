@@ -1,6 +1,6 @@
 import { createMessage as create } from "../../../shared/services/message";
 import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
-import { createEducation as crtEducation } from "../../../shared/services/education";
+import { saveEducation as savEducation } from "../../../shared/services/education";
 
 import {
   addFavorite as createFavorite,
@@ -11,6 +11,7 @@ import {
   logOut,
   updateProfile,
 } from "../../../shared/services/user";
+import { saveWorkExperience as saveExperience } from "../../../shared/services/work-exprience";
 
 export const createMessage = createAsyncThunk(
   "user/message",
@@ -43,7 +44,12 @@ export const deleteFavorite = createAsyncThunk(
   async (id) => await removeFav(id)
 );
 
-export const createEducation = createAsyncThunk(
+export const saveEducation = createAsyncThunk(
   "user/createEducation",
-  async (payload) => await crtEducation(payload)
+  async (payload) => await savEducation(payload)
+);
+
+export const saveWorkExperience = createAsyncThunk(
+  "user/saveWorkExperience",
+  async (payload) => await saveExperience(payload)
 );

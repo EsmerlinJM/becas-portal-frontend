@@ -1,7 +1,7 @@
 import { getAuth } from "../utils/auth";
 import { authAxios } from "../utils/customAxios";
 
-export const createEducation = async (payload) => {
+export const saveEducation = async (payload) => {
   try {
     const arrCreate = [];
     const arrUpdate = [];

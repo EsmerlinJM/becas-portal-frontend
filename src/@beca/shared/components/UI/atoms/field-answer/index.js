@@ -110,7 +110,6 @@ export default function FiledAnswer({
       </div>
     );
   }
-  console.log(type);
   return (
     <div className="flex flex-col mx-2 my-2">
       <p className="mb-1.5 font-semibold text-xs ">{name}</p>

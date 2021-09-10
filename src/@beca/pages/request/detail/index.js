@@ -34,8 +34,8 @@ export default function RequestDetail() {
     "Datos personales",
     "Formación académica",
     "Experiencia laboral",
-    "Formulario",
     "Datos socioeconómicos",
+    "Formulario",
   ];
 
   const arrTabs = [
@@ -70,23 +70,24 @@ export default function RequestDetail() {
         })
       }
     />,
+    <p> "Datos socioeconómicos",</p>,
     <FormFieldAnswer
       onChange={actions.dispatch2}
       forms={state.formsInstitution}
       save={actions.save}
       key={5}
     />,
-    <p> "Datos socioeconómicos",</p>,
   ];
 
   state.request.status && !exist && arrTabs.splice(0, 1);
   state.request.status && !exist && headerTabs.splice(0, 1);
-  state.request.status &&
+
+  status === "completed" &&
     !state.formsInstitution.length &&
-    headerTabs.splice(headerTabs.length - 2, 1);
-  state.request.status &&
+    headerTabs.splice(headerTabs.length - 1, 1);
+  status === "completed" &&
     !state.formsInstitution.length &&
-    arrTabs.splice(headerTabs.length - 2, 1);
+    arrTabs.splice(arrTabs.length - 1, 1);
 
   return (
     <>

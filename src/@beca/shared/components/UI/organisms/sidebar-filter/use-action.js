@@ -14,7 +14,6 @@ export default function useAction(qp, search) {
 
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.offers.all);
-  console.log(data);
   const onSelect = (type, { name, id }) => {
     name = removeAccents(name);
     const qr = qp[type];

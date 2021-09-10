@@ -18,8 +18,7 @@ export default function ResetPass() {
     toast.promise(resetPass(email), {
       loading: <b>Enviando...</b>,
       success: <b>Enviando exitosamente!</b>,
-      error: (err) => {
-        console.log(err);
+      error: () => {
         return <b>Ups, ha ocurrido un error!</b>;
       },
     });
