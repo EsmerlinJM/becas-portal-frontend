@@ -53,3 +53,4 @@ export const saveWorkExperience = createAsyncThunk(
   "user/saveWorkExperience",
   async (payload) => await saveExperience(payload)
 );
+export const readNotification = createAction("user/readNotification");

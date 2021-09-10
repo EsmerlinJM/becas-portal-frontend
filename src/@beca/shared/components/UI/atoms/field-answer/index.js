@@ -98,15 +98,23 @@ export default function FiledAnswer({
         <input
           type={type}
           name={name}
-          // value={canditate_answer}
-
           onChange={({ target }) =>
             target.files &&
             target.files.length &&
             onSetValue({ value: target.files[0] })
           }
           className=" text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none "
-        />{" "}
+        />
+        {canditate_answer && (
+          <a
+            className="hover:border-blue-500 text-xs transition delay-75 border-b border-transparent text-blue-500 cursor-pointer"
+            rel="noreferrer"
+            href={canditate_answer}
+            target="_blank"
+          >
+            Ver
+          </a>
+        )}
       </div>
     );
   }

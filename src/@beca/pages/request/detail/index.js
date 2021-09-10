@@ -29,13 +29,14 @@ export default function RequestDetail() {
   const [{ state, status }, actions] = useAction(id);
 
   const exist = statuColors[removeAccents(state.request.status || "")];
+  const allExist = state.request.status && !exist;
   const headerTabs = [
     "Resultados",
     "Datos personales",
     "Formación académica",
     "Experiencia laboral",
-    "Datos socioeconómicos",
-    "Formulario",
+    // "Datos socioeconómicos",
+    "Requisitos",
   ];
 
   const arrTabs = [
@@ -70,7 +71,10 @@ export default function RequestDetail() {
         })
       }
     />,
-    <p> "Datos socioeconómicos",</p>,
+    // <p className="p-5" key={6}>
+    //   {" "}
+    //   No hay campos,
+    // </p>,
     <FormFieldAnswer
       onChange={actions.dispatch2}
       forms={state.formsInstitution}
@@ -79,8 +83,8 @@ export default function RequestDetail() {
     />,
   ];
 
-  state.request.status && !exist && arrTabs.splice(0, 1);
-  state.request.status && !exist && headerTabs.splice(0, 1);
+  allExist && arrTabs.splice(0, 1);
+  allExist && headerTabs.splice(0, 1);
 
   status === "completed" &&
     !state.formsInstitution.length &&
@@ -103,14 +107,16 @@ export default function RequestDetail() {
                 onClick={(item) => console.log(item)}
               />
               <div className="mt-10 flex justify-between grid grid-cols-12 gap-4 ">
-                <div className="col-span-10">
+                <div className={!allExist ? "col-span-10" : "col-span-12"}>
                   <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
                 </div>
-                <div className="col-span-2 shadow">
-                  <RequestEvaluation
-                    evaluations={state.request?.evaluacion || []}
-                  />
-                </div>
+                {!allExist && (
+                  <div className="col-span-2 shadow">
+                    <RequestEvaluation
+                      evaluations={state.request?.evaluacion || []}
+                    />
+                  </div>
+                )}
               </div>
             </div>
           ) : (

@@ -4,7 +4,7 @@ import ButtonBadge from "../../atoms/button-bagde";
 
 import { AiTwotoneStar } from "react-icons/ai";
 import { FiUser } from "react-icons/fi";
-import { SiGooglescholar } from "react-icons/si";
+// import { SiGooglescholar } from "react-icons/si";
 import { RiNewspaperLine } from "react-icons/ri";
 import { AiOutlineLogout } from "react-icons/ai";
 // import { GrConfigure } from "react-icons/gr";
@@ -17,19 +17,22 @@ import { useDispatch, useSelector } from "react-redux";
 export default function UserOptions({ user, history }) {
   const dispatch = useDispatch();
   const favorites = useSelector((state) => state.user.favorites.data.length);
+  const notifications = useSelector(
+    (state) => state.user.one.data?.notificaciones?.length
+  );
   const userOptions = [
     {
       id: 1,
       name: "Mi Perfil",
-      href: () => history.push("/"),
+      href: () => history.push("/profile"),
       icon: FiUser,
     },
-    {
-      id: 2,
-      name: "Mi beca",
-      href: () => history.push("/"),
-      icon: SiGooglescholar,
-    },
+    // {
+    //   id: 2,
+    //   name: "Mi beca",
+    //   href: () => history.push("/"),
+    //   icon: SiGooglescholar,
+    // },
     {
       id: 3,
       name: "Mis solicitudes",
@@ -59,8 +62,8 @@ export default function UserOptions({ user, history }) {
           </ButtonBadge>
         </div>
 
-        <div className="mt-1">
-          <ButtonBadge num={1}>
+        <div className="mt-1" onClick={() => history.push("/notifications")}>
+          <ButtonBadge num={notifications || 0}>
             <IoNotificationsSharp size={21} color="" />
           </ButtonBadge>
         </div>

@@ -2,7 +2,6 @@ import IconRemove from "../../../../../../img/remove.svg";
 import FormWorkExperience from "../form-work-experience";
 
 import { GoPlus } from "react-icons/go";
-import { toast } from "react-hot-toast";
 
 export const arrValidateField = [
   "empresa",
@@ -21,9 +20,6 @@ export default function FormWorkExperienceList({
 }) {
   const setValue = (payload, index) => {
     const { name, value } = payload;
-    if (arrValidateField.includes(name) && !value) {
-      return toast.error(`El campo ${name.replace("_", " ")} es obligatorio`);
-    }
     onChange({
       type: "ON_CHANGE_FORM",
       key: "formsWorkExperience",
@@ -45,7 +41,7 @@ export default function FormWorkExperienceList({
               <div
                 onClick={() => onDelete(i, "formsWorkExperience")}
                 className="absolute cursor-pointer z-20 px-2 py-1"
-                style={{ bottom: "290px", right: "-15px" }}
+                style={{ bottom: "305px", right: "-15px" }}
               >
                 <img src={IconRemove} alt="" width="30px" />
               </div>

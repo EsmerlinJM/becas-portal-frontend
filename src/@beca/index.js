@@ -8,6 +8,8 @@ import login from "./pages/login";
 import favorites from "./pages/favorite";
 import myRequests from "./pages/request";
 import resetPass from "./pages/reset-pass/";
+import profile from "./pages/profile";
+import notifications from "./pages/notifications";
 
 const routes = [
   ...homeRoutes,
@@ -20,6 +22,8 @@ const routes = [
   ...favorites,
   ...myRequests,
   ...resetPass,
+  ...profile,
+  ...notifications,
 ];
 
 export default routes;

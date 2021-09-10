@@ -49,7 +49,7 @@ export default function useAction() {
     dispatch2({
       type: "INIT",
       payload: {
-        items: data.slice(0, screenNum),
+        items: (data || []).slice(0, screenNum),
         active: 1,
         screens: scrns,
         loading: false,

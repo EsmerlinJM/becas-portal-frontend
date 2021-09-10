@@ -7,7 +7,7 @@ import ProvinceSelect from "../../atoms/province-select";
 import MunicipalitySelect from "../../atoms/municipality-by-province-select";
 import CountrySelect from "../../atoms/country-select";
 
-import toast from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 export default function FormPersonalData({ user, onClick }) {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export default function FormPersonalData({ user, onClick }) {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      country_id: user.country.id,
+      country_id: user.country?.id,
       contact_phone: user.contact_phone,
       document_id: user.document_id,
       last_name: user.last_name,
@@ -28,15 +28,16 @@ export default function FormPersonalData({ user, onClick }) {
       municipality_id: user.municipality?.id,
       province_id: user.province?.id,
       address: user.address,
+      born_date: formatDate(user.born_date),
     },
   });
-
+  console.log(user);
   const action = handleSubmit(async (data) => {
     if (!data.country_id) return toast.error("Seleccionar país");
     if (!data["province_id"]) data["province_id"] = 1;
     if (!data["municipality_id"]) data["municipality_id"] = 1;
-
     dispatch(await updateUser(data));
+    toast.success("Guardado correctamente!");
     // onClick && onClick(data);
   });
 
@@ -71,7 +72,6 @@ export default function FormPersonalData({ user, onClick }) {
               {...register("contact_phone")}
               className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3`}
               type="text"
-              name="passport"
               placeholder="8099973338"
             />
           </div>
@@ -100,7 +100,6 @@ export default function FormPersonalData({ user, onClick }) {
           <div>
             <p className="mb-1.5 font-semibold">Fecha de nacimiento</p>
             <input
-              defaultValue={formatDate(user.born_date)}
               {...register("born_date", { required: true })}
               className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
                 errors.born_date ? "border-red-500" : ""
@@ -153,7 +152,6 @@ export default function FormPersonalData({ user, onClick }) {
                 errors.address ? "border-red-500" : ""
               }`}
               type="text"
-              name="address"
               placeholder="Dirección"
             />
           </div>

@@ -8,6 +8,7 @@ export const deleteWorkExperience = async (id) => {
 };
 
 export const saveWorkExperience = async (payload) => {
+  console.log(payload, "service");
   try {
     const arrCreate = [];
     const arrUpdate = [];
@@ -17,9 +18,11 @@ export const saveWorkExperience = async (payload) => {
       const body2 = new FormData();
 
       if (item.id) {
-        Object.entries({ ...item, experiencia: item.id }).map((it) =>
-          body1.append(it[0], it[1])
-        );
+        Object.entries({
+          ...item,
+          experiencia: item.id,
+          fecha_salida: item.fecha_salida || "",
+        }).map((it) => body1.append(it[0], it[1]));
         arrUpdate.push(body1);
       } else {
         Object.entries(item).map((it) => body2.append(it[0], it[1]));

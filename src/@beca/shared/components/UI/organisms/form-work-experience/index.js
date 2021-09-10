@@ -1,6 +1,16 @@
 import { formatDate } from "../../../../utils/format-date";
+import Select from "react-select";
+
+const arrOp = [
+  { value: "RD$ 1 -10000" },
+  { value: "RD$ 10,000 – 20,000" },
+  { value: "RD$ 20,000 – 30,000" },
+  { value: "RD$ 30,000 – 40,000" },
+  { value: "Más de RD$ 50,000" },
+];
 
 export default function WorkExperience({ item, onChange }) {
+  console.log(item);
   return (
     <>
       <div className=" py-3 m-auto grid grid-cols-1 gap-y-4">
@@ -114,15 +124,30 @@ export default function WorkExperience({ item, onChange }) {
                 <input
                   className="mr-1.5 mt-0.5"
                   type="checkbox"
-                  value=""
-                  name="fecha_salida"
-                  checked={!item.fecha_salida}
-                  onChange={({ target }) => onChange(target)}
+                  checked={!item.fecha_salida || !item.fecha_salida.length}
+                  onClick={() =>
+                    onChange({ name: "fecha_salida", value: null })
+                  }
                 />
                 Actualmente estoy laborando aquí
               </label>
             </div>
           </div>
+
+          {!item.fecha_salida && (
+            <div>
+              <p className="mb-1.5 font-semibold">Rango salarial</p>
+              <Select
+                options={arrOp}
+                getOptionLabel={(item) => item.value}
+                getOptionValue={(item) => item}
+                value={{ value: item.rango_salarial }}
+                onChange={(item) =>
+                  onChange({ name: "rango_salarial", value: item.value })
+                }
+              />
+            </div>
+          )}
           <div>
             <p className="mb-1.5 font-semibold">Documento</p>
             <input

@@ -5,6 +5,7 @@ import {
   clearUser,
   getOneUser,
   logoutUser,
+  // readNotification,
 } from "../../../redux/slices/user/_actions";
 import { addFavorites } from "../../../redux/slices/user/_actions";
 import { getAuth } from "../../utils/auth";
@@ -40,7 +41,9 @@ export default function Auth({ children }) {
 
     if (status === "completed") {
       if (Object.keys(data).length) {
-        return dispatch(addFavorites(data.favoritos || []));
+        dispatch(addFavorites(data.favoritos || []));
+        // dispatch(readNotification(data.notificationes));
+        return;
       }
       const fvs = JSON.parse(localStorage.getItem("favorite_offers") || "[]");
       dispatch(addFavorites(fvs));

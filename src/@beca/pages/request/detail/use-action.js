@@ -62,17 +62,22 @@ export default function useAction(id) {
         }
         payload.push({
           aplication_form_id: item.id,
-          respuesta: item.canditate_answer,
+          answer: item.canditate_answer,
+          type: item.formulario_detail_type,
         });
       }
 
       val &&
         toast.promise(answerMultiple(payload), {
           loading: <b>Guardando...</b>,
-          success: () => {
+          success: (answers) => {
             dispatch2({
-              type: "SET_LOADING",
-              payload: false,
+              type: "ON_CHANGE_INIT",
+              payload: {
+                ...state,
+                loading: false,
+                formsInstitution: answers,
+              },
             });
             return <b>Guardado correctamente!</b>;
           },

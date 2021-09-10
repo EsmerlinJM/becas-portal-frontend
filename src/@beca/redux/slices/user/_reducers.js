@@ -10,6 +10,7 @@ import {
   clearUser,
   saveEducation,
   saveWorkExperience,
+  readNotification,
 } from "./_actions";
 import {
   reducerGenerator,
@@ -32,6 +33,13 @@ const user = createSlice({
   extraReducers: {
     ...reducers,
     [clearUser]: () => initialState,
+    [readNotification]: (state, { payload }) => ({
+      ...state,
+      one: {
+        ...state.one.data,
+        notificaciones: payload,
+      },
+    }),
     [saveEducation.rejected]: rejected({ key: "one" }),
     [saveEducation.fulfilled]: (state, { payload }) => {
       return {
@@ -45,18 +53,6 @@ const user = createSlice({
         },
       };
     },
-    // [createEducation.fulfilled]: (state, { payload }) => {
-    //   return {
-    //     ...state,
-    //     one: {
-    //       data: {
-    //         ...state.one.data,
-    //         formacion_academica: payload,
-    //       },
-    //       status: "completed",
-    //     },
-    //   };
-    // },
     [saveWorkExperience.fulfilled]: (state, { payload }) => {
       return {
         ...state,

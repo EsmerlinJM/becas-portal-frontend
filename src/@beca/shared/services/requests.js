@@ -1,5 +1,5 @@
 import { getAuth } from "../utils/auth";
-
+import { authAxios } from "../utils/customAxios";
 export const createRequest = async (convocatoria_detail_id) => {
   const { token } = getAuth();
   if (!token) return;
@@ -67,22 +67,19 @@ export const getRequest = async (aplication_id) => {
 
 export const answerMultiple = async (payload) => {
   try {
-    const { token } = getAuth();
-    const body = JSON.stringify(payload);
-    const res = await fetch(
-      `${process.env.REACT_APP_API_URL}/solicitudes/forms/answerMultiple`,
-      {
-        method: "post",
-        headers: new Headers({
-          Authorization: `Bearer ${token}`,
-          Accept: "application/json",
-          "Content-Type": "application/json",
-        }),
-        body,
-      }
-    );
-    const json = await res.json();
-    return json.data;
+    const all = [];
+    const items = [...payload];
+    for (const item of items) {
+      if (item.type === "file" && typeof item.answer === "string")
+        item.type = "text";
+      const form = new FormData();
+      Object.entries(item).map((it) => form.append(it[0], it[1]));
+      const {
+        data: { data },
+      } = await authAxios().post(`/solicitudes/forms/answer`, form);
+      all.push(data);
+    }
+    return all;
   } catch (error) {
     console.log(error.message, error.response, error, "errors");
     throw error;
