@@ -9,6 +9,15 @@ import { useHistory } from "react-router";
 import { removeAccents } from "../../../../utils/remove-accents";
 import qs from "querystring";
 
+const valPais = [
+  "Republica Dominicana",
+  "Dominican Republic",
+  "dominican republic",
+  "República Dominicana",
+  "república dominicana",
+  "republica dominicana",
+];
+
 export default function useAction(qp, search) {
   const history = useHistory();
 
@@ -34,6 +43,8 @@ export default function useAction(qp, search) {
           : filterA.join("_")
         : name,
     };
+
+    if (type === "country" && +id !== 62) delete newQuery["province"];
 
     history.push({
       pathname: "/query-result",
@@ -125,7 +136,7 @@ export default function useAction(qp, search) {
           }
         }
 
-        if (name === "country") {
+        if (name === "country" && valPais.includes(qp[name])) {
           const qr = qp[name];
           if (qr && qr.length) {
             const item = removeAccents(oferta["campus_country"]).includes(qr);

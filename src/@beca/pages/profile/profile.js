@@ -39,9 +39,9 @@ export default function Profile() {
                     <img className="w-4" src={TRASH} alt="" />
                   </button> */}
 
-                  <button className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all">
+                  {/* <button className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all">
                     Cambiar contraseña
-                  </button>
+                  </button> */}
                 </div>
               </div>
               <div className="flex flex-col lg:border-l border-blue-200 lg:pl-20">

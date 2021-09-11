@@ -1,4 +1,4 @@
-import customAxios from "../utils/customAxios";
+import customAxios, { authAxios } from "../utils/customAxios";
 import { getAuth, logOut as logoutUser } from "../utils/auth";
 
 export const createUser = async (payload) => {
@@ -46,18 +46,9 @@ export const logOut = async (history) => {
 
 export const updateProfile = async (oayload) => {
   try {
-    const { token } = getAuth();
-    if (!token) return;
     const body = new FormData();
     Object.entries(oayload).map((item) => body.append(item[0], item[1]));
-    const res = await fetch(`${process.env.REACT_APP_API_URL}/profile/update`, {
-      method: "post",
-      headers: new Headers({
-        Authorization: `Bearer ${token}`,
-      }),
-      body,
-    });
-    const data = await res.json();
+    const { data } = await authAxios().post("/profile/update", body);
     return data.data;
   } catch (error) {
     console.log(error, error.response);

@@ -22,7 +22,7 @@ export default function Navigation({ ob = obj }) {
     <div
       className={`bg-gray-50 w-full flex ${
         pathname === "/query-result" ? "justify-end" : " justify-center"
-      } p-4  border-b  text-gray-400 h-12`}
+      } p-4  border  text-gray-400 h-12`}
     >
       <div className="w-3/4 flex justify-between items-center mr-6">
         <p className="text-md ">{ob.name}</p>

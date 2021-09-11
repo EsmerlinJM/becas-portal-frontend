@@ -3,23 +3,28 @@ import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
 
 import { useHistory } from "react-router";
 import { useSelector } from "react-redux";
+import { getAuth } from "../../../../utils/auth";
+
 import HeaderUser from "../header-user";
 import InputSearchHome from "../../atoms/input-search-home";
-import { getAuth } from "../../../../utils/auth";
+import ModalInitiUser from "../user-modal-init";
 
 export default function HomeInit() {
   const { data: user, status } = useSelector((state) => state.user.one);
   const history = useHistory();
   const { token } = getAuth();
+
+  const userExist =
+    token &&
+    status === "completed" &&
+    Object.keys(user || {}).length &&
+    user.id;
+
   return (
     <>
-      {token &&
-      status === "completed" &&
-      Object.keys(user || {}).length &&
-      user.id ? (
-        <HeaderUser user={user} isHome />
-      ) : null}
+      {userExist ? <HeaderUser user={user} isHome /> : null}
       <div className="home flex">
+        {userExist && <ModalInitiUser user={user} />}
         <div className="left w-screen">
           <div className="header1 bg-white flex items-center">
             <img

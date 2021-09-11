@@ -13,7 +13,6 @@ export default function AnnouncementCard({ item = {} }) {
 
   const redirect = (payload) => {
     dispatch(setRecent(payload));
-    localStorage.setItem("color", payload.type.color);
     history.push(
       !Boolean(payload.publicada)
         ? `/query-result?id=${id}`

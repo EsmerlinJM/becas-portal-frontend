@@ -33,7 +33,9 @@ export default function Modal({
           <div
             className={` ${animated} justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none`}
           >
-            <div className={`relative  my-6 mx-auto max-w-3xl ${width} `}>
+            <div
+              className={`relative my-6 mx-auto w-11/12 sm:w-11/12 md:w-11/12 xl:${width} lg:${width}	 `}
+            >
               <div className="flex justify-end">
                 <div
                   onClick={handleClose}

@@ -11,7 +11,10 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { BiMessageSquareDetail } from "react-icons/bi";
 import { IoNotificationsSharp } from "react-icons/io5";
 
-import { logoutUser } from "../../../../../redux/slices/user/_actions";
+import {
+  logoutUser,
+  clearUser,
+} from "../../../../../redux/slices/user/_actions";
 import { useDispatch, useSelector } from "react-redux";
 
 export default function UserOptions({ user, history }) {
@@ -42,7 +45,10 @@ export default function UserOptions({ user, history }) {
     {
       id: 5,
       name: "Cerrar sesión",
-      href: async () => dispatch(await logoutUser(history)),
+      href: async () => {
+        dispatch(clearUser());
+        dispatch(await logoutUser(history));
+      },
       icon: AiOutlineLogout,
     },
   ];

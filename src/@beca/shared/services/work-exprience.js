@@ -8,7 +8,6 @@ export const deleteWorkExperience = async (id) => {
 };
 
 export const saveWorkExperience = async (payload) => {
-  console.log(payload, "service");
   try {
     const arrCreate = [];
     const arrUpdate = [];

@@ -5,7 +5,6 @@ import {
   clearUser,
   getOneUser,
   logoutUser,
-  // readNotification,
 } from "../../../redux/slices/user/_actions";
 import { addFavorites } from "../../../redux/slices/user/_actions";
 import { getAuth } from "../../utils/auth";
@@ -33,7 +32,10 @@ export default function Auth({ children }) {
   const dispatch = useDispatch();
   const { token } = getAuth();
   const { data, status } = useSelector((state) => state.user.one);
-  const logout = async () => dispatch(await logoutUser(history));
+  const logout = async () => {
+    dispatch(clearUser());
+    dispatch(await logoutUser(history));
+  };
 
   useEffect(() => {
     const fn = async (tk) => dispatch(await getOneUser(tk));
