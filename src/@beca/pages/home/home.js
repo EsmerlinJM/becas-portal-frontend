@@ -22,7 +22,7 @@ export default function Home() {
           <AnnouncementList />
         </div>
       </div>
-      <div className=" form-apply-background  flex flex-col items-end justify-center w-full h-screen bg-no-repeat bg-cover pr-52">
+      <div className=" form-apply-background  flex flex-col lg:items-end items-center justify-center w-full h-screen bg-no-repeat bg-cover lg:pr-52">
         <section className="login login max-w-sm bg-white rounded shadow-2xl m-3 p-4 flex justify-center">
           <ApplyForm />
         </section>
