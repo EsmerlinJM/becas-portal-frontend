@@ -54,9 +54,9 @@ export default function OfertaResult({
 
         <div className="pt-4 text-center cursor-pointer  ">
           <span
-            className={` w-full inline-block 
+            className={` w-full
           hover:bg-blue-50 hover:text-blue-900  transition duration-300 
-          ease-in-out px-3 py-2 text-sm font-semibold text-gray-700 mr-2 border-t-2  flex justify-between px-4`}
+          ease-in-out py-2 text-sm font-semibold text-gray-700 mr-2 border-t-2  flex justify-between px-4`}
           >
             <span
               onClick={() => history.push(`/query-result/detail/${id}`)}
