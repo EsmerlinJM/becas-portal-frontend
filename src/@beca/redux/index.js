@@ -1,4 +1,4 @@
-import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from '@reduxjs/toolkit'
 
 import area from "./slices/area/_reducers";
 import offers from "./slices/ofert/_reducers";
@@ -24,4 +24,4 @@ export default configureStore({
     municipality,
     country,
   },
-});
+})

@@ -3,7 +3,7 @@ import { getAuth } from "./auth";
 
 const customAxios = axios.create({
   baseURL: process.env.REACT_APP_API_URL,
-});
+})
 
 export function authAxios() {
   return axios.create({

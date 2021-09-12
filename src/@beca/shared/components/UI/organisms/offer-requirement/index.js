@@ -71,5 +71,5 @@ export default function OfferRequirement({ requirement }) {
         </div>
       </div> */}
     </div>
-  );
+  )
 }

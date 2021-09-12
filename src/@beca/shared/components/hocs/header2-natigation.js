@@ -7,7 +7,7 @@ import { getAuth } from "../../utils/auth";
 
 export default function Header2Natigation({
   children,
-  name = "Resultados",
+  name = 'Resultados',
   objNav,
 }) {
   const { data, status } = useSelector((state) => state.user.one);
@@ -30,5 +30,5 @@ export default function Header2Natigation({
       </div>
       <Footer />
     </div>
-  );
+  )
 }

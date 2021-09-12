@@ -12,7 +12,7 @@ export default function OfertaResult({
   isFavorite = false,
   justFavorites = false,
 }) {
-  const history = useHistory();
+  const history = useHistory()
   const {
     id,
     color,
@@ -33,7 +33,7 @@ export default function OfertaResult({
             <img
               className="w-full p-2"
               src={image_url}
-              style={{ height: "90px" }}
+              style={{ height: '90px' }}
               width="100%"
               alt="Sunset in the mountains"
             />
@@ -62,7 +62,7 @@ export default function OfertaResult({
               onClick={() => history.push(`/query-result/detail/${id}`)}
               className="text-sm"
             >
-              {" "}
+              {' '}
               TÈCNICO
             </span>
             <span>
@@ -86,5 +86,5 @@ export default function OfertaResult({
         )}
       </div>
     </BorderTop>
-  );
+  )
 }

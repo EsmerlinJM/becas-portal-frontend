@@ -79,5 +79,5 @@ export default function UserOptions({ user, history }) {
         </ButtonPopover>
       </div>
     </>
-  );
+  )
 }

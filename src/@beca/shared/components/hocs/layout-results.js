@@ -56,5 +56,5 @@ export default function LayoutResult({ children }) {
       </div>
       <Footer />
     </div>
-  );
+  )
 }

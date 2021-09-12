@@ -1,13 +1,13 @@
-import { useEffect } from "react";
-import { useSelector, useDispatch } from "react-redux";
+import { useEffect } from 'react'
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
+import qs from 'querystring'
 import {
   searchByOffer,
   getAllOffer,
   getAllOfferByAll,
-} from "../../../../../redux/slices/ofert/_actions";
-import { useHistory } from "react-router";
-import { removeAccents } from "../../../../utils/remove-accents";
-import qs from "querystring";
+} from '../../../../../redux/slices/ofert/_actions'
+import { removeAccents } from '../../../../utils/remove-accents'
 
 const valPais = [
   "Republica Dominicana",
@@ -19,15 +19,15 @@ const valPais = [
 ];
 
 export default function useAction(qp, search) {
-  const history = useHistory();
+  const history = useHistory()
 
   const dispatch = useDispatch();
   const { data, status } = useSelector((state) => state.offers.all);
   const onSelect = (type, { name, id }) => {
-    name = removeAccents(name);
-    const qr = qp[type];
-    const arrQr = qr ? qr.split("_") : [];
-    const filterA = arrQr.filter((r) => !r.includes(name));
+    name = removeAccents(name)
+    const qr = qp[type]
+    const arrQr = qr ? qr.split('_') : []
+    const filterA = arrQr.filter((r) => !r.includes(name))
 
     const valArea =
       type === "province" ||
@@ -39,100 +39,100 @@ export default function useAction(qp, search) {
       ...qp,
       [type]: !valArea
         ? id
-          ? [...arrQr, name].join("_")
-          : filterA.join("_")
+          ? [...arrQr, name].join('_')
+          : filterA.join('_')
         : name,
-    };
+    }
 
     if (type === "country" && +id !== 62) delete newQuery["province"];
 
     history.push({
-      pathname: "/query-result",
-      search: qs.stringify(newQuery).replace("%3F", ""),
-    });
-  };
+      pathname: '/query-result',
+      search: qs.stringify(newQuery).replace('%3F', ''),
+    })
+  }
 
   useEffect(() => {
-    let params = qs.parse(search);
-    params = JSON.stringify(params).replace("?", "");
-    params = JSON.parse(params);
+    let params = qs.parse(search)
+    params = JSON.stringify(params).replace('?', '')
+    params = JSON.parse(params)
 
     const fn = async (id) => {
-      dispatch(await getAllOffer(id));
-    };
+      dispatch(await getAllOffer(id))
+    }
 
-    params.id && !params.all && fn(params.id);
+    params.id && !params.all && fn(params.id)
     // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
-    let params = qs.parse(search);
-    params = JSON.stringify(params).replace("?", "");
-    params = JSON.parse(params);
+    let params = qs.parse(search)
+    params = JSON.stringify(params).replace('?', '')
+    params = JSON.parse(params)
 
     const fn = async (id) => {
-      dispatch(await getAllOfferByAll(id));
-    };
-    params.all && !params.id && fn(params.search ? params.search : params.all);
+      dispatch(await getAllOfferByAll(id))
+    }
+    params.all && !params.id && fn(params.search ? params.search : params.all)
     // eslint-disable-next-line
   }, [search]);
 
   useEffect(() => {
     const filtered = data.filter((item) => {
-      if (Object.keys(qp).length <= 1) return true;
-      let val = false;
-      const { oferta, institucion } = item;
+      if (Object.keys(qp).length <= 1) return true
+      let val = false
+      const { oferta, institucion } = item
 
       for (const name in qp) {
-        if (name === "level") {
-          const arr = qp[name].split("_");
+        if (name === 'level') {
+          const arr = qp[name].split('_')
           if (arr.length && arr[0].length) {
-            const item = arr.find((qr) => {
-              return removeAccents(oferta["education_level_name"]).includes(qr);
-            });
+            const item = arr.find((qr) =>
+              removeAccents(oferta.education_level_name).includes(qr),
+            )
 
-            if (item) val = true;
-            else return false;
+            if (item) val = true
+            else return false
           } else {
-            val = true;
+            val = true
           }
         }
 
-        if (name === "area") {
-          const qr = qp[name];
+        if (name === 'area') {
+          const qr = qp[name]
           if (qr && qr.length) {
-            const item = removeAccents(
-              oferta["development_area_name"]
-            ).includes(qr);
-            if (item) val = true;
-            else return false;
+            const item = removeAccents(oferta.development_area_name).includes(
+              qr,
+            )
+            if (item) val = true
+            else return false
           } else {
-            val = true;
+            val = true
           }
         }
 
-        if (name === "institution") {
-          const qr = qp[name];
+        if (name === 'institution') {
+          const qr = qp[name]
           if (qr && qr.length) {
-            const item = removeAccents(institucion["name"]).includes(qr);
-            if (item) val = true;
-            else return false;
+            const item = removeAccents(institucion.name).includes(qr)
+            if (item) val = true
+            else return false
           } else {
-            val = true;
+            val = true
           }
         }
 
-        if (name === "language") {
-          const arr = qp[name].split("_");
+        if (name === 'language') {
+          const arr = qp[name].split('_')
           if (arr.length && arr[0].length) {
-            const item = arr.find((qr) => {
-              return removeAccents(oferta["language"]).includes(qr);
-            });
+            const item = arr.find((qr) =>
+              removeAccents(oferta.language).includes(qr),
+            )
 
-            if (item) val = true;
-            else return false;
+            if (item) val = true
+            else return false
           } else {
-            val = true;
+            val = true
           }
         }
 
@@ -150,47 +150,47 @@ export default function useAction(qp, search) {
         if (name === "province") {
           const qr = qp[name];
           if (qr && qr.length) {
-            const item = removeAccents(oferta["campus_province"]).includes(qr);
-            if (item) val = true;
-            else return false;
+            const item = removeAccents(oferta.campus_province).includes(qr)
+            if (item) val = true
+            else return false
           } else {
-            val = true;
+            val = true
           }
         }
 
-        if (name === "modality") {
-          const arr = qp[name].split("_");
+        if (name === 'modality') {
+          const arr = qp[name].split('_')
           if (arr.length && arr[0].length) {
-            const item = arr.find((qr) => {
-              return removeAccents(oferta.schedule["modality"]).includes(qr);
-            });
+            const item = arr.find((qr) =>
+              removeAccents(oferta.schedule.modality).includes(qr),
+            )
 
-            if (item) val = true;
-            else return false;
+            if (item) val = true
+            else return false
           } else {
-            val = true;
+            val = true
           }
         }
 
-        if (name === "search") {
-          const qr = qp[name];
+        if (name === 'search') {
+          const qr = qp[name]
           if (qr && qr.length) {
             const item = removeAccents(
-              oferta["academic_offer_name"].toLowerCase().trim()
-            ).includes(qr.toLowerCase().trim());
-            if (item) val = true;
-            else return false;
+              oferta.academic_offer_name.toLowerCase().trim(),
+            ).includes(qr.toLowerCase().trim())
+            if (item) val = true
+            else return false
           } else {
-            val = true;
+            val = true
           }
         }
       }
 
-      return val;
-    });
+      return val
+    })
 
-    dispatch(searchByOffer(filtered));
-  }, [search, status, data, qp, dispatch]);
+    dispatch(searchByOffer(filtered))
+  }, [search, status, data, qp, dispatch])
 
-  return { onSelect };
+  return { onSelect }
 }

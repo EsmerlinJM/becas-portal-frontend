@@ -1,10 +1,9 @@
-import AnnouncementList from "../../shared/components/UI/organisms/announcement-list";
+import { Helmet } from 'react-helmet-async'
+import AnnouncementList from '../../shared/components/UI/organisms/announcement-list'
 // import AlertTop from "../../shared/components/UI/molecules/alert-top";
-import HomeInit from "../../shared/components/UI/organisms/home-init";
-import ApplyForm from "../../shared/components/UI/molecules/apply-form";
-import Footer from "../../shared/components/UI/organisms/footer";
-
-import { Helmet } from "react-helmet-async";
+import HomeInit from '../../shared/components/UI/organisms/home-init'
+import ApplyForm from '../../shared/components/UI/molecules/apply-form'
+import Footer from '../../shared/components/UI/organisms/footer'
 
 export default function Home() {
   return (
@@ -29,5 +28,5 @@ export default function Home() {
       </div>
       <Footer />
     </div>
-  );
+  )
 }

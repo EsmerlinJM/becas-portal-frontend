@@ -26,4 +26,4 @@ const routes = [
   ...notifications,
 ];
 
-export default routes;
+export default routes

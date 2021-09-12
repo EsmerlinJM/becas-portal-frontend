@@ -2,12 +2,12 @@ import customAxios, { authAxios } from "../utils/customAxios";
 import { getAuth, logOut as logoutUser } from "../utils/auth";
 
 export const createUser = async (payload) => {
-  const { data } = await customAxios.post("/profile/register", { ...payload });
-  return data.data;
-};
+  const { data } = await customAxios.post('/profile/register', { ...payload })
+  return data.data
+}
 
 export const login = async (payload) => {
-  const { data } = await customAxios.post("/profile/loginCandidato", {
+  const { data } = await customAxios.post('/profile/loginCandidato', {
     ...payload,
   });
   return data;
@@ -32,7 +32,7 @@ export const getProfile = async (token) => {
   const res = await fetch(
     `${process.env.REACT_APP_API_URL}/profile/getProfile`,
     {
-      method: "post",
+      method: 'post',
       headers: new Headers({
         Authorization: `Bearer ${token}`,
       }),
@@ -48,7 +48,7 @@ export const logOut = async (history) => {
     const { token } = getAuth();
     if (!token) return;
     await fetch(`${process.env.REACT_APP_API_URL}/profile/logout`, {
-      method: "post",
+      method: 'post',
       headers: new Headers({
         Authorization: `Bearer ${token}`,
       }),

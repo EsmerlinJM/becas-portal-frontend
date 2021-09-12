@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit'
 import {
   createMessage,
   getOneUser,
@@ -29,7 +29,7 @@ const actions = [
 const reducers = reducerGenerator(actions);
 
 const user = createSlice({
-  name: "user",
+  name: 'user',
   initialState,
   extraReducers: {
     ...reducers,
@@ -69,14 +69,12 @@ const user = createSlice({
     },
     [addFavorites]: fulfilled({ key: "favorites" }),
     [deleteFavorite.fulfilled]: (state, { payload }) => {
-      const filtered = state.favorites.data.filter(
-        (it) => it.id !== payload.id
-      );
+      const filtered = state.favorites.data.filter((it) => it.id !== payload.id)
       return {
         ...state,
         favorites: {
           data: filtered,
-          status: "completed",
+          status: 'completed',
         },
       };
     },
@@ -90,7 +88,14 @@ const user = createSlice({
         },
       };
     },
+    [addFavorite.fulfilled]: (state, { payload }) => ({
+      ...state,
+      favorites: {
+        data: [payload, ...state.favorites.data],
+        status: 'completed',
+      },
+    }),
   },
-});
+})
 
-export default user.reducer;
+export default user.reducer

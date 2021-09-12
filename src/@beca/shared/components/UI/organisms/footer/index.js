@@ -1,10 +1,10 @@
-import React from "react";
-import BECA from "../../../../../../img/groupp.png";
-import FB from "../../../../../../img/facebook(1).svg";
-import YTB from "../../../../../../img/youtube-brands.svg";
-import SP from "../../../../../../img/Shape.svg";
-import IG from "../../../../../../img/instagram(3).svg";
-import OGTIC from "../../../../../../img/Group 3826@2x.png";
+import React from 'react'
+import BECA from '../../../../../../img/groupp.png'
+import FB from '../../../../../../img/facebook(1).svg'
+import YTB from '../../../../../../img/youtube-brands.svg'
+import SP from '../../../../../../img/Shape.svg'
+import IG from '../../../../../../img/instagram(3).svg'
+import OGTIC from '../../../../../../img/Group 3826@2x.png'
 
 export default function Footer() {
   return (
@@ -72,5 +72,5 @@ export default function Footer() {
         </div>
       </div>
     </div>
-  );
+  )
 }

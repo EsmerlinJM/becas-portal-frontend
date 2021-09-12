@@ -1,7 +1,7 @@
-import { Helmet } from "react-helmet-async";
-import LayoutResult from "../../shared/components/hocs/layout-results";
-import OfertList from "../../shared/components/UI/organisms/ofert-list";
-import useAction from "./use-action";
+import { Helmet } from 'react-helmet-async'
+import LayoutResult from '../../shared/components/hocs/layout-results'
+import OfertList from '../../shared/components/UI/organisms/ofert-list'
+import useAction from './use-action'
 
 export default function QueryResult() {
   // const [{ params }] =
@@ -16,5 +16,5 @@ export default function QueryResult() {
         <OfertList justFavorites={false} />
       </LayoutResult>
     </>
-  );
+  )
 }

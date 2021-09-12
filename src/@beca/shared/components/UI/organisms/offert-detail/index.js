@@ -139,5 +139,5 @@ export default function OfferDetail({ item, message }) {
         </div>
       </div>
     </div>
-  );
+  )
 }

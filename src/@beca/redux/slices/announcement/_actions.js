@@ -2,7 +2,7 @@ import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import {
   announcementAll,
   announcementOne,
-} from "../../../shared/services/announcement";
+} from '../../../shared/services/announcement'
 
 export const announcementGetAll = createAsyncThunk(
   "announcement/getAll",

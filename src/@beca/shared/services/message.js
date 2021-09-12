@@ -1,8 +1,8 @@
-import customAxios from "../utils/customAxios";
+import customAxios from '../utils/customAxios'
 
 export const createMessage = async (payload) => {
-  const { data } = await customAxios.post("/mensajes/create", {
+  const { data } = await customAxios.post('/mensajes/create', {
     ...payload,
-  });
-  return data.data;
-};
+  })
+  return data.data
+}

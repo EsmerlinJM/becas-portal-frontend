@@ -9,20 +9,20 @@ import { reducerGenerator } from "../../../shared/utils/reducer-generator";
 import { initialState } from "../../../shared/utils/initial-state";
 
 const actions = [
-  { action: announcementGetAll, key: "all" },
-  { action: announcementGetOne, key: "one" },
-];
+  { action: announcementGetAll, key: 'all' },
+  { action: announcementGetOne, key: 'one' },
+]
 
-const reducers = reducerGenerator(actions);
+const reducers = reducerGenerator(actions)
 
 const announcement = createSlice({
-  name: "announcement",
+  name: 'announcement',
   initialState,
   extraReducers: {
     ...reducers,
     [setRecent]: (state, { payload }) => ({
       ...state,
-      recent: { data: payload, status: "completed" },
+      recent: { data: payload, status: 'completed' },
     }),
     [setAnnouncementMessage]: (state, { payload }) => ({
       ...state,
@@ -32,6 +32,6 @@ const announcement = createSlice({
       },
     }),
   },
-});
+})
 
-export default announcement.reducer;
+export default announcement.reducer
