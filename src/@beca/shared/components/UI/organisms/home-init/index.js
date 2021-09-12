@@ -1,10 +1,9 @@
-import { useHistory } from 'react-router'
+
 import { useDispatch, useSelector } from 'react-redux'
 import home3834 from '../../../../../../img/Group 3834@2x.png'
 import Logo from '../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png'
 
 import { useHistory } from "react-router";
-import { useSelector } from "react-redux";
 import { getAuth } from "../../../../utils/auth";
 
 import HeaderUser from "../header-user";

@@ -9,7 +9,7 @@ export const reducerGenerator = (arrActions) => {
     }),
     {},
   )
-
+  }
 const save = (state, { payload: { payload, id } }) => {
   const allData = state.all.data
   const all = id

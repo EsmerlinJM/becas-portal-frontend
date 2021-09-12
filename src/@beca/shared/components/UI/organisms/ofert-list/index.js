@@ -9,9 +9,8 @@ import { useState } from 'react'
 import { BsFillGrid3X3GapFill } from 'react-icons/bs'
 import { AiOutlineInsertRowAbove } from 'react-icons/ai'
 import { useHistory } from 'react-router'
-import useAction from './use-action'
-import CardColumns from '../../../hocs/card-columns'
-import OfertCard from '../../molecules/ofert-card'
+
+
 
 const columns = [
   'id',
