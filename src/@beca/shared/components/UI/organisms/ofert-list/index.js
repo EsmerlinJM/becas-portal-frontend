@@ -93,8 +93,8 @@ export default function OfertList({ justFavorites }) {
   }
 
   return (
-    <div>
-      <div className="flex justify-between mt-5 mb-3 mx-1">
+    <div className="">
+      <div className="flex justify-between mt-5 mb-3 mx-1 p-4">
         <h3>{countResult.toLocaleString()} resultados encontrados</h3>
         <div className="flex">
           <BsFillGrid3X3GapFill
@@ -118,7 +118,7 @@ export default function OfertList({ justFavorites }) {
         disabled={statusFav === "loading"}
       >
         {table ? (
-          <div className="fadeIn">
+          <div className="fadeIn p-4">
             <MUIDataTable
               title={"Ofertas"}
               className="shadow-sm"
@@ -128,17 +128,19 @@ export default function OfertList({ justFavorites }) {
             />
           </div>
         ) : (
-          <CardColumns>
-            {stateR.items.map((item, i) => (
-              <OfertCard
-                item={item}
-                key={i + 1}
-                saveFavorite={actions.saveFavorite}
-                isFavorite={stateR.objFavs[item.id]}
-                justFavorites={justFavorites}
-              />
-            ))}
-          </CardColumns>
+          <div className="fadeIn p-4">
+            <CardColumns>
+              {stateR.items.map((item, i) => (
+                <OfertCard
+                  item={item}
+                  key={i + 1}
+                  saveFavorite={actions.saveFavorite}
+                  isFavorite={stateR.objFavs[item.id]}
+                  justFavorites={justFavorites}
+                />
+              ))}
+            </CardColumns>
+          </div>
         )}
         {!table && stateR.screens.length > 1 && (
           <div className=" mt-10 ">

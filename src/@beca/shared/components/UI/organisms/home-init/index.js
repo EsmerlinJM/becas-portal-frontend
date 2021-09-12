@@ -45,8 +45,8 @@ export default function HomeInit() {
               </span>
             </div>
           </div>
-          <div className="busqueda p-4 h-96 flex flex-col mt-12 ml-52 mr-32 justify-center ml-24">
-            <div className="azul text-6xl mb-3">
+          <div className="busqueda p-4 h-96 flex flex-col lg:mt-12 lg:ml-52 lg:mr-32 justify-center mt-4 ml-16 mr-8">
+            <div className="azul lg:text-6xl text-3xl mb-3">
               <h3>CRECE TU TALENTO</h3>
               <h3 className="font-bold">CRECE EL PAÍS</h3>
             </div>
@@ -56,7 +56,7 @@ export default function HomeInit() {
             <InputSearchHome />
           </div>
         </div>
-        <div className="right azulbg w-3/5 border border-blue-400">
+        <div className="right azulbg xl:w-3/5 border border-blue-400 xl:block hidden ">
           <div className="header1 flex items-center justify-center">
             <div
               className="m-5 text-xs text-white "
@@ -85,6 +85,30 @@ export default function HomeInit() {
           </div>
         </div>
       </div>
+      <div className="right azulbg xl:w-3/5 border border-blue-400 xl:hidden block w-full ">
+          <div className="header1 flex items-center justify-center">
+            <div
+              className="m-5 text-xs text-white "
+              // onClick={closeSesion}
+            >
+              <span
+                onClick={() => history.push("/login")}
+                className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white cursor-pointer"
+              >
+                INICIAR SESIÓN
+              </span>
+              <button
+                onClick={() => history.push("/register")}
+                className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100"
+              >
+                REGÍSTRATE AHORA
+              </button>
+            </div>
+          </div>
+        </div>
+     
     </>
   );
 }
+
+

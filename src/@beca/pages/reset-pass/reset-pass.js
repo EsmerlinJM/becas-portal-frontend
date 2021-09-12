@@ -29,29 +29,29 @@ export default function ResetPass() {
       <Helmet>
         <title>Olvidaste tu contraseña | Beca tu futuro</title>
       </Helmet>
-      <div className="grid grid-cols-1">
+      <div className="grid grid-cols-1 fadeIn">
         <div className=" grid grid-cols-1 xl:grid-cols-5 h-screen">
           <div className="left col-span-3">
-            <div className="header1 bg-white flex items-center">
+            <div className="header1 bg-white flex items-center xl:justify-start justify-between">
               <img
                 onClick={() => history.push("/")}
                 className="w-40 ml-10"
                 src={Logo}
                 alt=""
               />
-              <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
+              <div className="m-7 text-xs text-gray-400 font-bold flex items-center">
                 <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer">
                   BLOG
                 </span>
                 <span
                   onClick={() => history.push("/cuetion-frequency")}
-                  className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
+                  className="ml-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
                 >
                   PREGUNTAS FRECUENTES
                 </span>
               </div>
             </div>
-            <div className="login flex flex-col mt-24 justify-start items-center mr-0 xl:mr-32">
+            <div className="login flex flex-col items-center justify-center mt-20 p-3">
               <div className="w-80 flex flex-col items-center xl:items-start">
                 <h4 className="font-bold text-xl mb-2">
                   Restablecer contraseña
@@ -85,7 +85,7 @@ export default function ResetPass() {
               </div>
             </div>
           </div>
-          <div className="right col-span-2 azulbg flex items-end hidden xl:flex">
+          <div className="right col-span-2 azulbg items-end hidden xl:flex">
             <div className>
               <img className="-ml-28 pr-7" src={Log} alt="" />
             </div>

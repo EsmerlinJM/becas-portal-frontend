@@ -52,11 +52,9 @@ export default function OpenCallsBlock({ id }) {
 
   if (!Object.keys(recent).length || !id) return <></>;
   return (
-    <div className="fadeIn  rounded flex flex-wrap items-center border bg-white m-2 text-gray-500 divide-x-2 invisible xs:invisible sm:invisible md:visible lg:visible">
-      <div className="flex">
-        <div>
-          <img height={"100%"} width={160} src={recent.image_url} alt="" />
-        </div>
+    <div className="fadeIn shadow rounded md:flex md:flex-wrap items-center border-2 md:divide-x-2 bg-white m-2 text-gray-500 md:visible">
+      <div className="flex mb-4 md:mb-0">
+        <img height="100%" width={160} src={recent.image_url} alt="" />
         <div className="mx-4 self-center">
           <p className="text-base font-bold	text-blue-900">
             Becas Nacionales {new Date().getFullYear()}
@@ -68,8 +66,9 @@ export default function OpenCallsBlock({ id }) {
           </div>
         </div>
       </div>
-      <div className="mx-4 ">
-        <div className="ml-10">
+
+      <div className="mx-4 mb-4 md:mb-0">
+        <div className="md:ml-10">
           <span className="flex items-center ">
             <FaSign />
             <p className="ml-3">{recent.type?.name}</p>
@@ -87,8 +86,8 @@ export default function OpenCallsBlock({ id }) {
         </div>
       </div>
 
-      <div className="mx-4">
-        <div className="ml-10">
+      <div className="mx-4 mb-4 md:mb-0">
+        <div className="md:ml-10">
           <span className="flex items-center">
             <BsFillBarChartFill />
             <p className="ml-3">{recent.audience?.name}</p>

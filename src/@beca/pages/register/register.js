@@ -43,31 +43,31 @@ export default function Register() {
           </div>
         }
       />
-      <div className="grid grid-cols-1 xs:grid-cols-1  h-full ">
-        <div className=" grid grid-cols-1 xs:grid-cols-1 sm:grid-cols-1 md:grid-cols-5 xl:grid-cols-5 ">
+      <div className="grid grid-cols-1  h-full ">
+        <div className=" grid grid-cols-1 sm:grid-cols-1 xl:grid-cols-5 ">
           <div className="left col-span-3">
-            <div className="header1 bg-white flex items-center">
+            <div className="header1 bg-white flex items-center xl:justify-start justify-between">
               <img
                 onClick={() => history.push("/")}
                 className="w-40 ml-10 cursor-pointer"
                 src={BECA}
                 alt=""
               />
-              <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
+              <div className="m-7 text-xs text-gray-400 font-bold flex items-center">
                 <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer">
                   BLOG
                 </span>
                 <span
                   onClick={() => history.push("/cuetion-frequency")}
-                  className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
+                  className="ml-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
                 >
                   PREGUNTAS FRECUENTES
                 </span>
               </div>
             </div>
-            <div className="login flex flex-col items-center justify-center mt-10 lg:mt-15 xl:mt-20 md:mt-15 p-3">
+            <div className="login flex flex-col items-center justify-center mt-20 p-3">
               <div className="">
-                <h4 className="font-bold text-xl mb-2">Registrar cuenta</h4>
+                <h4 className="font-bold text-xl mb-2 xl:text-left text-center">Registrar cuenta</h4>
                 <p className="w-80 font-light text-sm mb-6">
                   Crea tu perfil para que puedas acceder a llenar una aplicación
                   a la beca de tu elección.
@@ -194,7 +194,7 @@ export default function Register() {
                 >
                   {loading ? "CREANDO CUENTA..." : "CREAR CUENTA"}
                 </button>
-                <div className="flex text-sm">
+                <div className="flex text-sm justify-center">
                   <p className="px-1">¿Ya tienes una cuenta?</p>
                   <span
                     onClick={() => history.push("/login")}
@@ -206,7 +206,7 @@ export default function Register() {
               </div>
             </div>
           </div>
-          <div className="right col-span-2 azulbg flex items-end hidden xs:hidden sm:hidden  md:flex lg:flex xl:flex">
+          <div className="right col-span-2 azulbg items-end hidden sm:hidden xl:flex">
             <div className>
               <img className="-ml-28 pr-7" src={GROUP} alt="" />
             </div>

@@ -50,9 +50,9 @@ export default function AnnouncementCard({ item = {} }) {
           />
         </div>
 
-        <div className="px-6 py-2 h-36 xs:h-36 sm:h-48 md:h-56 lg:h-40">
+        <div className="px-6 py-2 h-42 sm:h-48 md:h-48 lg:h-44">
           <div
-            className="font-bold mb-2 text-center mb-10"
+            className="font-bold mb-4 text-center"
             style={{
               color: "#002F6C",
               fontSize: "15px",
@@ -61,7 +61,7 @@ export default function AnnouncementCard({ item = {} }) {
             <p>{name}</p>
           </div>
           <span style={{ fontSize: "13px" }}>
-            <div className="flex flex-wrap mb-2">
+            <div className="flex flex-wrap sm:justify-start justify-center mb-2">
               <BiCalendar size={17} className="text-gray-600" />
               <p className="mr-2 ml-1">
                 {isClose ? "Convocatoria cerrada:" : "Cierre de convocatoria:"}
@@ -69,20 +69,24 @@ export default function AnnouncementCard({ item = {} }) {
               <p className="text-gray-700"> {end_date}</p>
             </div>
 
-            <div className="flex flex-wrap">
+            <div className="flex flex-wrap sm:justify-start justify-center">
               {!isClose && (
                 <>
-                  <FaRegClock size={15} className="text-gray-600" />
-                  <p className="mr-2 ml-1">Tiempo restante: </p>
-                  <p style={{ color: "#FF941F" }}> {diffTwoTimes(end_date)} </p>
+                  <div className="flex flex-wrap sm:justify-start justify-center mb-2">
+                    <FaRegClock size={15} className="text-gray-600 ml-0.5" />
+                    <p className="mr-2 ml-1.5">Tiempo restante: </p>
+                    <p style={{ color: "#FF941F" }}> {diffTwoTimes(end_date)} </p>
+                  </div>
                 </>
               )}
 
               {isPublished && (
                 <>
-                  <MdPublish size={20} className="text-gray-600" />
-                  <p className="mr-2 ml-1">Becados publicados </p>
-                  <p className="invisible"> invisible </p>
+                  <div className="flex flex-wrap sm:justify-start justify-center">
+                    <MdPublish size={20} className="text-gray-600" />
+                    <p className="mr-2 ml-1">Becados publicados:</p>
+                    <p className="invisible"> invisible </p>
+                  </div>
                 </>
               )}
             </div>

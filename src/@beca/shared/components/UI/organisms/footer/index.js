@@ -9,11 +9,11 @@ import OGTIC from "../../../../../../img/Group 3826@2x.png";
 export default function Footer() {
   return (
     <div className="fadeIn">
-      <div className="footer w-full azulbg flex items-center p-7">
-        <div className="logos flex justify-center w-full max-w-xl">
-          <img className="w-96 mr-10" src={BECA} alt="" />
+      <div className="footer w-full azulbg md:flex items-center p-7">
+        <div className="logos flex justify-center w-full max-w-xl my-12 md:my-0 pb-12 md:pb-0 border-b-2 md:border-none border-gray-400">
+          <img className="w-96 md:mr-10" src={BECA} alt="" />
         </div>
-        <div className="info flex border-l-2 border-gray-400">
+        <div className="info grid grid-rows-4 text-center md:flex md:border-l-2 border-gray-400">
           <div className="ayuda text-white text-xs w-full px-5">
             <h4 className="font-bold mb-4">AYUDA</h4>
             <div className="enlaces text-blue-600 flex flex-col">
@@ -50,8 +50,8 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer2 w- m-5 flex  ml-24  mr-16 justify-between border-box">
-        <div className="ogtic flex items-center azul text-xs font-semibold">
+      <div className="footer2 p-4 md:p-0 m-5 md:flex md:ml-24 md:mr-16 md:justify-between border-box">
+        <div className="ogtic mb-8 md:mb-0 flex items-center azul text-xs font-semibold">
           <p>©2021 Todos los derechos reservados. Desarrollado por </p>
           <img className="w-16 mx-2 mt-0.5" src={OGTIC} alt="" />
         </div>

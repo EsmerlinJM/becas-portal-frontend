@@ -24,9 +24,9 @@ export default function OfferDetail({ item, message }) {
 
   return (
     <div>
-      <div className="oferta bg-white m-auto grid grid-cols-3 xs:grid-cols-1 md:grid-cols-1 lg:grid-cols-3">
-        <div className="ofertaInfo flex flex-col px-7 py-14">
-          <div className="titulo flex items-end pb-5">
+      <div className="oferta bg-white m-auto grid-col-1 grid lg:grid-cols-3">
+        <div className="ofertaInfo md:flex md:flex-col px-7 py-14">
+          <div className="titulo grid md:flex justify-center md:justify-start md:items-end pb-5">
             <div className="logo w-40">
               <img className="w-full" src={institution_image} alt="" />
             </div>
@@ -39,7 +39,7 @@ export default function OfferDetail({ item, message }) {
             <h5 className="font-semibold pb-2">Sobre la carrera</h5>
             <p className="text-justify">{detalles}</p>
           </div>
-          <div className="verPensum flex items-center">
+          <div className="verPensum flex lg:justify-start justify-center items-center">
             <a
               href={academic_offer_pensum_url}
               rel="noreferrer"
