@@ -1,6 +1,7 @@
 import { useParams } from "react-router";
 import { Helmet } from "react-helmet-async";
 import { statuColors } from "../../../shared/utils/status-request";
+import { removeAccents } from "../../../shared/utils/remove-accents";
 
 import Header2Natigation from "../../../shared/components/hocs/header2-natigation";
 import useAction from "./use-action";
@@ -13,7 +14,7 @@ import FormPersonalData from "../../../shared/components/UI/organisms/form-perso
 import FormEducationList from "../../../shared/components/UI/organisms/form-education-list";
 import WorkExperienceList from "../../../shared/components/UI/organisms/form-work-experience-list";
 import FormFieldAnswer from "../../../shared/components/UI/organisms/form-field-answer";
-import { removeAccents } from "../../../shared/utils/remove-accents";
+import FormSocioEconomico from "../../../shared/components/UI/organisms/form-socio-economico";
 
 const objNav = {
   name: "Solicitud",
@@ -33,15 +34,16 @@ export default function RequestDetail() {
   const headerTabs = [
     "Resultados",
     "Datos personales",
+    "Datos socioeconómicos",
     "Formación académica",
     "Experiencia laboral",
-    // "Datos socioeconómicos",
     "Requisitos",
   ];
 
   const arrTabs = [
     <RequestResult status={state.request.status} key={1} />,
     <FormPersonalData user={state.user} key={2} />,
+    <FormSocioEconomico user={state.user} key={6} />,
     <FormEducationList
       forms={state.formsEducation}
       onChange={actions.dispatch2}
@@ -71,10 +73,6 @@ export default function RequestDetail() {
         })
       }
     />,
-    // <p className="p-5" key={6}>
-    //   {" "}
-    //   No hay campos,
-    // </p>,
     <FormFieldAnswer
       onChange={actions.dispatch2}
       forms={state.formsInstitution}

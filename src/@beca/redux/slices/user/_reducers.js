@@ -11,6 +11,7 @@ import {
   saveEducation,
   saveWorkExperience,
   readNotification,
+  setUser,
 } from "./_actions";
 import {
   reducerGenerator,
@@ -32,6 +33,7 @@ const user = createSlice({
   initialState,
   extraReducers: {
     ...reducers,
+    [setUser]: fulfilled({ key: "one" }),
     [clearUser]: () => initialState,
     [readNotification]: (state, { payload }) => ({
       ...state,

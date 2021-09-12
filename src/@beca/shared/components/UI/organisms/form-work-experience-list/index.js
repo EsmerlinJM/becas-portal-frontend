@@ -40,8 +40,7 @@ export default function FormWorkExperienceList({
               </p>
               <div
                 onClick={() => onDelete(i, "formsWorkExperience")}
-                className="absolute cursor-pointer z-20 px-2 py-1"
-                style={{ bottom: "305px", right: "-15px" }}
+                className=" cursor-pointer z-20 px-2 py-1"
               >
                 <img src={IconRemove} alt="" width="30px" />
               </div>

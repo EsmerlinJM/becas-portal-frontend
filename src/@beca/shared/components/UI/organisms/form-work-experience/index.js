@@ -10,7 +10,6 @@ const arrOp = [
 ];
 
 export default function WorkExperience({ item, onChange }) {
-  console.log(item);
   return (
     <>
       <div className=" py-3 m-auto grid grid-cols-1 gap-y-4">

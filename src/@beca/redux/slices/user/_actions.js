@@ -18,6 +18,8 @@ export const createMessage = createAsyncThunk(
   async (payload) => await create(payload)
 );
 
+export const setUser = createAction("user/setUser");
+
 export const getOneUser = createAsyncThunk(
   "user/one",
   async (token) => await getProfile(token)

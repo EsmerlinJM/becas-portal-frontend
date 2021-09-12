@@ -49,7 +49,7 @@ export default function FiledAnswer({
 
   if (type === "checkbox") {
     return (
-      <div className="flex my-4">
+      <div className="flex my-4 flex-col xs:flex-col ms:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row ">
         {items.map((it, i) => (
           <div className="m-2" key={i}>
             <label
@@ -72,7 +72,7 @@ export default function FiledAnswer({
 
   if (type === "radio") {
     return (
-      <div className="my-4 flex">
+      <div className="my-4 flex flex-col xs:flex-col ms:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row ">
         {items.map((it, i) => (
           <div className="mx-2" key={i}>
             <label className="flex text-xs text-gray-400" htmlFor="yes">

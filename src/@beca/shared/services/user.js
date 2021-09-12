@@ -12,6 +12,21 @@ export const login = async (payload) => {
   });
   return data;
 };
+export const updateSocioEconomico = async (payload) => {
+  try {
+    const form = new FormData();
+    Object.entries(payload).map((item) => form.append(item[0], item[1]));
+    console.log(payload, form, "here");
+    const { data } = await authAxios().post(
+      "/candidatos/economicos/update",
+      form
+    );
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.log(error.response, error.message);
+  }
+};
 
 export const getProfile = async (token) => {
   const res = await fetch(
