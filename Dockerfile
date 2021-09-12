@@ -20,13 +20,11 @@ FROM node:lts-alpine as builder
 # get the node environment to use
 ARG NODE_ENV
 ENV NODE_ENV ${NODE_ENV:-production}
-
 # some projects will fail without this variable set to true
 ARG SKIP_PREFLIGHT_CHECK
 ENV SKIP_PREFLIGHT_CHECK ${SKIP_PREFLIGHT_CHECK:-false}
 ARG DISABLE_ESLINT_PLUGIN
 ENV DISABLE_ESLINT_PLUGIN ${DISABLE_ESLINT_PLUGIN:-false}
-
 # App specific build time variables (not always needed)
 ARG REACT_APP_API_URL
 ARG REACT_APP_API_URL ${REACT_APP_API_URL:-http://localhost}
