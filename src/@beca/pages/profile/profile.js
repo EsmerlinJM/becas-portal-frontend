@@ -14,11 +14,12 @@ export default function Profile() {
   const { data } = useSelector((state) => state.user.one);
   const history = useHistory();
 
+  console.log(data);
   return (
     <>
       <Header2Natigation objNav={objNav}>
         <div className="w-5/6 py-3 m-auto grid grid-cols-1 gap-y-4">
-          <span className="w-full bg-white grid md:grid-cols-2 grid-cols-1 text-xs p-5 shadow flex ">
+          <div className="w-full bg-white grid md:grid-cols-2 grid-cols-1 text-xs p-5 shadow">
             {/* <div className="md:col-span-2 flex md:justify-end justify-center space-x-2 mb-7">
               <button className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all">
                 Editar datos del perfil
@@ -28,7 +29,7 @@ export default function Profile() {
               <div className="rounded flex flex-col items-center space-y-7 md:mb-0  mb-7">
                 <img
                   className="rounded-lg w-60 border-2 border-blue-700"
-                  src={PP}
+                  src={data.image_url || PP}
                   alt=""
                 />
                 <div className="space-x-1 flex">
@@ -44,7 +45,7 @@ export default function Profile() {
                   </button> */}
                 </div>
               </div>
-              <div className="flex flex-col lg:border-l border-blue-200 lg:pl-20">
+              <div className="grid lg:border-l lg:pl-20 border-blue-200">
                 <p className="text-xl mb-5 text-blue-900 font-semibold uppercase">
                   Datos personales
                 </p>
@@ -65,7 +66,7 @@ export default function Profile() {
                 </button> */}
               </div>
             </>
-          </span>
+          </div>
         </div>
       </Header2Natigation>
     </>

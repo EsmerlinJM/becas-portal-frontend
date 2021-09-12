@@ -8,20 +8,20 @@ import {
   setRecent,
   setAnnouncementMessage,
 } from "../../../../../redux/slices/announcement/_actions";
-import Loader from "react-loader-spinner";
+import Loading from "react-loader-spinner";
 
 export default function OpenCallsBlock({ id }) {
   const {
     all: { data, status },
     recent: { data: recent, status: statusRecent },
-  } = useSelector((state) => state.announcement)
-  const dispatch = useDispatch()
+  } = useSelector((state) => state.announcement);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fn = async () => {
-      dispatch(await announcementGetAll())
-    }
-    !data.length && fn()
+      dispatch(await announcementGetAll());
+    };
+    !data.length && fn();
     // eslint-disable-next-line
   }, []);
 
@@ -42,15 +42,15 @@ export default function OpenCallsBlock({ id }) {
     //eslint-disable-next-line
   }, [id, status]);
 
-  if (status === 'loading' || statusRecent === 'loading')
+  if (status === "loading" || statusRecent === "loading")
     return (
       <div className="flex justify-center">
-        {' '}
-        <Loader type="MutatingDots" color="red" />
+        {" "}
+        <Loading type="MutatingDots" color="red" secondaryColor="blue" />
       </div>
-    )
+    );
 
-  if (!Object.keys(recent).length || !id) return <></>
+  if (!Object.keys(recent).length || !id) return <></>;
   return (
     <div className="fadeIn shadow rounded md:flex md:flex-wrap items-center border-2 md:divide-x-2 bg-white m-2 text-gray-500 md:visible">
       <div className="flex mb-4 md:mb-0">
@@ -95,5 +95,5 @@ export default function OpenCallsBlock({ id }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

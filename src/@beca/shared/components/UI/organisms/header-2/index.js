@@ -22,11 +22,11 @@ export default function Header2() {
           onClick={() => history.push("/")}
         />
         <div className=" m-7 text-xs text-gray-400 font-bold hidden xs:hidden sm:hidden md:flex lg:flex xl:flex">
-          <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer">
+          <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer hidden">
             BLOG
           </span>
           <span
-            onClick={() => history.push('/cuetion-frequency')}
+            onClick={() => history.push("/cuetion-frequency")}
             className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
           >
             PREGUNTAS FRECUENTES
@@ -42,7 +42,7 @@ export default function Header2() {
             INICIAR SESIÓN
           </span>
           <button
-            onClick={() => history.push('/register')}
+            onClick={() => history.push("/register")}
             className="font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-3xl m-3 bg-blue-700"
           >
             REGÍSTARSE
@@ -101,5 +101,5 @@ export default function Header2() {
         </div>
       </Drawer>
     </div>
-  )
+  );
 }

@@ -19,5 +19,5 @@ export default function OfferDetailTab({ item, message }) {
         </TabComponent>
       </>
     </div>
-  )
+  );
 }

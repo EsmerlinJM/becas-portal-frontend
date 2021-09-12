@@ -8,6 +8,8 @@ export default function ModalUser2({
   onChange,
   onMove,
   document,
+  name,
+  lastName,
 }) {
   return (
     <ModalTemplate
@@ -28,13 +30,12 @@ export default function ModalUser2({
           <p className="text-sm mb-1 ">Cédula de identidad:</p>
           <input
             placeholder="Cédula de identidad"
+            type="number"
             className="text-xs border rounded px-3 py-3 outline-none mb-3"
             {...onChange("document_id")}
             defaultValue={document}
           />
-          <p className="font-semibold">
-            ¡Bienvenido/a! Isbel Cristina Bautista Durán
-          </p>
+          <p className="font-semibold">{`¡Bienvenido/a! ${name} ${lastName}`}</p>
         </div>
       }
       footer={

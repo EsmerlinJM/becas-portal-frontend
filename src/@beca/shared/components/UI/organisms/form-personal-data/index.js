@@ -48,67 +48,65 @@ export default function FormPersonalData({ user, onClick }) {
 
   return (
     <>
-      <div className="px-2 py-3 m-auto grid grid-cols-1 gap-y-4">
-        <span className="w-full bg-white grid gap-3 md:grid-cols-2 grid-cols-1 text-xs p-5">
-          <div>
-            <p className="mb-1.5 font-semibold">
-              Número de cédula de identidad
-            </p>
-            <input
-              {...register("document_id", { required: true })}
-              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-                errors.document_id ? "border-red-500" : ""
-              }`}
-              type="text"
-              defaultValue={user.document_id}
-              maxLength={11}
-              minLength={11}
-              placeholder="000-0000000-0"
-            />
-          </div>
-          <div>
-            <p className="mb-1.5 font-semibold">Telefono</p>
-            <input
-              {...register("contact_phone")}
-              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3`}
-              type="text"
-              placeholder="8099973338"
-            />
-          </div>
-          <div>
-            <p className="mb-1.5 font-semibold">Nombres</p>
-            <input
-              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-                errors.name ? "border-red-500" : ""
-              }`}
-              {...register("name", { required: true })}
-              type="text"
-              placeholder="Isbel Cristina"
-            />
-          </div>
-          <div>
-            <p className="mb-1.5 font-semibold">Apellidos</p>
-            <input
-              type="text"
-              placeholder="Bautista Durán"
-              {...register("last_name", { required: true })}
-              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-                errors.last_name ? "border-red-500" : ""
-              }`}
-            />
-          </div>
-          <div>
-            <p className="mb-1.5 font-semibold">Fecha de nacimiento</p>
-            <input
-              {...register("born_date", { required: true })}
-              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-                errors.born_date ? "border-red-500" : ""
-              }`}
-              type="date"
-            />
-          </div>
-          <div>
-            <p className="mb-1.5 font-semibold">Género</p>
+      <span className="w-full bg-white grid gap-4 md:grid-cols-2 grid-cols-1 text-xs">
+        <div>
+          <p className="mb-1.5 font-semibold">Número de cédula de identidad</p>
+          <input
+            {...register("document_id", { required: true })}
+            className={` border w-full rounded px-3 py-3 outline-none mb-3 ${
+              errors.document_id ? "border-red-500" : ""
+            }`}
+            type="number"
+            defaultValue={user.document_id}
+            maxLength={11}
+            minLength={11}
+            placeholder="000-0000000-0"
+          />
+        </div>
+        <div>
+          <p className="mb-1.5 font-semibold">Telefono</p>
+          <input
+            {...register("contact_phone")}
+            className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3`}
+            type="phone"
+            placeholder="8099973338"
+          />
+        </div>
+        <div>
+          <p className="mb-1.5 font-semibold">Nombres</p>
+          <input
+            className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+              errors.name ? "border-red-500" : ""
+            }`}
+            {...register("name", { required: true })}
+            type="text"
+            placeholder="Isbel Cristina"
+          />
+        </div>
+        <div>
+          <p className="mb-1.5 font-semibold">Apellidos</p>
+          <input
+            type="text"
+            placeholder="Bautista Durán"
+            {...register("last_name", { required: true })}
+            className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+              errors.last_name ? "border-red-500" : ""
+            }`}
+          />
+        </div>
+        <div>
+          <p className="mb-1.5 font-semibold">Fecha de nacimiento</p>
+          <input
+            {...register("born_date", { required: true })}
+            className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+              errors.born_date ? "border-red-500" : ""
+            }`}
+            type="date"
+          />
+        </div>
+        <div className="">
+          <p className="mb-1.5 font-semibold">Género</p>
+          <div className="flex items-center justify-around py-3">
             <label
               className="flex items-center text-xs text-gray-400"
               htmlFor="fem"
@@ -123,7 +121,7 @@ export default function FormPersonalData({ user, onClick }) {
               Femenino
             </label>
             <label
-              className="flex items-center text-xs text-gray-400 mb-3"
+              className="flex items-center text-xs text-gray-400 "
               htmlFor="masc"
             >
               <input
@@ -136,47 +134,48 @@ export default function FormPersonalData({ user, onClick }) {
               Masculino
             </label>
           </div>
-          <div className="self-center">
-            <label className="mb-1.5 font-semibold">País</label>
+        </div>
+        <div className="self-center">
+          <label className="mb-1.5 font-semibold">País</label>
 
-            <CountrySelect
-              id={countryId || user.country?.id}
-              onSelect={(_, item) => setValue("country_id", item.id)}
-            />
-          </div>
-          <div>
-            <p className="mb-1.5 font-semibold">Dirección</p>
-            <input
-              {...register("address")}
-              className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-                errors.address ? "border-red-500" : ""
-              }`}
-              type="text"
-              placeholder="Dirección"
-            />
-          </div>
-          {(countryId ? +countryId : +user.country?.id) === 62 && (
-            <>
-              <div className="self-center">
-                <label className="mb-1.5 font-semibold">Pronvincia</label>
-                <ProvinceSelect
-                  id={provinceId || user.province?.id}
-                  onSelect={(_, item) => setValue("province_id", item.id)}
-                />
-              </div>
+          <CountrySelect
+            id={countryId || user.country?.id}
+            onSelect={(_, item) => setValue("country_id", item.id)}
+          />
+        </div>
+        <div>
+          <p className="mb-1.5 font-semibold">Dirección</p>
+          <input
+            {...register("address")}
+            className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
+              errors.address ? "border-red-500" : ""
+            }`}
+            type="text"
+            placeholder="Dirección"
+          />
+        </div>
+        {(countryId ? +countryId : +user.country?.id) === 62 && (
+          <>
+            <div className="self-center">
+              <label className="mb-1.5 font-semibold">Pronvincia</label>
+              <ProvinceSelect
+                id={provinceId || user.province?.id}
+                onSelect={(_, item) => setValue("province_id", item.id)}
+              />
+            </div>
 
-              <div className="self-center">
-                <label className="mb-1.5 font-semibold">Municipio</label>
-                <MunicipalitySelect
-                  id={municipalityId}
-                  provinceId={provinceId || user.province?.id}
-                  onSelect={(_, item) => setValue("municipality_id", item.id)}
-                />
-              </div>
-            </>
-          )}
+            <div className="self-center">
+              <label className="mb-1.5 font-semibold">Municipio</label>
+              <MunicipalitySelect
+                id={municipalityId}
+                provinceId={provinceId || user.province?.id}
+                onSelect={(_, item) => setValue("municipality_id", item.id)}
+              />
+            </div>
+          </>
+        )}
 
-          {/* <div>
+        {/* <div>
             <p className="mb-1.5 font-semibold">Estado Civil</p>
             <label
               className="flex items-center text-xs text-gray-400"
@@ -212,16 +211,15 @@ export default function FormPersonalData({ user, onClick }) {
               Viudo/a
             </label>
           </div> */}
-          <div className="md:col-span-2 mt-7 flex md:justify-end justify-center">
-            <button
-              onClick={action}
-              className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
-            >
-              Guardar
-            </button>
-          </div>
-        </span>
-      </div>
+        <div className="md:col-span-2 mt-7 flex md:justify-end justify-center">
+          <button
+            onClick={action}
+            className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
+          >
+            Guardar
+          </button>
+        </div>
+      </span>
     </>
   );
 }

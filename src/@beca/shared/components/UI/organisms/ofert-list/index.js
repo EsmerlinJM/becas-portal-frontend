@@ -75,7 +75,12 @@ export default function OfertList({ justFavorites }) {
   if (status === "loading" || stateR.loading)
     return (
       <div className="flex justify-center items-center h-1/2">
-        <Loading type="MutatingDots" color="red" size={90} />
+        <Loading
+          type="MutatingDots"
+          color="red"
+          secondaryColor="blue"
+          size={90}
+        />
       </div>
     );
 
