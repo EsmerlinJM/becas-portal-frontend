@@ -5,23 +5,21 @@ import Loading from "react-loader-spinner";
 import MUIDataTable from "mui-datatables";
 import Pagination from "../../molecules/pagination";
 
-import { useState } from 'react'
-import { BsFillGrid3X3GapFill } from 'react-icons/bs'
-import { AiOutlineInsertRowAbove } from 'react-icons/ai'
-import { useHistory } from 'react-router'
-
-
+import { useState } from "react";
+import { BsFillGrid3X3GapFill } from "react-icons/bs";
+import { AiOutlineInsertRowAbove } from "react-icons/ai";
+import { useHistory } from "react-router";
 
 const columns = [
-  'id',
-  'Insitución',
-  'Carrera',
-  'Sede',
-  'Nivel',
-  'Área',
-  'Idioma',
-  'Modalidad',
-]
+  "id",
+  "Insitución",
+  "Carrera",
+  "Sede",
+  "Nivel",
+  "Área",
+  "Idioma",
+  "Modalidad",
+];
 
 export default function OfertList({ justFavorites }) {
   const [table, setTable] = useState(false);
@@ -34,14 +32,14 @@ export default function OfertList({ justFavorites }) {
 
   const options = {
     filter: true,
-    filterType: 'dropdown',
-    responsive: 'vertical',
-    tableBodyHeight: '650px',
+    filterType: "dropdown",
+    responsive: "horizontal",
+    tableBodyHeight: "650px",
     selectableRows: false,
     onRowClick: (rowData) => {
-      history.push(`/query-result/detail/${rowData[0]}`)
+      history.push(`/query-result/detail/${rowData[0]}`);
     },
-  }
+  };
 
   const data =
     table &&
@@ -60,7 +58,7 @@ export default function OfertList({ justFavorites }) {
           institution_name,
           language,
         },
-      } = itm
+      } = itm;
 
       return [
         id,
@@ -71,15 +69,15 @@ export default function OfertList({ justFavorites }) {
         academic_offer_name,
         language,
         modality,
-      ]
-    })
+      ];
+    });
 
-  if (status === 'loading' || stateR.loading)
+  if (status === "loading" || stateR.loading)
     return (
       <div className="flex justify-center items-center h-1/2">
         <Loading type="MutatingDots" color="red" size={90} />
       </div>
-    )
+    );
 
   if (
     status !== "loading" &&
@@ -91,7 +89,7 @@ export default function OfertList({ justFavorites }) {
       <div className="text-center text-xl mt-20">
         <h3>No hay resultados!</h3>
       </div>
-    )
+    );
   }
 
   return (
@@ -101,14 +99,14 @@ export default function OfertList({ justFavorites }) {
         <div className="flex">
           <BsFillGrid3X3GapFill
             className={`${
-              table ? 'text-gray-500' : 'azul '
+              table ? "text-gray-500" : "azul "
             } self-center cursor-pointer `}
             size={20}
             onClick={() => setTable(false)}
           />
           <AiOutlineInsertRowAbove
             className={`${
-              !table ? 'text-gray-500' : 'azul '
+              !table ? "text-gray-500" : "azul "
             }  ml-2  self-center cursor-pointer `}
             size={25}
             onClick={() => setTable(true)}
@@ -117,7 +115,7 @@ export default function OfertList({ justFavorites }) {
       </div>
       <div
         className="flex justify-between flex-col h-full"
-        disabled={statusFav === 'loading'}
+        disabled={statusFav === "loading"}
       >
         {table ? (
           <div className="fadeIn p-4">
@@ -155,5 +153,5 @@ export default function OfertList({ justFavorites }) {
         )}
       </div>
     </div>
-  )
+  );
 }
