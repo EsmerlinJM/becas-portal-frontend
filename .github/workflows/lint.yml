@@ -44,7 +44,7 @@ jobs:
         if: github.event_name == 'push'
         uses: wearerequired/lint-action@v1
         with:
-          auto_fix: true
+          auto_fix: false
           eslint: true
           prettier: false
 
