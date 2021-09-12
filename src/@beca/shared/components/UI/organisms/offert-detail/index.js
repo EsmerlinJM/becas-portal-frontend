@@ -24,9 +24,21 @@ export default function OfferDetail({ item, message }) {
 
   return (
     <div>
+<<<<<<< Updated upstream
       <div className="oferta bg-white m-auto grid-col-1 grid md:grid-cols-3 lg:grid-cols-3">
         <div className="ofertaInfo md:flex md:flex-col px-7 py-14">
           <div className="titulo grid md:flex justify-center md:justify-start md:items-end pb-5">
+=======
+<<<<<<< HEAD
+      <div className="oferta bg-white m-auto grid grid-cols-1 lg:grid-cols-3">
+        <div className="ofertaInfo flex flex-col px-7 py-14">
+          <div className="titulo flex items-end pb-5">
+=======
+      <div className="oferta bg-white m-auto grid-col-1 grid md:grid-cols-3 lg:grid-cols-3">
+        <div className="ofertaInfo md:flex md:flex-col px-7 py-14">
+          <div className="titulo grid md:flex justify-center md:justify-start md:items-end pb-5">
+>>>>>>> 28028d00a4a63265128c427806f29c323e031095
+>>>>>>> Stashed changes
             <div className="logo w-40">
               <img className="w-full" src={institution_image} alt="" />
             </div>
@@ -39,7 +51,7 @@ export default function OfferDetail({ item, message }) {
             <h5 className="font-semibold pb-2">Sobre la carrera</h5>
             <p className="text-justify">{detalles}</p>
           </div>
-          <div className="verPensum flex items-center">
+          <div className="verPensum flex items-center lg:justify-start justify-center">
             <a
               href={academic_offer_pensum_url}
               rel="noreferrer"
