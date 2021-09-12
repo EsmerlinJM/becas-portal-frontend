@@ -8,6 +8,7 @@ import { getAuth } from "../../../../utils/auth";
 import HeaderUser from "../header-user";
 import InputSearchHome from "../../atoms/input-search-home";
 import ModalInitiUser from "../user-modal-init";
+import Header2 from "../header-2";
 
 export default function HomeInit() {
   const { data: user, status } = useSelector((state) => state.user.one);
@@ -26,7 +27,10 @@ export default function HomeInit() {
       <div className="home flex">
         {userExist && <ModalInitiUser user={user} />}
         <div className="left w-screen">
-          <div className="header1 bg-white flex items-center">
+          <div className="md:hidden">
+            <Header2 />
+          </div>
+          <div className="header1 bg-white hidden md:flex items-center">
             <img
               className="w-40 ml-10"
               src={Logo}
@@ -34,7 +38,7 @@ export default function HomeInit() {
               onClick={() => history.push("/")}
             />
             <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
-              <span className="cursor-pointer  m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800">
+              <span className="cursor-pointer  m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 hidden">
                 BLOG
               </span>
               <span
@@ -47,13 +51,18 @@ export default function HomeInit() {
           </div>
           <div className="busqueda p-4 h-96 flex flex-col lg:mt-12 lg:ml-52 lg:mr-32 justify-center mt-4 ml-16 mr-8">
             <div className="azul lg:text-6xl text-3xl mb-3">
-              <h3>CRECE TU TALENTO</h3>
+              <h3>REGISTRATE</h3>
               <h3 className="font-bold">CRECE EL PAÍS</h3>
             </div>
             <p className="font-semibold mb-5">
               Busca la carrera que te ayudará a desarrollar un mejor futuro.
             </p>
-            <InputSearchHome />
+            <div>
+              <InputSearchHome />
+              <p className="text-xs select-none font-thin text-gray-400 pl-6 py-1">
+                <i>Ej. Odontología</i>
+              </p>
+            </div>
           </div>
         </div>
         <div className="right azulbg xl:w-3/5 border border-blue-400 xl:block hidden ">
