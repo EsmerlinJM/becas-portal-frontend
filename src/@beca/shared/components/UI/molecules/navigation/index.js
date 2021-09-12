@@ -20,11 +20,11 @@ export default function Navigation({ ob = obj }) {
 
   return (
     <div
-      className={`bg-gray-50 w-full flex ${
+      className={`bg-gray-50 flex ${
         pathname === "/query-result" ? "justify-end" : " justify-center"
-      } p-4  border-b  text-gray-400 h-12`}
+      } p-4 shadow border-b-2 text-gray-400 h-12`}
     >
-      <div className="w-3/4 flex justify-between items-center mr-6">
+      <div className="w-4/5 flex justify-between items-center">
         <p className="text-md ">{ob.name}</p>
         <span className="flex">
           {ob.parents.map((rou) => (
@@ -38,7 +38,7 @@ export default function Navigation({ ob = obj }) {
             </p>
           ))}
           <p className="text-sm self-end transition delay-100 border-b-2 border-gray-50 hover:text-blue-800  hover:border-blue-800 cursor-pointer ">
-            {ob.name}{" "}
+            {ob.name}
           </p>
         </span>
       </div>
