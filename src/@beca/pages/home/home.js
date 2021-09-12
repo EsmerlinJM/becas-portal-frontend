@@ -18,12 +18,12 @@ export default function Home() {
         <h4 className="p-2 border-b border-blue-300 text-xl font-bold azul">
           ÚLTIMAS CONVOCATORIAS
         </h4>
-        <div className="border-top-4 border-gray-700 mt-5 ">
+        <div className="  mt-5 ">
           <AnnouncementList />
         </div>
       </div>
       <div className=" form-apply-background  flex flex-col items-end justify-center w-full h-screen bg-no-repeat bg-cover pr-52">
-        <section className="login shadow-2xl login max-w-sm bg-white rounded shadow-2xl m-3 p-4 flex justify-center">
+        <section className="login login max-w-sm bg-white rounded shadow-2xl m-3 p-4 flex justify-center">
           <ApplyForm />
         </section>
       </div>
