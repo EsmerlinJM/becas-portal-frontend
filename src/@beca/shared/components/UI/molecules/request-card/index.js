@@ -25,7 +25,7 @@ export default function RequestCard({ item, onClick }) {
             {development_area_name}
           </p>
         </div>
-        <div className="pl-8 grid grid-rows-3 grid-flow-col gap-y-2 col-span-3 mb-3 md:m-0">
+        <div className="pl-8 grid grid-rows-3 sm:grid-flow-col gap-y-2 col-span-3 mb-3 md:m-0 justify-center">
           <div className="flex items-center space-x-1">
             <FaSchool />
             <p className="text-xs w-56">{name}</p>
