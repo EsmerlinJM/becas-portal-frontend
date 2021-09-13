@@ -64,10 +64,10 @@ export default function Auth({ children }) {
     history.push("/");
   }
 
-  if (status === 'loading')
+  if (status === "loading")
     return (
       <div className="h-screen w-screen flex justify-center items-center">
-        <Loading type="MutatingDots" color="red" />
+        <Loading type="MutatingDots" color="red" secondaryColor="blue" />
       </div>
     );
   return children;

@@ -1,25 +1,25 @@
-import { useState } from 'react'
-import { useHistory } from 'react-router'
-import { toast } from 'react-hot-toast'
-import Buscar_CTA_BLUE from '../../../../../../img/Buscar-CTA-blue.svg'
-import Buscar_CTA from '../../../../../../img/Buscar-CTA.svg'
+import { useState } from "react";
+import { useHistory } from "react-router";
+import { toast } from "react-hot-toast";
+import Buscar_CTA_BLUE from "../../../../../../img/Buscar-CTA-blue.svg";
+import Buscar_CTA from "../../../../../../img/Buscar-CTA.svg";
 
 export default function InputSearchHome({
-  placeholder = '¿Qué quieres estudiar?',
-  widthImg = 'w-11',
-  heightInput = '',
+  placeholder = "¿Qué quieres estudiar?",
+  widthImg = "w-11",
+  heightInput = "",
   isHeader = false,
 }) {
-  const [query, setQuery] = useState(null)
-  const history = useHistory()
+  const [query, setQuery] = useState(null);
+  const history = useHistory();
 
   const onSearch = () => {
     if (query && query.length > 5) {
-      history.push(`/query-result?all=${query}`)
-      return
+      history.push(`/query-result?all=${query}`);
+      return;
     }
-    query.length <= 5 && toast.error('Mínimo 6 caracteres')
-  }
+    query.length <= 5 && toast.error("Mínimo 6 caracteres");
+  };
 
   return (
     <div className="flex items-center">
@@ -30,19 +30,14 @@ export default function InputSearchHome({
         required
         placeholder={placeholder}
         defaultValue={query}
-        onKeyPress={({ key }) => key === 'Enter' && onSearch()}
+        onKeyPress={({ key }) => key === "Enter" && onSearch()}
         onChange={({ target }) => setQuery(() => target.value)}
         maxLength={50}
       />
-      {!isHeader && (
-        <p className="text-xs select-none font-thin text-gray-400 -ml-36">
-          {' '}
-          <i>Ej. Odontología</i>
-        </p>
-      )}
+
       <input
         className={`${widthImg} ${
-          !isHeader ? 'ml-7' : '-ml-9'
+          !isHeader ? "-ml-9" : "-ml-9"
         }  text-black hover:fill-current hover:text-black`}
         src={isHeader ? Buscar_CTA_BLUE : Buscar_CTA}
         type="image"
@@ -51,5 +46,5 @@ export default function InputSearchHome({
         onClick={onSearch}
       />
     </div>
-  )
+  );
 }

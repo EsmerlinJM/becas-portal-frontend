@@ -24,7 +24,7 @@ export default function OfferDetail({ item, message }) {
 
   return (
     <div>
-      <div className="oferta bg-white m-auto grid-col-1 grid lg:grid-cols-3">
+      <div className="oferta bg-white m-auto grid-col-1 grid lg:grid-cols-3 ">
         <div className="ofertaInfo md:flex md:flex-col px-7 py-14">
           <div className="titulo grid md:flex justify-center md:justify-start md:items-end pb-5">
             <div className="logo w-40">
@@ -139,5 +139,5 @@ export default function OfferDetail({ item, message }) {
         </div>
       </div>
     </div>
-  )
+  );
 }

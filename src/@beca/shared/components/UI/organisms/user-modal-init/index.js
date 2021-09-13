@@ -23,6 +23,8 @@ export default function ModalInitiUser({ user }) {
             onMove={actions.onMove}
             onChange={actions.register}
             document={user.document_id}
+            name={user.name}
+            lastName={user.last_name}
             onExit={(exit) => actions.setState({ close: exit })}
           />
           <ModalUser3

@@ -12,7 +12,7 @@ export default function OfertaResult({
   isFavorite = false,
   justFavorites = false,
 }) {
-  const history = useHistory()
+  const history = useHistory();
   const {
     id,
     color,
@@ -27,13 +27,16 @@ export default function OfertaResult({
 
   return (
     <BorderTop borderColor={color || "red-500"}>
-      <div className="max-w-sm  overflow-hidden bg-white rounded flex flex-col justify-between h-full">
+      <div
+        onClick={() => history.push(`/query-result/detail/${id}`)}
+        className="max-w-sm  overflow-hidden bg-white rounded flex flex-col justify-between h-full cursor-pointer"
+      >
         <div className="w-full flex justify-between border-b-2 border-gray-100 h-28 ">
           <div className="w-48 flex items-center">
             <img
               className="w-full p-2"
               src={image_url}
-              style={{ height: '90px' }}
+              style={{ height: "90px" }}
               width="100%"
               alt="Sunset in the mountains"
             />
@@ -52,24 +55,18 @@ export default function OfertaResult({
           </div>
         </div>
 
-        <div className="pt-4 text-center cursor-pointer  ">
+        <div className="pt-4 text-center ">
           <span
             className={` w-full
           hover:bg-blue-50 hover:text-blue-900  transition duration-300 
           ease-in-out py-2 text-sm font-semibold text-gray-700 mr-2 border-t-2  flex justify-between px-4`}
           >
-            <span
-              onClick={() => history.push(`/query-result/detail/${id}`)}
-              className="text-sm"
-            >
-              {' '}
-              TÈCNICO
-            </span>
+            <span className="text-sm"> TÈCNICO</span>
             <span>
               {isFavorite ? (
                 <AiFillStar
                   size={25}
-                  className="text-yellow-300"
+                  className="text-yellow-300 cursor-pointer "
                   onClick={() => saveFavorite(id)}
                 />
               ) : (
@@ -80,11 +77,10 @@ export default function OfertaResult({
         </div>
         {justFavorites && (
           <div className="flex justify-center w-full py-2 border-t-2 cursor-pointer ">
-            {" "}
             <ButtonApply offerId={id} />
           </div>
         )}
       </div>
     </BorderTop>
-  )
+  );
 }

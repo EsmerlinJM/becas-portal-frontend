@@ -22,10 +22,10 @@ export default function HeaderUser({ user, isHome = false }) {
               src={Logo}
               className="w-28 md:w-40 cursor-pointer"
               alt=""
-              onClick={() => history.push('/')}
+              onClick={() => history.push("/")}
             />
             <div className="flex self-center mt-2 text-xs text-gray-400 font-bold">
-              <span className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 hidden md:inline-block">
+              <span className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 hidden">
                 BLOG
               </span>
               <span
@@ -138,6 +138,6 @@ export default function HeaderUser({ user, isHome = false }) {
         </div>
       </Drawer>
     </div>
-  )
+  );
 }
 //

@@ -1,10 +1,11 @@
-import React from 'react'
-import BECA from '../../../../../../img/groupp.png'
-import FB from '../../../../../../img/facebook(1).svg'
-import YTB from '../../../../../../img/youtube-brands.svg'
-import SP from '../../../../../../img/Shape.svg'
-import IG from '../../../../../../img/instagram(3).svg'
-import OGTIC from '../../../../../../img/Group 3826@2x.png'
+import React from "react";
+import BECA from "../../../../../../img/groupp.png";
+import FB from "../../../../../../img/facebook(1).svg";
+import YTB from "../../../../../../img/youtube-brands.svg";
+import SP from "../../../../../../img/Shape.svg";
+import IG from "../../../../../../img/instagram(3).svg";
+import OGTIC from "../../../../../../img/ogtic.svg";
+import INNOVACION from "../../../../../../img/LogoGabineteInnovacion.svg";
 
 export default function Footer() {
   return (
@@ -50,27 +51,33 @@ export default function Footer() {
           </div>
         </div>
       </div>
-      <div className="footer2 p-4 md:p-0 m-5 md:flex md:ml-24 md:mr-16 md:justify-between border-box">
-        <div className="ogtic mb-8 md:mb-0 flex items-center azul text-xs font-semibold">
-          <p>©2021 Todos los derechos reservados. Desarrollado por </p>
-          <img className="w-16 mx-2 mt-0.5" src={OGTIC} alt="" />
+      <div className="footer2 p-4 md:p-0 m-5 grid justify-center md:flex md:justify-between">
+        <div className="ogtic mb-8 md:mb-0 grid justify-center gap-4 md:flex md:items-center ">
+          <p className="text-center azul text-xs font-semibold">
+            ©2021 Todos los derechos reservados. <br className="md:hidden" />
+            Desarrollado por
+          </p>
+          <div className="flex gap-4 justify-center items-center">
+            <img className="w-16" src={OGTIC} alt="" />
+            <img className="w-28" src={INNOVACION} alt="" />
+          </div>
         </div>
-        <div className="flex items-center   justify-center ">
+        <div className="flex items-center justify-center ">
           <p className="azul text-sm font-semibold">SÍGUENOS</p>
-          <span className="ml-3 flex-shrink-0" href="#">
+          <span className="ml-3" href="#">
             <img src={FB} alt="" />
           </span>
-          <span className="ml-3 flex-shrink-0" href="#">
+          <span className="ml-3" href="#">
             <img src={YTB} alt="" />
           </span>
-          <span className="ml-3 flex-shrink-0" href="#">
+          <span className="ml-3" href="#">
             <img src={SP} alt="" />
           </span>
-          <span className="ml-3 flex-shrink-0" href="#">
+          <span className="ml-3" href="#">
             <img src={IG} alt="" />
           </span>
         </div>
       </div>
     </div>
-  )
+  );
 }

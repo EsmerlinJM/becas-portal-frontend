@@ -22,7 +22,7 @@ export default function TokenInvalid() {
                 alt=""
               />
               <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
-                <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer">
+                <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer hidden">
                   BLOG
                 </span>
                 <span

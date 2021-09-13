@@ -23,11 +23,12 @@ export default function ModalUser3({
       body={
         <div className="flex flex-col px-5">
           <p className="mb-2 text-sm">
-            Ayudanos a contactarte por diferentes vías.
+            Ayúdanos a contactarte por diferentes vías.
           </p>
           <p className="text-sm mb-1  mt-2">Número de teléfono:</p>
           <input
             defaultValue={phone}
+            type="phone"
             placeholder="809-000-0000"
             {...onChange("contact_phone")}
             className="text-xs border rounded px-3 py-3 outline-none mb-3"
