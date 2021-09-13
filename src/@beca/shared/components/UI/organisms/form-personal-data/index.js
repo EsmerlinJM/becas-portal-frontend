@@ -1,16 +1,17 @@
-import { useForm } from "react-hook-form";
-import { formatDate } from "../../../../utils/format-date";
-import { useDispatch } from "react-redux";
-import { updateUser } from "../../../../../redux/slices/user/_actions";
+import { useForm } from 'react-hook-form'
+import { formatDate } from '../../../../utils/format-date'
+import { useDispatch } from 'react-redux'
+import { setUser } from '../../../../../redux/slices/user/_actions'
 
-import ProvinceSelect from "../../atoms/province-select";
-import MunicipalitySelect from "../../atoms/municipality-by-province-select";
-import CountrySelect from "../../atoms/country-select";
+import ProvinceSelect from '../../atoms/province-select'
+import MunicipalitySelect from '../../atoms/municipality-by-province-select'
+import CountrySelect from '../../atoms/country-select'
 
-import { toast } from "react-hot-toast";
+import { toast } from 'react-hot-toast'
+import { updateProfile } from '../../../../services/user'
 
 export default function FormPersonalData({ user, onClick }) {
-  const dispatch = useDispatch();
+  const dispatch = useDispatch()
 
   const {
     handleSubmit,
@@ -28,59 +29,66 @@ export default function FormPersonalData({ user, onClick }) {
       municipality_id: user.municipality?.id,
       province_id: user.province?.id,
       address: user.address,
-      born_date: formatDate(user.born_date),
+      born_date: formatDate(user.born_date || ''),
     },
-  });
-  console.log(user);
+  })
   const action = handleSubmit(async (data) => {
-    if (!data.country_id) return toast.error("Seleccionar país");
-    if (!data["province_id"]) data["province_id"] = 1;
-    if (!data["municipality_id"]) data["municipality_id"] = 1;
-    dispatch(await updateUser(data));
-    toast.success("Guardado correctamente!");
-    // onClick && onClick(data);
-  });
+    if (!data.country_id) return toast.error('Seleccionar país')
+    if (!data['province_id']) data['province_id'] = 1
+    if (!data['municipality_id']) data['municipality_id'] = 1
+    const payload = await updateProfile(data)
+    setUser(payload)
+    toast.success('Guardado correctamente!')
+  })
 
-  const provinceId = watch("province_id");
-  const municipalityId = watch("municipality_id");
-  const countryId = watch("country_id");
-  const gender = watch("genero");
+  const provinceId = watch('province_id')
+  const municipalityId = watch('municipality_id')
+  const countryId = watch('country_id')
+  const gender = watch('genero')
 
   return (
     <>
-      <span className="w-full bg-white grid gap-4 md:grid-cols-2 grid-cols-1 text-xs">
+      <span className="w-full bg-white grid gap-4 md:grid-cols-2 grid-cols-1 text-xs p-5">
         <div>
           <p className="mb-1.5 font-semibold">Número de cédula de identidad</p>
           <input
-            {...register("document_id", { required: true })}
-            className={` border w-full rounded px-3 py-3 outline-none mb-3 ${
-              errors.document_id ? "border-red-500" : ""
+            {...register('document_id', {
+              required: true,
+              validate: (cedula) => cedula.length === 11,
+            })}
+            className={` border w-full rounded px-3 py-3 outline-none ${
+              errors.document_id ? 'border-red-500' : ''
             }`}
             type="number"
             defaultValue={user.document_id}
-            maxLength={11}
-            minLength={11}
-            placeholder="000-0000000-0"
+            placeholder="00000000000"
           />
+          <div className="mb-3">
+            {errors.document_id?.type === 'validate' && (
+              <p className="text-red-300">Debes ingresar una cédula válida.</p>
+            )}
+          </div>
         </div>
         <div>
-          <p className="mb-1.5 font-semibold">Telefono</p>
+          <p className="mb-1.5 font-semibold">Teléfono móvil</p>
           <input
-            {...register("contact_phone")}
+            {...register('contact_phone')}
             className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3`}
-            type="phone"
+            type="number"
             placeholder="8099973338"
+            defaultValue={user.name}
           />
         </div>
         <div>
           <p className="mb-1.5 font-semibold">Nombres</p>
           <input
             className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-              errors.name ? "border-red-500" : ""
+              errors.name ? 'border-red-500' : ''
             }`}
-            {...register("name", { required: true })}
+            {...register('name', { required: true })}
             type="text"
             placeholder="Isbel Cristina"
+            defaultValue={user.name}
           />
         </div>
         <div>
@@ -88,19 +96,21 @@ export default function FormPersonalData({ user, onClick }) {
           <input
             type="text"
             placeholder="Bautista Durán"
-            {...register("last_name", { required: true })}
+            {...register('last_name', { required: true })}
             className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-              errors.last_name ? "border-red-500" : ""
+              errors.last_name ? 'border-red-500' : ''
             }`}
+            defaultValue={user.last_name}
           />
         </div>
         <div>
           <p className="mb-1.5 font-semibold">Fecha de nacimiento</p>
           <input
-            {...register("born_date", { required: true })}
+            {...register('born_date', { required: true })}
             className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-              errors.born_date ? "border-red-500" : ""
+              errors.born_date ? 'border-red-500' : ''
             }`}
+            defaultValue={formatDate(user.born_date)}
             type="date"
           />
         </div>
@@ -112,11 +122,13 @@ export default function FormPersonalData({ user, onClick }) {
               htmlFor="fem"
             >
               <input
-                {...register("genero", { required: true })}
+                {...register('genero', { required: true })}
                 className="mr-1.5"
                 type="radio"
                 value="femenino"
-                checked={gender === "femenino" || user.genero === "femenino"}
+                checked={
+                  gender ? gender === 'femenino' : user.genero === 'femenino'
+                }
               />
               Femenino
             </label>
@@ -125,11 +137,13 @@ export default function FormPersonalData({ user, onClick }) {
               htmlFor="masc"
             >
               <input
-                {...register("genero", { required: true })}
+                {...register('genero', { required: true })}
                 className="mr-1.5"
                 type="radio"
                 value="masculino"
-                checked={gender === "masculino" || user.genero === "masculino"}
+                checked={
+                  gender ? gender === 'masculino' : user.genero === 'masculino'
+                }
               />
               Masculino
             </label>
@@ -140,18 +154,19 @@ export default function FormPersonalData({ user, onClick }) {
 
           <CountrySelect
             id={countryId || user.country?.id}
-            onSelect={(_, item) => setValue("country_id", item.id)}
+            onSelect={(_, item) => setValue('country_id', item.id)}
           />
         </div>
         <div>
           <p className="mb-1.5 font-semibold">Dirección</p>
           <input
-            {...register("address")}
+            {...register('address')}
             className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3 ${
-              errors.address ? "border-red-500" : ""
+              errors.address ? 'border-red-500' : ''
             }`}
             type="text"
             placeholder="Dirección"
+            defaultValue={user.address}
           />
         </div>
         {(countryId ? +countryId : +user.country?.id) === 62 && (
@@ -160,16 +175,16 @@ export default function FormPersonalData({ user, onClick }) {
               <label className="mb-1.5 font-semibold">Pronvincia</label>
               <ProvinceSelect
                 id={provinceId || user.province?.id}
-                onSelect={(_, item) => setValue("province_id", item.id)}
+                onSelect={(_, item) => setValue('province_id', item.id)}
               />
             </div>
 
             <div className="self-center">
               <label className="mb-1.5 font-semibold">Municipio</label>
               <MunicipalitySelect
-                id={municipalityId}
+                id={municipalityId || user.municipality?.id}
                 provinceId={provinceId || user.province?.id}
-                onSelect={(_, item) => setValue("municipality_id", item.id)}
+                onSelect={(_, item) => setValue('municipality_id', item.id)}
               />
             </div>
           </>
@@ -221,5 +236,5 @@ export default function FormPersonalData({ user, onClick }) {
         </div>
       </span>
     </>
-  );
+  )
 }
