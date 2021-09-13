@@ -27,21 +27,21 @@ export default function Footer() {
             <div className="enlaces text-blue-600 flex flex-col">
               <span
                 onClick={() => history.push('/terminos-condiciones')}
-                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400 border-blue-400 border-b cursor-pointer"
+                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400  cursor-pointer"
                 href="#"
               >
                 Términos de Uso
               </span>
               <span
                 onClick={() => history.push('/politicas-privacidad')}
-                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400 border-blue-400 border-b cursor-pointer"
+                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400 cursor-pointer"
                 href="#"
               >
                 Política de Privacidad
               </span>
               <span
                 onClick={() => history.push('/cuetion-frequency')}
-                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400 border-blue-400 border-b cursor-pointer"
+                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400  cursor-pointer"
                 href="#"
               >
                 Preguntas Frecuentes
