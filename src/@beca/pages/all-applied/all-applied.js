@@ -1,10 +1,22 @@
-import { Helmet } from 'react-helmet-async'
-import { useParams } from 'react-router'
-import Loading from 'react-loader-spinner'
-import MUIDataTable from 'mui-datatables'
-import Header2Natigation from '../../shared/components/hocs/header2-natigation'
-import useAction from './use-action'
-import OpenCallsBlock from '../../shared/components/UI/organisms/open-calls-block'
+import { Helmet } from "react-helmet-async";
+import { useParams } from "react-router";
+import Loading from "react-loader-spinner";
+import MUIDataTable from "mui-datatables";
+import Header2Natigation from "../../shared/components/hocs/header2-natigation";
+import useAction from "./use-action";
+import OpenCallsBlock from "../../shared/components/UI/organisms/open-calls-block";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+
+const getMuiTheme = () =>
+  createTheme({
+    overrides: {
+      MUIDataTableHeadCell: {
+        data: {
+          fontWeight: "600",
+        },
+      },
+    },
+  });
 
 const options = {
   filter: true,
@@ -59,6 +71,7 @@ export default function AllApplied() {
         <div className=" container mx-auto p-3 fadeIn">
           <div className="bg-white m-auto flex flex-col">
             <div className="tabla">
+              <MuiThemeProvider theme={getMuiTheme()}>
                 <MUIDataTable
                   title="Becados"
                   // className="shadow-sm"
@@ -66,6 +79,7 @@ export default function AllApplied() {
                   columns={columns}
                   options={options}
                 />
+              </MuiThemeProvider>
             </div>
           </div>
         </div>
