@@ -18,13 +18,13 @@ export default function InputSearchHome({
       history.push(`/query-result?all=${query}`);
       return;
     }
-    query.length <= 5 && toast.error("Mínimo 6 caracteres");
+    query?.length <= 5 && toast.error("Mínimo 6 caracteres");
   };
 
   return (
     <div className="flex items-center">
       <input
-        className={`${heightInput} outline-none border rounded-3xl w-96 p-3.5 pl-6 focus:placeholder-blue-100 placeholder-blue-800 text-xs font-bold`}
+        className={`${heightInput} outline-none border rounded-3xl w-96 p-3.5 pl-6 focus:placeholder-blue-100 placeholder-blue-900 text-xs font-bold`}
         name="user"
         type="text"
         required

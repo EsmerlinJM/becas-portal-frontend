@@ -101,27 +101,31 @@ export default function RequestDetail() {
       <div className="fadeIn">
         <Header2Natigation objNav={objNav}>
           {status === "completed" ? (
-            <div className="container mx-auto my-4 p-4">
-              <CardRequest
-                item={state.request}
-                onClick={(item) => console.log(item)}
-              />
-              <div className="mt-10  justify-between grid grid-cols-12 gap-4 ">
-                <div className={!allExist ? "col-span-10" : "col-span-12"}>
-                  <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
-                </div>
-                {!allExist && (
-                  <div className="col-span-2 shadow p-4">
-                    <RequestEvaluation
-                      evaluations={state.request?.evaluacion || []}
-                    />
-                  </div>
-                )}
+            <div className="grid grid-cols-12 justify-between gap-4 my-4 w-4/5 m-auto">
+              <div className="container col-span-12  ">
+                <CardRequest
+                  item={state.request}
+                  onClick={(item) => console.log(item)}
+                />
               </div>
+              <div
+                className={`${
+                  !allExist ? "xl:col-span-10" : "xl:col-span-12 "
+                } col-span-12`}
+              >
+                <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
+              </div>
+              {!allExist && (
+                <div className="col-span-12 h-full xl:col-span-2 shadow ">
+                  <RequestEvaluation
+                    evaluations={state.request?.evaluacion || []}
+                  />
+                </div>
+              )}
             </div>
           ) : (
             <div className="flex justify-center w-full">
-              <Loading type="MutatingDots" color="red" secondaryColor="blue" />
+              <Loading type="MutatingDots" color="#ee2a24" secondaryColor="#003876" />
             </div>
           )}
         </Header2Natigation>

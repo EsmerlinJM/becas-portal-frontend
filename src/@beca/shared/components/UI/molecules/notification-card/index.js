@@ -6,9 +6,10 @@ export default function CardNotification({ item }) {
       <div className="col-span-1 hidden md:flex items-center justify-center">
         <img className="" src={Group} alt="kk" />
       </div>
-      <div className="col-span-11 md:col-span-10 flex items-center space-x-3 p-4">
-        <div className="text-sm text-gray-400">
-          <p className="">
+      <div className="col-span-11 md:col-span-10 flex items-center space-x-3 p-4 pt-2">
+        <div className="">
+          <div className="mb-2">{item.nombre}</div>
+          <p className="text-sm text-gray-400">
             {item.descripcion}
             {/* <span className="font-semibold text-gray-500">Luisaura Jesmin</span>{" "}
             ha completado la evaluación correspondiente a

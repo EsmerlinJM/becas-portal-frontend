@@ -25,7 +25,7 @@ export default function MyRequests() {
         <div className="mb-4">
           {status === "loading" || state.loading ? (
             <div className="flex justify-center   w-full mt-4">
-              <Loading type="MutatingDots" color="red" secondaryColor="blue" />
+              <Loading type="MutatingDots" color="#ee2a24" secondaryColor="#003876" />
             </div>
           ) : (
             <div className="">

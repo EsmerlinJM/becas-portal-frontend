@@ -6,7 +6,7 @@ export default function RequestEvaluation({ evaluations }) {
   const coverage = (total / evaluations.length).toFixed(0);
   const color = evaluations.length && evaluations[0]["evaluation"]["color"];
   return (
-    <div className="evaluacion w-full col-span-2 ">
+    <div className="evaluacion w-full  col-span-2 ">
       <header
         style={{ backgroundColor: color }}
         className={`p-2 text-sm text-white font-semibold ${
@@ -16,14 +16,14 @@ export default function RequestEvaluation({ evaluations }) {
         <p>Evaluación</p>
         <p>{isNaN(coverage) ? 0 : coverage} /100</p>
       </header>
-      <div className="resultados bg-white px-2 rounded-b-sm">
+      <div className="resultados bg-white  p-4 rounded-b-sm">
         {(evaluations || []).map((eva, i) => (
           <div key={i}>
-            <div className="pt-5 pb-2 mb-2 font-semibold border-b flex justify-between text-xs">
+            <div className=" font-semibold border-b flex justify-between text-xs mb-1">
               <p>{eva.evaluation.name}</p>
               <p>{eva.evaluation.top_score || 0}</p>
             </div>
-            <div className="grid grid-cols-1 gap-y-3 mb-1">
+            <div className="grid grid-cols-1 gap-y-3 mb-4">
               <div className="text-xs flex justify-between">
                 <p className="flex items-center justify-between w-36">
                   {eva.requerimiento.name}

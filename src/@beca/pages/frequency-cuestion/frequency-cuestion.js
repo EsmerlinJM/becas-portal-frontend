@@ -134,7 +134,7 @@ const FAQs = [
   {
     id: 5,
     title:
-      "Cuáles son los criterios para ser seleccionado como beneficiario de este nuevo sistema?",
+      "¿Cuáles son los criterios para ser seleccionado como beneficiario de este nuevo sistema?",
     body: `En este nuevo sistema de becas se priorizará la excelencia académica de los participantes y su nivel socioeconómico.
     `,
   },

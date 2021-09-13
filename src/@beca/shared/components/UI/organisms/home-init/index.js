@@ -49,7 +49,7 @@ export default function HomeInit() {
               </span>
             </div>
           </div>
-          <div className="busqueda p-4 h-96 flex flex-col lg:mt-12 lg:ml-52 lg:mr-32 justify-center mt-4 ml-16 mr-8">
+          <div className="busqueda p-4 h-96 flex flex-col lg:mt-12 lg:ml-52 lg:mr-32 justify-center mt-4 mb-8 ml-16 mr-8">
             <div className="azul lg:text-6xl text-3xl mb-3 border-b	border-gray-300 pb-4">
               <h3 className="font-bold">Regístrate</h3>
               <h3 className="pb-2">y entérate a tiempo</h3>
@@ -59,7 +59,7 @@ export default function HomeInit() {
             </div>
             <p className="font-semibold mb-5 azul ">
               Siguiente convocatoria de becas nacionales:
-              <span className="text-yellow-600">31 de enero de 2022.</span>
+              <span className="text-yellow-600 pl-1">31 de enero de 2022.</span>
             </p>
             <div>
               <InputSearchHome />

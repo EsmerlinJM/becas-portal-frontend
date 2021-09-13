@@ -46,7 +46,7 @@ export default function Header2() {
             onClick={() => history.push("/register")}
             className="font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-3xl m-3 bg-blue-700"
           >
-            REGÍSTARSE
+            REGÍSTRATE
           </button>
         </div>
         <button onClick={() => setIsOpen(!isOpen)} className="md:hidden">
@@ -63,7 +63,7 @@ export default function Header2() {
       >
         <div className="w-64 ">
           <div className="p-4 azulbg flex items-center justify-between text-white">
-            Becas tu futuro
+            Beca tu futuro
             <button className="cursor-pointer transform hover:scale-125 transition-all duration-100">
               <AiOutlineClose
                 onClick={() => {

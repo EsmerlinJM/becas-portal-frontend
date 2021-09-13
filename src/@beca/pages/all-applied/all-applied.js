@@ -64,7 +64,7 @@ export default function AllApplied() {
       </div>
       {status === 'loading' && (
         <div className="flex justify-center  mt-20  h-screen">
-          <Loading type="MutatingDots" color="red" secondaryColor="blue" />
+          <Loading type="MutatingDots" color="#ee2a24" secondaryColor="#003876" />
         </div>
       )}
       {status !== 'loading' && (
