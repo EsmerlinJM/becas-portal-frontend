@@ -1,0 +1,47 @@
+
+RewriteEngine On
+
+#Redirect to SSL version
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI}
+
+#Redirect to www version
+RewriteCond %{HTTP_HOST} !^www.(.*)$ [NC]
+RewriteRule ^(.*)$ https://www.%{HTTP_HOST}/$1
+
+#Default page
+DirectoryIndex https://becas.gob.do/
+
+#Default charset
+AddDefaultCharset UTF-8
+
+#Prevent directory navigation
+Options All -Indexes
+
+#Disable CGI
+Options -ExecCGI
+
+#Hide PoweredBy
+Header unset X-Powered-By
+
+#Do not allow pages to be framed
+Header set X-Frame-Options SAMEORIGIN
+
+Header set  X-XSS-Protection  0
+
+#Mod Rewrite
+<IfModule mod_rewrite.c>
+   RewriteEngine On
+   Options +FollowSymlinks
+   RewriteBase /
+
+   #Block illegal or unsafe access
+   RewriteCond %{REQUEST_METHOD} ^(HEAD|TRACE|DELETE|TRACK) [NC,OR]
+   RewriteCond %{THE_REQUEST} ^.*(\r|\n|%0A|%0D).* [NC,OR]
+   RewriteCond %{HTTP_COOKIE} ^.*(<|>|'|'|%0A|%0D|%27|%3C|%3E|%00).* [NC,OR]
+   RewriteCond %{HTTP_USER_AGENT} ^.*(<|>|'|'|%0A|%0D|%27|%3C|%3E|%00).* [NC,OR]
+   RewriteCond %{QUERY_STRING} ^.*(localhost|loopback|127.0.0.1).* [NC,OR]
+   RewriteCond %{QUERY_STRING} ^.*(<|>|'|'|%0A|%0D|%27|%3C|%3E|%00).* [NC]
+   RewriteRule (.*) - [F,L]
+</IfModule>
+
