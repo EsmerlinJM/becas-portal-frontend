@@ -81,7 +81,7 @@ export default function Profile() {
                       }
                     />
                     <p className="text-gray-500 mt-2">
-                      Para cambiar click en la imagen{' '}
+                      Para actualizar tu foto, haz clic en la imagen{' '}
                     </p>
                   </label>
                 </div>

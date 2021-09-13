@@ -18,8 +18,8 @@ export default function Footer() {
     <div className="fadeIn">
       <div className="footer w-full azulbg md:flex items-center p-7">
         <div className="logos flex items-center justify-around max-w-xl my-12 md:my-0 md:px-4 pb-12 md:pb-0 border-b-2 md:border-none border-gray-400">
-          <img className="h-16 md:h-24" src={BECA} alt="" />
-          <img className="h-16 md:h-24" src={GOBRD} alt="" />
+          <img className="h-16 md:h-24 w-30 " src={BECA} alt="" />
+          <img className="h-16 md:h-24 w-30" src={GOBRD} alt="" />
         </div>
         <div className="info grid grid-rows-4 text-center md:flex md:border-l-2 border-gray-400">
           <div className="ayuda text-white text-xs w-full px-5 mb-4 md:mb-0">
