@@ -36,7 +36,7 @@
   },
   "scripts": {
     "start": "craco start",
-    "build": "craco build",
+    "build": "GENERATE_SOURCEMAP=false craco build",
     "test": "craco test --passWithNoTests",
     "eject": "react-scripts eject",
     "lint": "eslint ./ --ignore-path .gitignore",
