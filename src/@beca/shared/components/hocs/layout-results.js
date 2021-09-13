@@ -17,18 +17,14 @@ export default function LayoutResult({ children }) {
   const { data, status } = useSelector((state) => state.user.one)
   const { token } = getAuth()
   const [isOpen, setIsOpen] = useState(false)
-  
+
   const today = new Date()
   const expec_date = new Date('2022/1/31')
-
+  const valUser = token && status === 'completed' && Object.keys(data).length
   return (
     <div className="fadeIn">
       {/* <AlertTop /> */}
-      {token && status === 'completed' && Object.keys(data).length ? (
-        <HeaderUser user={data} />
-      ) : (
-        <Header2 />
-      )}
+      {valUser ? <HeaderUser user={data} /> : <Header2 />}
       {/* <Header2 /> */}
       <Navigation />
 
@@ -49,23 +45,34 @@ export default function LayoutResult({ children }) {
           {children}
           {expec_date.getTime() > today.getTime() && (
             <div className="busqueda p-4 h-96 flex flex-col xl:ml-52 xl:mr-32 justify-center  sm:ml-16 sm:mr-8 -mt-16 max-w-2xl min-w-lg ">
-              <div className="azul lg:text-6xl sm:text-3xl text-2xl mb-3 border-b	border-gray-300 pb-4">
-                <h3 className="font-bold">Regístrate</h3>
-                <h3 className="pb-2">y entérate a tiempo</h3>
-                <h3 className="font-bold lg:text-2xl text-1xl">
-                  de las próximas ofertas de becas
-                </h3>
-              </div>
+              {!valUser ? (
+                <div className="azul lg:text-6xl sm:text-3xl text-2xl mb-3 border-b	border-gray-300 pb-4">
+                  <h3 className="font-bold">Regístrate</h3>
+                  <h3 className="pb-2">y entérate a tiempo</h3>
+                  <h3 className="font-bold lg:text-2xl text-1xl">
+                    de las próximas ofertas de becas
+                  </h3>
+                </div>
+              ) : (
+                <div className="azul lg:text-6xl sm:text-3xl text-2xl mb-3 border-b	border-gray-300 pb-4">
+                  <h3 className="pb-2"> Entérate a tiempo</h3>
+                  <h3 className="font-bold lg:text-2xl text-1xl">
+                    de las próximas ofertas de becas
+                  </h3>
+                </div>
+              )}
               <p className="font-semibold mb-5 azul ">
                 Siguiente convocatoria de becas nacionales:
-                <span className="text-yellow-600">31 de enero de 2022.</span>
+                <span className="text-yellow-600"> 31 de enero de 2022.</span>
               </p>
-              <button
-                onClick={() => history.push('/register')}
-                className="font-bold transition text-white delay-100 px-4 py-2  hover:ring azulbg  rounded-3xl m-3 bg-blue-700"
-              >
-                REGÍSTRATE
-              </button>
+              {!valUser && (
+                <button
+                  onClick={() => history.push('/register')}
+                  className="font-bold transition text-white delay-100 px-4 py-2  hover:ring azulbg  rounded-3xl m-3 bg-blue-700"
+                >
+                  REGÍSTRATE
+                </button>
+              )}
             </div>
           )}
         </div>

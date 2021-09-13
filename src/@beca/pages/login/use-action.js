@@ -24,7 +24,7 @@ export default function useActions(history) {
         loading: 'ACCEDIENDO...',
         success: (rsp) => {
           response = rsp
-          return <b>Accediste correctamente!</b>
+          return <b>Crece tu talento, crece el país!</b>
         },
         error: (error) => {
           const {

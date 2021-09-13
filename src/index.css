@@ -21,7 +21,7 @@
 }
 
 .form-apply-background {
-  background-image: url("./img/Group\ 3618@2x.png");
+  background-image: url('./img/Group\ 3618@2x.png');
 }
 
 /************ begin FADE IN  ********/
@@ -114,3 +114,9 @@
   animation-name: fadeOut;
 }
 /****End FadeOut ****/
+
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
