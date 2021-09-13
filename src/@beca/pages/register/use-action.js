@@ -29,13 +29,13 @@ export default function useAction() {
         setLoading(false)
         const {
           data: {
-            errors: { email },
+            errors: { email=[] },
           },
         } = error.response
         return (
           <b>
             {email.length
-              ? email.map((em) => <p> {em} </p>)
+              ? email?.map((em) => <p> {em} </p>)
               : 'Este email ya existe!'}
           </b>
         )

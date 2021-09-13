@@ -34,9 +34,7 @@ export default function FormEducationList({
         {forms.map((item, i) => (
           <div key={i} className="relative fadeIn">
             <div className="flex justify-between">
-              <p className="self-center text-md font-bold px-2 py-1">
-                #{i + 1}
-              </p>
+              <p className="self-center text-md font-bold p-4">#{i + 1}</p>
               <div
                 onClick={() => onDelete(i, "formsEducation")}
                 className=" cursor-pointer z-20 px-2 py-1"
@@ -63,7 +61,7 @@ export default function FormEducationList({
           onClick={() => onPlus()}
           className="uppercase text-xs px-3 py-2 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
         >
-          <GoPlus />
+          Agregar nueva formación
         </button>
       </div>
     </div>

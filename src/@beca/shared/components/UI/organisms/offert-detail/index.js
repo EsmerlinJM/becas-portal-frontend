@@ -25,7 +25,7 @@ export default function OfferDetail({ item, message }) {
   return (
     <div>
       <div className="oferta bg-white m-auto grid-col-1 grid lg:grid-cols-3 ">
-        <div className="ofertaInfo md:flex md:flex-col px-7 py-14">
+        <div className="ofertaInfo md:flex md:flex-col p-4 md:px-7 py-14">
           <div className="titulo grid md:flex justify-center md:justify-start md:items-end pb-5">
             <div className="logo w-40">
               <img className="w-full" src={institution_image} alt="" />
@@ -50,8 +50,8 @@ export default function OfferDetail({ item, message }) {
             </a>
           </div>
         </div>
-        <div className="border-l border-r border-dashed detalles flex flex-col pl-14 px-7 py-14">
-          <h5 className="font-semibold text-xs mb-3 pl-2">
+        <div className="border-l border-r border-dashed detalles flex flex-col md:pl-14 p-4 md:px-7 py-14">
+          <h5 className="font-semibold text-xs mb-3">
             Detalles de esta carrera
           </h5>
           <table className="text-left text-sm leading-7">
@@ -101,7 +101,7 @@ export default function OfferDetail({ item, message }) {
             </tbody>
           </table>
         </div>
-        <div className="acercaDe px-14 py-14 flex flex-col text-sm">
+        <div className="acercaDe p-4 md:px-14 py-14 flex flex-col text-sm">
           <h5 className="font-semibold text-xs mb-4">Acerca de {name}</h5>
           <p className="text-sm text-justify mb-5">
             Somos una comunidad universitaria plural e innovadora, que forma

@@ -99,31 +99,32 @@ export default function FormEducation({ item, onChange }) {
                 href={item.certificacion_url}
                 target="_blank"
               >
-                {" "}
-                Ver certificación de estudios{" "}
+                Ver certificación de estudios
               </a>
             )}
           </div>
           <div>
             <p className="mb-1.5 font-semibold">Becado</p>
-            <label className="flex items-center text-xs text-gray-400">
-              <input
-                onChange={() => onChange({ name: "isBecado", value: true })}
-                checked={item.isBecado}
-                className="mr-1.5"
-                type="radio"
-              />
-              Sí
-            </label>
-            <label className="flex items-center text-xs text-gray-400 ">
-              <input
-                onChange={() => onChange({ name: "isBecado", value: false })}
-                checked={!item.isBecado}
-                className="mr-1.5"
-                type="radio"
-              />
-              No
-            </label>
+            <div className="flex items-center justify-around">
+              <label className="flex items-center text-xs text-gray-400">
+                <input
+                  onChange={() => onChange({ name: "isBecado", value: true })}
+                  checked={item.isBecado}
+                  className="mr-1.5"
+                  type="radio"
+                />
+                Sí
+              </label>
+              <label className="flex items-center text-xs text-gray-400 ">
+                <input
+                  onChange={() => onChange({ name: "isBecado", value: false })}
+                  checked={!item.isBecado}
+                  className="mr-1.5"
+                  type="radio"
+                />
+                No
+              </label>
+            </div>
           </div>
         </span>
       </div>
