@@ -57,18 +57,18 @@ export default function Footer() {
         </div>
         <div className="flex items-center   justify-center ">
           <p className="azul text-sm font-semibold">SÍGUENOS</p>
-          <span className="ml-3 flex-shrink-0" href="#">
+          <a className="ml-3 flex-shrink-0 cursor-pointer" href="https://www.facebook.com/MESCyTRD" target="_blank">
             <img src={FB} alt="" />
-          </span>
-          <span className="ml-3 flex-shrink-0" href="#">
+          </a>
+          <a className="ml-3 flex-shrink-0 cursor-pointer" href="https://www.youtube.com/user/mescyt" target="_blank">
             <img src={YTB} alt="" />
-          </span>
-          <span className="ml-3 flex-shrink-0" href="#">
+          </a>
+          <a className="ml-3 flex-shrink-0 cursor-pointer" href="https://twitter.com/MESCYTRD" target="_blank">
             <img src={SP} alt="" />
-          </span>
-          <span className="ml-3 flex-shrink-0" href="#">
+          </a>
+          <a className="ml-3 flex-shrink-0 cursor-pointer" href="https://www.instagram.com/mescytrd/" target="_blank">
             <img src={IG} alt="" />
-          </span>
+          </a>
         </div>
       </div>
     </div>
