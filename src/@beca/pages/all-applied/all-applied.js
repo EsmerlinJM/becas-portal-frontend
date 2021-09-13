@@ -5,6 +5,18 @@ import MUIDataTable from "mui-datatables";
 import Header2Natigation from "../../shared/components/hocs/header2-natigation";
 import useAction from "./use-action";
 import OpenCallsBlock from "../../shared/components/UI/organisms/open-calls-block";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+
+const getMuiTheme = () =>
+  createTheme({
+    overrides: {
+      MUIDataTableHeadCell: {
+        data: {
+          fontWeight: "600",
+        },
+      },
+    },
+  });
 
 const options = {
   filter: true,
@@ -59,13 +71,15 @@ export default function AllApplied() {
         <div className=" container mx-auto p-3 fadeIn">
           <div className="bg-white m-auto flex flex-col">
             <div className="tabla">
-              <MUIDataTable
-                title="Becados"
-                // className="shadow-sm"
-                data={dataTable}
-                columns={columns}
-                options={options}
-              />
+              <MuiThemeProvider theme={getMuiTheme()}>
+                <MUIDataTable
+                  title="Becados"
+                  // className="shadow-sm"
+                  data={dataTable}
+                  columns={columns}
+                  options={options}
+                />
+              </MuiThemeProvider>
             </div>
           </div>
         </div>

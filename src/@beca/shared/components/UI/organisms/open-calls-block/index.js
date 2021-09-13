@@ -45,7 +45,6 @@ export default function OpenCallsBlock({ id }) {
   if (status === "loading" || statusRecent === "loading")
     return (
       <div className="flex justify-center">
-        {" "}
         <Loading type="MutatingDots" color="red" secondaryColor="blue" />
       </div>
     );

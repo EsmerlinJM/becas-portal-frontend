@@ -40,7 +40,7 @@ export default function HeaderUser({ user, isHome = false }) {
                 isHeader
                 heightInput="h-9"
                 widthImg="w-9"
-                placeholder="Que ofertas buscas?"
+                placeholder="¿Qué quieres estudiar? "
               />
             </div>
           </div>
@@ -123,7 +123,7 @@ export default function HeaderUser({ user, isHome = false }) {
               isHeader
               heightInput="h-9"
               widthImg="w-9"
-              placeholder="Que ofertas buscas?"
+              placeholder="¿Qué quieres estudiar? "
             />
           </div>
 

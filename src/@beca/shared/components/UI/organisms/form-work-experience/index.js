@@ -35,7 +35,7 @@ export default function WorkExperience({ item, onChange }) {
               placeholder="809-000-0000"
             />
           </div>
-          <div className="flex space-x-16">
+          <div className="flex gap-4">
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">Posición Ocupada</p>
               <input
@@ -166,8 +166,7 @@ export default function WorkExperience({ item, onChange }) {
                 href={item.documento_url}
                 target="_blank"
               >
-                {" "}
-                Ver documento{" "}
+                Ver documento
               </a>
             )}
           </div>

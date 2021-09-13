@@ -1,23 +1,28 @@
-import React from 'react'
-import BECA from '../../../../../../img/groupp.png'
-import FB from '../../../../../../img/facebook(1).svg'
-import YTB from '../../../../../../img/youtube-brands.svg'
-import SP from '../../../../../../img/Shape.svg'
-import IG from '../../../../../../img/instagram(3).svg'
-import OGTIC from '../../../../../../img/ogtic.svg'
-import INNOVACION from '../../../../../../img/LogoGabineteInnovacion.svg'
-import { useHistory } from 'react-router'
+import React from "react";
+// import BECA from "../../../../../../img/groupp.png";
+
+import BECA from "../../../../../../img/Logo_BECATUFUTURO_BLANCO.svg";
+import GOBRD from "../../../../../../img/Logo__GOBRD_BLANCO.svg";
+import FB from "../../../../../../img/facebook(1).svg";
+import YTB from "../../../../../../img/youtube-brands.svg";
+import SP from "../../../../../../img/Shape.svg";
+import IG from "../../../../../../img/instagram(3).svg";
+import OGTIC from "../../../../../../img/ogtic.svg";
+import INNOVACION from "../../../../../../img/LogoGabineteInnovacion.svg";
+import { useHistory } from "react-router";
 
 export default function Footer() {
   const history = useHistory()
+  
   return (
     <div className="fadeIn">
       <div className="footer w-full azulbg md:flex items-center p-7">
-        <div className="logos flex justify-center w-full max-w-xl my-12 md:my-0 pb-12 md:pb-0 border-b-2 md:border-none border-gray-400">
-          <img className="w-96 md:mr-10" src={BECA} alt="" />
+        <div className="logos flex items-center justify-around max-w-xl my-12 md:my-0 md:px-4 pb-12 md:pb-0 border-b-2 md:border-none border-gray-400">
+          <img className="h-16 md:h-24" src={BECA} alt="" />
+          <img className="h-16 md:h-24" src={GOBRD} alt="" />
         </div>
         <div className="info grid grid-rows-4 text-center md:flex md:border-l-2 border-gray-400">
-          <div className="ayuda text-white text-xs w-full px-5">
+          <div className="ayuda text-white text-xs w-full px-5 mb-4 md:mb-0">
             <h4 className="font-bold mb-4">AYUDA</h4>
             <div className="enlaces text-blue-600 flex flex-col">
               <span

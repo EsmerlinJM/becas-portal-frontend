@@ -1,7 +1,8 @@
 import { Drawer } from "@material-ui/core";
 import { useState } from "react";
 import { useHistory } from "react-router";
-import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
+// import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
+import Logo from "../../../../../../img/Logo_BECATUFUTURO.svg";
 import {
   AiOutlineClose,
   AiOutlineMenu,
@@ -18,7 +19,7 @@ export default function Header2() {
         <img
           src={Logo}
           alt="logo3 "
-          className="w-28 md:w-40 cursor-pointer"
+          className="w-36 md:w-40 cursor-pointer"
           onClick={() => history.push("/")}
         />
         <div className=" m-7 text-xs text-gray-400 font-bold hidden xs:hidden sm:hidden md:flex lg:flex xl:flex">
