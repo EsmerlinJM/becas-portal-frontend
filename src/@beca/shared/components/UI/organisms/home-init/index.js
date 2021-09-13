@@ -1,25 +1,22 @@
-import { useDispatch, useSelector } from "react-redux";
-import home3834 from "../../../../../../img/Group 3834@2x.png";
-import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
+import { useDispatch, useSelector } from 'react-redux'
+import home3834 from '../../../../../../img/Group 3834@2x.png'
+import Logo from '../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png'
 
-import { useHistory } from "react-router";
-import { getAuth } from "../../../../utils/auth";
+import { useHistory } from 'react-router'
+import { getAuth } from '../../../../utils/auth'
 
-import HeaderUser from "../header-user";
-import InputSearchHome from "../../atoms/input-search-home";
-import ModalInitiUser from "../user-modal-init";
-import Header2 from "../header-2";
+import HeaderUser from '../header-user'
+import InputSearchHome from '../../atoms/input-search-home'
+import ModalInitiUser from '../user-modal-init'
+import Header2 from '../header-2'
 
 export default function HomeInit() {
-  const { data: user, status } = useSelector((state) => state.user.one);
-  const history = useHistory();
-  const { token } = getAuth();
+  const { data: user, status } = useSelector((state) => state.user.one)
+  const history = useHistory()
+  const { token } = getAuth()
 
   const userExist =
-    token &&
-    status === "completed" &&
-    Object.keys(user || {}).length &&
-    user.id;
+    token && status === 'completed' && Object.keys(user || {}).length && user.id
 
   return (
     <>
@@ -35,14 +32,14 @@ export default function HomeInit() {
               className="w-40 ml-10"
               src={Logo}
               alt=""
-              onClick={() => history.push("/")}
+              onClick={() => history.push('/')}
             />
             <div className="mt-11 m-7 text-xs text-gray-400 font-bold">
               <span className="cursor-pointer  m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 hidden">
                 BLOG
               </span>
               <span
-                onClick={() => history.push("/cuetion-frequency")}
+                onClick={() => history.push('/cuetion-frequency')}
                 className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800"
               >
                 PREGUNTAS FRECUENTES
@@ -58,8 +55,11 @@ export default function HomeInit() {
               </h3>
             </div>
             <p className="font-semibold mb-5 azul ">
-              Siguiente convocatoria de becas nacionales:
-              <span className="text-yellow-600 pl-1">31 de enero de 2022.</span>
+              Siguiente convocatoria de becas:
+              <span className="text-yellow-600 pl-1">
+                {' '}
+                31 de enero de 2022.
+              </span>
             </p>
             <div>
               <InputSearchHome />
@@ -76,13 +76,13 @@ export default function HomeInit() {
               // onClick={closeSesion}
             >
               <span
-                onClick={() => history.push("/login")}
+                onClick={() => history.push('/login')}
                 className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white cursor-pointer"
               >
                 INICIAR SESIÓN
               </span>
               <button
-                onClick={() => history.push("/register")}
+                onClick={() => history.push('/register')}
                 className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100"
               >
                 REGÍSTRATE AHORA
@@ -106,13 +106,13 @@ export default function HomeInit() {
               // onClick={closeSesion}
             >
               <span
-                onClick={() => history.push("/login")}
+                onClick={() => history.push('/login')}
                 className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white cursor-pointer"
               >
                 INICIAR SESIÓN
               </span>
               <button
-                onClick={() => history.push("/register")}
+                onClick={() => history.push('/register')}
                 className="font-bold transition delay-100 p-2.5 bg-white azul rounded-3xl m-3 hover:bg-blue-100"
               >
                 REGÍSTRATE AHORA
@@ -122,5 +122,5 @@ export default function HomeInit() {
         </div>
       )}
     </>
-  );
+  )
 }

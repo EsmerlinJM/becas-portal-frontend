@@ -37,7 +37,7 @@ export default function FormPersonalData({ user, onClick }) {
     if (!data['province_id']) data['province_id'] = 1
     if (!data['municipality_id']) data['municipality_id'] = 1
     const payload = await updateProfile(data)
-    setUser(payload)
+    dispatch(setUser(payload))
     toast.success('Guardado correctamente!')
   })
 
