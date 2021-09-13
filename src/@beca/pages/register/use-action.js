@@ -29,7 +29,7 @@ export default function useAction() {
         setLoading(false)
         const {
           data: {
-            errors: { email },
+            errors: { email=[] },
           },
         } = error.response
         return (
