@@ -121,7 +121,7 @@ export default function RequestDetail() {
             </div>
           ) : (
             <div className="flex justify-center w-full">
-              <Loading type="MutatingDots" color="red" secondaryColor="blue" />
+              <Loading type="MutatingDots" color="#ee2a24" secondaryColor="#003876" />
             </div>
           )}
         </Header2Natigation>

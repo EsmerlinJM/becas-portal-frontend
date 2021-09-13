@@ -46,7 +46,7 @@ export default function OpenCallsBlock({ id }) {
     return (
       <div className="flex justify-center">
         {' '}
-        <Loading type="MutatingDots" color="red" secondaryColor="blue" />
+        <Loading type="MutatingDots" color="#ee2a24" secondaryColor="#003876" />
       </div>
     )
 
