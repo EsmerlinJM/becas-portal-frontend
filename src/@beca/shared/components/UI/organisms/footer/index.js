@@ -10,6 +10,12 @@ import IG from "../../../../../../img/instagram(3).svg";
 import OGTIC from "../../../../../../img/ogtic.svg";
 import INNOVACION from "../../../../../../img/LogoGabineteInnovacion.svg";
 import { useHistory } from "react-router";
+import {
+  AiOutlineFacebook,
+  AiOutlineInstagram,
+  AiOutlineTwitter,
+  AiOutlineYoutube,
+} from "react-icons/ai";
 
 export default function Footer() {
   const history = useHistory();
@@ -81,34 +87,34 @@ export default function Footer() {
           </div>
         </div>
         <div className="flex items-center justify-center ">
-          <p className="azul text-sm font-semibold">SÍGUENOS</p>
+          <p className="azul text-sm font-semibold">SÍGUENOS EN</p>
           <a
             className="ml-3 flex-shrink-0 cursor-pointer"
             href="https://www.facebook.com/MESCyTRD"
             target="_blank"
           >
-            <img src={FB} alt="" />
+            <AiOutlineFacebook className="text-blue-900 w-6 h-6 hover:text-blue-900 transform hover:scale-110 transition-all duration-200" />
           </a>
           <a
             className="ml-3 flex-shrink-0 cursor-pointer"
             href="https://www.youtube.com/user/mescyt"
             target="_blank"
           >
-            <img src={YTB} alt="" />
+            <AiOutlineYoutube className="text-blue-900 w-7 h-7 hover:text-red-600 transform hover:scale-110 transition-all duration-200" />
           </a>
           <a
             className="ml-3 flex-shrink-0 cursor-pointer"
             href="https://twitter.com/MESCYTRD"
             target="_blank"
           >
-            <img src={SP} alt="" />
+            <AiOutlineTwitter className="text-blue-900 w-7 h-7 hover:text-blue-500 transform hover:scale-110 transition-all duration-200" />
           </a>
           <a
             className="ml-3 flex-shrink-0 cursor-pointer"
             href="https://www.instagram.com/mescytrd/"
             target="_blank"
           >
-            <img src={IG} alt="" />
+            <AiOutlineInstagram className="text-blue-900 w-7 h-7 hover:text-pink-600 transform hover:scale-110 transition-all duration-200" />
           </a>
         </div>
       </div>

@@ -63,7 +63,7 @@ export default function Header2() {
       >
         <div className="w-64 ">
           <div className="p-4 azulbg flex items-center justify-between text-white">
-            Becas tu futuro
+            Beca tu futuro
             <button className="cursor-pointer transform hover:scale-125 transition-all duration-100">
               <AiOutlineClose
                 onClick={() => {

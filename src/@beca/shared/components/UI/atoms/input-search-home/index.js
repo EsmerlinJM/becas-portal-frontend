@@ -24,7 +24,7 @@ export default function InputSearchHome({
   return (
     <div className="flex items-center">
       <input
-        className={`${heightInput} outline-none border rounded-3xl w-96 p-3.5 pl-6 focus:placeholder-blue-100 placeholder-blue-800 text-xs font-bold`}
+        className={`${heightInput} outline-none border rounded-3xl w-96 p-3.5 pl-6 focus:placeholder-blue-100 placeholder-blue-900 text-xs font-bold`}
         name="user"
         type="text"
         required

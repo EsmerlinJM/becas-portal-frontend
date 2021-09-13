@@ -67,19 +67,19 @@ export default function FormSocioEconomico({ user }) {
           </div>
           <div className="">
             <p className="font-semibold">Monto de Alquiler </p>
-            <p className="mb-1.5" style={{ fontSize: "10px" }}>
-              (solo en caso de que viva alquilado)
-            </p>
             <input
               className="text-xs border w-full rounded px-3 py-3 outline-none"
               type="number"
               {...register("monto_alquiler")}
               placeholder="..."
             />
+            <p className="mb-1.5" style={{ fontSize: "10px" }}>
+              (solo en caso de que viva alquilado)
+            </p>
           </div>
           <div className="">
             <p className="mb-1.5 font-semibold">¿Posee vehículo propio?</p>
-            <div className="flex h-full items-center justify-around">
+            <div className="flex items-center justify-around sm:justify-start gap-4">
               <label
                 className="flex items-center text-xs text-gray-400"
                 htmlFor="yesCar"
@@ -180,7 +180,7 @@ export default function FormSocioEconomico({ user }) {
             </div>
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">¿Labora actualmente?</p>
-              <div className="flex items-center justify-around">
+              <div className="flex items-center justify-around sm:justify-start gap-4">
                 <label className="flex items-center text-xs text-gray-400">
                   <input
                     className="mr-1.5"
@@ -314,7 +314,7 @@ export default function FormSocioEconomico({ user }) {
             </div>
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">¿Labora actualmente?</p>
-              <div className="flex items-center justify-around">
+              <div className="flex items-center justify-around sm:justify-start gap-4">
                 <label
                   className="flex items-center text-xs text-gray-400"
                   htmlFor="yes2"

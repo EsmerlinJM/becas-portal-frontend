@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { useLocation, useHistory } from 'react-router'
+import { useState, useEffect, useRef } from "react";
+import { useLocation, useHistory } from "react-router";
 
 import qs from "querystring";
 
@@ -7,11 +7,11 @@ import { AiOutlineClear } from "react-icons/ai";
 import Search from "../../../../../../img/Buscar-CTA-blue.svg";
 
 export default function InputSearchResult() {
-  const inpSearch = useRef()
-  const [query, setQuery] = useState(null)
-  const { search } = useLocation()
-  const qp = qs.parse(search)
-  const history = useHistory()
+  const inpSearch = useRef();
+  const [query, setQuery] = useState(null);
+  const { search } = useLocation();
+  const qp = qs.parse(search);
+  const history = useHistory();
 
   const onSearch = () => {
     const newParams = {
@@ -37,12 +37,12 @@ export default function InputSearchResult() {
 
     setQuery(() => (params2.all ? params2.all : ""));
     history.push({
-      pathname: 'query-result',
-      search: qs.stringify(newParams).replace('%3F', ''),
-    })
+      pathname: "query-result",
+      search: qs.stringify(newParams).replace("%3F", ""),
+    });
 
-    inpSearch.current.value = ''
-  }
+    inpSearch.current.value = "";
+  };
 
   useEffect(() => {
     const params = JSON.stringify(qp).replace("?", "");
@@ -51,7 +51,7 @@ export default function InputSearchResult() {
     if (params2.all) return setQuery(() => params2.all);
 
     // eslint-disable-next-line
-  }, [])
+  }, []);
   return (
     <div className="flex items-center">
       <button
@@ -65,7 +65,7 @@ export default function InputSearchResult() {
         Limpiar
       </button>
       <input
-        className="outline-none text-gray-600  text-xs font-bold focus:border-blue-100 border rounded-3xl w-full p-3.5 pl-6 focus:placeholder-azul-300 placeholder-azul"
+        className="outline-none text-gray-600  text-xs font-bold focus:border-blue-100 border rounded-3xl w-full p-3.5 pl-6 focus:placeholder-blue-900 placeholder-azul"
         name="user"
         type="text"
         required
@@ -73,7 +73,7 @@ export default function InputSearchResult() {
         maxLength="50"
         defaultValue={query}
         ref={inpSearch}
-        onKeyPress={({ key }) => key === 'Enter' && onSearch()}
+        onKeyPress={({ key }) => key === "Enter" && onSearch()}
         onChange={({ target }) => setQuery(target.value)}
       />
 
