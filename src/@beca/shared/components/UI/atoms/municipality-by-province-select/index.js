@@ -13,7 +13,6 @@ export default function MunicipalitySelect({ onSelect, id, provinceId }) {
 
   useEffect(() => {
     const fn = async () => dispatch(await searchByProvince(provinceId));
-
     provinceId && fn();
     //eslint-disable-next-line
   }, [dispatch, provinceId]);
