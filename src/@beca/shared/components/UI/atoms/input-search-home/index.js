@@ -18,7 +18,7 @@ export default function InputSearchHome({
       history.push(`/query-result?all=${query}`);
       return;
     }
-    query.length <= 5 && toast.error("Mínimo 6 caracteres");
+    query?.length <= 5 && toast.error("Mínimo 6 caracteres");
   };
 
   return (

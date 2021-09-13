@@ -64,7 +64,7 @@ export default function LayoutResult({ children }) {
                 onClick={() => history.push('/register')}
                 className="font-bold transition text-white delay-100 px-4 py-2  hover:ring azulbg  rounded-3xl m-3 bg-blue-700"
               >
-                REGÍSTRARSE
+                REGÍSTRATE
               </button>
             </div>
           )}
