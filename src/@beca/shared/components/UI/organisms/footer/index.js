@@ -34,31 +34,31 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <button
+                  <span
                     onClick={() => history.push("/terminos-condiciones")}
-                    className="text-white hover:text-blue-300"
+                    className="text-white hover:text-blue-300 cursor-pointer"
                     href="#"
                   >
                     Términos de Uso
-                  </button>
+                  </span>
                 </li>
                 <li>
-                  <button
+                  <span
                     onClick={() => history.push("/politicas-privacidad")}
-                    className="text-white hover:text-blue-300"
+                    className="text-white hover:text-blue-300 cursor-pointer"
                     href="#"
                   >
                     Política de Privacidad
-                  </button>
+                  </span>
                 </li>
                 <li>
-                  <button
+                  <span
                     onClick={() => history.push("/cuetion-frequency")}
-                    className="text-white hover:text-blue-300"
+                    className="text-white hover:text-blue-300 cursor-pointer"
                     href="#"
                   >
                     Preguntas Frecuentes
-                  </button>
+                  </span>
                 </li>
               </nav>
             </div>
