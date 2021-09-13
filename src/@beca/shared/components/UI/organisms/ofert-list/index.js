@@ -9,6 +9,18 @@ import { useState } from "react";
 import { BsFillGrid3X3GapFill } from "react-icons/bs";
 import { AiOutlineInsertRowAbove } from "react-icons/ai";
 import { useHistory } from "react-router";
+import { createTheme, MuiThemeProvider } from "@material-ui/core/styles";
+
+const getMuiTheme = () =>
+  createTheme({
+    overrides: {
+      MUIDataTableHeadCell: {
+        data: {
+          fontWeight: "600",
+        },
+      },
+    },
+  });
 
 const columns = [
   "id",
@@ -124,13 +136,15 @@ export default function OfertList({ justFavorites }) {
       >
         {table ? (
           <div className="fadeIn p-4">
-            <MUIDataTable
-              title="Ofertas"
-              className="shadow-sm"
-              data={data}
-              columns={columns}
-              options={options}
-            />
+            <MuiThemeProvider theme={getMuiTheme()}>
+              <MUIDataTable
+                title="Ofertas"
+                className="shadow-sm"
+                data={data}
+                columns={columns}
+                options={options}
+              />
+            </MuiThemeProvider>
           </div>
         ) : (
           <div className="fadeIn p-4">
