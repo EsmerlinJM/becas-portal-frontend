@@ -35,7 +35,7 @@ export default function HeaderUser({ user, isHome = false }) {
                 PREGUNTAS FRECUENTES
               </span>
             </div>
-            <div className="self-center ml-4 hidden md:inline-block">
+            <div className="self-center ml-4 hidden lg:inline-block">
               <InputSearchHome
                 isHeader
                 heightInput="h-9"
