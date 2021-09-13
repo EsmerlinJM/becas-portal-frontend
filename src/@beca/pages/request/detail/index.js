@@ -42,7 +42,9 @@ export default function RequestDetail() {
 
   const arrTabs = [
     <RequestResult status={state.request.status} key={1} />,
-    <FormPersonalData user={state.user} key={2} />,
+    <div className="p-4">
+      <FormPersonalData user={state.user} key={2} />
+    </div>,
     <FormSocioEconomico user={state.user} key={6} />,
     <FormEducationList
       forms={state.formsEducation}
@@ -99,17 +101,17 @@ export default function RequestDetail() {
       <div className="fadeIn">
         <Header2Natigation objNav={objNav}>
           {status === "completed" ? (
-            <div className="container mx-auto my-4">
+            <div className="container mx-auto my-4 p-4">
               <CardRequest
                 item={state.request}
                 onClick={(item) => console.log(item)}
               />
-              <div className="mt-10 flex justify-between grid grid-cols-12 gap-4 ">
+              <div className="mt-10  justify-between grid grid-cols-12 gap-4 ">
                 <div className={!allExist ? "col-span-10" : "col-span-12"}>
                   <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
                 </div>
                 {!allExist && (
-                  <div className="col-span-2 shadow">
+                  <div className="col-span-2 shadow p-4">
                     <RequestEvaluation
                       evaluations={state.request?.evaluacion || []}
                     />

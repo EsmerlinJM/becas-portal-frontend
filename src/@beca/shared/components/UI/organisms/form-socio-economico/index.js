@@ -58,30 +58,28 @@ export default function FormSocioEconomico({ user }) {
   console.log(user);
   return (
     <>
-      <div className=" py-3 m-auto grid grid-cols-1 gap-y-4">
-        <span className="w-full bg-white grid gap-3 gap-x-20 md:grid-cols-2 grid-cols-1 text-xs p-5">
-          <div className="md:col-span-2 flex justify-center mb-4">
+      <div className="grid grid-cols-1 gap-y-4">
+        <div className="bg-white grid gap-y-5 gap-x-20 md:grid-cols-2 grid-cols-1 text-xs p-5">
+          <div className="md:col-span-2 flex justify-center items-center pb-4">
             <p className="text-sm font-semibold text-center md:text-left mb-2 underline">
               Datos Generales:
             </p>
           </div>
-          <div className="flex space-x-10 mb-2">
-            <div className="w-1/2">
-              <p className="font-semibold ">Monto de Alquiler </p>
-              <p className="mb-1.5" style={{ fontSize: "10px" }}>
-                (solo en caso de que viva alquilado)
-              </p>
-              <input
-                className="text-xs border w-full rounded px-3 py-3 outline-none"
-                type="number"
-                {...register("monto_alquiler")}
-                placeholder="..."
-              />
-            </div>
+          <div className="">
+            <p className="font-semibold">Monto de Alquiler </p>
+            <p className="mb-1.5" style={{ fontSize: "10px" }}>
+              (solo en caso de que viva alquilado)
+            </p>
+            <input
+              className="text-xs border w-full rounded px-3 py-3 outline-none"
+              type="number"
+              {...register("monto_alquiler")}
+              placeholder="..."
+            />
           </div>
-          <div className="flex flex-col items-center">
-            <div>
-              <p className="mb-1.5 font-semibold">¿Posee vehículo propio?</p>
+          <div className="">
+            <p className="mb-1.5 font-semibold">¿Posee vehículo propio?</p>
+            <div className="flex h-full items-center justify-around">
               <label
                 className="flex items-center text-xs text-gray-400"
                 htmlFor="yesCar"
@@ -108,7 +106,7 @@ export default function FormSocioEconomico({ user }) {
               </label>
             </div>
           </div>
-          <hr className="md:col-span-2" />
+          <hr className="md:col-span-2 mt-4" />
           {/*----------------------------------------------------------------------------------------------------------------------------------------------------*/}
           <div className="md:col-span-2 flex justify-center mb-4">
             <p className="text-sm font-semibold text-center md:text-left mb-2 underline">
@@ -182,27 +180,29 @@ export default function FormSocioEconomico({ user }) {
             </div>
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">¿Labora actualmente?</p>
-              <label className="flex items-center text-xs text-gray-400">
-                <input
-                  className="mr-1.5"
-                  type="radio"
-                  checked={madre_trabaja === "Si" && true}
-                  onChange={() => setValue("madre_trabaja", "Si")}
-                />
-                Sí
-              </label>
-              <label
-                className="flex items-center text-xs text-gray-400 mb-3"
-                htmlFor="no"
-              >
-                <input
-                  className="mr-1.5"
-                  type="radio"
-                  checked={madre_trabaja === "No" && true}
-                  onChange={() => setValue("madre_trabaja", "No")}
-                />
-                No
-              </label>
+              <div className="flex items-center justify-around">
+                <label className="flex items-center text-xs text-gray-400">
+                  <input
+                    className="mr-1.5"
+                    type="radio"
+                    checked={madre_trabaja === "Si" && true}
+                    onChange={() => setValue("madre_trabaja", "Si")}
+                  />
+                  Sí
+                </label>
+                <label
+                  className="flex items-center text-xs text-gray-400"
+                  htmlFor="no"
+                >
+                  <input
+                    className="mr-1.5"
+                    type="radio"
+                    checked={madre_trabaja === "No" && true}
+                    onChange={() => setValue("madre_trabaja", "No")}
+                  />
+                  No
+                </label>
+              </div>
             </div>
           </div>
           <div className="flex space-x-10">
@@ -240,7 +240,7 @@ export default function FormSocioEconomico({ user }) {
               onChange={(item) => setValue("madre_rango_salarial", item.value)}
             />
           </div>
-          <hr className="md:col-span-2" />
+          <hr className="md:col-span-2 mt-4" />
           {/*------------------------------------------------------------------------------------------------------------------------------------------------------------*/}
           <div className="md:col-span-2 flex justify-center mb-4">
             <p className="text-sm font-semibold text-center md:text-left mb-2 underline">
@@ -314,30 +314,32 @@ export default function FormSocioEconomico({ user }) {
             </div>
             <div className="w-1/2">
               <p className="mb-1.5 font-semibold">¿Labora actualmente?</p>
-              <label
-                className="flex items-center text-xs text-gray-400"
-                htmlFor="yes2"
-              >
-                <input
-                  className="mr-1.5"
-                  type="radio"
-                  checked={padre_trabaja === "Si" && true}
-                  onChange={() => setValue("padre_trabaja", "Si")}
-                />
-                Sí
-              </label>
-              <label
-                className="flex items-center text-xs text-gray-400 mb-3"
-                htmlFor="no2"
-              >
-                <input
-                  className="mr-1.5"
-                  type="radio"
-                  checked={padre_trabaja === "No" && true}
-                  onChange={() => setValue("padre_trabaja", "No")}
-                />
-                No
-              </label>
+              <div className="flex items-center justify-around">
+                <label
+                  className="flex items-center text-xs text-gray-400"
+                  htmlFor="yes2"
+                >
+                  <input
+                    className="mr-1.5"
+                    type="radio"
+                    checked={padre_trabaja === "Si" && true}
+                    onChange={() => setValue("padre_trabaja", "Si")}
+                  />
+                  Sí
+                </label>
+                <label
+                  className="flex items-center text-xs text-gray-400"
+                  htmlFor="no2"
+                >
+                  <input
+                    className="mr-1.5"
+                    type="radio"
+                    checked={padre_trabaja === "No" && true}
+                    onChange={() => setValue("padre_trabaja", "No")}
+                  />
+                  No
+                </label>
+              </div>
             </div>
           </div>
           <div className="flex space-x-10">
@@ -384,7 +386,7 @@ export default function FormSocioEconomico({ user }) {
               {loading ? "Guardando..." : " Guardar"}
             </button>
           </div>
-        </span>
+        </div>
       </div>
     </>
   );

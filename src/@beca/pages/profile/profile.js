@@ -29,7 +29,7 @@ export default function Profile() {
               <div className="rounded flex flex-col items-center space-y-7 md:mb-0  mb-7">
                 <img
                   className="rounded-lg w-60 border-2 border-blue-700"
-                  src={data.image_url || PP}
+                  src={PP}
                   alt=""
                 />
                 <div className="space-x-1 flex">

@@ -37,7 +37,6 @@ export default function Register() {
                 <img src={Beca} alt="" width="100%" height="100%" />
               </div>
               <p className="font-bold text-center">
-                {" "}
                 Estás a pocos pasos de iniciar un futuro talentoso
               </p>
             </div>
