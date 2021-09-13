@@ -35,7 +35,7 @@ export default function useAction() {
         return (
           <b>
             {email.length
-              ? email.map((em) => <p> {em} </p>)
+              ? email?.map((em) => <p> {em} </p>)
               : 'Este email ya existe!'}
           </b>
         )
