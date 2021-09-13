@@ -1,8 +1,8 @@
-import ModalTemplate from "../../molecules/modal-template";
+import ModalTemplate from '../../molecules/modal-template'
 // import NumberFormat from "react-number-format";
 
 export default function ModalUser3({
-  width = "w-2/5",
+  width = 'w-2/5',
   open,
   onExit,
   onChange,
@@ -28,9 +28,9 @@ export default function ModalUser3({
           <p className="text-sm mb-1  mt-2">Número de teléfono:</p>
           <input
             defaultValue={phone}
-            type="phone"
-            placeholder="809-000-0000"
-            {...onChange("contact_phone")}
+            type="number"
+            placeholder="8090000000"
+            {...onChange('contact_phone')}
             className="text-xs border rounded px-3 py-3 outline-none mb-3"
           />
         </div>
@@ -52,5 +52,5 @@ export default function ModalUser3({
         </div>
       }
     />
-  );
+  )
 }

@@ -1,8 +1,8 @@
-import ModalTemplate from "../../molecules/modal-template";
+import ModalTemplate from '../../molecules/modal-template'
 // import ReactFormat from "react-number-format";
 
 export default function ModalUser2({
-  width = "w-2/5",
+  width = 'w-2/5',
   open,
   onExit,
   onChange,
@@ -32,7 +32,7 @@ export default function ModalUser2({
             placeholder="Cédula de identidad"
             type="number"
             className="text-xs border rounded px-3 py-3 outline-none mb-3"
-            {...onChange("document_id")}
+            {...onChange('document_id')}
             defaultValue={document}
           />
           <p className="font-semibold">{`¡Bienvenido/a! ${name} ${lastName}`}</p>
@@ -55,5 +55,5 @@ export default function ModalUser2({
         </div>
       }
     />
-  );
+  )
 }

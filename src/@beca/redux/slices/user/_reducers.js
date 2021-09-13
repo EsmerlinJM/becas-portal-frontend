@@ -12,28 +12,28 @@ import {
   saveWorkExperience,
   readNotification,
   setUser,
-} from "./_actions";
+} from './_actions'
 import {
   reducerGenerator,
   rejected,
   fulfilled,
-} from "../../../shared/utils/reducer-generator";
-import { initialState } from "../../../shared/utils/initial-state";
+} from '../../../shared/utils/reducer-generator'
+import { initialState } from '../../../shared/utils/initial-state'
 
 const actions = [
-  { action: createMessage, key: "message" },
-  { action: getOneUser, key: "one" },
-  { action: logoutUser, key: "one" },
-  { action: updateUser, key: "one" },
-];
-const reducers = reducerGenerator(actions);
+  { action: createMessage, key: 'message' },
+  { action: getOneUser, key: 'one' },
+  { action: logoutUser, key: 'one' },
+  { action: updateUser, key: 'one' },
+]
+const reducers = reducerGenerator(actions)
 
 const user = createSlice({
   name: 'user',
   initialState,
   extraReducers: {
     ...reducers,
-    [setUser]: fulfilled({ key: "one" }),
+    [setUser]: fulfilled({ key: 'one' }),
     [clearUser]: () => initialState,
     [readNotification]: (state, { payload }) => ({
       ...state,
@@ -42,7 +42,7 @@ const user = createSlice({
         notificaciones: payload,
       },
     }),
-    [saveEducation.rejected]: rejected({ key: "one" }),
+    [saveEducation.rejected]: rejected({ key: 'one' }),
     [saveEducation.fulfilled]: (state, { payload }) => {
       return {
         ...state,
@@ -51,9 +51,9 @@ const user = createSlice({
             ...state.one.data,
             formacion_academica: payload,
           },
-          status: "completed",
+          status: 'completed',
         },
-      };
+      }
     },
     [saveWorkExperience.fulfilled]: (state, { payload }) => {
       return {
@@ -63,11 +63,11 @@ const user = createSlice({
             ...state.one.data,
             experiencia_laboral: payload,
           },
-          status: "completed",
+          status: 'completed',
         },
-      };
+      }
     },
-    [addFavorites]: fulfilled({ key: "favorites" }),
+    [addFavorites]: fulfilled({ key: 'favorites' }),
     [deleteFavorite.fulfilled]: (state, { payload }) => {
       const filtered = state.favorites.data.filter((it) => it.id !== payload.id)
       return {
@@ -76,7 +76,7 @@ const user = createSlice({
           data: filtered,
           status: 'completed',
         },
-      };
+      }
     },
 
     [addFavorite.fulfilled]: (state, { payload }) => {
@@ -84,9 +84,9 @@ const user = createSlice({
         ...state,
         favorites: {
           data: [payload, ...state.favorites.data],
-          status: "completed",
+          status: 'completed',
         },
-      };
+      }
     },
     [addFavorite.fulfilled]: (state, { payload }) => ({
       ...state,

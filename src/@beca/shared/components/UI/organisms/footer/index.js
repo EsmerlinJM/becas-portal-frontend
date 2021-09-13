@@ -1,13 +1,15 @@
-import React from "react";
-import BECA from "../../../../../../img/groupp.png";
-import FB from "../../../../../../img/facebook(1).svg";
-import YTB from "../../../../../../img/youtube-brands.svg";
-import SP from "../../../../../../img/Shape.svg";
-import IG from "../../../../../../img/instagram(3).svg";
-import OGTIC from "../../../../../../img/ogtic.svg";
-import INNOVACION from "../../../../../../img/LogoGabineteInnovacion.svg";
+import React from 'react'
+import BECA from '../../../../../../img/groupp.png'
+import FB from '../../../../../../img/facebook(1).svg'
+import YTB from '../../../../../../img/youtube-brands.svg'
+import SP from '../../../../../../img/Shape.svg'
+import IG from '../../../../../../img/instagram(3).svg'
+import OGTIC from '../../../../../../img/ogtic.svg'
+import INNOVACION from '../../../../../../img/LogoGabineteInnovacion.svg'
+import { useHistory } from 'react-router'
 
 export default function Footer() {
+  const history = useHistory()
   return (
     <div className="fadeIn">
       <div className="footer w-full azulbg md:flex items-center p-7">
@@ -18,13 +20,25 @@ export default function Footer() {
           <div className="ayuda text-white text-xs w-full px-5">
             <h4 className="font-bold mb-4">AYUDA</h4>
             <div className="enlaces text-blue-600 flex flex-col">
-              <span className="mb-2" href="#">
+              <span
+                onClick={() => history.push('/terminos-condiciones')}
+                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400 border-blue-400 border-b cursor-pointer"
+                href="#"
+              >
                 Términos de Uso
               </span>
-              <span className="mb-2" href="#">
+              <span
+                onClick={() => history.push('/politicas-privacidad')}
+                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400 border-blue-400 border-b cursor-pointer"
+                href="#"
+              >
                 Política de Privacidad
               </span>
-              <span className="mb-2" href="#">
+              <span
+                onClick={() => history.push('/cuetion-frequency')}
+                className=" mb-2 ml-3 hover:border-white hover:text-white text-blue-400 border-blue-400 border-b cursor-pointer"
+                href="#"
+              >
                 Preguntas Frecuentes
               </span>
             </div>
@@ -79,5 +93,5 @@ export default function Footer() {
         </div>
       </div>
     </div>
-  );
+  )
 }
