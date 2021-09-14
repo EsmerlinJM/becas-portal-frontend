@@ -36,7 +36,7 @@ export default function Footer() {
                 <li>
                   <span
                     onClick={() => history.push("/terminos-condiciones")}
-                    className="text-white hover:text-blue-300 cursor-pointer"
+                    className="text-white hover:text-blue-400 cursor-pointer"
                     href="#"
                   >
                     Términos de Uso
@@ -45,7 +45,7 @@ export default function Footer() {
                 <li>
                   <span
                     onClick={() => history.push("/politicas-privacidad")}
-                    className="text-white hover:text-blue-300 cursor-pointer"
+                    className="text-white hover:text-blue-400 cursor-pointer"
                     href="#"
                   >
                     Política de Privacidad
@@ -54,7 +54,7 @@ export default function Footer() {
                 <li>
                   <span
                     onClick={() => history.push("/cuetion-frequency")}
-                    className="text-white hover:text-blue-300 cursor-pointer"
+                    className="text-white hover:text-blue-400 cursor-pointer"
                     href="#"
                   >
                     Preguntas Frecuentes
@@ -68,29 +68,26 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <p className="text-gray-300">Tel: (809) 731-1100</p>
-                </li>
-                <li>
-                  <p className="text-gray-300">Fax: (809) 731-1101</p>
-                </li>
-                <li>
-                  <p className="text-gray-300">info@mescyt.gob.do</p>
+                  <p className="text-gray-400">
+                    Ministerio de Educación Superior, Ciencia y Tecnología.
+                    República Dominicana.
+                  </p>
                 </li>
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-bold text-white tracking-widest text-md mb-3">
-                Contáctanos
+                CONTÁCTANOS
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <p className="text-gray-300">Tel: (809) 731-1100</p>
+                  <p className="text-gray-400">Tel: (809) 731-1100</p>
                 </li>
                 <li>
-                  <p className="text-gray-300">Fax: (809) 731-1101</p>
+                  <p className="text-gray-400">Fax: (809) 731-1101</p>
                 </li>
                 <li>
-                  <p className="text-gray-300">info@mescyt.gob.do</p>
+                  <p className="text-gray-400">info@mescyt.gob.do</p>
                 </li>
               </nav>
             </div>
@@ -100,7 +97,7 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <p className="text-gray-300">
+                  <p className="text-gray-400">
                     Av. Máximo Gómez No.31, esq. Pedro Henríquez Ureña, Santo
                     Domingo, República Dominicana
                   </p>
@@ -111,14 +108,14 @@ export default function Footer() {
         </div>
         <div className="bg-white ">
           <div className="container mx-auto py-4 px-5 flex flex-wrap items-center flex-col xs:flex-row">
-            <p className="mb-8 md:mb-0 text-center grid justify-center gap-4 md:flex md:items-center">
+            <div className="mb-8 md:mb-0 text-center grid justify-center gap-4 md:flex md:items-center">
               ©2021 Todos los derechos reservados. <br className="md:hidden" />
               Desarrollado por
               <div className="flex gap-4 justify-center items-center">
                 <img className="w-16" src={OGTIC} alt="" />
                 <img className="w-28" src={INNOVACION} alt="" />
               </div>
-            </p>
+            </div>
             <span className="inline-flex xs:ml-auto xs:mt-0 mt-2 justify-center items-center xs:justify-start">
               <p className="azul text-xs font-semibold">SÍGUENOS EN</p>
               <a

@@ -44,7 +44,7 @@ export const saveWorkExperience = async (payload) => {
     }
     return save;
   } catch (error) {
-    console.log(error, error.message, error.response);
+    console.error(error, error.message, error.response);
     return [];
   }
 };

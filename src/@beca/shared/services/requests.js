@@ -37,7 +37,7 @@ export const getRequests = async () => {
     const { data } = await res.json();
     return data;
   } catch (error) {
-    console.log(error, error.response, error.message);
+    console.error(error, error.response, error.message);
   }
 };
 
@@ -61,7 +61,7 @@ export const getRequest = async (aplication_id) => {
     const { data } = await res.json();
     return data;
   } catch (error) {
-    console.log(error, error.response, error.message);
+    console.error(error, error.response, error.message);
   }
 };
 
@@ -81,7 +81,7 @@ export const answerMultiple = async (payload) => {
     }
     return all;
   } catch (error) {
-    console.log(error.message, error.response, error, "errors");
+    console.error(error.message, error.response, error, "errors");
     throw error;
   }
 };

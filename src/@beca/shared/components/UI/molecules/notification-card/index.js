@@ -1,10 +1,14 @@
 import Group from "../../../../../../img/Group 3908@2x.png";
+import { FaUserCheck } from "react-icons/fa";
 
 export default function CardNotification({ item }) {
   return (
     <span className="grid grid-cols-12 items-center bg-white cursor-pointer p-4 shadow hover:shadow-lg transition-all">
       <div className="col-span-1 hidden md:flex items-center justify-center">
-        <img className="" src={Group} alt="kk" />
+        {/* <img className="" src={Group} alt="kk" /> */}
+        <div className="flex justify-center items-center bg-blue-200 p-5 rounded-full">
+          <FaUserCheck className="w-8  h-8 text-blue-900" />
+        </div>
       </div>
       <div className="col-span-11 md:col-span-10 flex items-center space-x-3 p-4 pt-2">
         <div className="">

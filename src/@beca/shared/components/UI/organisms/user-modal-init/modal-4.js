@@ -1,6 +1,8 @@
 import ModalTemplate from "../../molecules/modal-template";
 import IMGT from "../../../../../../img/Path 2157@2x.png";
 import { useEffect, useState } from "react";
+import { BsFillImageFill } from "react-icons/bs";
+import { converterImage } from "../../../../../shared/utils/image-binary";
 
 export default function ModalUser4({
   width = "w-2/5",
@@ -44,19 +46,30 @@ export default function ModalUser4({
           <p className="mb-3 text-sm">
             Personaliza tu perfil a través de una foto de tu rostro.
           </p>
-          <div className="border border-dashed px-3 py-8 rounded flex flex-col space-y-2 justify-center items-center">
-            <img className="w-8" src={picture} alt="" />
-            <p className="text-sm">Arrastra la imagen</p>
-            <p className="text-sm">O</p>
+          <label className="text-sm text-gray-600 border-dashed border-blue-400 border-4  px-3 py-8 rounded-md flex flex-col space-y-2 justify-center items-center cursor-pointer transform hover:scale-105 transition-all duration-200">
+            {/* <img className="w-8" src={picture} alt="" /> */}
+            {picture !== pp ? (
+              <img
+                className="rounded-lg w-48 h-48 border-2 border-blue-700 object-cover"
+                src={picture || pp}
+                alt=""
+              />
+            ) : (
+              <div className="flex flex-col  items-center  text-center justify-center ">
+                <BsFillImageFill className="w-8 h-8 mb-4" />
+                <p className=" ">Arrastra la imagen</p>
+                <p className=" ">O</p>
+              </div>
+            )}
             <input
               type="file"
               onChange={({ target }) => onChange("image", target.files[0])}
               name="image"
               accept="image/*"
-              className=" bg-blue-900 text-white px-2 py-2 rounded hover:bg-blue-800"
+              className="hidden"
             />
-            Seleccionar archivo
-          </div>
+            {picture === pp ? "Seleccionar archivo" : "Seleccionar otra imagen"}
+          </label>
         </div>
       }
       footer={
