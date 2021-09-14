@@ -27,7 +27,7 @@ export default function PageNotFound() {
       {userExist ? <HeaderUser user={user} isHome /> : null}
       <div className="home flex">
         <div className="left w-screen">
-          <div className="md:hidden">
+          <div className="hidden">
             <Header2 />
           </div>
           <div className="header1 bg-white hidden md:flex items-center">

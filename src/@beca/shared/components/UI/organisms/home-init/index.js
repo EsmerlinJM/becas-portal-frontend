@@ -27,10 +27,12 @@ export default function HomeInit() {
       <div className="home flex">
         {userExist && <ModalInitiUser user={user} />}
         <div className="left w-screen">
-          <div className="md:hidden">
-            <Header2 />
-          </div>
-          <div className="header1 bg-white hidden md:flex items-center">
+          {!userExist && (
+            <div className="lg:hidden">
+              <Header2 />
+            </div>
+          )}
+          <div className="header1 bg-white hidden lg:flex items-center">
             <img
               className="w-40 ml-10"
               src={Logo}

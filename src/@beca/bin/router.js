@@ -18,7 +18,11 @@ export default function BecaRouter() {
         <Suspense
           fallback={
             <div className="h-screen w-screen flex justify-center items-center">
-              <Loading type="MutatingDots" color="red" />
+              <Loading
+                type="MutatingDots"
+                color="#ee2a24"
+                secondaryColor="#003876"
+              />
             </div>
           }
         >
