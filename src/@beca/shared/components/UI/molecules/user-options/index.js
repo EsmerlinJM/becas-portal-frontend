@@ -11,12 +11,8 @@ import { AiOutlineLogout } from 'react-icons/ai'
 import { BiMessageSquareDetail } from 'react-icons/bi'
 import { IoNotificationsSharp } from 'react-icons/io5'
 import { AiOutlineClose } from 'react-icons/ai'
-
-import {
-  logoutUser,
-  clearUser,
-} from '../../../../../redux/slices/user/_actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { logOut } from '../../../../services/user'
 
 export default function UserOptions({ user, history }) {
   const dispatch = useDispatch()
@@ -24,6 +20,11 @@ export default function UserOptions({ user, history }) {
   const notifications = useSelector(
     (state) => state.user.one.data?.notificaciones?.length,
   )
+
+  const logout = async () => {
+    await logOut(history, dispatch)
+  }
+
   const userOptions = [
     {
       id: 1,
@@ -46,10 +47,7 @@ export default function UserOptions({ user, history }) {
     {
       id: 5,
       name: 'Cerrar sesión',
-      href: async () => {
-        dispatch(clearUser())
-        dispatch(await logoutUser(history))
-      },
+      href: logout,
       icon: AiOutlineLogout,
     },
   ]
@@ -84,6 +82,10 @@ export default function UserOptions({ user, history }) {
 }
 
 export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
+  const dispatch = useDispatch()
+  const logout = async () => {
+    await logOut(history, dispatch)
+  }
   return (
     <Drawer
       anchor="right"
@@ -143,7 +145,7 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
         </div>
         <div className="flex items-center justify-between px-4 py-2 text-xs text-white text-center ">
           <span
-            onClick={async () => dispatch(await logoutUser(history))}
+            onClick={logout}
             className=" cursor-pointer font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-2xl bg-blue-700 w-full"
           >
             CERRAR SESIÓN

@@ -1,5 +1,6 @@
 import customAxios, { authAxios } from '../utils/customAxios'
 import { getAuth, logOut as logoutUser } from '../utils/auth'
+import { clearUser } from '../../redux/slices/user/_actions'
 
 export const createUser = async (payload) => {
   const { data } = await customAxios.post('/profile/register', { ...payload })
@@ -41,19 +42,14 @@ export const getProfile = async (token) => {
   return data
 }
 
-export const logOut = async (history) => {
+export const logOut = async (history, dispatch) => {
   try {
-    const { token } = getAuth()
-    if (!token) return
-    await fetch(`${process.env.REACT_APP_API_URL}/profile/logout`, {
-      method: 'post',
-      headers: new Headers({
-        Authorization: `Bearer ${token}`,
-      }),
-    })
+    await authAxios().post('/profile/logout')
     history && logoutUser(history)
+    dispatch(clearUser())
   } catch (error) {
     history && logoutUser(history)
+    dispatch(clearUser())
   }
 }
 

@@ -1,17 +1,19 @@
-import ModalUser1 from "./modal-1";
-import ModalUser2 from "./modal-2";
-import ModalUser3 from "./modal-3";
-import ModalUser4 from "./modal-4";
-import ModalUser5 from "./modal-5";
-import useAction from "./use-action";
+import ModalUser1 from './modal-1'
+import ModalUser2 from './modal-2'
+import ModalUser3 from './modal-3'
+import ModalUser4 from './modal-4'
+import ModalUser5 from './modal-5'
+import useAction from './use-action'
 
 export default function ModalInitiUser({ user }) {
-  const [{ active, close }, actions] = useAction(user);
-  const valModals = user.document_id && user.contact_phone && true;
-  const imageNew = actions.watch("image");
+  const valDocument = user.document_id && true
+  const valContact = user.contact_phone && true
+  const [{ active, close }, actions] = useAction(user, valDocument, valContact)
+
+  const imageNew = actions.watch('image')
   return (
     <div>
-      {!valModals && !close && (
+      {(!valDocument || !valContact) && !close && (
         <>
           <ModalUser1
             open={active === 1}
@@ -43,11 +45,11 @@ export default function ModalInitiUser({ user }) {
           />
           <ModalUser5
             open={active === 5}
-            action={(exit) => actions.setState({ active: 6, close: exit })}
+            action={() => actions.setState((it) => ({ ...it, active: 6 }))}
             onExit={(exit) => actions.setState({ close: exit })}
           />
         </>
       )}
     </div>
-  );
+  )
 }
