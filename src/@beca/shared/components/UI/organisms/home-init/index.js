@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import home3834 from "../../../../../../img/Group 3834@2x.png";
-import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
+import Logo from "../../../../../../img/Logo_BECATUFUTURO.svg";
 
 import { useHistory } from "react-router";
 import { getAuth } from "../../../../utils/auth";

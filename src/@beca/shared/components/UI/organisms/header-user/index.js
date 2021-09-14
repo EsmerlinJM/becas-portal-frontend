@@ -1,24 +1,24 @@
-import Logo from '../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png'
-import UserOptions, { UserOptionMovil } from '../../molecules/user-options'
-import InputSearchHome from '../../atoms/input-search-home'
+import Logo from "../../../../../../img/Logo_BECATUFUTURO.svg";
+import UserOptions, { UserOptionMovil } from "../../molecules/user-options";
+import InputSearchHome from "../../atoms/input-search-home";
 
-import { useHistory } from 'react-router'
-import { useState, useRef } from 'react'
-import { AiOutlineMenu } from 'react-icons/ai'
-import { BiSearchAlt } from 'react-icons/bi'
+import { useHistory } from "react-router";
+import { useState, useRef } from "react";
+import { AiOutlineMenu } from "react-icons/ai";
+import { BiSearchAlt } from "react-icons/bi";
 
-import useOutside from '../../../hooks/onclick-outside'
+import useOutside from "../../../hooks/onclick-outside";
 
 export default function HeaderUser({ user, isHome = false }) {
-  const history = useHistory()
-  const headerRef = useRef(null)
-  const [isOpen, setIsOpen] = useState(false)
-  const [openInput, setOpenInput] = useState(false)
+  const history = useHistory();
+  const headerRef = useRef(null);
+  const [isOpen, setIsOpen] = useState(false);
+  const [openInput, setOpenInput] = useState(false);
 
   useOutside({
     ref: headerRef,
     clickedOutside: () => setOpenInput(false),
-  })
+  });
 
   return (
     <div className="relative" ref={headerRef}>
@@ -29,14 +29,14 @@ export default function HeaderUser({ user, isHome = false }) {
               src={Logo}
               className="w-28 md:w-40 cursor-pointer"
               alt=""
-              onClick={() => history.push('/')}
+              onClick={() => history.push("/")}
             />
             <div className="flex self-center mt-2 text-xs text-gray-400 font-bold">
               <span className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 hidden">
                 BLOG
               </span>
               <span
-                onClick={() => history.push('/cuetion-frequency')}
+                onClick={() => history.push("/cuetion-frequency")}
                 className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 hidden md:inline-block"
               >
                 PREGUNTAS FRECUENTES
@@ -92,5 +92,5 @@ export default function HeaderUser({ user, isHome = false }) {
         setExit={(exit) => setIsOpen(exit)}
       />
     </div>
-  )
+  );
 }
