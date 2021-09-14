@@ -8,7 +8,6 @@ import {
   clearUser,
   saveEducation,
   saveWorkExperience,
-  readNotification,
   setUser,
 } from './_actions'
 import {
@@ -31,13 +30,6 @@ const user = createSlice({
     ...reducers,
     [setUser]: fulfilled({ key: 'one' }),
     [clearUser]: () => initialState,
-    [readNotification]: (state, { payload }) => ({
-      ...state,
-      one: {
-        ...state.one.data,
-        notificaciones: payload,
-      },
-    }),
     [saveEducation.rejected]: rejected({ key: 'one' }),
     [saveEducation.fulfilled]: (state, { payload }) => {
       return {

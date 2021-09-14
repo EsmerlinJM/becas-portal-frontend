@@ -25,7 +25,6 @@ export default function Profile() {
 
   const [picture, setPicture] = useState('')
   const [change, setChange] = useState('')
-  const [changePass, setChangePass] = useState(true)
 
   const update = async () => {
     if (!change) return
@@ -94,14 +93,7 @@ export default function Profile() {
               </div>
 
               <div className="grid">
-                {/* 
-                <button
-                  onClick={() => setChangePass((it) => !it)}
-                  className="uppercase text-xs px-3 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all"
-                >
-                  Cambiar contraseña
-                </button> */}
-                <div className={changePass ? 'mt-4' : 'mt-4 invisible'}>
+                <div className={'mt-4'}>
                   <FormChangePassword />
                 </div>
               </div>

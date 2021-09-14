@@ -5,6 +5,7 @@ import { clearUser, getOneUser } from '../../../redux/slices/user/_actions'
 import { addFavorites } from '../../../redux/slices/user/_actions'
 import { getAuth } from '../../utils/auth'
 import { logOut } from '../../services/user'
+import { setNotifications } from '../../../redux/slices/notification/_actions'
 
 import Loading from 'react-loader-spinner'
 
@@ -26,16 +27,16 @@ const validataPatshLogger = [
 export default function Auth({ children }) {
   const location = useLocation()
   const history = useHistory()
-  const dispatch = useDispatch()
   const { token } = getAuth()
   const { data, status } = useSelector((state) => state.user.one)
+
+  const dispatch = useDispatch()
   const logout = async () => {
     await logOut(history, dispatch)
   }
 
   useEffect(() => {
     const fn = async (tk) => {
-      console.log('rendered into function')
       dispatch(await getOneUser(tk))
     }
     !Object.keys(data).length && token && fn(token)
@@ -43,16 +44,15 @@ export default function Auth({ children }) {
     if (status === 'completed') {
       if (Object.keys(data).length) {
         dispatch(addFavorites(data.favoritos || []))
+        dispatch(setNotifications(data.notificaciones || []))
         return
       }
+
       const fvs = JSON.parse(localStorage.getItem('favorite_offers') || '[]')
       dispatch(addFavorites(fvs))
     }
 
-    if (status === 'error') {
-      logout()
-    }
-    console.log('rendered')
+    if (status === 'error') logout()
     //eslint-disable-next-line
   }, [dispatch, token, status, data])
 
