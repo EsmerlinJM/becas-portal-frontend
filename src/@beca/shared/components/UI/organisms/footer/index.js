@@ -36,7 +36,7 @@ export default function Footer() {
                 <li>
                   <span
                     onClick={() => history.push("/terminos-condiciones")}
-                    className="text-white hover:text-blue-300 cursor-pointer"
+                    className="text-white hover:text-blue-400 cursor-pointer"
                     href="#"
                   >
                     Términos de Uso
@@ -45,7 +45,7 @@ export default function Footer() {
                 <li>
                   <span
                     onClick={() => history.push("/politicas-privacidad")}
-                    className="text-white hover:text-blue-300 cursor-pointer"
+                    className="text-white hover:text-blue-400 cursor-pointer"
                     href="#"
                   >
                     Política de Privacidad
@@ -54,7 +54,7 @@ export default function Footer() {
                 <li>
                   <span
                     onClick={() => history.push("/cuetion-frequency")}
-                    className="text-white hover:text-blue-300 cursor-pointer"
+                    className="text-white hover:text-blue-400 cursor-pointer"
                     href="#"
                   >
                     Preguntas Frecuentes
@@ -68,29 +68,26 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <p className="text-gray-300">Tel: (809) 731-1100</p>
-                </li>
-                <li>
-                  <p className="text-gray-300">Fax: (809) 731-1101</p>
-                </li>
-                <li>
-                  <p className="text-gray-300">info@mescyt.gob.do</p>
+                  <p className="text-gray-400">
+                    Ministerio de Educación Superior, Ciencia y Tecnología.
+                    República Dominicana.
+                  </p>
                 </li>
               </nav>
             </div>
             <div className="lg:w-1/4 md:w-1/2 w-full px-4">
               <h2 className="title-font font-bold text-white tracking-widest text-md mb-3">
-                Contáctanos
+                CONTÁCTANOS
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <p className="text-gray-300">Tel: (809) 731-1100</p>
+                  <p className="text-gray-400">Tel: (809) 731-1100</p>
                 </li>
                 <li>
-                  <p className="text-gray-300">Fax: (809) 731-1101</p>
+                  <p className="text-gray-400">Fax: (809) 731-1101</p>
                 </li>
                 <li>
-                  <p className="text-gray-300">info@mescyt.gob.do</p>
+                  <p className="text-gray-400">info@mescyt.gob.do</p>
                 </li>
               </nav>
             </div>
@@ -100,7 +97,7 @@ export default function Footer() {
               </h2>
               <nav className="list-none mb-10">
                 <li>
-                  <p className="text-gray-300">
+                  <p className="text-gray-400">
                     Av. Máximo Gómez No.31, esq. Pedro Henríquez Ureña, Santo
                     Domingo, República Dominicana
                   </p>

@@ -96,7 +96,7 @@ export default function Header2() {
               onClick={() => history.push("/register")}
               className="font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg rounded-3xl bg-blue-700"
             >
-              REGÍSTARSE
+              REGÍSTRATE
             </button>
           </div>
         </div>
