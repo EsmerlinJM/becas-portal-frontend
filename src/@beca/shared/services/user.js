@@ -16,12 +16,10 @@ export const updateSocioEconomico = async (payload) => {
   try {
     const form = new FormData()
     Object.entries(payload).map((item) => form.append(item[0], item[1]))
-    console.log(payload, form, 'here')
     const { data } = await authAxios().post(
       '/candidatos/economicos/update',
       form,
     )
-    console.log(data)
     return data
   } catch (error) {
     console.log(error.response, error.message)
@@ -64,7 +62,6 @@ export const updateProfile = async (oayload) => {
     const body = new FormData()
     Object.entries(oayload).map((item) => body.append(item[0], item[1]))
     const { data } = await authAxios().post('/profile/update', body)
-    console.log(data, oayload, 'pepe')
     return data.data
   } catch (error) {
     console.log(error, error.response)
@@ -83,7 +80,6 @@ export const changePassword = async (payload) => {
     const form = new FormData()
     Object.entries(payload).map((item) => form.append(item[0], item[1]))
     const res = await authAxios().post('/profile/changepassword', form)
-    console.log(res, 'ress')
     return res
   } catch (error) {
     throw error.response
