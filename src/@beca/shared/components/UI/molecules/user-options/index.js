@@ -140,7 +140,7 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
         <div className="flex items-center justify-between px-4 py-2 text-xs text-white text-center ">
           <span
             onClick={logout}
-            className=" cursor-pointer font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-2xl bg-blue-700 w-full"
+            className="cursor-pointer font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-2xl bg-blue-700 w-full"
           >
             CERRAR SESIÓN
           </span>
