@@ -5,7 +5,7 @@ const routes = [
   {
     component: CPN,
     exact: true,
-    path: '/cuetion-frequency',
+    path: '/FAQs',
   },
 ]
 

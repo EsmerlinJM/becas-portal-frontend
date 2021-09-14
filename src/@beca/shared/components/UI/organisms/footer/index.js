@@ -53,7 +53,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <span
-                    onClick={() => history.push("/cuetion-frequency")}
+                    onClick={() => history.push("/FAQs")}
                     className="text-white hover:text-blue-400 cursor-pointer"
                     href="#"
                   >

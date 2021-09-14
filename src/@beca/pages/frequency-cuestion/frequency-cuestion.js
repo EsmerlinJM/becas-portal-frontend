@@ -14,7 +14,7 @@ import ReactMarkdown from "react-markdown";
 
 const objNav = {
   name: "Preguntas frecuentes",
-  path: "/cuetion-frequency",
+  path: "/FAQs",
   parents: [{ name: "Inicio", path: "/" }],
 };
 

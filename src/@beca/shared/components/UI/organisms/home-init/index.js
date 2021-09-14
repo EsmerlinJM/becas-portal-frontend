@@ -42,7 +42,7 @@ export default function HomeInit() {
                 BLOG
               </span>
               <span
-                onClick={() => history.push("/cuetion-frequency")}
+                onClick={() => history.push("/FAQs")}
                 className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800"
               >
                 PREGUNTAS FRECUENTES
