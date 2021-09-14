@@ -106,7 +106,7 @@ export default function Login() {
             </div>
           </div>
           <div className="right col-span-2 azulbg items-end hidden sm:hidden xl:flex">
-            <div className>
+            <div>
               <img className="-ml-28 pr-7" src={GROUP} alt="" />
             </div>
           </div>

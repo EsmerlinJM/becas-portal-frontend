@@ -35,7 +35,6 @@ export default function Auth({ children }) {
 
   useEffect(() => {
     const fn = async (tk) => {
-      console.log('rendered into function')
       dispatch(await getOneUser(tk))
     }
     !Object.keys(data).length && token && fn(token)
@@ -52,7 +51,6 @@ export default function Auth({ children }) {
     if (status === 'error') {
       logout()
     }
-    console.log('rendered')
     //eslint-disable-next-line
   }, [dispatch, token, status, data])
 

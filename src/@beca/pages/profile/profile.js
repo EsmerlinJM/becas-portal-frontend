@@ -59,13 +59,13 @@ export default function Profile() {
       <Header2Natigation objNav={objNav}>
         <div className="p-4 xl:w-5/6 py-3 mx-auto ">
           <div className="w-full bg-white grid lg:grid-cols-2 grid-cols-1 text-xs p-5 shadow">
-            <div className=" pr-4">
-              <div className="grid">
+            <div className=" pr-4  ">
+              <div className="grid mb-8">
                 <h4 className="font-bold text-xl mb-2 text-center">
                   Actualizar foto
                 </h4>
 
-                <div className="grid justify-center mt-2 mb-2">
+                <div className="grid justify-center mt-2 mb-4">
                   <label className="relative transform hover:scale-105 transition-all duration-200">
                     <div className="absolute -top-2 -right-2 p-2 bg-blue-900 rounded-full">
                       <MdModeEdit className="h-4 w-4 text-white" />
@@ -87,13 +87,15 @@ export default function Profile() {
                 </div>
                 <button
                   onClick={update}
-                  className="uppercase mb-2 text-xs px-3 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all"
+                  className={`${
+                    !change && "hidden"
+                  } fadeIn uppercase mb-2 text-xs px-3 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all duration-700`}
                 >
                   Actualizar Foto de Perfil
                 </button>
               </div>
 
-              <div className="grid">
+              <div className="grid  ">
                 {/* 
                 <button
                   onClick={() => setChangePass((it) => !it)}
@@ -101,7 +103,12 @@ export default function Profile() {
                 >
                   Cambiar contraseña
                 </button> */}
-                <div className={changePass ? 'mt-4' : 'mt-4 invisible'}>
+                <div className={changePass ? "mt-4" : "mt-4 invisible "}>
+                  <div className="flex flex-col items-center justify-center mb-2">
+                    <h4 className="font-bold text-xl mb-2 ">
+                      Cambiar contraseña
+                    </h4>
+                  </div>
                   <FormChangePassword />
                 </div>
               </div>
