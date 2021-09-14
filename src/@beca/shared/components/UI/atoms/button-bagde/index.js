@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react'
 
 export default function ButtonBadge({ children, num = 0 }) {
   return (
@@ -16,5 +16,5 @@ export default function ButtonBadge({ children, num = 0 }) {
         </div>
       </span>
     </button>
-  );
+  )
 }
