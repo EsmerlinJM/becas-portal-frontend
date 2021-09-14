@@ -19,7 +19,7 @@ export default function Notifications() {
           </button>
         </span>
         {/*----------------------------------------------------------------------------------------------------------------------------*/}
-        {data.notificaciones.map((it, i) => (
+        {data.notificaciones?.map((it, i) => (
           <CardNotification item={it} key={i} />
         ))}
       </div>

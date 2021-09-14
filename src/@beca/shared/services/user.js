@@ -6,6 +6,11 @@ export const createUser = async (payload) => {
   return data.data
 }
 
+export const resendVerification = async (payload) => {
+  const { data } = await customAxios.get(`/email/resend?email=${payload}`)
+  return data.data
+}
+
 export const login = async (payload) => {
   const { data } = await customAxios.post('/profile/loginCandidato', {
     ...payload,
