@@ -1,39 +1,39 @@
-import { Popover, Transition } from "@headlessui/react";
-import { Fragment } from "react";
+import { Popover, Transition } from '@headlessui/react'
+import { Fragment } from 'react'
 
 const solutions = [
   {
     id: 1,
-    name: "Insights",
-    description: "Measure actions your users take",
-    href: "##",
+    name: 'Insights',
+    description: 'Measure actions your users take',
+    href: '##',
   },
   {
     id: 2,
-    name: "Automations",
-    description: "Create your own targeted content",
-    href: "##",
+    name: 'Automations',
+    description: 'Create your own targeted content',
+    href: '##',
   },
   {
     id: 3,
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
+    name: 'Reports',
+    description: 'Keep track of your growth',
+    href: '##',
   },
   {
     id: 4,
 
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
+    name: 'Reports',
+    description: 'Keep track of your growth',
+    href: '##',
   },
   {
     id: 5,
-    name: "Reports",
-    description: "Keep track of your growth",
-    href: "##",
+    name: 'Reports',
+    description: 'Keep track of your growth',
+    href: '##',
   },
-];
+]
 
 export default function ButtonPopover({ items = solutions, children, header }) {
   return (
@@ -43,14 +43,14 @@ export default function ButtonPopover({ items = solutions, children, header }) {
           <>
             <Popover.Button
               className={`
-                ${open ? "" : "text-opacity-90"}
+                ${open ? '' : 'text-opacity-90'}
                 text-black group bg-orange-700 px-3 py-2 rounded-md inline-flex items-center text-base font-medium hover:text-opacity-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75`}
             >
               {children}
             </Popover.Button>
             <Popover.Overlay
               className={`${
-                open ? "opacity-30 fixed inset-0" : "opacity-0"
+                open ? 'opacity-30 fixed inset-0' : 'opacity-0'
               } bg-black`}
             />
             <Transition
@@ -79,7 +79,7 @@ export default function ButtonPopover({ items = solutions, children, header }) {
                         className="flex items-center py-2 px-1 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
                       >
                         <div className=" flex ml-4 cursor-pointer">
-                          <item.icon />
+                          {item.icon && <item.icon />}
                           <p className=" ml-2 text-sm font-medium text-gray-500">
                             {item.name}
                           </p>
@@ -94,5 +94,5 @@ export default function ButtonPopover({ items = solutions, children, header }) {
         )}
       </Popover>
     </div>
-  );
+  )
 }
