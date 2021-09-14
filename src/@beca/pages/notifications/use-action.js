@@ -8,11 +8,10 @@ import { useEffect } from 'react'
 
 export default function useAction(items, dispatch) {
   const onRead = async (item, index) => {
-    if (item.read) return
     await readNotification(item.id)
     const all = [...items]
     const finded = all[index]
-    all[index] = { ...finded, read: true }
+    all[index] = { ...finded, read: !finded.read }
     dispatch(setNotifications(all))
   }
 
