@@ -119,7 +119,7 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
             NOTIFICACIONES
           </div>
           <div
-            onClick={() => history.push('/cuetion-frequency')}
+            onClick={() => history.push('/FAQs')}
             className="p-3 border-b-2 cursor-pointer"
           >
             PREGUNTAS FRECUENTES

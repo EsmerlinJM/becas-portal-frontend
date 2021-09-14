@@ -78,7 +78,7 @@ export default function Header2() {
               BLOG
             </div>
             <div
-              onClick={() => history.push("/cuetion-frequency")}
+              onClick={() => history.push("/FAQs")}
               className="p-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
             >
               PREGUNTAS FRECUENTES
