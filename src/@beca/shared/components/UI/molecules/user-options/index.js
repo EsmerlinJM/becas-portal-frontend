@@ -17,8 +17,8 @@ import { logOut } from '../../../../services/user'
 export default function UserOptions({ user, history }) {
   const dispatch = useDispatch()
   const favorites = useSelector((state) => state.user.favorites.data.length)
-  const notifications = useSelector(
-    (state) => state.user.one.data?.notificaciones?.length,
+  const notifications = useSelector((state) =>
+    state.notification.all.data?.filter((it) => !it.read),
   )
 
   const logout = async () => {
@@ -32,12 +32,6 @@ export default function UserOptions({ user, history }) {
       href: () => history.push('/profile'),
       icon: FiUser,
     },
-    // {
-    //   id: 2,
-    //   name: "Mi beca",
-    //   href: () => history.push("/"),
-    //   icon: SiGooglescholar,
-    // },
     {
       id: 3,
       name: 'Mis solicitudes',
@@ -68,7 +62,7 @@ export default function UserOptions({ user, history }) {
         </div>
 
         <div className="mt-1" onClick={() => history.push('/notifications')}>
-          <ButtonBadge num={notifications || 0}>
+          <ButtonBadge num={notifications.length || 0}>
             <IoNotificationsSharp size={21} color="" />
           </ButtonBadge>
         </div>
@@ -146,7 +140,7 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
         <div className="flex items-center justify-between px-4 py-2 text-xs text-white text-center ">
           <span
             onClick={logout}
-            className=" cursor-pointer font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-2xl bg-blue-700 w-full"
+            className="cursor-pointer font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-2xl bg-blue-700 w-full"
           >
             CERRAR SESIÓN
           </span>
