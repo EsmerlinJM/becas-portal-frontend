@@ -86,7 +86,7 @@ export default function useAction(id) {
               type: 'SET_LOADING',
               payload: false,
             })
-            console.log(error.message, error.response, error, 'errors')
+            console.error(error.message, error.response, error, 'errors')
             return <b>Ups, a ocurrido un error, intentar mas tarde!</b>
           },
         })

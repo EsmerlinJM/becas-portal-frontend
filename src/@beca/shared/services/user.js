@@ -22,7 +22,7 @@ export const updateSocioEconomico = async (payload) => {
     )
     return data
   } catch (error) {
-    console.log(error.response, error.message)
+    console.error(error.response, error.message)
   }
 }
 
@@ -64,7 +64,7 @@ export const updateProfile = async (oayload) => {
     const { data } = await authAxios().post('/profile/update', body)
     return data.data
   } catch (error) {
-    console.log(error, error.response)
+    console.error(error, error.response)
     return {}
   }
 }

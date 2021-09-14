@@ -108,14 +108,14 @@ export default function Footer() {
         </div>
         <div className="bg-white ">
           <div className="container mx-auto py-4 px-5 flex flex-wrap items-center flex-col xs:flex-row">
-            <p className="mb-8 md:mb-0 text-center grid justify-center gap-4 md:flex md:items-center">
+            <div className="mb-8 md:mb-0 text-center grid justify-center gap-4 md:flex md:items-center">
               ©2021 Todos los derechos reservados. <br className="md:hidden" />
               Desarrollado por
               <div className="flex gap-4 justify-center items-center">
                 <img className="w-16" src={OGTIC} alt="" />
                 <img className="w-28" src={INNOVACION} alt="" />
               </div>
-            </p>
+            </div>
             <span className="inline-flex xs:ml-auto xs:mt-0 mt-2 justify-center items-center xs:justify-start">
               <p className="azul text-xs font-semibold">SÍGUENOS EN</p>
               <a
