@@ -8,7 +8,7 @@ import useAction from './use-action'
 
 const objNav = {
   name: 'Oferta ',
-  path: '/cuetion-frequency',
+  path: '/FAQs',
   parents: [
     { name: 'Inicio', path: '/' },
     { name: 'Resultados', path: 'isGoBack' },
