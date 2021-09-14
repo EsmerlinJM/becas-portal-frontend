@@ -2,11 +2,9 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   createMessage,
   getOneUser,
-  logoutUser,
   addFavorite,
   addFavorites,
   deleteFavorite,
-  updateUser,
   clearUser,
   saveEducation,
   saveWorkExperience,
@@ -23,8 +21,6 @@ import { initialState } from '../../../shared/utils/initial-state'
 const actions = [
   { action: createMessage, key: 'message' },
   { action: getOneUser, key: 'one' },
-  { action: logoutUser, key: 'one' },
-  { action: updateUser, key: 'one' },
 ]
 const reducers = reducerGenerator(actions)
 
