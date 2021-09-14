@@ -18,12 +18,12 @@ export default function useVerification() {
   const action = handleSubmit(async (data) => {
     setLoading(true)
     await toast.promise(resendVerification(data.email), {
-      loading: 'Enviando email...',
+      loading: 'Enviando correo...',
       success: () => {
         reset()
         setModal(false)
         setLoading(false)
-        return <b>Meil de verificación enviado!</b>
+        return <b>Correo de verificación enviado!</b>
       },
       error: (error) => {
         setLoading(false)

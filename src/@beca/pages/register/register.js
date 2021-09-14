@@ -35,10 +35,10 @@ export default function Register() {
             <div  className="flex">
               <input
                 className="w-full rounded-l p-2 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white"
-                placeholder="tuemail@ejemplo.com"
+                placeholder="micorreo@ejemplo.com"
                 {...action.register('email', {
                   required: { value: true, message: 'campo obligatorio' },
-                  pattern: {value:/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ ,message:'Este email no es valido'}
+                  pattern: {value:/^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$/ ,message:'Este correo no es valido'}
                 })}
               />
               <button
@@ -54,7 +54,7 @@ export default function Register() {
         header={
           <div className="flex flex-col py-2 items-center w-full">
             <div className="w-3/4 flex flex-col items-center">
-              <p className="font-bold text-center">Verificaccion de email</p>
+              <p className="font-bold text-center">Verificaccion de correo</p>
             </div>
           </div>
         }
@@ -223,7 +223,7 @@ export default function Register() {
                   disabled={loading}
                   className="w-80 transition delay-75 border-blue-900  text-sm font-semibold hover:border-b-2 text-currentBlue px-5 py-2 mb-2 cursor-pointer"
                 >
-                  {loading ? 'Reenviando...' : 'Reenviar email de verificación'}
+                  {loading ? 'Reenviando...' : 'Reenviar correo de verificación'}
                 </button>
 
                 <div className="flex text-sm justify-center">
