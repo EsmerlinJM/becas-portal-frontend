@@ -1,33 +1,33 @@
-import { useSelector, useDispatch } from 'react-redux'
-import { useHistory } from 'react-router'
-import { useEffect, useState } from 'react'
+import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router";
+import { useEffect, useState } from "react";
 
-import PP from '../../../img/pp.png'
-import Header2Natigation from '../../shared/components/hocs/header2-natigation'
-import FormPersonalData from '../../shared/components/UI/organisms/form-personal-data'
-import FormChangePassword from '../../shared/components/UI/organisms/form-change-password'
+import PP from "../../../img/pp.png";
+import Header2Natigation from "../../shared/components/hocs/header2-natigation";
+import FormPersonalData from "../../shared/components/UI/organisms/form-personal-data";
+import FormChangePassword from "../../shared/components/UI/organisms/form-change-password";
 
-import { converterImage } from '../../shared/utils/image-binary'
-import { setUser } from '../../redux/slices/user/_actions'
-import { updateProfile } from '../../shared/services/user'
-import toast from 'react-hot-toast'
-import { MdModeEdit } from 'react-icons/md'
+import { converterImage } from "../../shared/utils/image-binary";
+import { setUser } from "../../redux/slices/user/_actions";
+import { updateProfile } from "../../shared/services/user";
+import toast from "react-hot-toast";
+import { MdModeEdit } from "react-icons/md";
 
 const objNav = {
-  name: 'Perfil',
-  parents: [{ name: 'Inicio', path: '/' }],
-}
+  name: "Perfil",
+  parents: [{ name: "Inicio", path: "/" }],
+};
 
 export default function Profile() {
-  const { data } = useSelector((state) => state.user.one)
-  const history = useHistory()
-  const dispatch = useDispatch()
+  const { data } = useSelector((state) => state.user.one);
+  const history = useHistory();
+  const dispatch = useDispatch();
 
-  const [picture, setPicture] = useState('')
-  const [change, setChange] = useState('')
+  const [picture, setPicture] = useState("");
+  const [change, setChange] = useState("");
 
   const update = async () => {
-    if (!change) return
+    if (!change) return;
 
     const payload = {
       genero: data.genero,
@@ -35,23 +35,23 @@ export default function Profile() {
       last_name: data.last_name,
       name: data.name,
       image: change,
-    }
+    };
 
     toast.promise(updateProfile({ ...payload, ...data }), {
-      loading: 'Guardando...',
+      loading: "Guardando...",
       success: (data) => {
-        dispatch(setUser(data))
-        return <b>Guardado exitosamente! </b>
+        dispatch(setUser(data));
+        return <b>Guardado exitosamente! </b>;
       },
       error: <b>Ups, ha ocurrido un error!</b>,
-    })
-  }
+    });
+  };
 
   useEffect(() => {
-    if (typeof change === 'object') {
-      converterImage(change, setPicture)
+    if (typeof change === "object") {
+      converterImage(change, setPicture);
     }
-  }, [change])
+  }, [change]);
 
   return (
     <>
@@ -95,7 +95,7 @@ export default function Profile() {
               </div>
 
               <div className="grid">
-                <div className={'mt-4'}>
+                <div className={"mt-4"}>
                   <FormChangePassword />
                 </div>
               </div>
@@ -109,7 +109,7 @@ export default function Profile() {
             </div>
             <div className="md:col-span-2 mt-7 flex justify-center space-x-3">
               <button
-                onClick={() => history.push('/my-requests')}
+                onClick={() => history.push("/my-requests")}
                 className="outline-none uppercase text-xs px-6 py-3 rounded-3xl border border-blue-900 text-blue-900 hover:bg-gray-100 transition-all"
               >
                 Ir a mis solicitudes
@@ -125,5 +125,5 @@ export default function Profile() {
         </div>
       </Header2Natigation>
     </>
-  )
+  );
 }

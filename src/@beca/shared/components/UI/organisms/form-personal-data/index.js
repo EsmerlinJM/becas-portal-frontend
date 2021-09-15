@@ -32,14 +32,15 @@ export default function FormPersonalData({ user, onClick }) {
       born_date: formatDate(user.born_date || ""),
     },
   });
-  const action = handleSubmit(async (data) => {
+  const onSubmit = async (data) => {
     if (!data.country_id) return toast.error("Seleccionar país");
     if (!data["province_id"]) data["province_id"] = 1;
     if (!data["municipality_id"]) data["municipality_id"] = 1;
+
     const payload = await updateProfile(data);
     dispatch(setUser(payload));
     toast.success("Guardado correctamente!");
-  });
+  };
 
   const provinceId = watch("province_id");
   const municipalityId = watch("municipality_id");
@@ -48,7 +49,10 @@ export default function FormPersonalData({ user, onClick }) {
 
   return (
     <>
-      <span className="w-full bg-white grid gap-4 grid-cols-1 md:grid-cols-2  text-xs p-5">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="w-full bg-white grid gap-4 grid-cols-1 md:grid-cols-2  text-xs p-5"
+      >
         <div>
           <p className="mb-1.5 font-semibold">Número de cédula de identidad</p>
           <input
@@ -72,12 +76,19 @@ export default function FormPersonalData({ user, onClick }) {
         <div>
           <p className="mb-1.5 font-semibold">Teléfono móvil</p>
           <input
-            {...register("contact_phone")}
-            className={`text-xs border w-full rounded px-3 py-3 outline-none mb-3`}
+            {...register("contact_phone", { min: 0 })}
+            className={` border w-full rounded px-3 py-3 outline-none ${
+              errors.contact_phone ? "border-red-500" : ""
+            }`}
             type="number"
             placeholder="8099973338"
-            defaultValue={user.name}
+            defaultValue={user.contact_phone}
           />
+          <div className="mb-3">
+            {errors.contact_phone?.type && (
+              <p className="text-red-300">Debes ingresar un teléfono válido.</p>
+            )}
+          </div>
         </div>
         <div>
           <p className="mb-1.5 font-semibold">Nombres</p>
@@ -172,7 +183,7 @@ export default function FormPersonalData({ user, onClick }) {
         {(countryId ? +countryId : +user.country?.id) === 62 && (
           <>
             <div className="self-center">
-              <label className="mb-1.5 font-semibold">Pronvincia</label>
+              <label className="mb-1.5 font-semibold">Provincia</label>
               <ProvinceSelect
                 id={provinceId || user.province?.id}
                 onSelect={(_, item) => setValue("province_id", item.id)}
@@ -227,14 +238,11 @@ export default function FormPersonalData({ user, onClick }) {
             </label>
           </div> */}
         <div className="md:col-span-2 mt-7 flex md:justify-end justify-center">
-          <button
-            onClick={action}
-            className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
-          >
+          <button className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800">
             Guardar
           </button>
         </div>
-      </span>
+      </form>
     </>
   );
 }

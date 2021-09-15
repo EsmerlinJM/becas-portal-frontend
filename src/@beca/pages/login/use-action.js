@@ -27,7 +27,7 @@ export default function useActions(history) {
           return <b>Crece tu talento, crece el país!</b>;
         },
         error: (error) => {
-          const message = error.response.data.message;
+          const message = error?.response?.data?.message;
           setLogErr(message || "Ha ocurrido un problema");
           setLoading(false);
           return <b>{message || "Ha ocurrido un problema"}</b>;
