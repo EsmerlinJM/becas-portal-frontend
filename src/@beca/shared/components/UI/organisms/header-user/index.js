@@ -36,7 +36,7 @@ export default function HeaderUser({ user, isHome = false }) {
                 BLOG
               </span>
               <span
-                onClick={() => history.push('/FAQs')}
+                onClick={() => history.push("/FAQs")}
                 className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 hidden md:inline-block"
               >
                 PREGUNTAS FRECUENTES
@@ -47,7 +47,7 @@ export default function HeaderUser({ user, isHome = false }) {
                 isHeader
                 heightInput="h-9"
                 widthImg="w-9"
-                placeholder="¿Qué quieres estudiar? "
+                placeholder="¿Qué quieres estudiar?"
               />
             </div>
           </div>
@@ -55,13 +55,13 @@ export default function HeaderUser({ user, isHome = false }) {
             <UserOptions user={user} history={history} />
           </div>
           {openInput && (
-            <div className="fadeIn self-center">
+            <div className="fadeIn self-center ">
               <InputSearchHome
                 isHeader
-                widthInput="w-52"
+                widthInput="w-40 sm:w-52"
                 heightInput="h-4"
                 widthImg="w-8"
-                placeholder="¿Qué quieres estudiar? "
+                placeholder="buscar becas"
                 mlImg_="-ml-6"
               />
             </div>
