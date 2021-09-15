@@ -18,7 +18,7 @@ export default function Header2() {
       <div className="flex justify-between">
         <img
           src={Logo}
-          alt="logo3 "
+          alt="logo"
           className="w-36 md:w-40 cursor-pointer"
           onClick={() => history.push("/")}
         />

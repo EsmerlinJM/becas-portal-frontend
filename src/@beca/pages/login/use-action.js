@@ -27,10 +27,8 @@ export default function useActions(history) {
           return <b>Crece tu talento, crece el país!</b>
         },
         error: (error) => {
-          const {
-            data: { message },
-          } = error.response
-          setLogErr(message)
+          const data = error.response
+          setLogErr(data?.message || null)
           setLoading(false)
           return <b> {message}</b>
         },
