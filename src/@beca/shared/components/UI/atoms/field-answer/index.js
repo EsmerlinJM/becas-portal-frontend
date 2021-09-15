@@ -1,4 +1,4 @@
-import Select from "react-select";
+import Select from 'react-select'
 
 export default function FiledAnswer({
   type,
@@ -9,30 +9,29 @@ export default function FiledAnswer({
   required,
   onChange,
 }) {
-  const items = data && data.split(",");
+  const items = data && data.split(',')
   const arrAnswer =
-    type === "checkbox" && canditate_answer && canditate_answer.split(",");
+    type === 'checkbox' && canditate_answer && canditate_answer.split(',')
   const objAnswer =
-    arrAnswer &&
-    arrAnswer.reduce((acc, curr) => ({ ...acc, [curr]: curr }), {});
+    arrAnswer && arrAnswer.reduce((acc, curr) => ({ ...acc, [curr]: curr }), {})
 
   const onSetValue = (target) => {
-    const { value } = target;
-    let val = value;
+    const { value } = target
+    let val = value
 
-    if (type === "checkbox" && arrAnswer) {
+    if (type === 'checkbox' && arrAnswer) {
       if (arrAnswer.includes(val)) {
-        const it = arrAnswer.filter((it) => it !== val);
-        val = it.join(",");
+        const it = arrAnswer.filter((it) => it !== val)
+        val = it.join(',')
       } else {
-        val = [...(arrAnswer || []), val].join(",");
+        val = [...(arrAnswer || []), val].join(',')
       }
     }
 
-    onChange({ name: "canditate_answer", value: val });
-  };
+    onChange({ name: 'canditate_answer', value: val })
+  }
 
-  if (type === "select") {
+  if (type === 'select') {
     return (
       <div className="m-2">
         <p className="mb-1.5 text-xs font-semibold">{name}</p>
@@ -44,10 +43,10 @@ export default function FiledAnswer({
           onChange={(item) => onSetValue({ name, value: item.name })}
         />
       </div>
-    );
+    )
   }
 
-  if (type === "checkbox") {
+  if (type === 'checkbox') {
     return (
       <div className="flex my-4 flex-col xs:flex-col ms:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row ">
         {items.map((it, i) => (
@@ -67,10 +66,10 @@ export default function FiledAnswer({
           </div>
         ))}
       </div>
-    );
+    )
   }
 
-  if (type === "radio") {
+  if (type === 'radio') {
     return (
       <div className="my-4 flex flex-col xs:flex-col ms:flex-col md:flex-col lg:flex-row xl:flex-row 2xl:flex-row ">
         {items.map((it, i) => (
@@ -80,7 +79,7 @@ export default function FiledAnswer({
                 name={name}
                 className="mr-1.5"
                 type="radio"
-                checked={it === canditate_answer}
+                checked={it.trim() === (canditate_answer || '').trim()}
                 onChange={() => onSetValue({ name, value: it })}
               />
               {it}
@@ -88,10 +87,10 @@ export default function FiledAnswer({
           </div>
         ))}
       </div>
-    );
+    )
   }
 
-  if (type === "file") {
+  if (type === 'file') {
     return (
       <div className="flex flex-col mx-2 my-2">
         <p className="mb-1.5 font-semibold text-xs ">{name}</p>
@@ -116,7 +115,7 @@ export default function FiledAnswer({
           </a>
         )}
       </div>
-    );
+    )
   }
   return (
     <div className="flex flex-col mx-2 my-2">
@@ -127,7 +126,7 @@ export default function FiledAnswer({
         value={canditate_answer}
         onChange={({ target }) => onSetValue(target)}
         className=" text-xs text-gray-400 border w-full rounded px-3 py-2 outline-none "
-      />{" "}
+      />{' '}
     </div>
-  );
+  )
 }
