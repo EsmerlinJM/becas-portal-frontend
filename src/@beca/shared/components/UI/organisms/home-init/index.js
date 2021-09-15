@@ -51,7 +51,7 @@ export default function HomeInit() {
               </span>
             </div>
           </div>
-          <div className="busqueda p-4 h-96 flex flex-col lg:mt-12 lg:ml-52 lg:mr-32 justify-center mt-4 mb-8 ml-16 mr-8">
+          <div className="busqueda p-4 h-96 flex flex-col  lg:ml-52 lg:mr-32 justify-center mt-16 sm:mt-8 mb-8 ml-16 mr-8">
             <div className="azul lg:text-6xl text-3xl 	border-gray-300 pb-4">
               <h3 className="font-bold">Regístrate</h3>
               <h3 className="pb-2">y entérate a tiempo</h3>
