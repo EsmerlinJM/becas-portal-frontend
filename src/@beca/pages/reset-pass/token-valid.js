@@ -26,7 +26,7 @@ export default function TokenInvalid() {
                   BLOG
                 </span>
                 <span
-                  onClick={() => history.push("/cuetion-frequency")}
+                  onClick={() => history.push("/FAQs")}
                   className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
                 >
                   PREGUNTAS FRECUENTES

@@ -35,7 +35,7 @@ export default function ResetPass() {
             <div className="header1 bg-white flex items-center xl:justify-start justify-between">
               <img
                 onClick={() => history.push("/")}
-                className="w-40 ml-10"
+                className="w-40 ml-10 cursor-pointer"
                 src={Logo}
                 alt=""
               />
@@ -44,7 +44,7 @@ export default function ResetPass() {
                   BLOG
                 </span>
                 <span
-                  onClick={() => history.push("/cuetion-frequency")}
+                  onClick={() => history.push("/FAQs")}
                   className="ml-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
                 >
                   PREGUNTAS FRECUENTES
