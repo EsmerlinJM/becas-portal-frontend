@@ -8,6 +8,10 @@ module.exports = {
         height: "height",
         spacing: "margin, padding",
       },
+      textColor: {
+        'currentBlue': '#003876',
+        'currentRed':'#ee2a24'
+      }
     },
     screens: {
       sm: "640px",

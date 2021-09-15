@@ -14,7 +14,7 @@ import ReactMarkdown from "react-markdown";
 
 const objNav = {
   name: "Preguntas frecuentes",
-  path: "/cuetion-frequency",
+  path: "/FAQs",
   parents: [{ name: "Inicio", path: "/" }],
 };
 
@@ -29,8 +29,8 @@ export default function FrequencyCuestion() {
           PREGUNTAS FRECUENTES
         </h4>
         <div className="grid grid-cols-1 gap-2 font-semibold ">
-          {FAQs.map((faq) => (
-            <Disclosure>
+          {FAQs.map((faq,i) => (
+            <Disclosure key={i}>
               {({ open }) => (
                 <>
                   <Disclosure.Button className="flex justify-between items-center w-full p-3  font-medium text-left text-gray-800 bg-gray-100 rounded hover:bg-gray-200 focus:outline-none focus-visible:ring focus-visible:ring-gray-500 focus-visible:ring-opacity-75 transition-all duration-200">

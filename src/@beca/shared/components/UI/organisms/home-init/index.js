@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
 import home3834 from "../../../../../../img/Group 3834@2x.png";
-import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
+import Logo from "../../../../../../img/Logo_BECATUFUTURO.svg";
 
 import { useHistory } from "react-router";
 import { getAuth } from "../../../../utils/auth";
@@ -27,10 +27,12 @@ export default function HomeInit() {
       <div className="home flex">
         {userExist && <ModalInitiUser user={user} />}
         <div className="left w-screen">
-          <div className="md:hidden">
-            <Header2 />
-          </div>
-          <div className="header1 bg-white hidden md:flex items-center">
+          {!userExist && (
+            <div className="lg:hidden">
+              <Header2 />
+            </div>
+          )}
+          <div className="header1 bg-white hidden lg:flex items-center">
             <img
               className="w-40 ml-10"
               src={Logo}
@@ -42,14 +44,14 @@ export default function HomeInit() {
                 BLOG
               </span>
               <span
-                onClick={() => history.push("/cuetion-frequency")}
+                onClick={() => history.push("/FAQs")}
                 className="cursor-pointer m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800"
               >
                 PREGUNTAS FRECUENTES
               </span>
             </div>
           </div>
-          <div className="busqueda p-4 h-96 flex flex-col lg:mt-12 lg:ml-52 lg:mr-32 justify-center mt-4 mb-8 ml-16 mr-8">
+          <div className="busqueda p-4 h-96 flex flex-col  lg:ml-52 lg:mr-32 justify-center mt-16 sm:mt-8 mb-8 ml-16 mr-8">
             <div className="azul lg:text-6xl text-3xl 	border-gray-300 pb-4">
               <h3 className="font-bold">Regístrate</h3>
               <h3 className="pb-2">y entérate a tiempo</h3>

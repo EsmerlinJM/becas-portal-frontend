@@ -1,34 +1,33 @@
-import { useSelector, useDispatch } from "react-redux";
-import { useHistory } from "react-router";
-import { useEffect, useState } from "react";
+import { useSelector, useDispatch } from 'react-redux'
+import { useHistory } from 'react-router'
+import { useEffect, useState } from 'react'
 
-import PP from "../../../img/pp.png";
-import Header2Natigation from "../../shared/components/hocs/header2-natigation";
-import FormPersonalData from "../../shared/components/UI/organisms/form-personal-data";
-import FormChangePassword from "../../shared/components/UI/organisms/form-change-password";
+import PP from '../../../img/pp.png'
+import Header2Natigation from '../../shared/components/hocs/header2-natigation'
+import FormPersonalData from '../../shared/components/UI/organisms/form-personal-data'
+import FormChangePassword from '../../shared/components/UI/organisms/form-change-password'
 
-import { converterImage } from "../../shared/utils/image-binary";
-import { setUser, updateUser } from "../../redux/slices/user/_actions";
-import { updateProfile } from "../../shared/services/user";
-import toast from "react-hot-toast";
-import { MdModeEdit } from "react-icons/md";
+import { converterImage } from '../../shared/utils/image-binary'
+import { setUser } from '../../redux/slices/user/_actions'
+import { updateProfile } from '../../shared/services/user'
+import toast from 'react-hot-toast'
+import { MdModeEdit } from 'react-icons/md'
 
 const objNav = {
-  name: "Perfil",
-  parents: [{ name: "Inicio", path: "/" }],
-};
+  name: 'Perfil',
+  parents: [{ name: 'Inicio', path: '/' }],
+}
 
 export default function Profile() {
-  const { data } = useSelector((state) => state.user.one);
-  const history = useHistory();
-  const dispatch = useDispatch();
+  const { data } = useSelector((state) => state.user.one)
+  const history = useHistory()
+  const dispatch = useDispatch()
 
-  const [picture, setPicture] = useState("");
-  const [change, setChange] = useState("");
-  const [changePass, setChangePass] = useState(true);
+  const [picture, setPicture] = useState('')
+  const [change, setChange] = useState('')
 
   const update = async () => {
-    if (!change) return;
+    if (!change) return
 
     const payload = {
       genero: data.genero,
@@ -36,36 +35,36 @@ export default function Profile() {
       last_name: data.last_name,
       name: data.name,
       image: change,
-    };
+    }
 
     toast.promise(updateProfile({ ...payload, ...data }), {
-      loading: "Guardando...",
+      loading: 'Guardando...',
       success: (data) => {
-        dispatch(setUser(data));
-        return <b>Guardado exitosamente! </b>;
+        dispatch(setUser(data))
+        return <b>Guardado exitosamente! </b>
       },
       error: <b>Ups, ha ocurrido un error!</b>,
-    });
-  };
+    })
+  }
 
   useEffect(() => {
-    if (typeof change === "object") {
-      converterImage(change, setPicture);
+    if (typeof change === 'object') {
+      converterImage(change, setPicture)
     }
-  }, [change]);
+  }, [change])
 
   return (
     <>
       <Header2Natigation objNav={objNav}>
         <div className="p-4 xl:w-5/6 py-3 mx-auto ">
           <div className="w-full bg-white grid lg:grid-cols-2 grid-cols-1 text-xs p-5 shadow">
-            <div className=" pr-4">
-              <div className="grid">
+            <div className=" pr-4  ">
+              <div className="grid mb-8">
                 <h4 className="font-bold text-xl mb-2 text-center">
                   Actualizar foto
                 </h4>
 
-                <div className="grid justify-center mt-2 mb-2">
+                <div className="grid justify-center mt-2 mb-4">
                   <label className="relative transform hover:scale-105 transition-all duration-200">
                     <div className="absolute -top-2 -right-2 p-2 bg-blue-900 rounded-full">
                       <MdModeEdit className="h-4 w-4 text-white" />
@@ -87,21 +86,16 @@ export default function Profile() {
                 </div>
                 <button
                   onClick={update}
-                  className="uppercase mb-2 text-xs px-3 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all"
+                  className={`${
+                    !change && "hidden"
+                  } fadeIn uppercase mb-2 text-xs px-3 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all duration-700`}
                 >
                   Actualizar Foto de Perfil
                 </button>
               </div>
 
               <div className="grid">
-                {/* 
-                <button
-                  onClick={() => setChangePass((it) => !it)}
-                  className="uppercase text-xs px-3 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800 transition-all"
-                >
-                  Cambiar contraseña
-                </button> */}
-                <div className={changePass ? "mt-4" : "mt-4 invisible"}>
+                <div className={'mt-4'}>
                   <FormChangePassword />
                 </div>
               </div>
@@ -115,7 +109,7 @@ export default function Profile() {
             </div>
             <div className="md:col-span-2 mt-7 flex justify-center space-x-3">
               <button
-                onClick={() => history.push("/my-requests")}
+                onClick={() => history.push('/my-requests')}
                 className="outline-none uppercase text-xs px-6 py-3 rounded-3xl border border-blue-900 text-blue-900 hover:bg-gray-100 transition-all"
               >
                 Ir a mis solicitudes
@@ -131,5 +125,5 @@ export default function Profile() {
         </div>
       </Header2Natigation>
     </>
-  );
+  )
 }

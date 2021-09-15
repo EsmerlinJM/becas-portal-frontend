@@ -2,15 +2,12 @@ import { createSlice } from '@reduxjs/toolkit'
 import {
   createMessage,
   getOneUser,
-  logoutUser,
   addFavorite,
   addFavorites,
   deleteFavorite,
-  updateUser,
   clearUser,
   saveEducation,
   saveWorkExperience,
-  readNotification,
   setUser,
 } from './_actions'
 import {
@@ -23,8 +20,6 @@ import { initialState } from '../../../shared/utils/initial-state'
 const actions = [
   { action: createMessage, key: 'message' },
   { action: getOneUser, key: 'one' },
-  { action: logoutUser, key: 'one' },
-  { action: updateUser, key: 'one' },
 ]
 const reducers = reducerGenerator(actions)
 
@@ -35,13 +30,6 @@ const user = createSlice({
     ...reducers,
     [setUser]: fulfilled({ key: 'one' }),
     [clearUser]: () => initialState,
-    [readNotification]: (state, { payload }) => ({
-      ...state,
-      one: {
-        ...state.one.data,
-        notificaciones: payload,
-      },
-    }),
     [saveEducation.rejected]: rejected({ key: 'one' }),
     [saveEducation.fulfilled]: (state, { payload }) => {
       return {
