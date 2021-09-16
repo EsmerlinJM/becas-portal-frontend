@@ -1,10 +1,10 @@
 import { useParams } from 'react-router'
 import { Helmet } from 'react-helmet-async'
+import { useEffect, useState } from 'react'
 import { statuColors } from '../../../shared/utils/status-request'
 import { removeAccents } from '../../../shared/utils/remove-accents'
 
 import Header2Natigation from '../../../shared/components/hocs/header2-natigation'
-import useAction from './use-action'
 import CardRequest from '../../../shared/components/UI/molecules/request-card'
 import Loading from 'react-loader-spinner'
 import TemplateTab from '../../../shared/components/UI/molecules/tab'
@@ -15,6 +15,9 @@ import FormEducationList from '../../../shared/components/UI/organisms/form-educ
 import WorkExperienceList from '../../../shared/components/UI/organisms/form-work-experience-list'
 import FormFieldAnswer from '../../../shared/components/UI/organisms/form-field-answer'
 import FormSocioEconomico from '../../../shared/components/UI/organisms/form-socio-economico'
+import ModalConfirm from './modal-confirm'
+
+import useAction from './use-action'
 
 const objNav = {
   name: 'Solicitud',
@@ -28,24 +31,29 @@ const objNav = {
 export default function RequestDetail() {
   const { id } = useParams()
   const [{ state, status }, actions] = useAction(id)
-
   const exist = statuColors[removeAccents(state.request.status || '')]
   const allExist = state.request.status && !exist
-  const headerTabs = [
-    'Resultados',
+  const resultHeader = 'Resultados'
+  const resultBody = <RequestResult status={state.request.status} key={0} />
+
+  const [min, setMin] = useState({
+    header: [],
+    bodies: [],
+    loading: false,
+  })
+
+  const headers = [
     'Datos personales',
     'Datos socioeconómicos',
     'Formación académica',
     'Experiencia laboral',
     'Requisitos',
   ]
-
-  const arrTabs = [
-    <RequestResult status={state.request.status} key={1} />,
-    <div className="p-4">
-      <FormPersonalData user={state.user} key={2} />
+  const bodies = [
+    <div className="p-4 ">
+      <FormPersonalData user={state.user} key={1} />
     </div>,
-    <FormSocioEconomico user={state.user} key={6} />,
+    <FormSocioEconomico user={state.user} key={2} />,
     <FormEducationList
       forms={state.formsEducation}
       onChange={actions.dispatch2}
@@ -83,15 +91,27 @@ export default function RequestDetail() {
     />,
   ]
 
-  allExist && arrTabs.splice(0, 1)
-  allExist && headerTabs.splice(0, 1)
+  useEffect(() => {
+    if (!allExist && state.request?.status !== 'Solicitud Iniciada') {
+      const body = [resultBody, ...bodies].map((it, i) => (
+        <div key={i} className={i ? 'pointer-events-none	opacity-40' : ''}>
+          {it}
+        </div>
+      ))
 
-  status === 'completed' &&
-    !state.formsInstitution.length &&
-    headerTabs.splice(headerTabs.length - 1, 1)
-  status === 'completed' &&
-    !state.formsInstitution.length &&
-    arrTabs.splice(arrTabs.length - 1, 1)
+      return setMin(() => ({
+        header: [resultHeader, ...headers],
+        bodies: body,
+      }))
+    }
+
+    if (allExist && state.request?.status === 'Solicitud Iniciada') {
+      setMin(() => ({
+        header: headers,
+        bodies: bodies,
+      }))
+    }
+  }, [state, status])
 
   return (
     <>
@@ -110,10 +130,26 @@ export default function RequestDetail() {
                   !allExist ? 'xl:col-span-10' : 'xl:col-span-12 '
                 } col-span-12`}
               >
-                <TemplateTab headersTab={headerTabs}>{arrTabs}</TemplateTab>
+                <TemplateTab headersTab={min.header}>{min.bodies}</TemplateTab>
+                {allExist && state.send && (
+                  <div className="flex justify-end bg-white shadow p-4 fadeIn">
+                    <button
+                      onClick={() =>
+                        actions.dispatch2({
+                          type: 'ON_CHANGE_INIT',
+                          payload: { ...state, openModalConfirm: true },
+                        })
+                      }
+                      className=" uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
+                    >
+                      {' '}
+                      Enviar solicitud
+                    </button>
+                  </div>
+                )}
               </div>
               {!allExist && (
-                <div className="col-span-12 h-full xl:col-span-2 shadow ">
+                <div className="col-span-12 h-full xl:col-span-2 shadow fadeIn">
                   <RequestEvaluation
                     evaluations={state.request?.evaluacion || []}
                   />
@@ -129,6 +165,16 @@ export default function RequestDetail() {
               />
             </div>
           )}
+          <ModalConfirm
+            isOpen={state.openModalConfirm}
+            onClose={(exit) =>
+              actions.dispatch2({
+                type: 'ON_CHANGE_INIT',
+                payload: { ...state, openModalConfirm: exit },
+              })
+            }
+            action={actions.onAction}
+          />
         </Header2Natigation>
       </div>
     </>

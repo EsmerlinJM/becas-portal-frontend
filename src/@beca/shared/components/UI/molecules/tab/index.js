@@ -1,19 +1,19 @@
-import { Tab as TAB } from "@headlessui/react";
+import { Tab as TAB } from '@headlessui/react'
 
 export default function TabComponent({ headersTab, children }) {
   return (
     <TAB.Group>
       <TAB.List>
-        {headersTab.map((header) => (
+        {headersTab.map((header, i) => (
           <TAB
             className={({ selected }) =>
               `outline-none text-sm  rounded px-4  py-2  font-semibold  ${
                 selected
-                  ? " border-gray text-blue-900 bg-white border-t border-l border-r"
-                  : "bg-transparent  text-gray-900"
+                  ? ' border-gray text-blue-900 bg-white border-t border-l border-r'
+                  : 'bg-transparent  text-gray-900'
               }`
             }
-            key={header}
+            key={i}
           >
             {header}
           </TAB>
@@ -27,5 +27,5 @@ export default function TabComponent({ headersTab, children }) {
         ))}
       </TAB.Panels>
     </TAB.Group>
-  );
+  )
 }

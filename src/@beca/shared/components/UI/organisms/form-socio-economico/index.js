@@ -170,7 +170,7 @@ export default function FormSocioEconomico({ user }) {
                 <input
                   className="mr-1.5"
                   type="radio"
-                  checked={madre_nivel_educativo === 'Tecnico'}
+                  checked={madre_nivel_educativo === 'Universitario'}
                   onChange={() =>
                     setValue('madre_nivel_educativo', 'Universitario')
                   }

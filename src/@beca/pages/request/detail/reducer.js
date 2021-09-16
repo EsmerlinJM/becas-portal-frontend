@@ -5,7 +5,8 @@ export const initialState = {
   formsEducation: [],
   formsWorkExperience: [],
   loading: false,
-  // send: false,
+  send: false,
+  openModalConfirm: false,
 }
 
 export default function reducer(state, action) {
