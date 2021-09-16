@@ -24,10 +24,10 @@ export default function HeaderUser({ user, isHome = false }) {
     <div className="relative" ref={headerRef}>
       <div className="w-full z-40 shadow fixed bg-white">
         <div className="px-5 flex justify-between flex-wrap">
-          <div className="flex">
+          <div className="flex ">
             <img
               src={Logo}
-              className="w-28 md:w-40 cursor-pointer"
+              className="w-28 md:w-40 cursor-pointer px-2"
               alt=""
               onClick={() => history.push("/")}
             />

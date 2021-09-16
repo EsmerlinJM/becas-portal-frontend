@@ -23,7 +23,7 @@ export default function useVerification() {
         reset()
         setModal(false)
         setLoading(false)
-        return <b>Correo de verificación enviado!</b>
+        return <b>Correo de verificación enviado,confirme su bandeja d espan!!</b>
       },
       error: (error) => {
         setLoading(false)
