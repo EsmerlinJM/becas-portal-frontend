@@ -133,13 +133,17 @@ export default function HomeInit() {
       <div className="right shadow-lg border border-blue-400 block w-full ">
         <div className="header1 flex items-center justify-center xl:px-52 lg:px-32 px-8 py-16">
           <video
-            className="shadow-lg rounded-md border"
+            className="shadow-lg rounded-md border min-w-full	"
             controls
             type="video/mp4"
             ref={video}
             autoplay
             loop
           >
+            <source
+              src="https://storage.googleapis.com/becas-backend-storage/APP_IMAGES/Beca%20tu%20futuro1(1080p).mp4"
+              type="video/mp4"
+            />
             <source
               src="https://storage.googleapis.com/becas-backend-storage/APP_IMAGES/Beca%20tu%20futuro1(1080p).mp4"
               type="video/mp4"
