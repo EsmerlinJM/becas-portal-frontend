@@ -1,22 +1,15 @@
-import { Helmet } from "react-helmet-async";
-import Header2Natigation from "../../shared/components/hocs/header2-natigation";
-import Plus from "../../../img/plus-solid@2x.png";
-import {
-  Accordion,
-  AccordionDetails,
-  AccordionSummary,
-  makeStyles,
-} from "@material-ui/core";
-import { FaChevronDown, FaQq } from "react-icons/fa";
-import { RiArrowDownSLine } from "react-icons/ri";
-import { Disclosure, Transition } from "@headlessui/react";
-import ReactMarkdown from "react-markdown";
+import Header2Natigation from '../../shared/components/hocs/header2-natigation'
+import ReactMarkdown from 'react-markdown'
+
+import { Helmet } from 'react-helmet-async'
+import { FaChevronDown } from 'react-icons/fa'
+import { Disclosure, Transition } from '@headlessui/react'
 
 const objNav = {
-  name: "Preguntas frecuentes",
-  path: "/FAQs",
-  parents: [{ name: "Inicio", path: "/" }],
-};
+  name: 'Preguntas frecuentes',
+  path: '/FAQs',
+  parents: [{ name: 'Inicio', path: '/' }],
+}
 
 export default function FrequencyCuestion() {
   return (
@@ -29,7 +22,7 @@ export default function FrequencyCuestion() {
           PREGUNTAS FRECUENTES
         </h4>
         <div className="grid grid-cols-1 gap-2 font-semibold ">
-          {FAQs.map((faq,i) => (
+          {FAQs.map((faq, i) => (
             <Disclosure key={i}>
               {({ open }) => (
                 <>
@@ -37,7 +30,7 @@ export default function FrequencyCuestion() {
                     <span>{faq.title}</span>
                     <FaChevronDown
                       className={`${
-                        open ? "transform rotate-180" : ""
+                        open ? 'transform rotate-180' : ''
                       } w-5 h-5 text-blue-400 transition-all duration-200`}
                     />
                   </Disclosure.Button>
@@ -62,27 +55,25 @@ export default function FrequencyCuestion() {
         </div>
       </div>
     </Header2Natigation>
-  );
+  )
 }
 
 const FAQs = [
   {
     id: 1,
-    title: "¿Qué es el Sistema Nacional de Becas y Crédito de Apoyo Educativo?",
-    body:
-      "Es un sistema cuyo objeto es el fomento al desarrollo profesional del talento humano que requieren los sectores productivos y sociales de la República Dominicana.",
+    title: '¿Qué es el Sistema Nacional de Becas y Crédito de Apoyo Educativo?',
+    body: 'Es un sistema cuyo objeto es el fomento al desarrollo profesional del talento humano que requieren los sectores productivos y sociales de la República Dominicana.',
   },
   {
     id: 2,
     title:
-      "¿Cuál es la finalidad del Sistema Nacional de Becas y Crédito de Apoyo Educativo? ",
-    body:
-      "El Sistema Nacional de Becas y Crédito de Apoyo Educativo tiene por finalidad la gestión común de las convocatorias, los servicios y procedimientos de los diferentes programas de becas nacionales e internacionales que ofrecen los ministerios y las direcciones generales del Gobierno Central para contribuir de manera eficiente a la formación profesional en el nivel de la educación superior de los especialistas que demanda el desarrollo social y productivo de la República Dominicana.",
+      '¿Cuál es la finalidad del Sistema Nacional de Becas y Crédito de Apoyo Educativo? ',
+    body: 'El Sistema Nacional de Becas y Crédito de Apoyo Educativo tiene por finalidad la gestión común de las convocatorias, los servicios y procedimientos de los diferentes programas de becas nacionales e internacionales que ofrecen los ministerios y las direcciones generales del Gobierno Central para contribuir de manera eficiente a la formación profesional en el nivel de la educación superior de los especialistas que demanda el desarrollo social y productivo de la República Dominicana.',
   },
   {
     id: 3,
     title:
-      "¿Para qué fue creado este Sistema Nacional de Becas y Crédito de Apoyo Educativo?",
+      '¿Para qué fue creado este Sistema Nacional de Becas y Crédito de Apoyo Educativo?',
     body: `
   - Apoyar con ayuda económica y asesoramiento la preparación de los profesionales que necesita el país para impulsar el desarrollo
     económico y social.
@@ -116,7 +107,7 @@ const FAQs = [
   {
     id: 4,
     title:
-      "¿Cuáles instituciones regularán este  Sistema Nacional de Becas y Crédito de Apoyo Educativo?",
+      '¿Cuáles instituciones regularán este  Sistema Nacional de Becas y Crédito de Apoyo Educativo?',
     body: `Se crea una comisión ad hoc, de carácter interinstitucional, con la finalidad de acompañar, dar soporte y asistencia a la ejecución de las políticas del Sistema Nacional de Becas y Crédito de Apoyo Educativo, que estará conformada de la siguiente manera:
   - El Ministerio de Educación Superior, Ciencia y Tecnología, en su calidad de presidente del Consejo Nacional de Educación Superior, Ciencia y Tecnología, quien lo presidirá.
   
@@ -134,7 +125,7 @@ const FAQs = [
   {
     id: 5,
     title:
-      "¿Cuáles son los criterios para ser seleccionado como beneficiario de este nuevo sistema?",
+      '¿Cuáles son los criterios para ser seleccionado como beneficiario de este nuevo sistema?',
     body: `En este nuevo sistema de becas se priorizará la excelencia académica de los participantes y su nivel socioeconómico.
     `,
   },
@@ -232,4 +223,4 @@ const FAQs = [
     body: `Sí, en los casos de las convocatorias dirigidas a postgrado, pero deberás aportar alguna documentación que valide que tu título está en trámite, el cual deberás mostrar y evidenciar al momento de ser otorgada la beca.
     `,
   },
-];
+]

@@ -20,6 +20,9 @@ export default function UserOptions({ user, history }) {
   const notifications = useSelector((state) =>
     state.notification.all.data?.filter((it) => !it.read),
   )
+  const messages = useSelector((state) =>
+    state.message.all.data?.filter((it) => it.status === 'unread'),
+  )
 
   const logout = async () => {
     await logOut(history, dispatch)
@@ -55,8 +58,8 @@ export default function UserOptions({ user, history }) {
           </ButtonBadge>
         </div>
 
-        <div className="mt-1">
-          <ButtonBadge num={0}>
+        <div className="mt-1" onClick={() => history.push('/messages')}>
+          <ButtonBadge num={messages.length}>
             <BiMessageSquareDetail size={21} color="" />
           </ButtonBadge>
         </div>
