@@ -1,6 +1,8 @@
 import { useDispatch, useSelector } from 'react-redux'
 import home3834 from '../../../../../../img/Group 3834@2x.png'
 import Logo from '../../../../../../img/Logo_BECATUFUTURO.svg'
+import macbookimg from '../../../../../../img/Macbook-BECAS.png'
+import pattern from '../../../../../../img/pattern.png'
 
 import { useHistory } from 'react-router'
 import { getAuth } from '../../../../utils/auth'
@@ -130,9 +132,25 @@ export default function HomeInit() {
           </div>
         </div>
       )}
-      <div className="right shadow-lg border border-blue-400 block w-full ">
-        <div className="header1 flex items-center justify-center xl:px-52 lg:px-32 px-8 py-16">
-          <video
+      <div className="right shadow-lg border border-blue-400 block w-full lines-pattern align-middle">
+        <div className="header1 lg:flex-col flex items-center justify-center xl:px-52 lg:px-32 px-8 py-16 bg-lighBlue" style={{backgroundImage:`url(${pattern})` }}>
+          <div className="grid md:grid-cols-2">
+            <img src={macbookimg} alt="macbook becas" className="max-h-96	" />
+            <div className="azul lg:text-4xl xl:text-5xl  text-3xl border-gray-300 pt-8 md:mr-0 m-auto  ">
+              <h3 className="">Dale a play y conoce</h3>
+              <h3 className="font-light	">todas las opciones que</h3>
+              <h3 className="font-light	">baca tu futuro trae para tí</h3>
+              <a
+                href="https://www.youtube.com/watch?v=BoCf3tIuzy4"
+                target="_blank"
+                className="uppercase text-white azulbg px-6 rounded-3xl py-2 text-lg"
+              >
+                ver Video Explicativo
+              </a>
+            </div>
+          </div>
+
+          {/* <video
             className="shadow-lg rounded-md border min-w-full	"
             controls
             type="video/mp4"
@@ -148,7 +166,7 @@ export default function HomeInit() {
               src="https://storage.googleapis.com/becas-backend-storage/APP_IMAGES/Beca%20tu%20futuro1(1080p).mp4"
               type="video/mp4"
             />
-          </video>
+          </video> */}
         </div>
       </div>
     </>

@@ -10,8 +10,16 @@ module.exports = {
       },
       textColor: {
         'currentBlue': '#003876',
-        'currentRed':'#ee2a24'
-      }
+        'currentRed':'#ee2a24',
+        
+      },
+      backgroundImage: {
+        'lines-pattern': "url('./img/pattern.png",
+       },
+       backgroundColor: theme => ({
+        ...theme('colors'),
+        'lighBlue':'#E7F1FD'
+       })
     },
     screens: {
       sm: "640px",
