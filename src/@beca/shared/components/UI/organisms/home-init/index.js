@@ -9,14 +9,20 @@ import HeaderUser from '../header-user'
 import InputSearchHome from '../../atoms/input-search-home'
 import ModalInitiUser from '../user-modal-init'
 import Header2 from '../header-2'
+import { useEffect, useRef } from 'react'
 
 export default function HomeInit() {
+  const video = useRef()
   const { data: user, status } = useSelector((state) => state.user.one)
   const history = useHistory()
   const { token } = getAuth()
 
   const userExist =
     token && status === 'completed' && Object.keys(user || {}).length && user.id
+
+  useEffect(() => {
+    video.current?.play()
+  }, [video])
 
   return (
     <>
@@ -124,9 +130,15 @@ export default function HomeInit() {
           </div>
         </div>
       )}
-      <div className="right azulbg border border-blue-400 block w-full ">
+      <div className="right shadow-lg border border-blue-400 block w-full ">
         <div className="header1 flex items-center justify-center xl:px-52 lg:px-32 px-8 py-16">
-          <video controls type="video/mp4" autoplay>
+          <video
+            className="shadow-lg "
+            controls
+            type="video/mp4"
+            autoplay
+            ref={video}
+          >
             <source
               src="https://storage.googleapis.com/becas-backend-storage/APP_IMAGES/Beca%20tu%20futuro1(1080p).mp4"
               type="video/mp4"
