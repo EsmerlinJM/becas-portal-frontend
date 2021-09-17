@@ -139,7 +139,7 @@ export default function HomeInit() {
             <div className="azul lg:text-4xl xl:text-5xl  text-3xl border-gray-300 pt-8 md:mr-0 m-auto  ">
               <h3 className="">Dale a play y conoce</h3>
               <h3 className="font-light	">todas las opciones que</h3>
-              <h3 className="font-light	">baca tu futuro trae para tí</h3>
+              <h3 className="font-light	">Baca tu Futuro trae para tí</h3>
               <a
                 href="https://www.youtube.com/watch?v=BoCf3tIuzy4"
                 target="_blank"

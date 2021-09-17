@@ -13,9 +13,6 @@ module.exports = {
         'currentRed':'#ee2a24',
         
       },
-      backgroundImage: {
-        'lines-pattern': "url('./img/pattern.png",
-       },
        backgroundColor: theme => ({
         ...theme('colors'),
         'lighBlue':'#E7F1FD'
