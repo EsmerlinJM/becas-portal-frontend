@@ -2,6 +2,7 @@ import { useEffect, useReducer } from 'react'
 import { useDispatch } from 'react-redux'
 import { setAllMessage } from '../../../redux/slices/message/_actions'
 import {
+  createMsg,
   deleteMultipleMessage,
   markMultiple,
   markRead,
@@ -40,8 +41,8 @@ export default function useAction(items, status) {
     }
   }
 
-  const onSelect = (item, status) => {
-    if (!status && !item) {
+  const onSelect = (item, estado) => {
+    if (!estado && !item) {
       const allSelected = state.messages.find(
         (arti) => !state.selecteds[arti.id],
       )
@@ -54,17 +55,17 @@ export default function useAction(items, status) {
       return onSelected('all', !!allSelected, payload)
     }
 
-    if (status && !item) {
+    if (estado && !item) {
       const allSelected = state.messages.find(
-        (arti) => !state.selecteds[arti.id] && arti.status === status,
+        (arti) => !state.selecteds[arti.id] && arti.estado === estado,
       )
-      if (!allSelected) return onSelected(status, !!allSelected, {})
+      if (!allSelected) return onSelected(estado, !!allSelected, {})
       const payload = state.messages.reduce(
         (acc, curr) =>
-          curr.status === status ? { ...acc, [curr.id]: curr } : acc,
+          curr.estado === estado ? { ...acc, [curr.id]: curr } : acc,
         {},
       )
-      return onSelected(status, !!allSelected, payload)
+      return onSelected(estado, !!allSelected, payload)
     }
 
     const selecteds2 = { ...state.selecteds }
@@ -92,12 +93,16 @@ export default function useAction(items, status) {
     })
   }
 
-  const validateSearch = ({ subject, name, received }, value2) => {
+  const validateSearch = (
+    { subject = '', to = '', received = '' },
+    value2 = '',
+  ) => {
+    if (!value2) return true
     const val2 = value2.toLowerCase().trim()
     const subject1 = subject.toLowerCase().trim()
 
     if (subject1.includes(val2)) return true
-    const name1 = name.toLowerCase().trim()
+    const name1 = to.toLowerCase().trim()
     if (name1.includes(val2)) return true
 
     const received1 = received.toLowerCase().trim()
@@ -129,13 +134,13 @@ export default function useAction(items, status) {
     })
   }
 
-  const redirect = async (item, index) => {
-    if (item.status === 'read') {
+  const redirect = async (item) => {
+    console.log(item)
+    if (item.estado === 'read') {
       history.push(`/messages/detail/${item.id}`)
       return
     }
-    const it = state.messages[index]
-    const change = await markRead(it.id)
+    const change = await markRead(item.id)
     const payload = state.messages.map((msg) =>
       msg.id === change.id ? change : msg,
     )
@@ -143,10 +148,26 @@ export default function useAction(items, status) {
     history.push(`/messages/detail/${change.id}`)
   }
 
+  const createMessage = async (payload) => {
+    const data = await createMsg(payload)
+    dispatch(setAllMessage([data, ...items]))
+  }
+
   useEffect(() => {
     onSet(items, 'messages')
     //eslint-disable-next-line
   }, [items, status])
 
-  return [{ ...state }, { mark, deleteSelected, onSelect, onSearch, redirect }]
+  return [
+    { ...state },
+    {
+      mark,
+      deleteSelected,
+      onSelect,
+      onSearch,
+      redirect,
+      createMessage,
+      onSet,
+    },
+  ]
 }

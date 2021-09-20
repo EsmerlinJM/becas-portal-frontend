@@ -1,4 +1,4 @@
-import React from 'react'
+import Badge from '../badge'
 
 export default function ButtonBadge({ children, num = 0 }) {
   return (
@@ -8,12 +8,7 @@ export default function ButtonBadge({ children, num = 0 }) {
     >
       {children}
       <span className="absolute inset-0 object-right-top -mr-5">
-        <div
-          className="inline-flex items-center px-1.5 py-0.5 border-2 border-white rounded-full  font-semibold leading-4 bg-red-500 text-white"
-          style={{ fontSize: 10 }}
-        >
-          {num}
-        </div>
+        <Badge num={num} />
       </span>
     </button>
   )

@@ -3,6 +3,7 @@ import UserAvatar from '../../atoms/user-avatar'
 import ButtonBadge from '../../atoms/button-bagde'
 import Drawer from '@material-ui/core/Drawer/Drawer'
 import Avatar from '../../atoms/avatar'
+import Badge from '../../atoms/badge'
 
 import { AiTwotoneStar } from 'react-icons/ai'
 import { FiUser } from 'react-icons/fi'
@@ -21,7 +22,7 @@ export default function UserOptions({ user, history }) {
     state.notification.all.data?.filter((it) => !it.read),
   )
   const messages = useSelector((state) =>
-    state.message.all.data?.filter((it) => it.status === 'unread'),
+    state.message.all.data?.filter((it) => it.estado === 'unread'),
   )
 
   const logout = async () => {
@@ -80,6 +81,14 @@ export default function UserOptions({ user, history }) {
 
 export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
   const dispatch = useDispatch()
+  const favorites = useSelector((state) => state.user.favorites.data.length)
+  const notifications = useSelector((state) =>
+    state.notification.all.data?.filter((it) => !it.read),
+  )
+  const messages = useSelector((state) =>
+    state.message.all.data?.filter((it) => it.estado === 'unread'),
+  )
+
   const logout = async () => {
     await logOut(history, dispatch)
   }
@@ -110,22 +119,28 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
 
         <div className="mx-4 my-2 text-xs text-gray-400 font-bold ">
           <div
+            onClick={() => history.push('/messages')}
+            className="p-3 border-b-2 cursor-pointer"
+          >
+            MENSAJES <Badge num={messages.length} />
+          </div>
+          <div
             onClick={() => history.push('/favorites')}
             className="p-3 border-b-2 cursor-pointer"
           >
-            FAVORITOS
+            FAVORITOS <Badge num={favorites} />
           </div>
           <div
             onClick={() => history.push('/notifications')}
             className="p-3 border-b-2 cursor-pointer"
           >
-            NOTIFICACIONES
+            NOTIFICACIONES <Badge num={notifications.length} />
           </div>
           <div
-            onClick={() => history.push('/FAQs')}
+            onClick={() => history.push('/my-requests')}
             className="p-3 border-b-2 cursor-pointer"
           >
-            PREGUNTAS FRECUENTES
+            MIS SOLICITUDES
           </div>
           <div
             onClick={() => history.push('/profile')}
@@ -134,10 +149,10 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
             MI PERFIL
           </div>
           <div
-            onClick={() => history.push('/my-requests')}
+            onClick={() => history.push('/FAQs')}
             className="p-3 border-b-2 cursor-pointer"
           >
-            MIS SOLICITUDES
+            PREGUNTAS FRECUENTES
           </div>
         </div>
         <div className="flex items-center justify-between px-4 py-2 text-xs text-white text-center ">

@@ -8,14 +8,14 @@ export const createMessage = async (payload) => {
 }
 
 export const getAllMessage = async () => {
-  const { data } = await authAxios().post('mensajes/getAll')
+  const { data } = await authAxios().get('/mensajes/internos/getAll')
   return data.data
 }
 
 export const markMultiple = async (items) => {
   try {
     const promises = items.map((item) =>
-      item.status === 'read' ? markUnread(item.id) : markRead(item.id),
+      item.estado === 'read' ? markUnread(item.id) : markRead(item.id),
     )
     const all = await Promise.all(promises)
     return all
@@ -26,22 +26,22 @@ export const markMultiple = async (items) => {
 
 export const markRead = async (id) => {
   const form = new FormData()
-  form.append('message_id', id)
-  const { data } = await authAxios().post('mensajes/markRead', form)
+  form.append('mensaje_id', id)
+  const { data } = await authAxios().post('/mensajes/internos/setRead', form)
   return data.data
 }
 
 export const markUnread = async (id) => {
   const form = new FormData()
-  form.append('message_id', id)
-  const { data } = await authAxios().post('mensajes/markUnRead', form)
+  form.append('mensaje_id', id)
+  const { data } = await authAxios().post('/mensajes/internos/setUnread', form)
   return data.data
 }
 
 export const deleteMessage = async (id) => {
   const form = new FormData()
-  form.append('message_id', id)
-  const { data } = await authAxios().post('mensajes/delete', form)
+  form.append('mensaje_id', id)
+  const { data } = await authAxios().post('/mensajes/internos/delete', form)
   return data.data
 }
 
@@ -53,4 +53,14 @@ export const deleteMultipleMessage = async (arrMsg) => {
   } catch (error) {
     console.error(error)
   }
+}
+
+export const createMsg = async (payload) => {
+  const form = new FormData()
+  Object.entries(payload).map((item) => form.append(item[0], item[1]))
+  const { data } = await authAxios().post(
+    `/mensajes/internos/compose_candidate`,
+    form,
+  )
+  return data.data
 }

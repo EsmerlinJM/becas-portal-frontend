@@ -13,9 +13,13 @@ export default function MessageCardList({
   status = null,
   onSelect,
   onClick,
+  type = null,
 }) {
-  const filtered = status && items.filter((item) => item.status === who[status])
-
+  const filtered =
+    (status || type) &&
+    items.filter((item) =>
+      !type ? item.estado === who[status] : item.tipo === type,
+    )
   return (
     <ul>
       {(filtered || items).map((item, i) => (
@@ -33,6 +37,7 @@ export default function MessageCardList({
 
 MessageCardList.propTypes = {
   status: PropTypes.oneOf(['unread', 'read', '', null]),
+  type: PropTypes.string,
   items: PropTypes.array.isRequired,
   selecteds: PropTypes.object,
   onSelect: PropTypes.func,

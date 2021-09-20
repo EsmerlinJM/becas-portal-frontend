@@ -1,17 +1,13 @@
-import { Drawer } from "@material-ui/core";
-import { useState } from "react";
-import { useHistory } from "react-router";
-// import Logo from "../../../../../../img/AF Logo Beca tu Futuro RGB-07@2x.png";
-import Logo from "../../../../../../img/Logo_BECATUFUTURO.svg";
-import {
-  AiOutlineClose,
-  AiOutlineMenu,
-  AiOutlineMenuFold,
-} from "react-icons/ai";
+import { Drawer } from '@material-ui/core'
+import { useState } from 'react'
+import { useHistory } from 'react-router'
+import { AiOutlineClose, AiOutlineMenu } from 'react-icons/ai'
+
+import Logo from '../../../../../../img/Logo_BECATUFUTURO.svg'
 
 export default function Header2() {
-  const history = useHistory();
-  const [isOpen, setIsOpen] = useState(false);
+  const history = useHistory()
+  const [isOpen, setIsOpen] = useState(false)
 
   return (
     <div className="px-5 flex items-center justify-between lg:justify-between">
@@ -20,14 +16,14 @@ export default function Header2() {
           src={Logo}
           alt="logo"
           className="w-36 md:w-40 cursor-pointer"
-          onClick={() => history.push("/")}
+          onClick={() => history.push('/')}
         />
         <div className=" m-7 text-xs text-gray-400 font-bold hidden xs:hidden sm:hidden md:flex lg:flex xl:flex">
           <span className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer hidden">
             BLOG
           </span>
           <span
-            onClick={() => history.push("/FAQs")}
+            onClick={() => history.push('/FAQs')}
             className="m-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
           >
             PREGUNTAS FRECUENTES
@@ -37,13 +33,13 @@ export default function Header2() {
       <div className="header1 flex items-center justify-center">
         <div className=" text-xs text-white ">
           <span
-            onClick={() => history.push("/login")}
+            onClick={() => history.push('/login')}
             className="font-bold m-3 transition delay-100 hover:text-blue-800 hover:border-blue-800 blancobg text-gray-400 cursor-pointer hidden md:inline-block"
           >
             INICIAR SESIÓN
           </span>
           <button
-            onClick={() => history.push("/register")}
+            onClick={() => history.push('/register')}
             className="font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg  rounded-3xl m-3 bg-blue-700"
           >
             REGÍSTRATE
@@ -58,7 +54,7 @@ export default function Header2() {
         anchor="right"
         open={isOpen}
         onClose={() => {
-          setIsOpen(false);
+          setIsOpen(false)
         }}
       >
         <div className="w-64 ">
@@ -67,7 +63,7 @@ export default function Header2() {
             <button className="cursor-pointer transform hover:scale-125 transition-all duration-100">
               <AiOutlineClose
                 onClick={() => {
-                  setIsOpen(false);
+                  setIsOpen(false)
                 }}
               />
             </button>
@@ -78,7 +74,7 @@ export default function Header2() {
               BLOG
             </div>
             <div
-              onClick={() => history.push("/FAQs")}
+              onClick={() => history.push('/FAQs')}
               className="p-3 transition delay-100 hover:text-blue-800 blancobg hover:border-blue-800 cursor-pointer"
             >
               PREGUNTAS FRECUENTES
@@ -87,13 +83,13 @@ export default function Header2() {
 
           <div className="grid mx-4 my-4 text-xs text-white ">
             <button
-              onClick={() => history.push("/login")}
+              onClick={() => history.push('/login')}
               className="mb-4 font-bold transition delay-100 hover:text-blue-800 hover:border-blue-800 blancobg text-gray-400 "
             >
               INICIAR SESIÓN
             </button>
             <button
-              onClick={() => history.push("/register")}
+              onClick={() => history.push('/register')}
               className="font-bold transition delay-100 px-4 py-2  hover:bg-red-600 azulbg rounded-3xl bg-blue-700"
             >
               REGÍSTRATE
@@ -102,5 +98,5 @@ export default function Header2() {
         </div>
       </Drawer>
     </div>
-  );
+  )
 }

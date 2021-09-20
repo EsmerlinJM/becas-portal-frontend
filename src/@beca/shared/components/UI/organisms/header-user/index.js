@@ -23,11 +23,11 @@ export default function HeaderUser({ user, isHome = false }) {
   return (
     <div className="relative" ref={headerRef}>
       <div className="w-full z-40 shadow fixed bg-white">
-        <div className="px-5 flex justify-between flex-wrap">
+        <div className="px-2 sm:px-5 md:px-5 flex justify-between flex-nowrap">
           <div className="flex ">
             <img
               src={Logo}
-              className="w-28 md:w-40 cursor-pointer px-2"
+              className="w-28 md:w-40 cursor-pointer "
               alt=""
               onClick={() => history.push('/')}
             />
@@ -58,10 +58,10 @@ export default function HeaderUser({ user, isHome = false }) {
             <div className="fadeIn self-center ">
               <InputSearchHome
                 isHeader
-                widthInput="w-40 sm:w-52"
+                widthInput="w-auto"
                 heightInput="h-4"
                 widthImg="w-8"
-                placeholder="buscar becas"
+                placeholder="¿Qué quieres estudiar?"
                 mlImg_="-ml-6"
               />
             </div>
@@ -78,13 +78,22 @@ export default function HeaderUser({ user, isHome = false }) {
           )}
         </div>
       </div>
+
       {!isHome && (
         <>
           <div>&nbsp;</div>
           <div>&nbsp;</div>
-          <div className="-mt-7 md:mt-0 ">&nbsp;</div>
+          <div className="-mt-6 md:mt-0 ">&nbsp;</div>
         </>
       )}
+
+      {isHome && (
+        <div className="block md:hidden ">
+          <div>&nbsp;</div>
+          <div>&nbsp;</div>
+        </div>
+      )}
+
       <UserOptionMovil
         user={user}
         history={history}

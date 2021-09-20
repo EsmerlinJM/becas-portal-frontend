@@ -1,7 +1,7 @@
 import Types from 'prop-types'
 
 export default function MessageCard({ item, selected, onSelect, onClick }) {
-  const bold = item.status === 'read'
+  const bold = item.estado === 'read'
   return (
     <li
       className={`flex items-center justify-between text-xs py-3 px-5
@@ -20,8 +20,11 @@ export default function MessageCard({ item, selected, onSelect, onClick }) {
           className="-mb-0.5"
           type="checkbox"
         />
-        <div onClick={() => onClick(item)} className=" flex justify-center">
-          <span className="truncate text-blue-800 w-52">{item.name}</span>
+        <div
+          onClick={() => onClick(item)}
+          className="w-full flex justify-center"
+        >
+          <span className="truncate text-blue-800 w-52">{item.to}</span>
           <span className="truncate ">{item.subject}:</span>
           <span className="truncate font-medium		">{item.message}</span>
         </div>
