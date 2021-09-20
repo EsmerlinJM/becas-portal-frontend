@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { useSelector, useDispatch } from 'react-redux'
 import Header2Natigation from '../../shared/components/hocs/header2-natigation'
 import CardNotification from '../../shared/components/UI/molecules/notification-card'
@@ -14,17 +15,22 @@ export default function Notifications() {
   const [_, actions] = useAction(data, dispatch)
 
   return (
-    <Header2Natigation objNav={objNav}>
-      <div className="notificaciones w-5/6 pt-3 m-auto grid grid-cols-1 gap-y-4 mb-4">
-        {(data || []).map((it, i) => (
-          <CardNotification
-            item={it}
-            key={i}
-            onDelete={actions.onDelete}
-            onRead={(item) => actions.onRead(item, i)}
-          />
-        ))}
-      </div>
-    </Header2Natigation>
+    <>
+      <Helmet>
+        <title>Notificaciones | Beca tu futuro </title>
+      </Helmet>
+      <Header2Natigation objNav={objNav}>
+        <div className="notificaciones w-5/6 pt-3 m-auto grid grid-cols-1 gap-y-4 mb-4">
+          {(data || []).map((it, i) => (
+            <CardNotification
+              item={it}
+              key={i}
+              onDelete={actions.onDelete}
+              onRead={(item) => actions.onRead(item, i)}
+            />
+          ))}
+        </div>
+      </Header2Natigation>
+    </>
   )
 }

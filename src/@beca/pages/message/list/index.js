@@ -10,6 +10,7 @@ import ComposeMsgButton from '../../../shared/components/UI/molecules/compose-ms
 import useAction from './use-action'
 
 import { useSelector } from 'react-redux'
+import { Helmet } from 'react-helmet-async'
 
 const objNav = {
   name: 'Mensajes',
@@ -20,100 +21,112 @@ const objNav = {
 export default function Message() {
   const { data, status } = useSelector((state) => state.message.all)
   const [{ selecteds, messages, checked }, actions] = useAction(data, status)
-  // console.log(data, 'data')
   return (
-    <Header2Natigation objNav={objNav}>
-      <div className="notificaciones w-5/6 pt-3 m-auto grid grid-cols-1  my-4">
-        <span className="flex justify-end flex-col xs:flex-col  sm:flex-col md:flex-row lg:flex-row xl:flex-row space-x-0 xs:space-x-0 sm:space-x-0 md:space-x-2 sm:space-y-2 xs:space-y-2 md:space-y-0 space-y-2">
-          <ComposeMsgButton onAction={actions.createMessage} />
-          <div className="flex items-center space-x-1 bg-white text-xs xs:w-auto sm:w-auto w-full text-gray-500 font-semibold border border-gray-400 py-2 px-4 rounded-3xl focus-within:bg-gray-100 transition">
-            <img className="w-4" src={Component} alt="search" />
-            <input
-              className="outline-none font-semibold w-5/6 focus:bg-gray-100 transition"
-              type="text"
-              onChange={({ target }) => actions.onSearch(target.value)}
-              placeholder="Buscar mensaje"
-            />
-          </div>
-        </span>
+    <>
+      <Helmet>
+        <title>Mensajes | Beca tu futuro</title>
+      </Helmet>
+      <Header2Natigation objNav={objNav}>
+        <div className="notificaciones w-5/6 pt-3 m-auto grid grid-cols-1  my-4">
+          <span className="flex justify-end flex-col xs:flex-col  sm:flex-col md:flex-row lg:flex-row xl:flex-row space-x-0 xs:space-x-0 sm:space-x-0 md:space-x-2 sm:space-y-2 xs:space-y-2 md:space-y-0 space-y-2">
+            <ComposeMsgButton onAction={actions.createMessage} />
+            <div className="flex items-center space-x-1 bg-white text-xs xs:w-auto sm:w-auto w-full text-gray-500 font-semibold border border-gray-400 py-2 px-4 rounded-3xl focus-within:bg-gray-100 transition">
+              <img className="w-4" src={Component} alt="search" />
+              <input
+                className="outline-none font-semibold w-5/6 focus:bg-gray-100 transition"
+                type="text"
+                onChange={({ target }) => actions.onSearch(target.value)}
+                placeholder="Buscar mensaje"
+              />
+            </div>
+          </span>
 
-        <span className="w-full pt-2 ">
-          <div className>
-            {status === 'loading' ? (
-              <Loading type="MutatingDots" color="red" secondaryColor="blue" />
-            ) : (
-              <TabTemplate
-                headersTab={[
-                  'TODOS',
-                  'LEIDOS',
-                  'NO LEIDOS',
-                  'ENVIADOS',
-                  'RECIBIDOS',
-                ]}
-              >
-                <>
-                  <Opt actions={actions} checked={checked.all} />
-                  <MessageCardList
-                    items={messages}
-                    selecteds={selecteds}
-                    onSelect={actions.onSelect}
-                    onClick={(item) => actions.redirect(item)}
-                  />
-                </>
+          <span className="w-full pt-2 ">
+            <div className>
+              {status === 'loading' ? (
+                <Loading
+                  type="MutatingDots"
+                  color="red"
+                  secondaryColor="blue"
+                />
+              ) : (
+                <TabTemplate
+                  headersTab={[
+                    'TODOS',
+                    'LEIDOS',
+                    'NO LEIDOS',
+                    'ENVIADOS',
+                    'RECIBIDOS',
+                  ]}
+                >
+                  <>
+                    <Opt actions={actions} checked={checked.all} />
+                    <MessageCardList
+                      items={messages}
+                      selecteds={selecteds}
+                      onSelect={actions.onSelect}
+                      onClick={(item) => actions.redirect(item)}
+                    />
+                  </>
 
-                <>
-                  <Opt actions={actions} status="read" checked={checked.read} />
-                  <MessageCardList
-                    status="read"
-                    items={messages}
-                    selecteds={selecteds}
-                    onSelect={actions.onSelect}
-                    onClick={(item) => actions.redirect(item)}
-                  />
-                </>
+                  <>
+                    <Opt
+                      actions={actions}
+                      status="read"
+                      checked={checked.read}
+                    />
+                    <MessageCardList
+                      status="read"
+                      items={messages}
+                      selecteds={selecteds}
+                      onSelect={actions.onSelect}
+                      onClick={(item) => actions.redirect(item)}
+                    />
+                  </>
 
-                <>
-                  <Opt
-                    actions={actions}
-                    status="unread"
-                    checked={checked.unread}
-                  />
-                  <MessageCardList
-                    status="unread"
-                    items={messages}
-                    selecteds={selecteds}
-                    onSelect={actions.onSelect}
-                    onClick={(item) => actions.redirect(item)}
-                  />
-                </>
+                  <>
+                    <Opt
+                      actions={actions}
+                      status="unread"
+                      checked={checked.unread}
+                    />
+                    <MessageCardList
+                      status="unread"
+                      items={messages}
+                      selecteds={selecteds}
+                      onSelect={actions.onSelect}
+                      onClick={(item) => actions.redirect(item)}
+                    />
+                  </>
 
-                <>
-                  <Opt actions={actions} checked={checked.unread} />
-                  <MessageCardList
-                    type="enviado"
-                    items={messages}
-                    selecteds={selecteds}
-                    onSelect={actions.onSelect}
-                    onClick={(item) => actions.redirect(item)}
-                  />
-                </>
+                  <>
+                    <Opt actions={actions} checked={checked.unread} />
+                    <MessageCardList
+                      type="enviado"
+                      items={messages}
+                      selecteds={selecteds}
+                      onSelect={actions.onSelect}
+                      onClick={(item) => actions.redirect(item)}
+                    />
+                  </>
 
-                <>
-                  <Opt actions={actions} checked={checked.unread} />
-                  <MessageCardList
-                    type="recibido"
-                    items={messages}
-                    selecteds={selecteds}
-                    onSelect={actions.onSelect}
-                    onClick={(item) => actions.redirect(item)}
-                  />
-                </>
-              </TabTemplate>
-            )}
-          </div>
-        </span>
-      </div>
-    </Header2Natigation>
+                  <>
+                    <Opt actions={actions} checked={checked.unread} />
+                    <MessageCardList
+                      type="recibido"
+                      items={messages}
+                      selecteds={selecteds}
+                      onSelect={actions.onSelect}
+                      onClick={(item) => actions.redirect(item)}
+                    />
+                  </>
+                </TabTemplate>
+              )}
+            </div>
+          </span>
+        </div>
+      </Header2Natigation>
+    </>
   )
 }
 
