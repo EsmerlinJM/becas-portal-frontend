@@ -92,6 +92,12 @@ export default function Profile() {
                 >
                   Actualizar Foto de Perfil
                 </button>
+                <button
+                  onClick={update}
+                  className={`fadeIn border border-red-500 text-red-500 hover:text-white rounded-3xl uppercase px-4 py-2 m-2 transition duration-500 ease select-none hover:bg-red-600 focus:outline-none focus:shadow-outline`}
+                >
+                  Eliminar foto de perfil
+                </button>
               </div>
 
               <div className="grid">
