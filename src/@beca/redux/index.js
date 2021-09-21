@@ -12,6 +12,7 @@ import municipality from './slices/municipality/_reducers'
 import country from './slices/country/_reducers'
 import notification from './slices/notification/_reducers'
 import message from './slices/message/_reducers'
+import beca from './slices/beca/_reducers'
 
 export default configureStore({
   reducer: {
@@ -27,5 +28,6 @@ export default configureStore({
     country,
     notification,
     message,
+    beca,
   },
 })

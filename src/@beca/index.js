@@ -13,6 +13,7 @@ import notifications from './pages/notifications'
 import footerLinks from './pages/footer-links'
 import pageNotFound from './pages/404'
 import message from './pages/message'
+import beca from './pages/becas'
 
 const routes = [
   ...homeRoutes,
@@ -30,6 +31,7 @@ const routes = [
   ...footerLinks,
   ...pageNotFound,
   ...message,
+  ...beca,
 ]
 
 export default routes

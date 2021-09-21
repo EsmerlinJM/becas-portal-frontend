@@ -1,12 +1,13 @@
 import { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useHistory, useLocation } from 'react-router'
-import { clearUser, getOneUser } from '../../../redux/slices/user/_actions'
+import { getAllBecas } from '../../../redux/slices/beca/_actions'
 import { addFavorites } from '../../../redux/slices/user/_actions'
+import { getAllMessage } from '../../../redux/slices/message/_actions'
+import { clearUser, getOneUser } from '../../../redux/slices/user/_actions'
+import { setNotifications } from '../../../redux/slices/notification/_actions'
 import { getAuth } from '../../utils/auth'
 import { logOut } from '../../services/user'
-import { setNotifications } from '../../../redux/slices/notification/_actions'
-import { getAllMessage } from '../../../redux/slices/message/_actions'
 
 import Loading from 'react-loader-spinner'
 
@@ -41,6 +42,7 @@ export default function Auth({ children }) {
     const fn = async (tk) => {
       dispatch(await getOneUser(tk))
       dispatch(await getAllMessage())
+      dispatch(await getAllBecas())
     }
 
     // execute when token exist and not data

@@ -1,19 +1,19 @@
-import React from "react";
-import { FaSchool } from "react-icons/fa";
-import { GoFileDirectory } from "react-icons/go";
-import { FaYandexInternational } from "react-icons/fa";
-import { GiUpgrade } from "react-icons/gi";
-import { MdAnnouncement } from "react-icons/md";
-import { statuColors } from "../../../../utils/status-request";
+import React from 'react'
+import { FaSchool } from 'react-icons/fa'
+import { GoFileDirectory } from 'react-icons/go'
+import { FaYandexInternational } from 'react-icons/fa'
+import { GiUpgrade } from 'react-icons/gi'
+import { MdAnnouncement } from 'react-icons/md'
+import { statuColors } from '../../../../utils/status-request'
 
 export default function RequestCard({ item, onClick }) {
-  const { created, status } = item || {};
+  const { created, status } = item || {}
   const {
     oferta: { development_area_name, education_level_name },
     institucion: { name },
-  } = item?.oferta_academica || { oferta: {}, institucion: {} };
+  } = item?.oferta_academica || { oferta: {}, institucion: {} }
 
-  const { name: convocatoriaName, type } = item?.convocatoria || {};
+  const { name: convocatoriaName, type } = item?.convocatoria || {}
 
   return (
     <div onClick={() => onClick(item)}>
@@ -59,5 +59,5 @@ export default function RequestCard({ item, onClick }) {
         </div>
       </span>
     </div>
-  );
+  )
 }

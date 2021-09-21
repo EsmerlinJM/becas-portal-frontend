@@ -72,20 +72,23 @@ export default function ButtonPopover({ items = solutions, children, header }) {
                         </p>
                       </div>
                     </span>
-                    {items.map((item) => (
-                      <span
-                        key={item.id}
-                        onClick={item.href}
-                        className="flex items-center py-2 px-1 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
-                      >
-                        <div className=" flex ml-4 cursor-pointer">
-                          {item.icon && <item.icon />}
-                          <p className=" ml-2 text-sm font-medium text-gray-500">
-                            {item.name}
-                          </p>
-                        </div>
-                      </span>
-                    ))}
+                    {items.map(
+                      (item) =>
+                        item && (
+                          <span
+                            key={item.id}
+                            onClick={item.href}
+                            className="flex items-center py-2 px-1 -m-3 transition duration-150 ease-in-out rounded-lg hover:bg-gray-50 focus:outline-none focus-visible:ring focus-visible:ring-orange-500 focus-visible:ring-opacity-50"
+                          >
+                            <div className=" flex ml-4 cursor-pointer">
+                              {item.icon && <item.icon />}
+                              <p className=" ml-2 text-sm font-medium text-gray-500">
+                                {item.name}
+                              </p>
+                            </div>
+                          </span>
+                        ),
+                    )}
                   </div>
                 </div>
               </Popover.Panel>

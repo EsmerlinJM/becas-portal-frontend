@@ -11,6 +11,7 @@ import { RiNewspaperLine } from 'react-icons/ri'
 import { AiOutlineLogout } from 'react-icons/ai'
 import { BiMessageSquareDetail } from 'react-icons/bi'
 import { IoNotificationsSharp } from 'react-icons/io5'
+import { IoSchoolOutline } from 'react-icons/io5'
 import { AiOutlineClose } from 'react-icons/ai'
 import { useDispatch, useSelector } from 'react-redux'
 import { logOut } from '../../../../services/user'
@@ -24,6 +25,7 @@ export default function UserOptions({ user, history }) {
   const messages = useSelector((state) =>
     state.message.all.data?.filter((it) => it.estado === 'unread'),
   )
+  const beca = useSelector((state) => state.beca.all.data)
 
   const logout = async () => {
     await logOut(history, dispatch)
@@ -42,6 +44,14 @@ export default function UserOptions({ user, history }) {
       href: () => history.push('/my-requests'),
       icon: RiNewspaperLine,
     },
+    beca.length
+      ? {
+          id: 4,
+          name: 'Mis becas',
+          href: () => history.push('/mi-beca'),
+          icon: IoSchoolOutline,
+        }
+      : null,
     {
       id: 5,
       name: 'Cerrar sesión',
