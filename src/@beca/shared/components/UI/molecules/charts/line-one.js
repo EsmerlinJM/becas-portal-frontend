@@ -12,12 +12,17 @@ const options = {
   },
 }
 
-const LineChart = ({ items = [], name = '' }) => {
+const LineChart = ({
+  items = [],
+  name = '',
+  keyData = 'calificacion',
+  keyLabel = 'periodo',
+}) => {
   const datasets = []
   const dataa = items.reduce((acc, curr) => {
     if (datasets.length) {
       datasets[0] = {
-        data: [...(datasets[0]?.data || []), curr.calificacion],
+        data: [...(datasets[0]?.data || []), curr[keyData]],
         label: name,
         fill: false,
         backgroundColor: '#024A89',
@@ -33,7 +38,7 @@ const LineChart = ({ items = [], name = '' }) => {
       })
     }
     return {
-      labels: [...(acc.labels || []), curr.periodo],
+      labels: [...(acc.labels || []), curr[keyLabel]],
     }
   }, {})
 
