@@ -98,6 +98,7 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
   const messages = useSelector((state) =>
     state.message.all.data?.filter((it) => it.estado === 'unread'),
   )
+  const beca = useSelector((state) => state.beca.all.data)
 
   const logout = async () => {
     await logOut(history, dispatch)
@@ -152,6 +153,15 @@ export const UserOptionMovil = ({ isOpen, setExit, history, user = {} }) => {
           >
             MIS SOLICITUDES
           </div>
+          {beca.length ? (
+            <div
+              onClick={() => history.push('/mi-beca')}
+              className="p-3 border-b-2 cursor-pointer"
+            >
+              MI BECA <Badge num={beca.length} />
+            </div>
+          ) : null}
+
           <div
             onClick={() => history.push('/profile')}
             className="p-3 border-b-2 cursor-pointer"

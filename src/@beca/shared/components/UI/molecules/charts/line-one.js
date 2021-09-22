@@ -30,7 +30,7 @@ const LineChart = ({
       }
     } else {
       datasets.push({
-        data: [curr.calificacion],
+        data: [curr[keyData]],
         label: name,
         fill: false,
         backgroundColor: '#024A89',
