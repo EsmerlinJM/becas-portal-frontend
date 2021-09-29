@@ -14,7 +14,7 @@ export default function Pagination({ active, onSelectScreen, screens }) {
         className="outline-none bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-2 px-4 rounded-full transition duration-300 ease-in-out"
         onClick={() => !(screens <= active) && onSelectScreen(active + 1)}
       >
-        Seguiente{" "}
+        Siguiente{" "}
       </button>
     </div>
   );
