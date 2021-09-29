@@ -112,10 +112,7 @@ export default function HomeInit() {
       {!userExist && (
         <div className="right azulbg xl:w-3/5 border border-blue-400 xl:hidden block w-full ">
           <div className="header1 flex items-center justify-center">
-            <div
-              className="m-5 text-xs text-white "
-              // onClick={closeSesion}
-            >
+            <div className="m-5 text-xs text-white ">
               <span
                 onClick={() => history.push('/login')}
                 className="font-bold m-3 transition delay-100 hover:text-blue-100 azulbg hover:border-white cursor-pointer"
@@ -133,7 +130,10 @@ export default function HomeInit() {
         </div>
       )}
       <div className="right shadow-lg border border-blue-400 block w-full lines-pattern align-middle">
-        <div className="header1 lg:flex-col flex items-center justify-center xl:px-52 lg:px-32 px-8 py-16 bg-lighBlue" style={{backgroundImage:`url(${pattern})` }}>
+        <div
+          className="header1 lg:flex-col flex items-center justify-center xl:px-52 lg:px-32 px-8 py-16 bg-lighBlue"
+          style={{ backgroundImage: `url(${pattern})` }}
+        >
           <div className="grid md:grid-cols-2">
             <img src={macbookimg} alt="macbook becas" className="max-h-96	" />
             <div className="azul lg:text-4xl xl:text-5xl  text-3xl border-gray-300 pt-8 md:mr-0 m-auto  ">

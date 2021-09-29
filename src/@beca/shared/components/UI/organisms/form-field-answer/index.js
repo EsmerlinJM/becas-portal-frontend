@@ -1,4 +1,4 @@
-import FiledAnswer from "../../atoms/field-answer";
+import FiledAnswer from '../../atoms/field-answer'
 export default function FormFieldAnswer({ forms, onChange, save }) {
   return (
     <div className="grid grid-cols-2  p-5">
@@ -8,8 +8,8 @@ export default function FormFieldAnswer({ forms, onChange, save }) {
             key={i}
             onChange={(payload) =>
               onChange({
-                type: "ON_CHANGE_FORM",
-                key: "formsInstitution",
+                type: 'ON_CHANGE_FORM',
+                key: 'formsInstitution',
                 field: payload.name,
                 value: payload.value,
                 index: i,
@@ -24,12 +24,12 @@ export default function FormFieldAnswer({ forms, onChange, save }) {
           />
         ))
       ) : (
-        <p>No hay pregunstas hasta ahora.</p>
+        <p>No hay preguntas hasta ahora.</p>
       )}
       <div className="md:col-span-2 mt-7 flex md:justify-end justify-center">
         {forms && forms.length && (
           <button
-            onClick={() => save("formsInstitution")}
+            onClick={() => save('formsInstitution')}
             className="uppercase text-xs px-6 py-3 rounded-3xl bg-blue-900 text-white hover:bg-blue-800"
           >
             Guardar
@@ -37,5 +37,5 @@ export default function FormFieldAnswer({ forms, onChange, save }) {
         )}
       </div>
     </div>
-  );
+  )
 }

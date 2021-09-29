@@ -1,4 +1,4 @@
-import ButtonApply from "../../atoms/button-apply";
+import ButtonApply from '../../atoms/button-apply'
 
 export default function OfferDetail({ item, message }) {
   const {
@@ -17,10 +17,10 @@ export default function OfferDetail({ item, message }) {
       academic_offer_pensum_url,
     },
     institucion: { name, contacto_telefono, direccion, web },
-  } = item;
+  } = item
   const redirect = () => {
-    if (web) window.location.href = web;
-  };
+    if (web) window.location.href = web
+  }
 
   return (
     <div>
@@ -139,5 +139,5 @@ export default function OfferDetail({ item, message }) {
         </div>
       </div>
     </div>
-  );
+  )
 }
