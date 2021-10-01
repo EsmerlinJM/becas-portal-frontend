@@ -23,7 +23,9 @@ export default function useVerification() {
         reset()
         setModal(false)
         setLoading(false)
-        return <b>Correo de verificación enviado,confirme su bandeja d espan!!</b>
+        return (
+          <b>Correo de verificación enviado,confirme su bandeja de span!!</b>
+        )
       },
       error: (error) => {
         setLoading(false)
@@ -35,6 +37,6 @@ export default function useVerification() {
 
   return [
     { errors, loading, modal },
-    { register, action, watch,handleSubmit, setModal }
+    { register, action, watch, handleSubmit, setModal },
   ]
 }
