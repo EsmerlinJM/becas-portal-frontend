@@ -27,15 +27,11 @@ export default function useAction() {
       },
       error: (error) => {
         setLoading(false)
-        const {
-          data: {
-            errors: { email=[] },
-          },
-        } = error.response
+        const messages = error.response?.data?.message?.email || []
         return (
           <b>
-            {email.length
-              ? email?.map((em) => <p> {em} </p>)
+            {messages.length
+              ? messages?.map((em) => <p> {em} </p>)
               : 'Este email ya existe!'}
           </b>
         )
